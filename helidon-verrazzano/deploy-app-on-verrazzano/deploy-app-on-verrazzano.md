@@ -171,8 +171,8 @@ To run this lab, you must have:
 
     ```bash
     <copy>
-    curl -LSs https://raw.githubusercontent.com/oracle/learning-library/master/developer-library/multicloud/helidon-verrazzano/hello-helidon-app.yaml >~/hello-helidon-app.yaml
-    curl -LSs https://raw.githubusercontent.com/oracle/learning-library/master/developer-library/multicloud/helidon-verrazzano/hello-helidon-comp.yaml >~/hello-helidon-comp.yaml
+    curl -LSs https://oracle-livelabs.github.io/multicloud/helidon-verrazzano/hello-helidon-app.yaml >~/hello-helidon-app.yaml
+    curl -LSs https://oracle-livelabs.github.io/multicloud/helidon-verrazzano/hello-helidon-comp.yaml >~/hello-helidon-comp.yaml
     cd ~
     </copy>
     ```

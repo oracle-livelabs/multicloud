@@ -23,7 +23,7 @@ In this lab, you will:
 1. Run the following command to download the modified bobs-books-comp-mod.yaml file.
 
     ```bash
-    <copy>curl -LSs https://raw.githubusercontent.com/oracle/learning-library/master/developer-library/multicloud/verrazzano/alternate-version/bobs-books-comp-mod.yaml >~/bobs-books-comp-mod.yaml</copy>
+    <copy>curl -LSs https://oracle-livelabs.github.io/multicloud/verrazzano/alternate-version/bobs-books-comp-mod.yaml >~/bobs-books-comp-mod.yaml</copy>
     ```
 
     ![Download file](images/downloadfile.png " ")
