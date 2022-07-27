@@ -261,7 +261,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
     >You can see that it is pure MicroProfile compatible code:
 
-    ![ModifyJava](images/GreetResource.jpg)
+    ![ModifyJava](images/greet-resource.jpg)
 
 6. Create a new endpoint that provides help for different greetings in different languages. To create this new functionality, create a new class called **GreetHelpResource** with the following code:
 
@@ -337,7 +337,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
     And the new endpoint has been added.
 
-    ![NewEndpoint](images/LogsOutput.jpg)
+    ![NewEndpoint](images/logs-output.jpg)
 
     >Working with Helidon and its tooling is really easy and fast!
 

@@ -217,11 +217,11 @@ To run this lab, you must have:
 
     To deploy the Helidon *quickstart-mp* application, copy and paste the following two commands as shown. The `hello-helidon-comp.yaml` file contains definitions of various OAM components, where, an OAM component is a Kubernetes Custom Resource describing an application’s general composition and environment requirements.
     ```bash
-    <copy>kubectl apply -f ~/hello-helidon-comp.yaml</copy>
+    <copy>kubectl apply -f ~/hello-helidon-comp.yaml -n hello-helidon</copy>
     ```
     The `hello-helidon-app.yaml` file is a Verrazzano application configuration file, which provides environment-specific customizations.
     ```bash
-    <copy>kubectl apply -f ~/hello-helidon-app.yaml</copy>
+    <copy>kubectl apply -f ~/hello-helidon-app.yaml -n hello-helidon</copy>
     ```
 
 8. Wait for the pods to be in *Running* status. Use this *kubectl* command to wait for all the pods to be in the *Running* state within the hello-helidon namespace. It takes around 1-2 minutes.
