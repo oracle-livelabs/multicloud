@@ -33,11 +33,11 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     > You must select a compartment that allows you to create a cluster and a repository inside the Oracle Container Registry.
 
-    ![Select Compartment](images/SelectCompartment.png)
+    ![Select Compartment](images/select-compartment.png)
 
 3. On the Create Cluster dialog, click **Quick Create** and click **Submit**.
 
-    ![Launch Workflow](images/LaunchWorkFlow.png)
+    ![Launch Workflow](images/launch-workflow.png)
 
     *Quick Create* will automatically create a new cluster with the default settings, along with new network resources for the new cluster.
 
@@ -54,7 +54,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
     * **Number of nodes**: The number of worker nodes to create. Accept the default value, **3**.
 
     ![Quick Cluster](images/quickcluster.png)
-    ![Enter Data](images/ClusterShape.png)
+    ![Enter Data](images/cluster-shape.png)
 
 5. Click **Next** to review the details you entered for the new cluster.
 
@@ -65,13 +65,13 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click **Close**.
 
-    ![Network Resource](images/NetworkCreation.png)
+    ![Network Resource](images/network-creation.png)
 
     > The new cluster is shown on the Cluster Details page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).
 
-    ![cluster1](images/ClusterProvision.png)
+    ![cluster1](images/cluster-provision.png)
 
-    ![cluster1](images/ClusterActive.png)
+    ![cluster1](images/cluster-active.png)
 
 7. To save time don't wait to the Active state, continue with the next Helidon application development lab. Before the Verrazzano installation you will come back to verify and configure the OKE cluster access.
 

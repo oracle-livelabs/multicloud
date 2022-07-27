@@ -44,13 +44,13 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
 
     > If you moved away from that page, then open the navigation menu and under **Developer Services**, select **Kubernetes Clusters (OKE)**. Select your cluster and go the detail page.
 
-    ![Access Cluster](images/AccessCluster.png)
+    ![Access Cluster](images/access-cluster.png)
 
     > A dialog is displayed from which you can open the Cloud Shell and contains the customized OCI command that you need to run, to create a Kubernetes configuration file.
 
 2. Accept the default **Cloud Shell Access** and click **Copy** copy the `oci ce...` command and paste it into the Cloud Shell and run the command.
 
-    ![Copy kubectl Config](images/CopyConfig.png)
+    ![Copy kubectl Config](images/copy-config.png)
 
     For example, the command looks like the following:
 
@@ -58,7 +58,7 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
     oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.phx.aaaaaaaaaezwen..................zjwgm2tqnjvgc2dey3emnsd --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
     ```
 
-    ![kubectl config](images/CreateConfig.png)
+    ![kubectl config](images/create-config.png)
 
 5. Verify that the `kubectl` is working by using the `get node` command. <br>
 You may need to run this command several times until you see the output similar to the following.
@@ -159,7 +159,7 @@ In this lab, we are going to install the *development profile of Verrazzano*, wh
 
 The following image describes the Verrazzano components that are installed with each profile.
 
-![Verrazzano Profile](images/Components.png)
+![Verrazzano Profile](images/verrazzano-components.png)
 
 According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
 
