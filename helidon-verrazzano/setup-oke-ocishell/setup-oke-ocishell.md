@@ -35,7 +35,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     ![Select Compartment](images/SelectCompartment.png)
 
-3. On the Create Cluster dialog, click **Quick Create** and click **Launch Workflow**.
+3. On the Create Cluster dialog, click **Quick Create** and click **Submit**.
 
     ![Launch Workflow](images/LaunchWorkFlow.png)
 
@@ -45,7 +45,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     * **Name**: The name of the cluster. Accept the default value.
     * **Compartment**: The name of the compartment. Accept the default value.
-    * **Kubernetes Version**: The version of Kubernetes. Select the **v1.21.5** version.
+    * **Kubernetes Version**: The version of Kubernetes. Select the **v1.23.4** version.
     * **Kubernetes API Endpoint**: Determines if the cluster master nodes are going to be routable or not. Select the **Public Endpoint** value.
     * **Kubernetes Worker Nodes**: Determines if the cluster worker nodes are going to be routable or not. Accept the default value **Private Workers**.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select **VM.Standard.E4.Flex**. You need to select *3* as the number of *OCPUs* and *48* as the *Amount of Memory(GB)*.<br>
@@ -53,7 +53,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     * **Number of nodes**: The number of worker nodes to create. Accept the default value, **3**.
 
-    ![Quick Cluster](images/ClusterName.png)
+    ![Quick Cluster](images/quickcluster.png)
     ![Enter Data](images/ClusterShape.png)
 
 5. Click **Next** to review the details you entered for the new cluster.
@@ -61,7 +61,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
 6. On the Review page, click **Create Cluster** to create the new network resources and the new cluster.
 
-    ![Review Cluster](images/CreateCluster.png)
+    ![Review Cluster](images/reviewcluster.png)
 
     > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click **Close**.
 

@@ -169,10 +169,10 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/Discover1.png)
 
-4. In order to find log entry in OpenSearch first you need to define index pattern. Click *Create index pattern*. Type `verrazzano-namespace-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
+4. In order to find log entry in OpenSearch first you need to define index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
 
       ![Index pattern](images/CreateIndex.png)
-      ![Index pattern](images/IndexPattern.png)
+      
 
 5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
 
@@ -227,9 +227,9 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       > You may notice checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
       ![Rancher Welcome](images/RancherWelcome.png)
 
-5. On the Cluster Manager page you can monitor and manage multiple cluster controlled by Verrazzano. In this lab you have only one (OKE) cluster. Click on the **Explorer** button to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+5. On the Cluster Manager page you can monitor and manage multiple cluster controlled by Verrazzano. In this lab you have only one (OKE) cluster. Click on the **local** to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
 
-      ![Cluster Manager](images/RancherExplorer.png)
+      ![Cluster Manager](images/rancherlocal.png)
 
 6. The dashboard gives an overview about the cluster and the deployed applications. The number of resources belong to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview about the current load of the nodes.
 
@@ -253,7 +253,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 11. Make sure that the Helidon quickstart-mp application's container is selected in the log window. Find the custom `Help requested!` log entry. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start.
 
-      ![Pod](images/Logs.png)
+      ![Pod](images/logs.png)
 
 Congratulations you have successfully completed the Helidon application deployment on Verrazzano lab.
 

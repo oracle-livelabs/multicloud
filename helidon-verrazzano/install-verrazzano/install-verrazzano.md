@@ -70,9 +70,9 @@ You may need to run this command several times until you see the output similar 
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE    VERSION
-    10.0.10.112   Ready    node    4m32s   v1.21.5
-    10.0.10.200   Ready    node    4m32s   v1.21.5
-    10.0.10.36    Ready    node    4m28s   v1.21.5
+    10.0.10.112   Ready    node    4m32s   v1.23.4
+    10.0.10.200   Ready    node    4m32s   v1.23.4
+    10.0.10.36    Ready    node    4m28s   v1.23.4
     ```
 
     > If you see the node's information, then the configuration was successful.
@@ -86,11 +86,11 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
 1. Copy the following command and paste it in the *Cloud Shell* to run it.
 
     ```bash
-    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.2.0/operator.yaml</copy>
+    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml</copy>
     ```
       The output should be similar to the following:
     ```bash
-    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.2.0/operator.yaml
+    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
