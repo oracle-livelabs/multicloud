@@ -45,7 +45,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     ![Select Compartment](images/selectcompartment.png " ")
 
-3. In the Create Cluster Solution dialog, select *Quick Create* and click *Launch Workflow*.
+3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*.
 
     ![Launch Workflow](images/launchworkflow.png " ")
 
@@ -55,7 +55,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     * **Name**: The name of the cluster. Leave the default value.
     * **Compartment**: The name of the compartment. Leave the default value.
-    * **Kubernetes version**: The version of Kubernetes. Select *1.21.5* as Kubernetes version. *Please don't select Kubernetes version 1.22.5 as it is not supported for Verrazzano 1.2*.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.23.4* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 4 OCPUs and 64 GB as Amount of Memory.
@@ -126,9 +126,9 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE   VERSION
-    10.0.10.17    Ready    node    11m   v1.21.5
-    10.0.10.184   Ready    node    11m   v1.21.5
-    10.0.10.31    Ready    node    11m   v1.21.5
+    10.0.10.17    Ready    node    11m   v1.23.4
+    10.0.10.184   Ready    node    11m   v1.23.4
+    10.0.10.31    Ready    node    11m   v1.23.4
     ```
 
     > If you see the node's information, then the configuration was successful.
