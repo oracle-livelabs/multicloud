@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. The nodes will be deployed in different availability domains to ensure high availability.
+In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. The nodes will be deployed in different availability domains to ensure high availability.
 
 For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
@@ -29,19 +29,19 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     ![Hamburger Menu](images/menu.png)
 
-2. On the Cluster List dialog, select the Compartment where you are allowed to create a cluster and then click **Create Cluster**.
+2. On the Cluster List dialogue, select the Compartment where you are allowed to create a cluster and then click **Create Cluster**.
 
     > You must select a compartment that allows you to create a cluster and a repository inside the Oracle Container Registry.
 
     ![Select Compartment](images/select-compartment.png)
 
-3. On the Create Cluster dialog, click **Quick Create** and click **Submit**.
+3. On the Create Cluster dialogue, click **Quick Create** and click **Submit**.
 
     ![Launch Workflow](images/launch-workflow.png)
 
     *Quick Create* will automatically create a new cluster with the default settings, along with new network resources for the new cluster.
 
-4. Specify the following configuration details on the Cluster Creation dialog (pay attention to the value you place in the **Shape** field):
+4. Specify the following configuration details on the Cluster Creation dialogue (pay attention to the value you place in the **Shape** field):
 
     * **Name**: The name of the cluster. Accept the default value.
     * **Compartment**: The name of the compartment. Accept the default value.
@@ -49,7 +49,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
     * **Kubernetes API Endpoint**: Determines if the cluster master nodes are going to be routable or not. Select the **Public Endpoint** value.
     * **Kubernetes Worker Nodes**: Determines if the cluster worker nodes are going to be routable or not. Accept the default value **Private Workers**.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select **VM.Standard.E4.Flex**. You need to select *3* as the number of *OCPUs* and *48* as the *Amount of Memory(GB)*.<br>
-    > **Caution**: *VM.Standard.E4.Flex is the recommended because Verrazzano has many components. The default VM.Standard2.1 can be enough for testing purposes but the installation takes much longer.*
+    > **Caution**: *VM.Standard.E4.Flex is recommended because Verrazzano has many components. The default VM.Standard2.1 can be enough for testing purposes but the installation takes much longer.*
 
     * **Number of nodes**: The number of worker nodes to create. Accept the default value, **3**.
 
@@ -73,7 +73,7 @@ You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cl
 
     ![cluster1](images/cluster-active.png)
 
-7. To save time don't wait to the Active state, continue with the next Helidon application development lab. Before the Verrazzano installation you will come back to verify and configure the OKE cluster access.
+7. To save time don't wait until the Active state, continue with the next Helidon application development lab. Before the Verrazzano installation, you will come back to verify and configure the OKE cluster access.
 
 ## Acknowledgements
 

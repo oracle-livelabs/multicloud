@@ -8,14 +8,14 @@ Estimated Time: 15 minutes
 
 **Grafana**
 
-Grafana is an open source solution for running data analytics, pulling up metrics that make sense of the massive amount of data & to monitor our apps with the help of nice customizable dashboards. The tool helps to study, analyse & monitor data over a period of time, technically called time series analytics.
+Grafana is an open-source solution for running data analytics, pulling up metrics that make sense of the massive amount of data & to monitor our apps with the help of nice customizable dashboards. The tool helps to study, analyse & monitor data over some time, technically called time series analytics.
 Useful to track the user behaviour, application behaviour, frequency of errors popping up in production or a pre-prod environment, type of errors popping up and the contextual scenarios by providing relative data.
 
 [https://grafana.com/grafana/](https://grafana.com/grafana/)
 
 **OpenSearch Dashboards**
 
-OpenSearch Dashboards is a visualization dashboard for the content indexed on an OpenSearch cluster. Verrazzano creates a OpenSearch Dashboards deployment to provide a user interface for querying and visualizing the log data collected in OpenSearch.
+OpenSearch Dashboards is a visualization dashboard for the content indexed on an OpenSearch cluster. Verrazzano creates an OpenSearch Dashboards deployment to provide a user interface for querying and visualizing the log data collected in OpenSearch.
 
 To access the OpenSearch Dashboards console, read [Access Verrazzano](https://verrazzano.io/latest/docs/access/).
 
@@ -33,7 +33,7 @@ Prometheus is a monitoring and alerting toolkit. Prometheus collects and stores 
 
 **Rancher**
 
-Rancher is a platform that enables Verrazzano to run containers on multiple Kubernetes clusters in production. It enables hybrid which means single pane of glass management of on-prem clusters and hosted on cloud services like.
+Rancher is a platform that enables Verrazzano to run containers on multiple Kubernetes clusters in production. It enables hybrid which means a single pane of glass management of on-prem clusters and hosted on cloud services.
 
 [https://rancher.com/](https://rancher.com/)
 
@@ -83,11 +83,11 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Use the `https://verrazzano.default.YOUR_UNIQUE_IP.nip.io` to open the Verrazzano console.
 
-3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip warning.
+3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip the warning.
 
       ![Advanced](images/verrazzano-advanced.png)
 
-4. Click **Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+4. Click **Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
       ![Proceed](images/verrazzano-proceed.png)
 
@@ -95,7 +95,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Keycloak Authentication](images/keycloak-advanced.png)
 
-6. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+6. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
       ![Proceed](images/keycloak-proceed.png)
 
@@ -139,7 +139,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Advanced](images/grafana-advanced.png)
 
-4. Click **Proceed to grafana.vmi.system.default.XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+4. Click **Proceed to grafana.vmi.system.default.XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
       ![proceed](images/grafana-proceed.png)
 
@@ -151,17 +151,17 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Helidon dashboard](images/search-helidon.png)
 
-7. Observe the JVM details of the Helidon *quickstart-mp* application such as Status, Heap Usage, Running Time, JVM Heap, Thread Count, HTTP Requests, etc. This is a prebuilt dashboard specifically for Helidon workloads. Of course you can customize this dashboard according to your needs and add custom diagnostics information.
+7. Observe the JVM details of the Helidon *quickstart-mp* application such as Status, Heap Usage, Running Time, JVM Heap, Thread Count, HTTP Requests, etc. This is a prebuilt dashboard specifically for Helidon workloads. Of course, you can customize this dashboard according to your needs and add custom diagnostics information.
 
       ![Dashboard](images/helidon-dashboard.png)
 
 ## Task 3: Explore the OpenSearch Dashboards
 
-1. Go back to the Verrazzano home page and click **OpenSearch Dashboards** console.
+1. Go back to the Verrazzano home page and click the **OpenSearch Dashboards** console.
 
       ![Kibana link](images/opensearch-link.png)
 
-2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. First time *OpenSearch Dashboards* shows the welcome page. It offers built in sample data to try OpenSearch but you can select the **Explore on my own** option, because Verrazzano completed the necessary configuration and the application data is already available.
+2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. The first time *OpenSearch Dashboards* shows the welcome page. It offers built-in sample data to try OpenSearch but you can select the **Explore on my own** option because Verrazzano completed the necessary configuration and the application data is already available.
 
       ![Kibana welcome page](images/opensearch-proceed.png)
 
@@ -169,7 +169,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. In order to find log entry in OpenSearch first you need to define index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
+4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
 
       ![Index pattern](images/create-index.png)
       
@@ -183,7 +183,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       ![Index pattern](images/discover-2.png)
 
 7. Type the custom log entry value you created in the Helidon application: `Help requested` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
-      >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute request multiple times.
+      >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
       <copy>curl -k https://$(kubectl get gateway hello-helidon-hello-helidon-appconf-gw -n hello-helidon -o jsonpath={.spec.servers[0].hosts[0]})/help/allGreetings; echo</copy>
@@ -217,21 +217,21 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. Rancher requires separate credentials. In the Verrazzano `dev` profile the username is *admin*. To get the password execute the following command in Cloud Shell which extracts from the proper secret configuration:
+3. Rancher requires separate credentials. In the Verrazzano `dev` profile the username is *admin*. To get the password to execute the following command in Cloud Shell which extracts from the proper secret configuration:
       ```bash
       <copy>kubectl get secret --namespace cattle-system rancher-admin-secret -o jsonpath={.data.password} | base64 --decode; echo</copy>
       ```
 4. Using the values above login to the Rancher console.
 
       ![Rancher login](images/rancher-login.png)
-      > You may notice checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
+      > You may notice a checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
       ![Rancher Welcome](images/rancher-welcome.png)
 
-5. On the Cluster Manager page you can monitor and manage multiple cluster controlled by Verrazzano. In this lab you have only one (OKE) cluster. Click on the **local** to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+5. On the Cluster Manager page you can monitor and manage multiple clusters controlled by Verrazzano. In this lab, you have only one (OKE) cluster. Click on the **local** to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
 
       ![Cluster Manager](images/rancherlocal.png)
 
-6. The dashboard gives an overview about the cluster and the deployed applications. The number of resources belong to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview about the current load of the nodes.
+6. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
 
       ![Cluster Explorer](images/cluster-dashboard.png)
 
@@ -243,11 +243,11 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Deployments](images/deployment.png)
 
-9. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replicasets. The pod name contains an auto generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
+9. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replica sets. The pod name contains an auto-generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
 
       ![Helidon deployment](images/helidon-deployment.png)
 
-10. You should see two containers in the pod. The *hello-helidon-container* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at top right corner and select **View Logs**.
+10. You should see two containers in the pod. The *hello-helidon-container* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at the top right corner and select **View Logs**.
 
       ![Pod](images/view-logs.png)
 
@@ -255,7 +255,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Pod](images/log.png)
 
-Congratulations you have successfully completed the Helidon application deployment on Verrazzano lab.
+Congratulations you have completed the Helidon application deployment on Verrazzano lab.
 
 ## Acknowledgements
 
