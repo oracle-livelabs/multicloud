@@ -100,16 +100,16 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     ```
     ![list JDK](images/list-jdk.png)
 
-    > The JDK with * *asterisk* in the beginning is your default JDK. If you have any other JDK then graalvmeejdk, then change the default JDK version by running the below command.
+    > The JDK with * *asterisk* in the beginning is your default JDK. If you have any other JDK then graalvmeejdk, then change the default JDK version by running the below command. Please use the shown version of graalvmeejdk, as it may different then what is shown in command.
 
     ```bash
-    <copy>csruntimectl java set graalvmeejdk-17.0.4</copy>
+    <copy>csruntimectl java set graalvmeejdk-17.0.4.1</copy>
     ```
 9. To configure the required maven, copy and paste the following command in the terminal.
     ```bash
     <copy>wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
     tar -xzvf apache-maven-3.8.6-bin.tar.gz
-    PATH=~/myproject/apache-maven-3.8.6/bin:$PATH
+    PATH=~/helidon-project/myproject/apache-maven-3.8.6/bin:$PATH
     cd ~</copy>
     ```
     ![configure maven](images/configure-maven.png)
