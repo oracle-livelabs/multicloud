@@ -32,7 +32,7 @@ In this task, we uses the *Quick Create* features to create the Oracle Kubernete
         ![Select Compartment](images/select-compartment-cluster.png)
 > You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
 
-3. In the Create Cluster Solution dialog, select *Quick Create* and click *Launch Workflow*. `Quick Create` will create a new cluster with the default settings, along with new network resources for the new cluster.
+3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*. `Quick Create` will create a new cluster with the default settings, along with new network resources for the new cluster.
 
 ![Launch Workflow](images/launch-workflow.png)
 
