@@ -33,8 +33,8 @@ To run this lab, you must have:
 
 3. Select the following values and click *Create*.</br>
     **Name:** Leave default.</br>
-    **Image:** Leave default which is Oracle Linux 8.</br>
-    **Shape:** Leave default which is **VM.Standard.E4.Flex**.</br>
+    **Image:** Select *Oracle Linux 8* image.</br>
+    **Shape:** Select the shape **VM.Standard.E3.Flex** and then select 1 OCPU with 16GB memory.</br>
     **Primary network:** select *Create new virtual cloud network* and leave default values.</br>
     **Subnet:** select *Create new public subnet* and leave default values.</br>
     **Public IP address:** select *Assign a public IPv4 address*.</br>
@@ -48,22 +48,22 @@ To run this lab, you must have:
 
 1. In the terminal inside the Code Editor, run the following command to create a private key.
     ```bash
-    <copy>vi ~/.ssh/opc.key</copy>
+    <copy>vi ~/opc.key</copy>
     ```
 
 2. Press *i* to enter into insert mode and paste the content of the private key, which you downloaded in task 1 of this lab. Press the *escape* key and then enter *:wq* to save the content of the file.
 
 3. Change the permission of the file by running the following command in the terminal.
     ```bash
-    <copy>chmod 600 ~/.ssh/opc.key</copy>
+    <copy>chmod 600 ~/opc.key</copy>
     ```
 
 4. Run the following command with your own *PUBLIC IP* to connect to Compute Instance just created.
     ```bash
-    <copy>ssh -i ~/.ssh/opc.key opc@REPLACE_THIS_WITH_YOUR_PUBLIC_IP</copy>
+    <copy>ssh -i ~/opc.key opc@REPLACE_THIS_WITH_YOUR_PUBLIC_IP</copy>
     ```
     ![ssh opc](images/ssh-opc.png)
-
+    > **In Free tier account, we dont have *.ssh* folder bydefault, so you will have output  different then screenshot.**
 
 5. Run the following command to install docker as root user in compute instance and to provide *opc* user capability to run docker.
     ```bash

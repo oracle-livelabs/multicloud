@@ -109,8 +109,7 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     ```bash
     <copy>wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
     tar -xzvf apache-maven-3.8.6-bin.tar.gz
-    PATH=~/helidon-project/myproject/apache-maven-3.8.6/bin:$PATH
-    cd ~</copy>
+    PATH=~/helidon-project/myproject/apache-maven-3.8.6/bin:$PATH</copy>
     ```
     ![configure maven](images/configure-maven.png)
 
@@ -120,12 +119,12 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     ```
     ![verify pre-requisite](images/verify-prerequisite.png)
 
-11. From the myproject folder, run the following command to build the project.
+11. From the *myproject* folder, run the following command to build the project.
     ```bash
     <copy>mvn clean package</copy>
     ```
     ![build project](images/build-project.png)
-    > You should see *BUILD SUCCESS* at the end of the execution of this command.
+    > Make sure, you are running this command from *~/helidon-project/myproject* folder.You should see *BUILD SUCCESS* at the end of the execution of this command.
 
 12. Copy and paste the following command into the terminal, to run this application. You will see the output similar to that shown in the below screenshot.
     ```bash
