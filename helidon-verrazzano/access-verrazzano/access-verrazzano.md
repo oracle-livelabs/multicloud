@@ -8,14 +8,14 @@ Estimated Time: 15 minutes
 
 **Grafana**
 
-Grafana is an open source solution for running data analytics, pulling up metrics that make sense of the massive amount of data & to monitor our apps with the help of nice customizable dashboards. The tool helps to study, analyse & monitor data over a period of time, technically called time series analytics.
+Grafana is an open-source solution for running data analytics, pulling up metrics that make sense of the massive amount of data & to monitor our apps with the help of nice customizable dashboards. The tool helps to study, analyse & monitor data over some time, technically called time series analytics.
 Useful to track the user behaviour, application behaviour, frequency of errors popping up in production or a pre-prod environment, type of errors popping up and the contextual scenarios by providing relative data.
 
 [https://grafana.com/grafana/](https://grafana.com/grafana/)
 
 **OpenSearch Dashboards**
 
-OpenSearch Dashboards is a visualization dashboard for the content indexed on an OpenSearch cluster. Verrazzano creates a OpenSearch Dashboards deployment to provide a user interface for querying and visualizing the log data collected in OpenSearch.
+OpenSearch Dashboards is a visualization dashboard for the content indexed on an OpenSearch cluster. Verrazzano creates an OpenSearch Dashboards deployment to provide a user interface for querying and visualizing the log data collected in OpenSearch.
 
 To access the OpenSearch Dashboards console, read [Access Verrazzano](https://verrazzano.io/latest/docs/access/).
 
@@ -33,7 +33,7 @@ Prometheus is a monitoring and alerting toolkit. Prometheus collects and stores 
 
 **Rancher**
 
-Rancher is a platform that enables Verrazzano to run containers on multiple Kubernetes clusters in production. It enables hybrid which means single pane of glass management of on-prem clusters and hosted on cloud services like.
+Rancher is a platform that enables Verrazzano to run containers on multiple Kubernetes clusters in production. It enables hybrid which means a single pane of glass management of on-prem clusters and hosted on cloud services.
 
 [https://rancher.com/](https://rancher.com/)
 
@@ -83,21 +83,21 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Use the `https://verrazzano.default.YOUR_UNIQUE_IP.nip.io` to open the Verrazzano console.
 
-3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip warning.
+3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip the warning.
 
-      ![Advanced](images/VerrazzanoAdvanced.png)
+      ![Advanced](images/verrazzano-advanced.png)
 
-4. Click **Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+4. Click **Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
-      ![Proceed](images/VerrazzanoProceed.png)
+      ![Proceed](images/verrazzano-proceed.png)
 
 5. Because it redirects to the Keycloak console URL for authentication, click **Advanced**.
 
-      ![Keycloak Authentication](images/KeycloakAdvanced.png)
+      ![Keycloak Authentication](images/keycloak-advanced.png)
 
-6. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+6. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
-      ![Proceed](images/KeycloakProceed.png)
+      ![Proceed](images/keycloak-proceed.png)
 
 7. Now we need the username and password for the Verrazzano console. *Username* is *verrazzano* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Verrazzano Console*.
 
@@ -107,19 +107,19 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 8. Copy the password and go back to the browser, where the *Verrazzano Console* is open. Paste the password in the *Password* field and enter *verrazzano* as *Username* and then click **Sign In**.
 
-      ![SignIn](images/VerrazzanoSignIn.png)
+      ![SignIn](images/verrazzano-sign-in.png)
 
 9. From the home page of the Verrazzano Console, you can see *System Telemetry*, and because we installed the *Development Profile* of Verrazzano, you can see it in the **General Information** section. You can see the Helidon *quickstart-mp* application under **OAM Applications**. Click **hello-helidon-appconf** to view components of this application.
 
-      ![Home Page](images/VerrazzanoHomePage.png)
+      ![Home Page](images/verrazzano-homepage.png)
 
 10. There is only one component for this application as you can see under **Components**. To explore the configuration click the **OAM Component Ref:** *hello-helidon-component* component as shown:
 
-      ![hello-helidon](images/VerrazzanoComponents.png)
+      ![hello-helidon](images/verrazzano-components.png)
 
 11. You can see *General Information* for this component. To learn about the *Workload Spec*, click **hello-helidon-component** as shown:
 
-      ![Workload spec](images/WorkloadSpec.png)
+      ![Workload spec](images/workload-spec.png)
 
 12. Here you can see the configuration details for the *hello-helidon-component* component. Click **Close**.
 
@@ -129,83 +129,83 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 1. Click **Home** to go back to Verrazzano Console Home Page.
 
-      ![Home](images/GrafanaLink.png)
+      ![Home](images/grafana-link.png)
 
 2. On the home page, you'll see the link for opening the *Grafana console*. Click the link for the **Grafana Console** as shown:
 
-      ![Grafana Home](images/GrafanaLink2.png)
+      ![Grafana Home](images/grafana-link2.png)
 
 3. Click **Advanced**.
 
-      ![Advanced](images/GrafanaAdvanced.png)
+      ![Advanced](images/grafana-advanced.png)
 
-4. Click **Proceed to grafana.vmi.system.default.XX.XX.XX.XX.nip.io(unsafe)**. If you are the not getting this option for proceed, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+4. Click **Proceed to grafana.vmi.system.default.XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
-      ![proceed](images/GrafanaProceed.png)
+      ![proceed](images/grafana-proceed.png)
 
 5. The Grafana home page opens. Click **Home** at the top left.
 
-      ![Home](images/GrafanaHome.png)
+      ![Home](images/grafana-home.png)
 
 6. Type `Helidon` and you will see *Helidon Monitoring Dashboard* under **General**. Click **Helidon Monitoring Dashboard**.
 
-      ![Helidon dashboard](images/SearchHelidon.png)
+      ![Helidon dashboard](images/search-helidon.png)
 
-7. Observe the JVM details of the Helidon *quickstart-mp* application such as Status, Heap Usage, Running Time, JVM Heap, Thread Count, HTTP Requests, etc. This is a prebuilt dashboard specifically for Helidon workloads. Of course you can customize this dashboard according to your needs and add custom diagnostics information.
+7. Observe the JVM details of the Helidon *quickstart-mp* application such as Status, Heap Usage, Running Time, JVM Heap, Thread Count, HTTP Requests, etc. This is a prebuilt dashboard specifically for Helidon workloads. Of course, you can customize this dashboard according to your needs and add custom diagnostics information.
 
-      ![Dashboard](images/HelidonDashboard.png)
+      ![Dashboard](images/helidon-dashboard.png)
 
 ## Task 3: Explore the OpenSearch Dashboards
 
-1. Go back to the Verrazzano home page and click **OpenSearch Dashboards** console.
+1. Go back to the Verrazzano home page and click the **OpenSearch Dashboards** console.
 
-      ![Kibana link](images/OpenSearchLink.png)
+      ![Kibana link](images/opensearch-link.png)
 
-2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. First time *OpenSearch Dashboards* shows the welcome page. It offers built in sample data to try OpenSearch but you can select the **Explore on my own** option, because Verrazzano completed the necessary configuration and the application data is already available.
+2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. The first time *OpenSearch Dashboards* shows the welcome page. It offers built-in sample data to try OpenSearch but you can select the **Explore on my own** option because Verrazzano completed the necessary configuration and the application data is already available.
 
-      ![Kibana welcome page](images/OpenSearchProceed.png)
+      ![Kibana welcome page](images/opensearch-proceed.png)
 
 3. On the OpenSearch homepage click the **Home** -> **Discover**.
 
-      ![Kibana dashboard click](images/Discover1.png)
+      ![Kibana dashboard click](images/discover-1.png)
 
-4. In order to find log entry in OpenSearch first you need to define index pattern. Click *Create index pattern*. Type `verrazzano-namespace-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
+4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
 
-      ![Index pattern](images/CreateIndex.png)
-      ![Index pattern](images/IndexPattern.png)
+      ![Index pattern](images/create-index.png)
+      
 
 5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
 
-      ![Index pattern](images/TimeFilter.png)
+      ![Index pattern](images/time-filter.png)
 
 6. When the index is ready you need to click *Home* -> *Discover*. 
 
-      ![Index pattern](images/Discover2.png)
+      ![Index pattern](images/discover-2.png)
 
 7. Type the custom log entry value you created in the Helidon application: `Help requested` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
-      >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute request multiple times.
+      >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
       <copy>curl -k https://$(kubectl get gateway hello-helidon-hello-helidon-appconf-gw -n hello-helidon -o jsonpath={.spec.servers[0].hosts[0]})/help/allGreetings; echo</copy>
       ```
 
-      ![Log result](images/LogResult.png)
+      ![Log result](images/log-result.png)
 
 ## Task 4: Explore the Prometheus Console
 
 1. Go back to the Verrazzano home page and click **Prometheus** console.
 
-      ![Prometheus link](images/PrometheusLink.png)
+      ![Prometheus link](images/prometheus-link.png)
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
 3. On the Prometheus dashboard page type *help* into the search field and click your custom metric *application _me _user _mp _quickstart _GreetHelpResource _helpCalled _total*.
 
-      ![Prometheus execute](images/PrometheusQuery.png)
+      ![Prometheus execute](images/prometheus-query.png)
 
 4. Click **Execute** and check the result below. You should see your metric's current value which means how many requests were completed by your endpoint. You can also switch to *Graph* view instead of the *Console* mode.
 
-      ![Prometheus value](images/ExecuteQuery.png)
+      ![Prometheus value](images/execute-query.png)
 
       >You can also add another metric to your dashboard. Discover the available, default metrics in the list.
 
@@ -213,49 +213,49 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 1. Go back to the Verrazzano home page and click **Rancher** console.
 
-      ![Rancher link](images/RancherLink.png)
+      ![Rancher link](images/rancher-link.png)
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. Rancher requires separate credentials. In the Verrazzano `dev` profile the username is *admin*. To get the password execute the following command in Cloud Shell which extracts from the proper secret configuration:
+3. Rancher requires separate credentials. In the Verrazzano `dev` profile the username is *admin*. To get the password to execute the following command in Cloud Shell which extracts from the proper secret configuration:
       ```bash
       <copy>kubectl get secret --namespace cattle-system rancher-admin-secret -o jsonpath={.data.password} | base64 --decode; echo</copy>
       ```
 4. Using the values above login to the Rancher console.
 
-      ![Rancher login](images/RancherLogin.png)
-      > You may notice checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
-      ![Rancher Welcome](images/RancherWelcome.png)
+      ![Rancher login](images/rancher-login.png)
+      > You may notice a checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
+      ![Rancher Welcome](images/rancher-welcome.png)
 
-5. On the Cluster Manager page you can monitor and manage multiple cluster controlled by Verrazzano. In this lab you have only one (OKE) cluster. Click on the **Explorer** button to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+5. On the Cluster Manager page you can monitor and manage multiple clusters controlled by Verrazzano. In this lab, you have only one (OKE) cluster. Click on the **local** to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
 
-      ![Cluster Manager](images/RancherExplorer.png)
+      ![Cluster Manager](images/rancherlocal.png)
 
-6. The dashboard gives an overview about the cluster and the deployed applications. The number of resources belong to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview about the current load of the nodes.
+6. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
 
-      ![Cluster Explorer](images/ClusterDashboard.png)
+      ![Cluster Explorer](images/cluster-dashboard.png)
 
 7. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check your Helidon quickstart-mp application.
 
-      ![Nodes](images/Nodes.png)
+      ![Nodes](images/node.png)
 
 8. You can see several deployments. Click on the *hello-helidon-deployment*.
 
-      ![Deployments](images/Deployments.png)
+      ![Deployments](images/deployment.png)
 
-9. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replicasets. The pod name contains an auto generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
+9. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replica sets. The pod name contains an auto-generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
 
-      ![Helidon deployment](images/HelidonDeployment.png)
+      ![Helidon deployment](images/helidon-deployment.png)
 
-10. You should see two containers in the pod. The *hello-helidon-container* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at top right corner and select **View Logs**.
+10. You should see two containers in the pod. The *hello-helidon-container* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at the top right corner and select **View Logs**.
 
-      ![Pod](images/ViewLogs.png)
+      ![Pod](images/view-logs.png)
 
 11. Make sure that the Helidon quickstart-mp application's container is selected in the log window. Find the custom `Help requested!` log entry. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start.
 
-      ![Pod](images/Logs.png)
+      ![Pod](images/log.png)
 
-Congratulations you have successfully completed the Helidon application deployment on Verrazzano lab.
+Congratulations you have completed the Helidon application deployment on Verrazzano lab.
 
 ## Acknowledgements
 

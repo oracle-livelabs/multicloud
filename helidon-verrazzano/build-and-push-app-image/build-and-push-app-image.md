@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab you will build a Docker image with your Helidon application and push that image to a repository inside the Oracle Cloud Container Registry.
+In this lab, you will build a Docker image with your Helidon application and push that image to a repository inside the Oracle Cloud Container Registry.
 
 Estimated Time: 10 minutes
 
@@ -34,30 +34,30 @@ You need the following information:
 
 
 1. Locate your *Region Name*. <br>
-Your *Region Name* is located in top right corner in the Oracle Cloud Console, in this example it is shown as *US EAST (Ashburn)*. Yours may be different.
+Your *Region Name* is located in the top right corner of the Oracle Cloud Console, in this example, it is shown as *US EAST (Ashburn)*. Yours may be different.
 
-    ![Container Registry](images/RegionName.png)
+    ![Container Registry](images/region-name.png)
 
 2. Locate the *Tenancy Namespace*. <br>
 In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
-    ![Tenancy Namespace](images/ContainerRegistry.png)
+    ![Tenancy Namespace](images/container-registry.png)
 
     > The tenancy namespace is listed in the compartment. Copy and save it in a text editor. You will use this information in the next lab, too.
-    ![Tenancy Namespace](images/NameSpace.png)
+    ![Tenancy Namespace](images/name-space.png)
 
 3. Locate the *Endpoint for Your Region*. <br>
 Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *US EAST (Ashburn)* (as the region name) and its endpoint is *iad.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text editor. You will also need it for the next lab.
 
-    ![End Points](images/Endpoints.png)
+    ![End Points](images/end-points.png)
 
     >Now you have both the tenancy namespace and endpoint for your region.
 
-4. Copy the following command and paste it in your text editor. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
+4. Copy the following command and paste it into your text editor. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
 
     ```bash
     <copy>docker build -t ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp-your_first_name:1.0 .</copy>
     ```
-    When the command is ready then run in the Cloud Shell  from the `~/quickstart-mp/` directory. The build will produce the following result:
+    When the command is ready then run in the Cloud Shell from the `~/quickstart-mp/` directory. The build will produce the following result:
 
     ```bash
     $ cd ~/quickstart-mp/
@@ -103,7 +103,7 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     => => naming to iad.ocir.io/weblogick8s/quickstart-mp-your_first_name:1.0                                                                           0.0s
     ```
 
-5. This creates the Docker image, what you can check in your local repository.
+5. This creates the Docker image, which you can check in your local repository.
 
     ```bash
     $ docker images
@@ -113,40 +113,40 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     ```
     Copy to your text editor the replaced full image name `ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp:1.0` because you will need it later.
 
-## Task 2: Generate an Authentication Token to Login to the Oracle Cloud Container Registry
+## Task 2: Generate an Authentication Token to log in to the Oracle Cloud Container Registry
 
 In this step, we are going to generate an *Authentication Token*, that we will use to log in to the Oracle Cloud Container Registry.
 
 1. In the Console, open the navigation menu and click **Identity and Security**. Under **Identity**, click **Users**.
 
-    ![Users](images/Users.png)
+    ![Users](images/oci-users.png)
 
-2. Click on the non federated user name to view the details. (The non federated user name should be your email address -without any prefix- what was used during the trial signup.)
+2. Click on the non-federated user name to view the details. (The non-federated user name should be your email address -without any prefix- what was used during the trial signup.)
 
-    ![User](images/Email.png)
+    ![User](images/registered-email.png)
 
-3. In the User Detail page scroll down and click **Auth Tokens**.
+3. On the User Detail page scroll down and click **Auth Tokens**.
 
-    ![Auth tokens](images/AuthTokens.png)
+    ![Auth tokens](images/auth-tokens.png)
 
 4. Click **Generate Token**.
 
-    ![Generate Token](images/GenerateToken.png)
+    ![Generate Token](images/generate-token.png)
 
 5. Copy *quickstart-mp* and paste it in the *Description* box and click **Generate Token**.
 
-    ![Token create](images/CreateToken.png)
+    ![Token create](images/create-token.png)
 
-6. Click **Copy** under Generated Token and paste it in the text editor. You cannot copy it later, so make sure you have a copy of this token saved.
+6. Click **Copy** under Generated Token and paste it into the text editor. You cannot copy it later, so make sure you have a copy of this token saved.
 
-    ![Generated Token](images/CopyToken.png)
+    ![Generated Token](images/copy-token.png)
 
 ## Task 3: Push the Helidon Application (quickstart-mp) Docker Image to your Container Registry Repository
 
-In Task 1 of this lab you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example the Region Name is US East (Ashburn). You will need this information for this task.
-    ![Endpoint](images/Endpoint.png)
+In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is US East (Ashburn). You will need this information for this task.
+    ![Endpoint](images/end-point.png)
 
-1. Copy the following command and paste it in your text editor and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
+1. Copy the following command and paste it into your text editor and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
 
     >In our example the Region Name is *US East (Ashburn)* and the endpoint is *iad.ocir.io*. You will need your specific information for this task.
 
@@ -157,7 +157,7 @@ In Task 1 of this lab you opened a URL [https://docs.oracle.com/en-us/iaas/Conte
 2. In the previous step, you also determined the tenancy namespace.
 Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
     * Replace `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace
-    * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text editor and paste it in the *Cloud Shell*.
+    * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text editor and paste it into the *Cloud Shell*.
     * For Password, copy and paste the Authentication Token from your text editor (or wherever you saved it.)
 
     ```bash
@@ -167,18 +167,18 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
     Login Succeeded
     ```
 3. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
-    ![Container Registry](images/ContainerRegistry2.png)
+    ![Container Registry](images/container-registry2.png)
 
 4. Select the compartment and then click **Create Repository**.
-    ![Repository Create](images/RepositoryCreate.png)
+    ![Repository Create](images/repository-create.png)
 
 5. Select the compartment and enter *`quickstart-mp-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
 
-    ![Repository Description](images/DescribeRepository.png)
+    ![Repository Description](images/describe-repository.png)
 
 6. After the repository *`quickstart-mp-your_first_name`* has been created you can verify in the repository list and its settings.
 
-    ![Verify Namespace](images/VerifyNamespace.png)
+    ![Verify Namespace](images/verify-namespace.png)
 
 7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/quickstar-mp-your_first_name:1.0 with Docker image full name, which you saved earlier.
 
@@ -188,7 +188,7 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
     The result should look like this:
     ```bash
     $ docker push iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name:1.0
-    The push refers to repository [iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name]
+    The push refers to a repository [iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name]
     0795b8384c47: Pushed
     131452972f9d: Pushed
     93c53f2e9519: Pushed
@@ -199,9 +199,9 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
     1.0: digest: sha256:355fa56eab185535a58c5038186381b6d02fd8e0bcb534872107fc249f98256a size: 1786
     ```
 
-8. After the *docker push* command runs successfully, expand the *`quickstart-mp-your_first_name`* repository and you will notice a new image has been uploaded in this repository.
+8. After the *docker push* command runs successfully, expand the *`quickstart-mp-your_first_name`* repository and you will notice a new image has been uploaded to this repository.
 
-    ![Image uploaded](images/VerifyPush.png)
+    ![Image uploaded](images/verify-push.png)
 
 9. Leave the *Cloud Shell* and Container Registry repository page open; you will need them for the next labs.
 

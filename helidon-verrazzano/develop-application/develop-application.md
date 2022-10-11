@@ -29,7 +29,7 @@ The CLI is distributed as a standalone executable (compiled using GraalVM) for e
 
 * Helidon requires Java 11+
 * Maven 3.6.x
-> **Caution: Do not use the 3.8.x version due to known issue with application build!**
+> **Caution: Do not use the 3.8.x version due to a known issue with the application build!**
 
 * Java and `mvn` are in your path.
 * Windows users will also need the Visual C++ Redistributable Runtime. <br>
@@ -38,7 +38,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 ## Task 1: Install the Helidon CLI
 1. Install Helidon CLI
 
-    For MacOS:
+    For macOS:
     ```bash
     <copy>
     curl -O https://helidon.io/cli/latest/darwin/helidon
@@ -81,7 +81,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
     Enter selection (Default: 1): 2
     ```
 
-3. For the most functionality, choose option **(2) quickstart** then **Enter** for the default answers. Note that you can have different default package and project group names because it uses the OS user name. Notedown the package name, you will need to use it while creating new Java class.
+3. For the most functionality, choose option **(2) quickstart** then **Enter** for the default answers. Note that you can have different default package and project group names because it uses the OS user name. Note down the package name, you will need to use it while creating a new Java class.
 
     ```bash
     Select archetype
@@ -114,21 +114,21 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
     ├── pom.xml
     └── src
         ├── main
-        │   ├── java
-        │   │   └── me
-        │   │       └── buzz
-        │   │           └── mp
-        │   │               └── quickstart
-        │   │                   ├── GreetResource.java
-        │   │                   ├── GreetingProvider.java
-        │   │                   └── package-info.java
-        │   └── resources
-        │       ├── META-INF
-        │       │   ├── beans.xml
-        │       │   ├── microprofile-config.properties
-        │       │   └── native-image
-        │       │       └── reflect-config.json
-        │       └── logging.properties
+        │   ├── java
+        │   │   └── me
+        │   │       └── buzz
+        │   │           └── mp
+        │   │               └── quickstart
+        │   │                   ├── GreetResource.java
+        │   │                   ├── GreetingProvider.java
+        │   │                   └── package-info.java
+        │   └── resources
+        │       ├── META-INF
+        │       │   ├── beans.xml
+        │       │   ├── microprofile-config.properties
+        │       │   └── native-image
+        │       │       └── reflect-config.json
+        │       └── logging.properties
         └── test
             └── java
                 └── me
@@ -221,7 +221,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
 ## Task 4: Modify the Application
 
-1. Open your favorite IDE and navigate to the **microprofile-config.properties** file.
+1. Open your favourite IDE and navigate to the **microprofile-config.properties** file.
 
     ![Configuration File](images/config.jpg)
 
@@ -261,7 +261,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
     >You can see that it is pure MicroProfile compatible code:
 
-    ![ModifyJava](images/GreetResource.jpg)
+    ![ModifyJava](images/greet-resource.jpg)
 
 6. Create a new endpoint that provides help for different greetings in different languages. To create this new functionality, create a new class called **GreetHelpResource** with the following code:
 
@@ -295,7 +295,7 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
     </copy>
     ```
 
-    >The class has only one method *getAllGreetings* which returns a list with greetings in different languages. While copying the code, be sure to add the necessary package name on top of class.
+    >The class has only one method *getAllGreetings* which returns a list of greetings in different languages. While copying the code, be sure to add the necessary package name on top of the class.
 
 7. Build and run the application:
 
@@ -337,11 +337,11 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
     And the new endpoint has been added.
 
-    ![NewEndpoint](images/LogsOutput.jpg)
+    ![NewEndpoint](images/logs-output.jpg)
 
-    >Working with Helidon and its tooling is really easy and fast!
+    >Working with Helidon and its tooling is easy and fast!
 
-11. Leave your terminal/console open and continue with Verrazzano installation lab.
+11. Leave your terminal/console open and continue with the Verrazzano installation lab.
 
 ## Acknowledgements
 

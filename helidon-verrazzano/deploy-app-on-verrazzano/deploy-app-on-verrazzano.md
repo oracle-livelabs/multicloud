@@ -8,9 +8,9 @@ Estimated Time: 10 minutes
 
 ### Verrazzano and Application Deployment
 
-Verrazzano supports application definition using [Open Application Model (OAM)](https://oam.dev/). Verrrazzano applications are composed of components and application configurations.
+Verrazzano supports application definition using [Open Application Model (OAM)](https://oam.dev/). Verrazzano applications are composed of components and application configurations.
 
-When you deploy applications with Verrazzano, the platform sets up connections, network policies, and ingresses in the service mesh, and wires up a monitoring stack to capture the metrics, logs, and traces. Verrazzano employs OAM components to define the functional units of a system that are then assembled and configured by defining associated application configurations.
+When you deploy applications with Verrazzano, the platform sets up connections, and network policies, ingresses in the service mesh, and wires up a monitoring stack to capture the metrics, logs, and traces. Verrazzano employs OAM components to define the functional units of a system that are then assembled and configured by defining associated application configurations.
 
 ### Verrazzano components
 
@@ -60,7 +60,7 @@ A brief description of each field of the component:
 
 A Verrazzano application configuration is a Kubernetes Custom Resource which provides environment-specific customizations. The following code shows the application configuration for the Helidon *quickstart-mp* example used in this lab. This resource specifies the deployment of the application to the hello-helidon namespace.
 
-Additional runtime features are specified using traits, or runtime overlays that augment the workload. For example, the ingress trait specifies the ingress host and path, while the metrics trait provides the Prometheus scraper used to obtain the application related metrics.
+Additional runtime features are specified using traits, or runtime overlays that augment the workload. For example, the ingress trait specifies the ingress host and path, while the metrics trait provides the Prometheus scraper used to obtain the application-related metrics.
 
 ```yaml
 apiVersion: core.oam.dev/v1alpha2
@@ -124,11 +124,11 @@ To run this lab, you must have:
 
 * Kubernetes (OKE) cluster running on the Oracle Cloud Infrastructure.
 * Verrazzano installation started on a Kubernetes (OKE) cluster.
-* Container packaged Helidon *quickstart-mp* application available in container registry.
+* Container packaged Helidon *quickstart-mp* application available in a container registry.
 
 ## Task 1: Verify the Verrazzano Installation is Complete
 
-1. In Lab 3, we ran the below copy the command in the Cloud Shell. This command checks that the *InstallComplete* condition has been met and notifies you. In this example, *example-verrazzano* is the name of the *Verrazzano Custom Resource*.
+1. In Lab 3, we ran the below copy of the command in the Cloud Shell. This command checks that the *InstallComplete* condition has been met and notifies you. In this example, *example-verrazzano* is the name of the *Verrazzano Custom Resource*.
 
     ```bash
     <copy>kubectl wait --timeout=20m --for=condition=InstallComplete verrazzano/example-verrazzano</copy>
@@ -192,7 +192,7 @@ To run this lab, you must have:
 4. Use `Esc` the quit insert mode and type `:wq` to save changes and close the editor.
 
 
-5. Create a `hello-helidon` namespace for the Helidon quickstart-mp application. We will keep all Kubernetes artifacts in the separate namespace.
+5. Create a `hello-helidon` namespace for the Helidon quickstart-mp application. We will keep all Kubernetes artefacts in a separate namespace.
 
     ```bash
     <copy>
@@ -217,11 +217,11 @@ To run this lab, you must have:
 
     To deploy the Helidon *quickstart-mp* application, copy and paste the following two commands as shown. The `hello-helidon-comp.yaml` file contains definitions of various OAM components, where, an OAM component is a Kubernetes Custom Resource describing an application’s general composition and environment requirements.
     ```bash
-    <copy>kubectl apply -f ~/hello-helidon-comp.yaml</copy>
+    <copy>kubectl apply -f ~/hello-helidon-comp.yaml -n hello-helidon</copy>
     ```
     The `hello-helidon-app.yaml` file is a Verrazzano application configuration file, which provides environment-specific customizations.
     ```bash
-    <copy>kubectl apply -f ~/hello-helidon-app.yaml</copy>
+    <copy>kubectl apply -f ~/hello-helidon-app.yaml -n hello-helidon</copy>
     ```
 
 8. Wait for the pods to be in *Running* status. Use this *kubectl* command to wait for all the pods to be in the *Running* state within the hello-helidon namespace. It takes around 1-2 minutes.
@@ -230,7 +230,7 @@ To run this lab, you must have:
     <copy>kubectl wait --for=condition=Ready pods --all -n hello-helidon --timeout=600s</copy>
     ```
 
-    When the pods are ready you can see similar response:
+    When the pods are ready you can see a similar response:
 
     ```bash
     $ kubectl wait --for=condition=Ready pods --all -n hello-helidon --timeout=600s
