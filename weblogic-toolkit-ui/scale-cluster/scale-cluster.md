@@ -4,6 +4,9 @@
 
 In this lab, we scale a WebLogic Cluster. Here, we modify the value to *3* and re-deploy the domain.
 
+Watch the video below for a quick walk-through of the lab.
+[Scaling a WebLogic Cluster](videohub:1_tgp1x4zs)
+
 ### Objectives
 
 In this lab, you will:

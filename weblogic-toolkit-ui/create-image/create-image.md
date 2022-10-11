@@ -1,4 +1,5 @@
 # Creation of Images for the Oracle Container Engine for Kubernetes (OKE) on Oracle Cloud Infrastructure (OCI)
+
 ## Introduction
 
 **Primary Image** - The image containing the Oracle Fusion Middleware software. It is used as the basis of all containers that run WebLogic Servers for the domain.
@@ -7,6 +8,9 @@
     ![Image Structure](images/image-structure.png)
 
 In this Lab, we use WebLogic server 12.2.1.3.0-ol8 image as Primary Image. Also, we create an auxiliary image, and push it to Oracle Container Image Registry repository using the generated authentication token. 
+
+Watch the video below for a quick walk-through of the lab.
+[Creation of Images for the OKE on OCI](videohub:1_nzveoikz)
 
 ### Objectives
 
