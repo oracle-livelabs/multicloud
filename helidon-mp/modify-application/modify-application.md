@@ -6,6 +6,8 @@ In this lab, you add a custom endpoint to JAVA Class in Code Editor.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Modify Helidon MP application in Code Editor](videohub:1_sv1iug41)
 
 ### Objectives
 

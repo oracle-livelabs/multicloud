@@ -6,6 +6,9 @@ In this lab, you will build a *native* Docker image with your Helidon applicatio
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build and Push Helidon Application Image to Oracle Cloud Container Registry](videohub:1_mh1brw5t)
+
 ### Objectives
 
 * Build and package your application using Docker.

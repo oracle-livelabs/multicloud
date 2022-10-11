@@ -6,6 +6,8 @@ This lab walks you through the process of pulling a docker image from the Oracle
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Run Helidon Application native docker image in Compute Instance](videohub:1_dsfd22u5)
 
 ### Objectives
 
