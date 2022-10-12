@@ -6,6 +6,9 @@ In this lab, you will learn how to build a GraalVM native image for a Helidon MP
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build Helidon MP Application native image](videohub:1_0hftfgfy)
+
 ### About GraalVM native image
 
 GraalVM is a high-performance JDK distribution that can accelerate any Java workload running on the HotSpot JVM.
