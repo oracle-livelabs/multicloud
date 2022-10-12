@@ -4,6 +4,9 @@
 
 In this lab, we deploy the WebLogic Domain to kubernetes cluster. In primary image section, we specify the oracle account credential. In auxiliary image section, we specify oracle cloud account credential. Here we also specify the replica for the cluster.
 
+Watch the video below for a quick walk-through of the lab.
+[Deploy WebLogic Domain to OKE Cluster](videohub:1_r13g2s73)
+
 ### Objectives
 
 In this lab, you will:

@@ -21,6 +21,8 @@ The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.3, 12
 
 In this lab, we access the application *opdemo* and verify the successful migration of an offline on-premise domain. we also verify the loadbalancing between managed server pods. Later, we use WebLogic Remote Console, to verify the successful deployment of resources of test-domain in kubernetes environment.
 
+Watch the video below for a quick walk-through of the lab.
+[Testing Application Deployment](videohub:1_kcvw3xrf)
 
 ### Objectives
 

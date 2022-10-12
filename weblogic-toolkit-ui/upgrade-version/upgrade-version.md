@@ -4,6 +4,9 @@
 
 In this lab, we modify the primary image, we use WebLogic Server Image with *12.2.1.4-slim-ol8* tag. Then we re-deploy the domain using WebLogic Kubernetes Toolkit UI. At last, we verify that newly managed server pods are using the updated WebLogic Server images through WebLogic Remote Console.
 
+Watch the video below for a quick walk-through of the lab.
+[Upgrade WebLogic Server Version](videohub:1_5zspy6bv)
+
 ### Objectives
 
 In this lab, you will:
