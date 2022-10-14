@@ -2,7 +2,10 @@
 
 ## Introduction
 
-In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. Also, you will create a repository inside Oracle Cloud Container Image Registry. Then, you will generate an authentication token. Further, you will accept the license agreement for WebLogic Server images in Oracle Container Registry. 
+In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. Also, you will create a repository inside Oracle Cloud Container Image Registry. Then, you will generate an authentication token. Further, you will accept the license agreement for WebLogic Server images in Oracle Container Registry.
+
+Watch the video below for a quick walk-through of the lab.
+[Setup the Lab Environment](videohub:1_pwn1cqzd)
 
 ### Objectives
 

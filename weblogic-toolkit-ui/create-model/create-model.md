@@ -1,7 +1,11 @@
 # Creation of Model for the Oracle Container Engine for Kubernetes (OKE) on Oracle Cloud Infrastructure (OCI)
+
 ## Introduction
 
 In this lab, we explore the on-premise WebLogic domain. We navigate through the administration console to view the deployed application, datasources and servers in *test-domain*. we also open the pre-created *`base_project.wktproj`*, which already have pre-filled values for *Project Settings* section. Then we create the model file, by introspecting of an offline on-premise domain. At last, we validate the model and prepare the model to be deployed on Oracle Kubernetes Cluster (OKE).
+
+Watch the video below for a quick walk-through of the lab.
+[Creation of Model for the OKE on OCI](videohub:1_oebwg6w7)
 
 ### Objectives
 

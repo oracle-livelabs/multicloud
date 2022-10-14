@@ -4,6 +4,9 @@
 
 In this lab, we install the *Traefik* Ingress Controller. Later, we updates the *Ingress Routes* to access the application and admin server.
 
+Watch the video below for a quick walk-through of the lab.
+[Deploy Ingress Controller to OKE Cluster](videohub:1_4eiomya3)
+
 ### Objectives
 
 In this lab, you will:

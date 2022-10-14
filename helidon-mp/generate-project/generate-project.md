@@ -6,6 +6,9 @@ This lab walks you through the steps to create a Helidon MP application.
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Generate an Helidon MP Project and Run the project in Code Editor](videohub:1_22nv8v4q)
+
 ### About Product/Technology
 
 Helidon is designed to be simple to use, with tooling and examples to get you going quickly. Since Helidon is just a collection of libraries running on a fast Netty core, there is no extra overhead or bloat. Helidon supports MicroProfile and provides familiar APIs like JAX-RS, CDI and JSON-P/B. Our MicroProfile implementation runs on our fast Helidon Reactive WebServer. The Reactive WebServer provides a modern, functional, programming model and runs on top of Netty. Lightweight, flexible and reactive, the Helidon WebServer provides a simple to use and fast foundation for your microservices.
