@@ -66,4 +66,4 @@ Verrazzano includes the following capabilities:
 
 * **Author** -  Peter Nagy
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Peter Nagy, September 2021
+* **Last Updated By/Date** - Ankit Pandey, November 2022

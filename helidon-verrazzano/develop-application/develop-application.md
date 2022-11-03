@@ -67,14 +67,14 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 ## Task 2: Create Helidon Greeting Application
 1. In your console enter:
     ```bash
-    <copy>helidon init --version 2.4.1 </copy>
+    <copy>helidon init --version 3.0.1 </copy>
     ```
     > To avoid any potential issues, define the specific Helidon version that was tested for this lab's environment.
 
 2. For this demo we will create a MicroProfile supported microservice, so choose option **(2)** for **Helidon MP Flavor**:
 
     ```bash
-    Using Helidon version 2.4.1
+    Using Helidon version 3.0.1
     Helidon flavor
     (1) SE 
     (2) MP 
@@ -347,4 +347,4 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022

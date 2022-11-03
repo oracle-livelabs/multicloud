@@ -91,10 +91,10 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
     ![Image uploaded](images/imageuploaded.png " ")
 
-Leave the *Cloud Shell* and Container Registry repository page open; we will need them for the next labs.
+    Leave the *Cloud Shell* and Container Registry repository page open; we will need them for the next labs.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022

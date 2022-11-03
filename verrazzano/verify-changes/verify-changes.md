@@ -42,14 +42,14 @@ In this lab, you will:
         ```bash
         $ kubectl get vz -o jsonpath="{.items[].status.instance}" | jq .
         {
-        "consoleUrl": "https://verrazzano.default.XX.XX.XX.XX.nip.io",
-        "elasticUrl": "https://elasticsearch.vmi.system.default.1XX.XX.XX.XX.nip.io",
-        "grafanaUrl": "https://grafana.vmi.system.default.XX.XX.XX.XX.nip.io",
-        "keyCloakUrl": "https://keycloak.default.XX.XX.XX.XX.nip.io",
-        "kialiUrl": "https://kiali.vmi.system.default.XX.XX.XX.XX.nip.io",
-        "kibanaUrl": "https://kibana.vmi.system.default.XX.XX.XX.XX.nip.io",
-        "prometheusUrl": "https://prometheus.vmi.system.default.XX.XX.XX.XX.nip.io",
-        "rancherUrl": "https://rancher.default.XX.XX.XX.XX.nip.io"
+        "consoleUrl": "https://verrazzano.default.xx.xx.xx.xx.nip.io",
+        "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
+        "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "openSearchDashboardsUrl": "https://kibana.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "openSearchUrl": "https://elasticsearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
         }
         ```
 
@@ -106,4 +106,4 @@ Congratulations! You have successfully completed the labs.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022
