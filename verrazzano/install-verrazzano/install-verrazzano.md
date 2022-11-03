@@ -51,11 +51,11 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
 1. Copy the following command and paste it in the *Cloud Shell* to run it.
 
     ```bash
-    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml</copy>
+    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.1/verrazzano-platform-operator.yaml</copy>
     ```
     The output should be similar to the following:
     ```bash
-    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml
+    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.1/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
@@ -67,7 +67,7 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
     $
     ```
-    > This `operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `operator.yaml` file.
+    > This `verrazzano-platform-operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `verrazzano-platform-operator.yaml` file.
     > All deployments in Kubernetes happen in a namespace. When we deploy the Verrazzano Platform Operator, it happens in the namespace called "verrazzano-install".
 
 2. To find out the deployment status for the Verrazzano Platform Operator, copy the following command and paste it in the *Cloud Shell*.
@@ -136,12 +136,12 @@ An ingress controller is something that helps provide access to Docker container
 
     ```bash
     <copy>kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
+    apiVersion: install.verrazzano.io/v1beta1
     kind: Verrazzano
     metadata:
       name: example-verrazzano
     spec:
-      profile: dev
+      profile: ${VZ_PROFILE:-dev}
     EOF
     </copy>
     ```
@@ -149,12 +149,12 @@ An ingress controller is something that helps provide access to Docker container
     The output should be similar to the following:
     ```bash
     $ kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
+    apiVersion: install.verrazzano.io/v1beta1
     kind: Verrazzano
     metadata:
       name: example-verrazzano
     spec:
-      profile: dev
+      profile: ${VZ_PROFILE:-dev}
     EOF
     verrazzano.install.verrazzano.io/example-verrazzano created
     $
@@ -186,7 +186,7 @@ An ingress controller is something that helps provide access to Docker container
 
 Verrazzano installs multiple objects in multiple namespaces. Verrazzano components are installed in the namespace *verrazzano-system*.
 
-1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have 16 pods in the *Running* state.
+1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have 14 pods in the *Running* state.
 
     ```bash
     <copy>kubectl get pods -n verrazzano-system</copy>
@@ -194,27 +194,25 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
 
     The output should be similar to the following:
 
-    ```bash
-    kubectl get pods -n verrazzano-system
-    NAME                                           READY STATUS    RESTARTS   AGE
-    coherence-operator-dcfb446df-5dckp             1/1   Running   1          8m57s
-    fluentd-cgrg5                                  2/2   Running   1          6m22s
-    fluentd-jztnn                                  2/2   Running   1          6m22s
-    fluentd-n4s95                                  2/2   Running   1          6m22s
-    oam-kubernetes-runtime-549db9798b-grxj4        1/1   Running   0          8m50s
-    verrazzano-application-operator-54668f668-bng5 1/1   Running   0          8m9s
-    verrazzano-authproxy-86fb64c9f-4mffq           2/2   Running   0          6m22s
-    verrazzano-console-6c8d4875cf-r6bsv            2/2   Running   0          6m22s
-    verrazzano-monitoring-operator-787bfc7f86-p6qb 1/1   Running   0          6m22s
-    verrazzano-operator-6cc79dfdcc-6l9lt           1/1   Running   0          6m22s
-    vmi-system-es-master-0                         2/2   Running   0          4m37s
-    vmi-system-grafana-666f6854b4-xrmwf            2/2   Running   0          4m37s
-    vmi-system-kiali-5949966fb8-gczd5              2/2   Running   0          6m17s
-    vmi-system-kibana-95d8c5d96-9qr9j              2/2   Running   0          4m37s
-    vmi-system-prometheus-0-74478c9d44-gk85g       3/3   Running   0          3m6s
-    weblogic-operator-5df5f94bd7-tkg74             2/2   Running   0          8m17s
-    $
-    ```
+  ```bash
+  $   kubectl get pods -n verrazzano-system
+  NAME                                             READY   STATUS   RESTARTS AGE
+  coherence-operator-679cf4d55f-s76jx                1/1     Running   1    10m
+  fluentd-2rrnr                                      2/2     Running   1    2m2s
+  fluentd-g5scl                                      2/2     Running   1    2m18s
+  fluentd-wdcwn                                      2/2     Running   1    2m16s
+  oam-kubernetes-runtime-546f59d8d-lssmz             1/1     Running   0    10m
+  verrazzano-application-operator-5fcb4498d5-rq99x   1/1     Running   0    9m14s
+  verrazzano-authproxy-6f997b54bb-g6ll4              3/3     Running   0    8m47s
+  verrazzano-console-7bc4f9995d-crh47                2/2     Running   0    8m28s
+  verrazzano-monitoring-operator-5bdc84dc5f-8n8l6    2/2     Running   0    8m35s
+  vmi-system-es-master-0                             2/2     Running   0    7m52s
+  vmi-system-grafana-c8f55d8f9-zvqkb                 2/2     Running   0    7m50s
+  vmi-system-kiali-795f84b549-6jnz5                  2/2     Running   0    8m42s
+  vmi-system-kibana-69cd8dfc79-77s6h                 2/2     Running   0    3m20s
+  weblogic-operator-5c74f97ff5-7rtvk                 2/2     Running   0    9m30s
+  $
+  ```
 
 Leave the *Cloud Shell* open; we need it for Lab 3.
 
@@ -222,4 +220,4 @@ Leave the *Cloud Shell* open; we need it for Lab 3.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022

@@ -70,9 +70,9 @@ You may need to run this command several times until you see the output similar 
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE    VERSION
-    10.0.10.112   Ready    node    4m32s   v1.23.4
-    10.0.10.200   Ready    node    4m32s   v1.23.4
-    10.0.10.36    Ready    node    4m28s   v1.23.4
+    10.0.10.112   Ready    node    4m32s   v1.24.1
+    10.0.10.200   Ready    node    4m32s   v1.24.1
+    10.0.10.36    Ready    node    4m28s   v1.24.1
     ```
 
     > If you see the node's information, then the configuration was successful.
@@ -86,11 +86,11 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
 1. Copy the following command and paste it into the *Cloud Shell* to run it.
 
     ```bash
-    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml</copy>
+    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.1/verrazzano-platform-operator.yaml</copy>
     ```
-      The output should be similar to the following:
+    The output should be similar to the following:
     ```bash
-    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml
+    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.1/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
@@ -102,8 +102,7 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
     $
     ```
-
-    > This `operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `operator.yaml` file.
+    > This `verrazzano-platform-operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `verrazzano-platform-operator.yaml` file.
     > All deployments in Kubernetes happen in a namespace. When we deploy the Verrazzano Platform Operator, it happens in the namespace called "verrazzano-install".
 
 2. To find out the deployment status for the Verrazzano Platform Operator, copy the following command and paste it into the *Cloud Shell*.
@@ -131,8 +130,8 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
     The output should be similar to the following:
     ```bash
     $ kubectl -n verrazzano-install get pods
-      NAME                                            READY   STATUS    RESTARTS   AGE
-      verrazzano-platform-operator-6d9c9cf89c-knzlt   1/1     Running   0          3m25s
+      NAME                                          READY STATUS   RESTARTS  AGE
+      verrazzano-platform-operator-6d9c9cf89c-knzlt 1/1   Running  0         3m25s
     $
     ```
 
@@ -169,12 +168,12 @@ According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS
 
     ```bash
     <copy>kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
+    apiVersion: install.verrazzano.io/v1beta1
     kind: Verrazzano
     metadata:
       name: example-verrazzano
     spec:
-      profile: dev
+      profile: ${VZ_PROFILE:-dev}
     EOF
     </copy>
     ```
@@ -182,12 +181,12 @@ According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS
     The output should be similar to the following:
     ```bash
     $ kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
+    apiVersion: install.verrazzano.io/v1beta1
     kind: Verrazzano
     metadata:
       name: example-verrazzano
     spec:
-      profile: dev
+      profile: ${VZ_PROFILE:-dev}
     EOF
     verrazzano.install.verrazzano.io/example-verrazzano created
     $
@@ -210,29 +209,29 @@ According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS
         
     ````bash
       $ kubectl logs -n verrazzano-install \
-    >     -f $(kubectl get pod \
-    >     -n verrazzano-install \
-    >     -l app=verrazzano-platform-operator \
-    >     -o jsonpath="{.items[0].metadata.name}") | grep '^{.*}$' \
-    >     | jq -r '."@timestamp" as $timestamp | "\($timestamp) \(.level) \(.message)"'
-          2022-03-15T12:24:11.756Z info Starting Verrazzano Platform Operator
-          2022-03-15T12:24:13.340Z info metrics server is starting to listen
-          2022-03-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
-          2022-03-15T12:24:13.341Z info Registering a validating webhook
-          2022-03-15T12:24:13.341Z info registering webhook
-          2022-03-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
-          2022-03-15T12:24:13.341Z info Registering a validating webhook
-          2022-03-15T12:24:13.341Z info registering webhook
-          2022-03-15T12:24:13.341Z info Starting controller-runtime manager
-          2022-03-15T12:24:13.342Z info starting metrics server
-          2022-03-15T12:24:13.342Z info starting webhook server
-          2022-03-15T12:24:13.342Z info Starting EventSource
-          2022-03-15T12:24:13.342Z info Starting EventSource
-          2022-03-15T12:24:13.342Z info Updated current TLS certificate
-          2022-03-15T12:24:13.343Z info Starting certificate watcher
-          2022-03-15T12:24:13.343Z info serving webhook server
-          2022-03-15T12:24:13.742Z info Starting Controller
-          2022-03-15T12:24:13.843Z info Starting workers
+    -f $(kubectl get pod \
+    -n verrazzano-install \
+    -l app=verrazzano-platform-operator \
+    -o jsonpath="{.items[0].metadata.name}") | grep '^{.*}$' \
+    | jq -r '."@timestamp" as $timestamp | "\($timestamp) \(.level) \(.message)"'
+          2022-10-15T12:24:11.756Z info Starting Verrazzano Platform Operator
+          2022-10-15T12:24:13.340Z info metrics server is starting to listen
+          2022-10-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
+          2022-10-15T12:24:13.341Z info Registering a validating webhook
+          2022-10-15T12:24:13.341Z info registering webhook
+          2022-10-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
+          2022-10-15T12:24:13.341Z info Registering a validating webhook
+          2022-10-15T12:24:13.341Z info registering webhook
+          2022-10-15T12:24:13.341Z info Starting controller-runtime manager
+          2022-10-15T12:24:13.342Z info starting metrics server
+          2022-10-15T12:24:13.342Z info starting webhook server
+          2022-10-15T12:24:13.342Z info Starting EventSource
+          2022-10-15T12:24:13.342Z info Starting EventSource
+          2022-10-15T12:24:13.342Z info Updated current TLS certificate
+          2022-10-15T12:24:13.343Z info Starting certificate watcher
+          2022-10-15T12:24:13.343Z info serving webhook server
+          2022-10-15T12:24:13.742Z info Starting Controller
+          2022-10-15T12:24:13.843Z info Starting workers
         $
     ````
     
@@ -243,4 +242,4 @@ According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022

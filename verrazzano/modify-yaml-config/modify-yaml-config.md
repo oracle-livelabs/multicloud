@@ -102,10 +102,10 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
     After you see that all the pods are in the *Running* Status, press *CTRL + C* to kill this command.
 
-Leave the *Cloud Shell* open as we also need it for our last lab.
+    Leave the *Cloud Shell* open as we also need it for our last lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Last Updated By/Date** - Ankit Pandey, November 2022
