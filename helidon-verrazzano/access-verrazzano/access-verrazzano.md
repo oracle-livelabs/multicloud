@@ -221,6 +221,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       ```bash
       <copy>kubectl get secret --namespace cattle-system rancher-admin-secret -o jsonpath={.data.password} | base64 --decode; echo</copy>
       ```
+      
       > From the Verrazzano version 1.4.x, you can also login with Keycloak to ranchar.
       ![keycloack-ranchar](images/keycloak-ranchar.png)
 4. Using the values above login to the Rancher console.

@@ -194,27 +194,27 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
 
     The output should be similar to the following:
 
-  ```bash
-  $   kubectl get pods -n verrazzano-system
-  NAME                                             READY   STATUS   RESTARTS AGE
-  coherence-operator-679cf4d55f-s76jx                1/1     Running   1    10m
-  fluentd-2rrnr                                      2/2     Running   1    2m2s
-  fluentd-g5scl                                      2/2     Running   1    2m18s
-  fluentd-wdcwn                                      2/2     Running   1    2m16s
-  oam-kubernetes-runtime-546f59d8d-lssmz             1/1     Running   0    10m
-  verrazzano-application-operator-5fcb4498d5-rq99x   1/1     Running   0    9m14s
-  verrazzano-authproxy-6f997b54bb-g6ll4              3/3     Running   0    8m47s
-  verrazzano-console-7bc4f9995d-crh47                2/2     Running   0    8m28s
-  verrazzano-monitoring-operator-5bdc84dc5f-8n8l6    2/2     Running   0    8m35s
-  vmi-system-es-master-0                             2/2     Running   0    7m52s
-  vmi-system-grafana-c8f55d8f9-zvqkb                 2/2     Running   0    7m50s
-  vmi-system-kiali-795f84b549-6jnz5                  2/2     Running   0    8m42s
-  vmi-system-kibana-69cd8dfc79-77s6h                 2/2     Running   0    3m20s
-  weblogic-operator-5c74f97ff5-7rtvk                 2/2     Running   0    9m30s
-  $
-  ```
+    ```bash
+    $   kubectl get pods -n verrazzano-system
+    NAME                                             READY   STATUS   RESTARTS AGE
+    coherence-operator-679cf4d55f-s76jx                1/1     Running   1    10m
+    fluentd-2rrnr                                      2/2     Running   1    2m2s
+    fluentd-g5scl                                      2/2     Running   1    2m18s
+    fluentd-wdcwn                                      2/2     Running   1    2m16s
+    oam-kubernetes-runtime-546f59d8d-lssmz             1/1     Running   0    10m
+    verrazzano-application-operator-5fcb4498d5-rq99x   1/1     Running   0    9m14s
+    verrazzano-authproxy-6f997b54bb-g6ll4              3/3     Running   0    8m47s
+    verrazzano-console-7bc4f9995d-crh47                2/2     Running   0    8m28s
+    verrazzano-monitoring-operator-5bdc84dc5f-8n8l6    2/2     Running   0    8m35s
+    vmi-system-es-master-0                             2/2     Running   0    7m52s
+    vmi-system-grafana-c8f55d8f9-zvqkb                 2/2     Running   0    7m50s
+    vmi-system-kiali-795f84b549-6jnz5                  2/2     Running   0    8m42s
+    vmi-system-kibana-69cd8dfc79-77s6h                 2/2     Running   0    3m20s
+    weblogic-operator-5c74f97ff5-7rtvk                 2/2     Running   0    9m30s
+    $
+    ```
 
-Leave the *Cloud Shell* open; we need it for Lab 3.
+    Leave the *Cloud Shell* open; we need it for Lab 3.
 
 ## Acknowledgements
 

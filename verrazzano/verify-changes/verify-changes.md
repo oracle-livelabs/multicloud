@@ -100,7 +100,7 @@ In this lab, you will:
 
     ![New Component](images/newcomponent.png " ")
 
-Congratulations! You have successfully completed the labs.
+    Congratulations! You have successfully completed the labs.
 
 ## Acknowledgements
 
