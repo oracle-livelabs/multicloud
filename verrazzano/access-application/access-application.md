@@ -103,7 +103,7 @@ In this lab, you will:
 
    ![Verify Order](images/verifyorder.png " ")
 
-## Task 2: Explore the Verrazzano Console
+## Task 2: Explore the Rancher Console
 
 Verrazzano installs several consoles. The endpoints for an installation are stored in the `Status` field of the installed Verrazzano Custom Resource.
 
@@ -128,77 +128,88 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       }
       $
       ```
-    Click the links to open the *Verrazzano* Console.
-
-2. Click *Advanced*.
-
-   ![Verrazzano Advanced](images/verrazzanoadvanced.png " ")
-
-3. Select *Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)*. If you are the not getting this option for proceed, just type *thisisunsafe* without any space. Do the same for opening other URLs of Verrazzano Consoles. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
 
-   ![Verrazzano Proceed](images/verrazzanoproceed.png " ")
+2. Use the `https://rancher.default.YOUR_UNIQUE_IP.nip.io` to open the Rancher console.
 
-4. Because it redirects to the Keycloak console  URL for authentication, again on this page, click *Advanced*.
+3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip the warning.
 
-   ![Keycloak Authentication](images/keycloakauthentication.png " ")
+      ![Advanced](images/rancher-advanced.png)
 
-5. Select *Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)*. If you are the not getting this option for proceed, just type *thisisunsafe* without any space.
+4. Click **Proceed to rancher default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
-   ![Keycloak Proceed](images/keycloakproceed.png " ")
+      ![Proceed](images/rancher-proceed.png)
 
-6. Now we need the user name and password for the Verrazzano console. *Username* is *verrazzano* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Verrazzano Console*.
+5. Click *Log in with Keycloak*.
+      ![Rancher login](images/keycloak-login.png)
+
+6. Because it redirects to the Keycloak console URL for authentication, click **Advanced**.
+
+      ![Keycloak Authentication](images/keycloak-advanced.png)
+
+7. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+
+      ![Proceed](images/keycloak-proceed.png)
+
+8. Now we need the username and password for the Verrazzano console. *Username* is *verrazzano* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Rancher Console*.
 
       ```bash
       <copy>kubectl get secret --namespace verrazzano-system verrazzano -o jsonpath={.data.password} | base64 --decode; echo</copy>
       ```
 
-   The output should be similar to the following:
-      ```bash
-      $ kubectl get secret --namespace verrazzano-system verrazzano -o jsonpath={.data.password} | base64 --decode; echo
-      aBsNxxZnl1ea3Vzp
-      $
-      ```
+9. Copy the password and go back to the browser, where the *Rancher Console* is open. Paste the password in the *Password* field and enter *verrazzano* as *Username* and then click **Sign In**.
 
-7. Copy the password and go back to the browser, where the *Verrazzano Console* is open.
+      ![SignIn](images/verrazzano-sign-in.png)
 
-   ![Verrazzano Password](images/verrazzanopassword.png " ")
+10. From the home page of the rancher console, you can view the Verrazzano Links. Click *Hamburger menu* -> *Verrazzano*.
 
-8. Paste the password in the *Password* field and enter *verrazzano* as *Username* and then click *Sign In*.
+      ![Rancher Home](images/rancher-home.png)
 
-   ![Verrazzano SignIn](images/verrazzanosignin.png " ")
+11. Click *Applications* and then click *bobs-books*.
+      ![Bobs Application](images/bobs-application.png)
 
-   In the Home Page of the Verrazzano Console, you can see *System Telemetry* and because we installed the *Development Profile* of Verrazzano, you can see it in the *General Information* section.
+12. You can view the pods associated with the application. To view the components, Click *Components*.
+      ![Bobbys Components](images/bobs-components.png)
 
-   ![Verrazzano Homepage](images/verrazzanohomepage.png " ")
+13. You can view the components of the application here. To view what are the related resources, click *Related Resources*.
+      ![Bobs Resource](images/bobs-resource.png)
 
-9. Because we have deployed the Bobby's Book application, you can see it under *OAM Applications*. Select *bobs-books* to view different components of this application.
+14. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+      ![Verrazzano Cluster](images/verrazzano-cluster.png)
 
-   ![OAM Components](images/oamcomponents.png " ")
 
-   There are 10 components for this application as you can see under *Components*.
+15. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
 
-10. To explore the configuration for a particular component, first select the *Sort by* drop-down menu and select *Name*, then select the *bobby-coh* component as shown:
+      ![Cluster Explorer](images/cluster-dashboard.png)
 
-    ![bobs-coh](images/bobscoh.png " ")
+16. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check your *bobs-books* application.
 
-11. You can see *General Information* for this component. To learn about the *Workload Spec*, select *bobby-coh* as shown:
+      ![Nodes](images/node.png)
 
-    ![Workload spec](images/workloadspec.png " ")
+17. You can see several deployments. Click on the *bobbys-helidon-stock-application*.
 
-12. Here you can see the configuration details for the *bobby-coh* component. Click *Close*.
+      ![Deployments](images/deployments.png)
 
-    ![configuration](images/configuration.png " ")
+18. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replica sets. The pod name contains an auto-generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
+
+      ![Bob deployment](images/bobs-deployment.png)
+
+19. You should see two containers in the pod. The *bobbys-helidon-stock-application* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at the top right corner and select **View Logs**.
+
+      ![Pod](images/view-logs.png)
+
+20. Make sure to access the Bobbys application's page. Find the custom `bobbys-helidon-stock-application` log entry. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start.
+
+      ![Pod](images/log.png)
 
 ## Task 3: Explore the Grafana Console
 
-1. Select *Home* to go back to Verrazzano Console Home Page.
+1. Click *Hamburgar menu* -> *Verrazzano*.
+      ![Home](images/ranchar-menu.png)
 
-    ![Verrazzano Home](images/verrazzanohome.png " ")
+2. On the home page, you'll see the link for opening the *Grafana console*. Click the link for the **Grafana Console** as shown:
 
-2. In this page, you'll see the link for opening the *Grafana console*. Select the link for the *Grafana Console* as shown:
-
-    ![Grafana Home](images/grafanahome.png " ")
+      ![Grafana Home](images/grafana-link.png)
 
 3. Click *Advanced*.
 
@@ -240,9 +251,9 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 ## Task 4: Explore the Kiali Console
 
-1. Go to Verrazzao console and click on the link for Kiali Console.
+1. Go back to the Verrazzano home page and click **Kiali** console.
 
-   ![Kiali URL](images/kialiurl.png " ")
+      ![Rancher link](images/kiali-link.png)
 
 2. On Left side, Click on Graph.
 
@@ -251,7 +262,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 3. In the Namespace dropdown, check the box for *bobs-books* and make the curser move outside the dropdown. 
    ![Bobs Namespace](images/bobsnamespace.png " ")
 
-4. You can view the graphical view of *bobs-books* application. Click *Legend* to view the *Legend* view.
+4. You can view the graphical view of *bobs-books* application. Click *Legend* to view the Legend view.
 
    ![Graphical View](images/graphicalview.png " ")
 
@@ -263,6 +274,54 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
    ![Applications](images/applications.png " ")
 
+
+## Task 5: Explore the OpenSearch Dashboards
+
+1. Go back to the Verrazzano home page and click the **OpenSearch Dashboards** console.
+
+      ![Kibana link](images/opensearch-link.png)
+
+2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. The first time *OpenSearch Dashboards* shows the welcome page. It offers built-in sample data to try OpenSearch but you can select the **Explore on my own** option because Verrazzano completed the necessary configuration and the application data is already available.
+
+      ![Kibana welcome page](images/opensearch-proceed.png)
+
+3. On the OpenSearch homepage click the **Home** -> **Discover**.
+
+      ![Kibana dashboard click](images/discover-1.png)
+
+4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
+
+      ![Index pattern](images/create-index.png)
+      ![Opensearch index](images/opensearch-index.png)
+
+5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
+
+      ![Index pattern](images/time-filter.png)
+
+6. When the index is ready you need to click *Home* -> *Discover*. 
+
+      ![Index pattern](images/discover-2.png)
+
+7. Make sure your have purchased one book from Bobbys Front end application and you have verified the same in Bobs Order manager web page. Press **Enter** or click **Refresh**. You should get at least one result.
+       ![Log result](images/log-result.png)
+
+## Task 6: Explore the Prometheus Console
+
+1. Go back to the Verrazzano home page and click **Prometheus** console.
+
+      ![Prometheus link](images/prometheus-link.png)
+
+2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
+
+3. On the Prometheus dashboard page type *get* into the search field and click your custom metric *application_org_books_bobby_BookResource_getBook_total*.
+
+      ![Prometheus execute](images/prometheus-query.png)
+
+4. Click **Execute** and check the result below. You should see your metric's current value which means how many requests were completed by your endpoint. You can also switch to *Graph* view instead of the *Console* mode.
+
+      ![Prometheus value](images/execute-query.png)
+
+      >You can also add another metric to your dashboard. Discover the available, default metrics in the list.
 
    Leave the *Cloud Shell* open; we will use it for upcoming labs.
 
