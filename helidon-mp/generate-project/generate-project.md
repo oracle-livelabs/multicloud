@@ -166,7 +166,10 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     {"message":"Hola Jose!","greeting":null}
     ```
 
-14. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
+14. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running*.
+IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
+
+
 
 
 

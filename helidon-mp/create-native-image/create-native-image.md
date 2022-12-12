@@ -98,7 +98,7 @@ GraalVM Enterprise Edition is available for use on Oracle Cloud Infrastructure (
     > You can see the application startup time is 145 milliseconds, which is almost 35 times faster.
 
 
-2. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "./target/myproject" command is running.
+2. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "./target/myproject" command is running*. IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 
 
