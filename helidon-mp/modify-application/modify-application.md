@@ -59,7 +59,7 @@ In this lab, you will:
     ```
     > It randomly provides the title out of 5 options, you can run this command multiple times.
 
-3. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
+3. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running*. IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 ## Acknowledgements
 
