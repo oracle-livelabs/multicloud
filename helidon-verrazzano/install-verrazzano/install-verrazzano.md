@@ -24,7 +24,7 @@ Verrazzano includes the following capabilities:
 In this lab, you will:
 
 * Setup `kubectl` to use the Oracle Kubernetes Engine cluster
-* Install the Verrazzano platform operator.
+* Install the Verrazzano vz CLI.
 * Install the development (`dev`) profile of Verrazzano.
 
 ### Prerequisites
@@ -77,20 +77,129 @@ You may need to run this command several times until you see the output similar 
 
     > If you see the node's information, then the configuration was successful.
 
-## Task 2: Install the Verrazzano Platform Operator
+## Task 2: Install the vz CLI
 
-Verrazzano provides a platform [operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage the life cycle of Verrazzano installations. You can install, uninstall, and update Verrazzano installations by updating the [Verrazzano custom resource](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
 
-Before installing Verrazzano, we need to install the Verrazzano Platform Operator.
-
-1. Copy the following command and paste it into the *Cloud Shell* to run it.
+1. Download the latest vz CLI.
 
     ```bash
-    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-platform-operator.yaml</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-1.4.2-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
-    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-platform-operator.yaml
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 39.7M  100 39.7M    0     0  23.6M      0  0:00:01  0:00:01 --:--:-- 32.7M
+    ```
+
+2. Download the checksum file.
+
+    ```bash
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-1.4.2-linux-amd64.tar.gz.sha256</copy>
+    ```
+
+  The output should be similar to the following:
+
+    ```bash
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   102  100   102    0     0    218      0 --:--:-- --:--:-- --:--:--   218
+    ```
+
+3. Validate the binary against the checksum file.
+
+    ```bash
+    <copy>sha256sum -c verrazzano-1.4.2-linux-amd64.tar.gz.sha256</copy>
+    ```
+
+    The output should be similar to the following:
+    ```bash
+    verrazzano-1.4.2-linux-amd64.tar.gz: OK
+    ```
+
+4. Unpack and move to the vz binary,
+
+    ```bash
+    <copy>tar xvf verrazzano-1.4.2-linux-amd64.tar.gz
+    cd ~/verrazzano-1.4.2/bin/</copy>
+    ```
+
+5. Test to ensure that the version you installed is up-to-date.
+
+    ```bash
+    <copy>./vz version</copy>
+    ```
+
+    The output should be similar to the following:
+    ```bash
+    Version: v1.4.2
+    BuildDate: 2022-11-10T22:25:50Z
+    GitCommit: 0576f21c8787ea948cb6cfbf1cdea52ef276749a
+    ```
+
+
+
+## Task 3: Installation of the Verrazzano development profile
+
+An installation profile is a well-known configuration of Verrazzano settings that can be referenced by name, which can then be customized as needed.
+
+Verrazzano supports the following installation profiles: development (`dev`), production (`prod`), and managed cluster (`managed-cluster`).
+
+The following image describes the Verrazzano installation profiles.
+![Install Profile](images/installprofile.png)
+
+To change profiles in any of the following commands, set the *VZ_PROFILE* environment variable to the name of the profile you want to install.
+
+For a complete description of Verrazzano configuration options, see the [Verrazzano Custom Resource Definition](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
+
+In this lab, we are going to install the *development profile of Verrazzano*, which has the following characteristics:
+
+* Wildcard (nip.io) DNS
+* Self-signed certificates
+* Shared observability stack used by the system components and all applications
+* Ephemeral storage for the observability stack (if the pods are restarted, you lose all of your logs and metrics)
+* It has a lightweight installation.
+* It is for evaluation purposes.
+* Single-node Opensearch cluster topology.
+
+The following image describes the Verrazzano components that are installed with each profile.
+
+![Verrazzano Profile](images/verrazzanoprofile.png " ")
+
+According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
+
+An ingress controller is something that helps provide access to Docker containers to the outside world (by providing an IP address). The ingress routes the IP address to different clusters.
+
+1. Install using the nip.io DNS Method. Copy the following command and paste it in the *Cloud Shell* to install Verrazzano.
+
+    ```bash
+    <copy>./vz install -f - <<EOF
+    apiVersion: install.verrazzano.io/v1beta1
+    kind: Verrazzano
+    metadata:
+      name: example-verrazzano
+    spec:
+      profile: dev
+      defaultVolumeSource:
+        persistentVolumeClaim:
+          claimName: verrazzano-storage
+      volumeClaimSpecTemplates:
+        - metadata:
+            name: verrazzano-storage
+          spec:
+            resources:
+              requests:
+                storage: 2Gi
+    EOF
+    </copy>
+    ```
+
+    The output should be similar to the following:
+    ```bash
+    Installing Verrazzano version v1.4.2
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
@@ -100,146 +209,18 @@ Before installing Verrazzano, we need to install the Verrazzano Platform Operato
     service/verrazzano-platform-operator created
     deployment.apps/verrazzano-platform-operator created
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
-    $
-    ```
-    > This `verrazzano-platform-operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `verrazzano-platform-operator.yaml` file.
-    > All deployments in Kubernetes happen in a namespace. When we deploy the Verrazzano Platform Operator, it happens in the namespace called "verrazzano-install".
-
-2. To find out the deployment status for the Verrazzano Platform Operator, copy the following command and paste it into the *Cloud Shell*.
-
-    ```bash
-    <copy>kubectl -n verrazzano-install rollout status deployment/verrazzano-platform-operator</copy>
+    Waiting for verrazzano-platform-operator to be ready before starting install - 17 seconds
+    2023-01-03T11:41:33.360Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
+    2023-01-03T11:41:33.449Z info Validate update
+    2023-01-03T11:41:34.033Z info Starting EventSource
     ```
 
-    The output should be similar to the following:
+    > It takes around 15 to 20 minutes to complete the installation. This command installs the Verrazzano platform operator and applies the Verrazzano custom resource. Installation logs will be streamed to the command window until the installation has completed or until the default timeout (30m) has been reached.
 
-    ```bash
-    $ kubectl -n verrazzano-install rollout status deployment/verrazzano-platform-operator
-      deployment "verrazzano-platform-operator" successfully rolled out
-    $
-    ```
-
-    > Confirm that the operator pod associated with the Verrazzano Platform Operator is correctly defined and running. A Pod is a unit which runs containers/images and Pods belong to nodes.
-
-3. To find out the pod status, copy and paste the following command in the *Cloud Shell*.
-
-    ```bash
-    <copy>kubectl -n verrazzano-install get pods</copy>
-    ```
-
-    The output should be similar to the following:
-    ```bash
-    $ kubectl -n verrazzano-install get pods
-      NAME                                          READY STATUS   RESTARTS  AGE
-      verrazzano-platform-operator-6d9c9cf89c-knzlt 1/1   Running  0         3m25s
-    $
-    ```
-
-## Task 3: Install the Verrazzano Development Profile
-
-An installation profile is a well-known configuration of Verrazzano settings that can be referenced by name, which can then be customized as needed.
-
-Verrazzano supports the following installation profiles: development (`dev`), production (`prod`), and managed cluster (`managed-cluster`).
-
-* The production profile, which is the default, provides a 3-node Opensearch and persistent storage for the Verrazzano Monitoring Instance (VMI).
-* The development profile provides a single node Opensearch and no persistent storage for the VMI.
-* The managed-cluster profile installs only managed cluster components of Verrazzano. To take full advantage of multicluster features, the managed cluster should be registered with an admin cluster.
-
-To change profiles in any of the following commands, set the *VZ_PROFILE* environment variable to the name of the profile you want to install.
-
-For a complete description of Verrazzano configuration options, see the [Verrazzano Custom Resource Definition](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
-
-In this lab, we are going to install the *development profile of Verrazzano*, which has the following characteristics:
-
-* It has a lightweight installation.
-* It is for evaluation purposes.
-* No persistence.
-* Single-node OpenSearch cluster topology.
-
-The following image describes the Verrazzano components that are installed with each profile.
-
-![Verrazzano Profile](images/verrazzano-components.png)
-
-According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
-
->An ingress controller is something that helps provide access to Docker containers to the outside world (by providing an IP address). The ingress routes the IP address to different clusters.
-
-1. Install using the nip.io DNS Method. Copy the following command and paste it into the *Cloud Shell* to install Verrazzano.
-
-    ```bash
-    <copy>kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1beta1
-    kind: Verrazzano
-    metadata:
-      name: example-verrazzano
-    spec:
-      profile: ${VZ_PROFILE:-dev}
-    EOF
-    </copy>
-    ```
-
-    The output should be similar to the following:
-    ```bash
-    $ kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1beta1
-    kind: Verrazzano
-    metadata:
-      name: example-verrazzano
-    spec:
-      profile: ${VZ_PROFILE:-dev}
-    EOF
-    verrazzano.install.verrazzano.io/example-verrazzano created
-    $
-    ```
-
-    > It takes around 10 to 15 minutes to complete the installation. To view the installation logs, go to the next commands.
-
-2. The Verrazzano operator launches a Kubernetes job to install Verrazzano. You can view the installation logs from that job with the following command:
-
-    ````bash
-    <copy>kubectl logs -n verrazzano-install \
-    -f $(kubectl get pod \
-    -n verrazzano-install \
-    -l app=verrazzano-platform-operator \
-    -o jsonpath="{.items[0].metadata.name}") | grep '^{.*}$' \
-    | jq -r '."@timestamp" as $timestamp | "\($timestamp) \(.level) \(.message)"'</copy>
-    ````
-
-    The output should be similar to the following:
-        
-    ````bash
-      $ kubectl logs -n verrazzano-install \
-    -f $(kubectl get pod \
-    -n verrazzano-install \
-    -l app=verrazzano-platform-operator \
-    -o jsonpath="{.items[0].metadata.name}") | grep '^{.*}$' \
-    | jq -r '."@timestamp" as $timestamp | "\($timestamp) \(.level) \(.message)"'
-          2022-10-15T12:24:11.756Z info Starting Verrazzano Platform Operator
-          2022-10-15T12:24:13.340Z info metrics server is starting to listen
-          2022-10-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
-          2022-10-15T12:24:13.341Z info Registering a validating webhook
-          2022-10-15T12:24:13.341Z info registering webhook
-          2022-10-15T12:24:13.341Z info skip registering a mutating webhook, admission.Defaulter interface is not implemented
-          2022-10-15T12:24:13.341Z info Registering a validating webhook
-          2022-10-15T12:24:13.341Z info registering webhook
-          2022-10-15T12:24:13.341Z info Starting controller-runtime manager
-          2022-10-15T12:24:13.342Z info starting metrics server
-          2022-10-15T12:24:13.342Z info starting webhook server
-          2022-10-15T12:24:13.342Z info Starting EventSource
-          2022-10-15T12:24:13.342Z info Starting EventSource
-          2022-10-15T12:24:13.342Z info Updated current TLS certificate
-          2022-10-15T12:24:13.343Z info Starting certificate watcher
-          2022-10-15T12:24:13.343Z info serving webhook server
-          2022-10-15T12:24:13.742Z info Starting Controller
-          2022-10-15T12:24:13.843Z info Starting workers
-        $
-    ````
-    
-
-3. Leave the *Cloud Shell* open and let the installation run. Please continue with the next lab.
+2. Leave the *Cloud Shell* open and let the installation run. Please continue with the next lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, November 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, January 2023

@@ -346,5 +346,5 @@ See [Helidon on Windows](https://helidon.io/docs/v2/#/about/04_windows) for more
 ## Acknowledgements
 
 * **Author** -  Dmitry Aleksandrov
-* **Contributors** - Maciej Gruszka, Peter Nagy
+* **Contributors** - Maciej Gruszka, Ankit Pandey
 * **Last Updated By/Date** - Ankit Pandey, November 2022

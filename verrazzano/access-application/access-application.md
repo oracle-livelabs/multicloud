@@ -165,42 +165,36 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Rancher Home](images/rancher-home.png)
 
-11. Click *Applications* and then click *bobs-books*.
+11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *bobs-books* application within the *bobs-books* namespace..
       ![Bobs Application](images/bobs-application.png)
 
-12. You can view the pods associated with the application. To view the components, Click *Components*.
-      ![Bobbys Components](images/bobs-components.png)
+12. You can view the pods associated with the application. The pod name contains an auto-generated unique string to identify that particular replica. To view the logs of *bobbys-helidon-stok-application* pods, Click *Three dots* -> *View Logs*.
+      ![Bobbys Logs](images/bobs-logs.png)
+      
 
-13. You can view the components of the application here. To view what are the related resources, click *Related Resources*.
+
+13. You can view the application logs for the application. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start. To view the Component associated with the application, click *Components*.
+      ![Bobbys Log](images/bobs-log.png)
+      ![Bobbys Component](images/bobs-component.png)
+
+14. You can view all the components of the *bobs-books* application here. To view what are the related resources, click *Related Resources*.
       ![Bobs Resource](images/bobs-resource.png)
 
-14. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+15. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
       ![Verrazzano Cluster](images/verrazzano-cluster.png)
 
 
-15. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
+16. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
 
       ![Cluster Explorer](images/cluster-dashboard.png)
 
-16. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check your *bobs-books* application.
+17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed applications.
 
       ![Nodes](images/node.png)
 
-17. You can see several deployments. Click on the *bobbys-helidon-stock-application*.
+18. You can see several deployments.
 
       ![Deployments](images/deployments.png)
-
-18. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replica sets. The pod name contains an auto-generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
-
-      ![Bob deployment](images/bobs-deployment.png)
-
-19. You should see two containers in the pod. The *bobbys-helidon-stock-application* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at the top right corner and select **View Logs**.
-
-      ![Pod](images/view-logs.png)
-
-20. Make sure to access the Bobbys application's page. Find the custom `bobbys-helidon-stock-application` log entry. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start.
-
-      ![Pod](images/log.png)
 
 ## Task 3: Explore the Grafana Console
 
@@ -325,8 +319,33 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
    Leave the *Cloud Shell* open; we will use it for upcoming labs.
 
+## Task 7: Explore the Keycloak Console
+
+1. Go back to the Verrazzano home page and click **Keycloak** console.
+
+      ![Keycloak link](images/keycloak-link.png)
+
+2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
+
+3. On the Welcome to Keycloak page, click *Administration Console*.
+      ![Keycloak home](images/keycloak-home.png)
+
+4. Now we need the username and password for the Keycloak console. *Username* is *keycloakadmin* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Keycloak Console*.
+
+      ```bash
+      <copy>kubectl get secret --namespace keycloak keycloak-http -o jsonpath={.data.password} | base64  --decode; echo</copy>
+      ```
+
+5. Copy the password and go back to the browser, where the *Keycloak Console* is open. Paste the password in the *Password* field and enter *keycloakadmin* as *Username* and then click **Sign In**.
+
+      ![SignIn](images/keycloak-sign-in.png)
+
+6. Here you can view default configuration done by Verrazzano.
+      ![Keycloak Home](images/keycloak-realms.png)
+
+
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, November 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, January 2023
