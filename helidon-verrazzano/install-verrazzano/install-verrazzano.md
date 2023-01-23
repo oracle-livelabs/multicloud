@@ -182,16 +182,6 @@ An ingress controller is something that helps provide access to Docker container
       name: example-verrazzano
     spec:
       profile: dev
-      defaultVolumeSource:
-        persistentVolumeClaim:
-          claimName: verrazzano-storage
-      volumeClaimSpecTemplates:
-        - metadata:
-            name: verrazzano-storage
-          spec:
-            resources:
-              requests:
-                storage: 2Gi
     EOF
     </copy>
     ```

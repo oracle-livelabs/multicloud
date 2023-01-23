@@ -198,7 +198,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 ## Task 3: Explore the Grafana Console
 
-1. Click *Hamburgar menu* -> *Verrazzano*.
+1. Click *Hamburgar menu* -> *Home* to open Rancher home page.
       ![Home](images/ranchar-menu.png)
 
 2. On the home page, you'll see the link for opening the *Grafana console*. Click the link for the **Grafana Console** as shown:
@@ -264,7 +264,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
    ![Legend View](images/legendview.png " ")
 
-6. On Left side, Click on *Applications*.
+6. On Left side, Click on *Applications* to view all the deployed applications.
 
    ![Applications](images/applications.png " ")
 
@@ -283,7 +283,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
+4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-bobs-books` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
 
       ![Index pattern](images/create-index.png)
       ![Opensearch index](images/opensearch-index.png)
@@ -292,7 +292,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Index pattern](images/time-filter.png)
 
-6. When the index is ready you need to click *Home* -> *Discover*. 
+6. When the index is ready you need to click *Hamburger menu* -> *Discover*. 
 
       ![Index pattern](images/discover-2.png)
 

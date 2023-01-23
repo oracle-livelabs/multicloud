@@ -152,7 +152,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 ## Task 2: Explore the Grafana Console
 
-1. Click *Hamburgar menu* -> *Verrazzano*.
+1. Click *Hamburgar menu* -> *Home*.
       ![Home](images/ranchar-menu.png)
 
 2. On the home page, you'll see the link for opening the *Grafana console*. Click the link for the **Grafana Console** as shown:
@@ -202,7 +202,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Index pattern](images/time-filter.png)
 
-6. When the index is ready you need to click *Home* -> *Discover*. 
+6. When the index is ready you need to click *Hamburger menu* -> *Discover*. 
 
       ![Index pattern](images/discover-2.png)
 
@@ -256,7 +256,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
    ![Legend View](images/legend-view.png " ")
 
-7. On Left side, Click on *Applications*.
+7. On Left side, Click on *Applications* to view the deployed applications.
 
    ![Applications](images/applications.png " ")
 
