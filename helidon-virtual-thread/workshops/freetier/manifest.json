@@ -1,0 +1,40 @@
+{
+    "workshoptitle": "Helidon Virtual Threads Hands on Lab",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Setup the environment in OCI",
+            "filename": "../../setup-environment/setup-environment.md"
+        },
+        {
+            "title": "Lab 1A: Setup the environment in your laptop",
+            "filename": "../../laptop-setup/laptop-setup.md"
+        },
+        {
+            "title": "Lab 2: Build and run the application",
+            "filename": "../../build-run/build-run.md"
+        },
+        {
+            "title": "Lab 3: Modify the application to analyse the stack trace",
+            "filename": "../../modify-application/modify-application.md"
+        },
+        {
+            "title": "Lab 4: MicroProfile Running on Virtual Threads",
+            "filename": "../../migrate-application/migrate-application.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+   ]
+}

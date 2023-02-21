@@ -1,0 +1,40 @@
+{
+    "workshoptitle": "My First MicroProfile Application with Helidon MP",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1: Generate Helidon MP project using Project Starter",
+            "filename": "../../generate-project/generate-project.md"
+        },
+        {
+            "title": "Lab 2: Create Helidon MP application GraalVM native image",
+            "filename": "../../create-native-image/create-native-image.md"
+        },
+        {
+            "title": "Lab 3: Modify the application by adding a custom Endpoint",
+            "filename": "../../modify-application/modify-application.md"
+        },
+        {
+            "title": "Lab 4: Build and Push Helidon Application docker image to Oracle Cloud Container Registry",
+            "filename": "../../build-and-push-app-image/build-and-push-app-image.md"
+        },
+        {
+            "title": "Lab 5: Run the  Helidon Application Image on Compute Instance",
+            "filename": "../../create-compute-instance/create-compute-instance.md"
+        },
+        {
+          "title": "Oracle CloudWorld 2022 - Get Help",
+          "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+          "filename":"https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+   ]
+}
