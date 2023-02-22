@@ -10,7 +10,7 @@ Estimated Time: 15 minutes
 
 ### Objectives
 
-* Generate, build and run the Helidon MicroProfile application using Helidon Starter.
+* Generate, build and run a Helidon MicroProfile application using Helidon Starter.
 * Migrate the Helidon 3 Microprofile application to Helidon 4
 
 ### Prerequisites

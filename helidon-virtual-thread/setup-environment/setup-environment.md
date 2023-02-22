@@ -70,7 +70,7 @@ Code Editor's direct integration with Cloud Shell allows you access to the Graal
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -LSs https://github.com/pandey-ankit/helidon-virtual-thread/blob/main/setup-environment/code/helidon-levelup-2023-main.zip?raw=true >~/helidon-levelup-2023-main.zip </copy>
+    <copy>curl -LSs https://github.com/oracle-livelabs/multicloud/blob/main/helidon-virtual-thread/setup-environment/code/helidon-levelup-2023-main.zip?raw=true >~/helidon-levelup-2023-main.zip </copy>
     ```
     
 

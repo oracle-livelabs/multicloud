@@ -14,7 +14,7 @@ In this lab, you will:
 
 * Build, run and test the Helidon Nima application
 * Build, run and test the Helidon Reactive application
-* Analyse the simplicity of the Nima application comparative to Reactive application
+* Analyze the simplicity of the Nima application comparative to Reactive application
 
 ### Prerequisites
 
@@ -70,7 +70,7 @@ To run this lab, you must have:
     ![New Terminal](images/new-terminal.png)
     
 
-7. Copy and paste the following command into the new terminal. Don't forget to replace *port* with your server port.
+7. Copy and paste the following command into the new terminal. Don't forget to replace *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/one</copy>
     ```
@@ -81,7 +81,7 @@ To run this lab, you must have:
     $
     ```
 
-8. Copy and paste the following command into the new terminal. Don't forget to replace to *port* with your server port.
+8. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/sequence</copy>
     ```
@@ -94,7 +94,7 @@ To run this lab, you must have:
     > Notice the order of the results. As suggested by the name, this request invokes a remote resource multiple times in sequence.
 
 
-9. Copy and paste the following command into the new terminal. Don't forget to replace to *port* with your server port.
+9. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/parallel</copy>
     ```
@@ -147,7 +147,7 @@ To run this lab, you must have:
 
 4. Go back to the terminal, which we opened in Task 1 for running the curl command.
     
-5. Copy and paste the following command into the new terminal. Don't forget to replace to *port* with your server port.
+5. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/one</copy>
     ```
@@ -158,7 +158,7 @@ To run this lab, you must have:
     $
     ```
 
-6. Copy and paste the following command into the new terminal. Don't forget to replace to *port* with your server port.
+6. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/sequence</copy>
     ```
@@ -171,7 +171,7 @@ To run this lab, you must have:
     > Notice the order of the results. As suggested by the name, this request invokes a remote resource multiple times in sequence.
 
 
-7. Copy and paste the following command into the new terminal. Don't forget to replace to *port* with your server port.
+7. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/parallel</copy>
     ```
@@ -185,7 +185,23 @@ To run this lab, you must have:
 
 8. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
-## Task 3: Analyse the simplicity of the Nima application
+## Task 3: Analyze the simplicity of the Nima application
+
+**Blocking vs. Reactive**
+
+Let’s compare the implementations between Níma (blocking) and Helidon SE (reactive) for the same task.
+
+* Both implementations execute REST calls using the Helidon WebClient
+* The blocking implementation is straightforward to follow:
+    - The execution flow is reflected by the statement order in the code
+    - There are no calls to intricate or semantically-rich library calls
+    - Debugging is straightforward
+* Reactive versions require a good understanding of reactive libraries
+    - Including Multi, flatMap, error handling, etc.
+    - Control flow is no longer obvious due to use of reactive handlers
+    - An understanding of flatMap's capability to enable/forbid concurrency is required
+    - Debugging is more difficult
+
 
 1. Open the *nima/src/main/java/io/examples/helidon/nima/BlockingService.java* file to see how endpoints are implemented in the nima version of the application.
     ![Nima Block](images/nima-block.png)

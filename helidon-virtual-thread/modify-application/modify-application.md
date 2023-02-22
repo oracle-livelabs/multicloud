@@ -235,7 +235,15 @@ In this lab, you will:
             at io.examples.helidon.reactive.ReactiveService.parallel(ReactiveService.java:76)
             at io.helidon.reactive.webserver.RequestRouting$RoutedRequest.next(RequestRouting.java:329)
             ... 35 more
-    ```
+    ``` 
+    > Let’s compare the stack trace of Níma (blocking) and Helidon SE (reactive) for the same type of exception.
+    * Reactive traces are long and include calls from an event loop managers (e.g. Netty)
+    * The event loop manager can call any of the handlers registered by the application
+        - The execution flow is not necessarily conducive to the code order
+        - Handlers can be called at different times during the execution to handle events
+    * Blocking traces are straightforward to understand due to order preservation
+        - Thanks to virtual threads blocking operations are suspended and later continued
+        - Execution flow is simple and clear to follow
 
 3. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
