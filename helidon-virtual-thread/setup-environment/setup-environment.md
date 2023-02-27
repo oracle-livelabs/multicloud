@@ -79,6 +79,7 @@ Code Editor's direct integration with Cloud Shell allows you access to the Graal
     <copy>unzip helidon-levelup-2023-main.zip</copy>
     ```
 
+You may now *proceed to the lab 2*.
 
 ## Acknowledgements
 

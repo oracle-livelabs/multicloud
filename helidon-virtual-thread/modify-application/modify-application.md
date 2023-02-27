@@ -247,6 +247,7 @@ In this lab, you will:
 
 3. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
+You may now *proceed to the next lab*.
 
 ## Acknowledgements
 

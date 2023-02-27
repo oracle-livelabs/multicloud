@@ -14,7 +14,7 @@ In this lab, you will:
 
 * Build, run and test the Helidon Nima application
 * Build, run and test the Helidon Reactive application
-* Analyze the simplicity of the Nima application comparative to Reactive application
+* Analyse the simplicity of the Nima application comparative to Reactive application
 
 ### Prerequisites
 
@@ -30,6 +30,7 @@ To run this lab, you must have:
 
 2. Select *helidon-levelup-2023-main* folder and click *Open*.
     ![Helidon Project](images/helidon-project.png)
+    > Please ignore the warnings/problems, you notice in Code Editor while opening this folder.
 
  3. Copy and paste the following command to build the nima application.
     ```bash
@@ -185,7 +186,7 @@ To run this lab, you must have:
 
 8. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
-## Task 3: Analyze the simplicity of the Nima application
+## Task 3: Analyse the simplicity of the Nima application
 
 **Blocking vs. Reactive**
 
@@ -209,10 +210,19 @@ Let’s compare the implementations between Níma (blocking) and Helidon SE (rea
 2. Open the *reactive/src/main/java/io/examples/helidon/reactive/ReactiveService.java* file to see how endpoints are implemented in the reactive version of the application.
     ![Reactive Service](images/reactive-service.png)
 
-3. See that reactive code is more complicated than blocking (Virtual Thread)
+3. In *OPEN EDITORS* section, right click on the *BlockingService.java* file and select the *Select for Compare*.
+    ![Select Compare](images/select-compare.png)
 
-    > Check methods sequence and parallel in BlockingService and ReactiveService respectively. See if you understand how they work!
+4. Right click on the *ReactiveService.java* file and select the *Compare with Selected*.
+    ![Compare selected](images/compare-selected.png)
 
+
+5. See that reactive code is more complicated than blocking (Virtual Thread)
+    ![Compare code](images/compare-code.png)
+
+    > Check methods one, sequence and parallel in BlockingService and ReactiveService respectively. See if you understand how they work!
+
+You may now *proceed to the next lab*.
 
 ## Acknowledgements
 

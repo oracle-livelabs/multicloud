@@ -98,7 +98,15 @@ Estimated Time: 15 minutes
 
 ## Task 2: Migrate the Helidom MicroProfile application to Helidon 4
 
-1. For myproject, open the *pom.xml* file and change the parent pom from *3.1.1* to *4.0.0-ALPHA4*.
+1. For myproject, open the *pom.xml* file and change the parent pom from *3.1.1* to *4.0.0-ALPHA5*.
+    ```bash
+    <parent>
+        <groupId>io.helidon.applications</groupId>
+        <artifactId>helidon-mp</artifactId>
+        <version>4.0.0-ALPHA5</version>
+        <relativePath/>
+    </parent>
+    ```
     ![Pom version](images/pom-version.png)
 
 2. Edit src/main/resources/logging.properties and change *io.helidon.common.HelidonConsoleHandler* to *io.helidon.logging.jul.HelidonConsoleHandler*.
