@@ -40,13 +40,13 @@ To run this lab, you must have:
 
     You will have output similar to the following:
     ```bash
-    INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-nima-blocking ---
+    [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-nima-blocking ---
     [INFO] Building jar: /home/ankit_x_pa/helidon-levelup-2023-main/nima/target/example-nima-blocking.jar
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  8.314 s
-    [INFO] Finished at: 2023-02-19T06:27:51Z
+    [INFO] Total time:  7.562 s
+    [INFO] Finished at: 2023-02-27T11:42:52Z
     [INFO] ------------------------------------------------------------------------
     ```
 
@@ -57,15 +57,14 @@ To run this lab, you must have:
     You will have output similar to the following:
     ```bash
     $ java --enable-preview -jar target/example-nima-blocking.jar
-    2023.02.19 06:32:32.590 Logging at initialization configured using classpath: /logging.properties
-    2023.02.19 06:32:32.910 Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    2023.02.19 06:32:33.739 [0x38f7f9cb] http://127.0.0.1:34389 bound for socket '@default'
-    2023.02.19 06:32:33.741 [0x38f7f9cb] direct writes
-    2023.02.19 06:32:33.771 Helidon Níma 4.0.0-ALPHA4
-    2023.02.19 06:32:33.785 Started all channels in 43 milliseconds. 1419 milliseconds since JVM startup. Java 19.0.2+7-44
+    2023.02.27 11:43:18.589 Logging at initialization configured using classpath: /logging.properties
+    2023.02.27 11:43:18.902 Configuration file application.yaml is on classpath, yet there is no parser configured for it
+    2023.02.27 11:43:19.700 [0x314d2373] http://127.0.0.1:33193 bound for socket '@default'
+    2023.02.27 11:43:19.703 [0x314d2373] direct writes
+    2023.02.27 11:43:19.722 Helidon Níma 4.0.0-ALPHA5
     ```
 
-5. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 34389. Similarly, find out your server port number.
+5. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 33193. Similarly, find out your server port number.
 
 6. To open new terminal, click *Terminal* -> *New Terminal*. We will use this terminal to run *curl* commands. 
     ![New Terminal](images/new-terminal.png)
@@ -77,7 +76,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    curl http://localhost:34389/one
+    curl http://localhost:33193/one
     remote_1
     $
     ```
@@ -88,7 +87,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:34389/sequence
+    $ curl http://localhost:33193/sequence
     Combined results: [remote_2, remote_3, remote_4, remote_5, remote_6, remote_7, remote_8, remote_9, remote_10, remote_11]
     $
     ```
@@ -101,7 +100,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:39017/parallel
+    $ curl http://localhost:33193/parallel
     Combined results: [remote_21, remote_18, remote_12, remote_13, remote_14, remote_15, remote_16, remote_17, remote_19, remote_20]
     $
     ``` 
@@ -119,12 +118,13 @@ To run this lab, you must have:
 
     You will have output similar to the following:
     ```bash
+    [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-nima-reactive ---
     [INFO] Building jar: /home/ankit_x_pa/helidon-levelup-2023-main/reactive/target/example-nima-reactive.jar
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  6.622 s
-    [INFO] Finished at: 2023-02-19T10:08:00Z
+    [INFO] Total time:  6.196 s
+    [INFO] Finished at: 2023-02-27T11:51:17Z
     [INFO] ------------------------------------------------------------------------
     $
     ```
@@ -136,15 +136,13 @@ To run this lab, you must have:
     You will have output similar to the following:
     ```bash
     $ java --enable-preview -jar target/example-nima-reactive.jar
-    2023.02.19 10:10:51.722 Logging at initialization configured using classpath: /logging.properties
-    2023.02.19 10:10:52.303 Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    2023.02.19 10:10:52.843 Helidon SE 4.0.0-ALPHA4 features: [Config, Tracing, Web Client, WebServer]
-    2023.02.19 10:10:52.851 Invalid modules are used:
-    2023.02.19 10:10:52.856         Module "io.helidon.reactive.faulttolerance" (Fault Tolerance) is not designed for Helidon SE, it should only be used in Helidon [NIMA]
-    2023.02.19 10:10:53.170 Channel '@default' started: [id: 0xc152649a, L:/0.0.0.0:40331]
+    2023.02.27 11:51:26.227 Logging at initialization configured using classpath: /logging.properties
+    2023.02.27 11:51:26.723 Configuration file application.yaml is on classpath, yet there is no parser configured for it
+    2023.02.27 11:51:27.286 Helidon SE 4.0.0-ALPHA5 features: [Config, Fault Tolerance, Tracing, Web Client, WebServer]
+    2023.02.27 11:51:27.618 Channel '@default' started: [id: 0x53fadd43, L:/0.0.0.0:45765]
     ```
 
-3. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 40331. Similarly, find out your server port number.
+3. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 45765. Similarly, find out your server port number.
 
 4. Go back to the terminal, which we opened in Task 1 for running the curl command.
     
@@ -154,7 +152,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:40331/one
+    $ curl http://localhost:45765/one
     remote_1
     $
     ```
@@ -165,7 +163,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:40331/sequence
+    $ curl http://localhost:45765/sequence
     Combined results: [remote_2, remote_3, remote_4, remote_5, remote_6, remote_7, remote_8, remote_9, remote_10, remote_11]
     $
     ```
@@ -178,7 +176,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:40331/parallel
+    $ curl http://localhost:45765/parallel
     Combined results: [remote_17, remote_16, remote_13, remote_20, remote_12, remote_19, remote_18, remote_14, remote_21, remote_15]
     $
     ``` 

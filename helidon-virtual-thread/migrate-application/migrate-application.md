@@ -59,7 +59,15 @@ Estimated Time: 15 minutes
     ```bash
     <copy>java -jar target/myproject.jar</copy>
     ```
-    ![run project](images/run-project.png)
+    You will see output similar to the following:
+    ```bash
+    $ java -jar target/myproject.jar
+    2023.02.28 03:48:36 INFO io.helidon.common.LogConfig Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    2023.02.28 03:48:39 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
+    2023.02.28 03:48:40 INFO io.helidon.webserver.NettyWebServer Thread[#31,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x5b66bd2a, L:/0.0.0.0:8080]
+    2023.02.28 03:48:41 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 4816 milliseconds (since JVM startup).
+    2023.02.28 03:48:41 INFO io.helidon.common.HelidonFeatures Thread[#32,features-thread,5,main]: Helidon MP 3.1.2 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
+    ```
 
 13. Go back to the terminal,from where you run the curl commands and run the following commands to check the application:
 
@@ -85,7 +93,7 @@ Estimated Time: 15 minutes
     ```
     ![modify application](images/modify-application.png)
 
-16. Rebuild, run and exercise the application as described in steps 11, 12 and 13.
+16. Rebuild, run and exercise the application as described in steps 10, 11 and 12.
 
 17. Look at the server output in the terminal where you started the server. Note that the thread is named helidon-server-n. This is a traditional platform thread in a threadpool created by Helidon to handle JAX-RS requests.
     You will have server output similar to the following:
@@ -123,15 +131,15 @@ Estimated Time: 15 minutes
     ```
     You will have output similar to the following.
     ```bash
-     java --enable-preview  -jar target/myproject.jar
-    2023.02.20 16:49:58 INFO io.helidon.logging.jul.JulProvider Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
-    2023.02.20 16:50:02 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
-    2023.02.20 16:50:03 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x0f26a2e0] http://0.0.0.0:8080 bound for socket '@default'
-    2023.02.20 16:50:03 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x0f26a2e0] direct writes
-    2023.02.20 16:50:03 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Helidon Níma 4.0.0-ALPHA4
-    2023.02.20 16:50:03 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Started all channels in 52 milliseconds. 4998 milliseconds since JVM startup. Java 19.0.2+7-44
-    2023.02.20 16:50:03 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 5023 milliseconds (since JVM startup).
-    2023.02.20 16:50:04 INFO io.helidon.common.features.HelidonFeatures Thread[#28,features-thread,5,main]: Helidon MP 4.0.0-ALPHA4 features: [CDI, Config, Health, Metrics, Open API, Server, WebServer]
+    $ java --enable-preview  -jar target/myproject.jar
+    2023.02.28 03:56:17 INFO io.helidon.logging.jul.JulProvider Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    2023.02.28 03:56:21 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
+    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x613cc6f8] http://0.0.0.0:8080 bound for socket '@default'
+    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x613cc6f8] direct writes
+    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Helidon Níma 4.0.0-ALPHA5
+    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Started all channels in 19 milliseconds. 5131 milliseconds since JVM startup. Java 19.0.2+7-44
+    2023.02.28 03:56:22 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 5144 milliseconds (since JVM startup).
+    2023.02.28 03:56:22 INFO io.helidon.common.features.HelidonFeatures Thread[#28,features-thread,5,main]: Helidon MP 4.0.0-ALPHA5 features: [CDI, Config, Health, Metrics, Open API, Server, WebServer]
     ```
 5.  Look at the server output and note that the thread is now a VirtualThread.
 
