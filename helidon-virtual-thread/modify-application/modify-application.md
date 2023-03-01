@@ -166,6 +166,7 @@ In this lab, you will:
     ```bash
     ## one Thread[#25,nioEventLoopGroup-3-1,10,main]
     ```
+    
     > This is a Netty event loop thread, you may block a VirtualThread. This means the Nima request handlers can use simple blocking code, but the reactive handlers must not.
 
 ## Task 4: Analyse stack trace for Reactive application
