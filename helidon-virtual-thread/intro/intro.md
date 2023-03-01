@@ -17,7 +17,7 @@ Estimated Time: 90 minutes
 * Explore OCI Code Editor
 * Build and run the Nima application
 * Build and run the Reactive application
-* Analyze the simplicity of the Nima application
+* Analyse the simplicity of the Nima application
 * Compare stack trace for Nima and Reactive application
 * Generate a Helidon MP application
 * Migrate the Helidon 3 application to Helidon 4

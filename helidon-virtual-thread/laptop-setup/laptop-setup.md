@@ -63,7 +63,7 @@ Estimated Time: 15 minutes
 
 2. Copy and paste the following command to unzip the *helidon-levelup-2023-main.zip*.
     ```bash
-    <copy>unzip helidon-levelup-2023-main.zip</copy>
+    <copy>unzip ~/helidon-levelup-2023-main.zip</copy>
     ```
 
 You may now *proceed to the next lab*.

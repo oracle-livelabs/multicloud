@@ -71,12 +71,12 @@ In this lab, you will:
 
 1. Copy and paste the following command to force an exception(count must be an integer!)
     ```bash
-    <copy>curl http://localhost:<port>/parallel?count=foo</copy>
+    <copy>curl "http://localhost:<port>/parallel?count=foo"</copy>
     ```
 
     You will output similar to the following:
     ```bash
-    $ curl http://localhost:35037/parallel?count=foo
+    $ curl "http://localhost:35037/parallel?count=foo"
     For input string: &quot;foo&quot;$
     ```
 
@@ -166,13 +166,13 @@ In this lab, you will:
     ```bash
     ## one Thread[#25,nioEventLoopGroup-3-1,10,main]
     ```
-    > You may block a VirtualThread, but you must not block a Netty event loop thread. This means the Nima request handlers can use simple blocking code, but the reactive handlers must not.
+    > This is a Netty event loop thread, you may block a VirtualThread. This means the Nima request handlers can use simple blocking code, but the reactive handlers must not.
 
 ## Task 4: Analyse stack trace for Reactive application
 
 1. Copy and paste the following command to force an exception(count must be an integer!)
     ```bash
-    <copy>curl http://localhost:<port>/parallel?count=foo</copy>
+    <copy>curl "http://localhost:<port>/parallel?count=foo"</copy>
     ```
 
     You will output similar to the following:
