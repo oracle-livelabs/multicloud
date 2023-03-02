@@ -32,7 +32,33 @@ To run this lab, you must have:
     ![Helidon Project](images/helidon-project.png)
     > Please ignore the warnings/problems, you notice in Code Editor while opening this folder.
 
- 3. Copy and paste the following command to build the nima application.
+
+3. Copy and paste the following command to set the PATH and JAVA_HOME variable.
+    ```bash
+    <copy>PATH=~/jdk-19.0.2/bin:~/apache-maven-3.8.3/bin:$PATH
+    JAVA_HOME=~/jdk-19.0.2</copy>
+    ```
+
+4. Copy the following command and run in the terminal to verify that required JDK and Maven version are configured properly.
+
+    ```bash
+    <copy>mvn -v</copy>
+    ```
+
+    you will have the output similar to the following:
+    ```bash
+    $ mvn -v 
+    Apache Maven 3.8.3 (ff8e977a158738155dc465c6a97ffaf31982d739)
+    Maven home: /home/ankit_x_pa/apache-maven-3.8.3
+    Java version: 19.0.2, vendor: Oracle Corporation, runtime: /home/ankit_x_pa/jdk-19.0.2
+    Default locale: en_US, platform encoding: UTF-8
+    OS name: "linux", version: "4.14.35-2047.520.3.1.el7uek.x86_64", arch: "amd64", family: "unix"
+    $ 
+    ```
+
+    > *You will use only this terminal for building and running the application as it has the required JDK and Maven version.*
+
+5. Copy and paste the following command to build the nima application.
     ```bash
     <copy>cd ~/helidon-levelup-2023-main/nima/
     mvn clean package -DskipTests</copy>
@@ -50,7 +76,7 @@ To run this lab, you must have:
     [INFO] ------------------------------------------------------------------------
     ```
 
-4. Copy and paste the following command in the terminal to run the blocking nima version of the application:
+6. Copy and paste the following command in the terminal to run the blocking nima version of the application:
     ```bash
     <copy>java --enable-preview -jar target/example-nima-blocking.jar</copy>
     ```
@@ -64,13 +90,13 @@ To run this lab, you must have:
     2023.02.27 11:43:19.722 Helidon Níma 4.0.0-ALPHA5
     ```
 
-5. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 33193. Similarly, find out your server port number.
+7. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 33193. Similarly, find out your server port number.
 
-6. To open new terminal, click *Terminal* -> *New Terminal*. We will use this terminal to run *curl* commands. 
+8. To open new terminal, click *Terminal* -> *New Terminal*. We will use this terminal to run *curl* commands. 
     ![New Terminal](images/new-terminal.png)
     
 
-7. Copy and paste the following command into the new terminal. Don't forget to replace *`<port>`* with your server port.
+9. Copy and paste the following command into the new terminal. Don't forget to replace *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/one</copy>
     ```
@@ -81,7 +107,7 @@ To run this lab, you must have:
     $
     ```
 
-8. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
+10. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/sequence</copy>
     ```
@@ -94,7 +120,7 @@ To run this lab, you must have:
     > Notice the order of the results. As suggested by the name, this request invokes a remote resource multiple times in sequence.
 
 
-9. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
+11. Copy and paste the following command into the new terminal. Don't forget to replace to *`<port>`* with your server port.
     ```bash
     <copy>curl http://localhost:<port>/parallel</copy>
     ```
@@ -106,7 +132,7 @@ To run this lab, you must have:
     ``` 
     > Notice the order of the results. As suggested by the name, this request invokes a remote resource multiple times in parallel.
 
-10. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
+12. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
 ## Task 2: Build and Run the Reactive application
 
