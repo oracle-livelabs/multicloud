@@ -4,7 +4,9 @@
 
 This lab walks you through the steps to setup the required environment for the Workshop.
 
-Estimated Time: 15 minutes
+[Lab1 walkthrough](videohub:1_far2bboa)
+
+Estimated Time: 10 minutes
 
 ### About Code Editor
 

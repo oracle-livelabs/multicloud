@@ -4,6 +4,8 @@
 
 This lab walks you through the process of building and running the Nima and Reactive Helidon applications in Oracle Code Editor inside Oracle Cloud Infrastructure.
 
+[Lab2 walkthrough](videohub:1_e88ydqwt)
+
 Estimated Time: 15 minutes
 
 

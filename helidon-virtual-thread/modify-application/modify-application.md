@@ -4,6 +4,8 @@
 
 In this lab, you will modify the helidon nima and reactive application. Then you will rebuild the application and analyse the stack trace in case of exceptions.
 
+[Lab3 walkthrough](videohub:1_gq37iysp)
+
 Estimated Time: 10 minutes
 
 
