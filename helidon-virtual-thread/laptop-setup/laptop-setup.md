@@ -4,7 +4,7 @@
 
 In this lab, you will learn how to setup the environment on your local linux machine.
 
-Estimated Time: 15 minutes
+Estimated Time: 10 minutes
 
 
 ### Objectives

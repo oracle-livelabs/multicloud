@@ -4,7 +4,9 @@
 
 In this lab, you will start with a Helidon 3 application running on our original reactive Web Server based on Netty. You will then migrate the application to Helidon 4 running on the new Helidon Nima WebServer using virtual threads.
 
-Estimated Time: 15 minutes
+[Lab4 walkthrough](videohub:1_zr1m00ba)
+
+Estimated Time: 20 minutes
 
 
 
