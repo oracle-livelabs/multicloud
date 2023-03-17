@@ -4,11 +4,14 @@
 
 This lab walks you through the steps to install Verrazzano on a Kubernetes cluster in the Oracle Cloud Infrastructure.
 
-Estimated Time: 20 minutes
+Estimated Time: 15 minutes
 
 ### About Product/Technology
 
 Verrazzano is an end-to-end enterprise container platform for deploying cloud-native and traditional applications in multi-cloud and hybrid environments. It is made up of a curated set of open source components – many that you may already use and trust, and some that were written specifically to pull together all of the pieces that make Verrazzano a cohesive and easy-to-use platform.
+
+The following image describes the Verrazzano components that are installed with each profile.
+![Verrazzano Profile](images/Verrazzano_Components.png " ")
 
 Verrazzano includes the following capabilities:
 
@@ -19,6 +22,27 @@ Verrazzano includes the following capabilities:
 * Integrated security
 * DevOps and GitOps enablement
 
+Verrazzano supports the following installation profiles: development (`dev`), production (`prod`), and managed cluster (`managed-cluster`).
+
+The following image describes the Verrazzano installation profiles.
+![Install Profile](images/installprofile.png)
+
+To change profiles in any of the following commands, set the *VZ_PROFILE* environment variable to the name of the profile you want to install.
+
+For a complete description of Verrazzano configuration options, see the [Verrazzano Custom Resource Definition](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
+
+In this lab, we are going to install the *development profile of Verrazzano*, which has the following characteristics:
+* Wildcard (nip.io) DNS
+* Self-signed certificates
+* Shared observability stack used by the system components and all applications
+* Ephemeral storage for the observability stack (if the pods are restarted, you lose all of your logs and metrics)
+* It has a lightweight installation.
+* It is for evaluation purposes.
+* Single-node Opensearch cluster topology.
+
+According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
+
+An ingress controller is something that helps provide access to Docker containers to the outside world (by providing an IP address). The ingress routes the IP address to different clusters.
 ### Objectives
 
 In this lab, you will:
@@ -58,7 +82,7 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
     oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.phx.aaaaaaaaaezwen..................zjwgm2tqnjvgc2dey3emnsd --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
     ```
 
-    ![kubectl config](images/create-config.png)
+    ![kubectl config](images/kube-config.png)
 
 5. Verify that the `kubectl` is working by using the `get node` command. <br>
 You may need to run this command several times until you see the output similar to the following.
@@ -70,20 +94,20 @@ You may need to run this command several times until you see the output similar 
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE    VERSION
-    10.0.10.112   Ready    node    4m32s   v1.24.1
-    10.0.10.200   Ready    node    4m32s   v1.24.1
-    10.0.10.36    Ready    node    4m28s   v1.24.1
+    10.0.10.235   Ready    node    4m32s   v1.24.1
+    10.0.10.82    Ready    node    4m32s   v1.24.1
+    10.0.10.90    Ready    node    4m28s   v1.24.1
     ```
 
     > If you see the node's information, then the configuration was successful.
 
-## Task 2: Install the vz CLI
+## Task 2: Install the Verrazzano CLI
 
 
-1. Download the latest vz CLI.
+1. Download the latest Verrazzano CLI.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-1.4.2-linux-amd64.tar.gz</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-1.5.1-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
@@ -96,7 +120,7 @@ You may need to run this command several times until you see the output similar 
 2. Download the checksum file.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-1.4.2-linux-amd64.tar.gz.sha256</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-1.5.1-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
@@ -111,19 +135,19 @@ You may need to run this command several times until you see the output similar 
 3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>sha256sum -c verrazzano-1.4.2-linux-amd64.tar.gz.sha256</copy>
+    <copy>sha256sum -c verrazzano-1.5.1-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    verrazzano-1.4.2-linux-amd64.tar.gz: OK
+    verrazzano-1.5.1-linux-amd64.tar.gz: OK
     ```
 
 4. Unpack and move to the vz binary,
 
     ```bash
-    <copy>tar xvf verrazzano-1.4.2-linux-amd64.tar.gz
-    cd ~/verrazzano-1.4.2/bin/</copy>
+    <copy>tar xvf verrazzano-1.5.1-linux-amd64.tar.gz
+    cd ~/verrazzano-1.5.1/bin/</copy>
     ```
 
 5. Test to ensure that the version you installed is up-to-date.
@@ -134,8 +158,8 @@ You may need to run this command several times until you see the output similar 
 
     The output should be similar to the following:
     ```bash
-    Version: v1.4.2
-    BuildDate: 2022-11-10T22:25:50Z
+    Version: v1.5.1
+    BuildDate: 2023-03-03T22:25:50Z
     GitCommit: 0576f21c8787ea948cb6cfbf1cdea52ef276749a
     ```
 
@@ -146,31 +170,6 @@ You may need to run this command several times until you see the output similar 
 An installation profile is a well-known configuration of Verrazzano settings that can be referenced by name, which can then be customized as needed.
 
 Verrazzano supports the following installation profiles: development (`dev`), production (`prod`), and managed cluster (`managed-cluster`).
-
-The following image describes the Verrazzano installation profiles.
-![Install Profile](images/installprofile.png)
-
-To change profiles in any of the following commands, set the *VZ_PROFILE* environment variable to the name of the profile you want to install.
-
-For a complete description of Verrazzano configuration options, see the [Verrazzano Custom Resource Definition](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
-
-In this lab, we are going to install the *development profile of Verrazzano*, which has the following characteristics:
-
-* Wildcard (nip.io) DNS
-* Self-signed certificates
-* Shared observability stack used by the system components and all applications
-* Ephemeral storage for the observability stack (if the pods are restarted, you lose all of your logs and metrics)
-* It has a lightweight installation.
-* It is for evaluation purposes.
-* Single-node Opensearch cluster topology.
-
-The following image describes the Verrazzano components that are installed with each profile.
-
-![Verrazzano Profile](images/verrazzanoprofile.png " ")
-
-According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
-
-An ingress controller is something that helps provide access to Docker containers to the outside world (by providing an IP address). The ingress routes the IP address to different clusters.
 
 1. Install using the nip.io DNS Method. Copy the following command and paste it in the *Cloud Shell* to install Verrazzano.
 
@@ -188,8 +187,8 @@ An ingress controller is something that helps provide access to Docker container
 
     The output should be similar to the following:
     ```bash
-    Installing Verrazzano version v1.4.2
-    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.4.2/verrazzano-platform-operator.yaml
+    Installing Verrazzano version v1.5.1
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
@@ -200,17 +199,17 @@ An ingress controller is something that helps provide access to Docker container
     deployment.apps/verrazzano-platform-operator created
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
     Waiting for verrazzano-platform-operator to be ready before starting install - 17 seconds
-    2023-01-03T11:41:33.360Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
-    2023-01-03T11:41:33.449Z info Validate update
-    2023-01-03T11:41:34.033Z info Starting EventSource
+    2023-03-03T11:41:33.360Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
+    2023-03-03T11:41:33.449Z info Validate update
+    2023-03-03T11:41:34.033Z info Starting EventSource
     ```
 
     > It takes around 15 to 20 minutes to complete the installation. This command installs the Verrazzano platform operator and applies the Verrazzano custom resource. Installation logs will be streamed to the command window until the installation has completed or until the default timeout (30m) has been reached.
 
-2. Leave the *Cloud Shell* open and let the installation run. Please continue with the next lab.
+2. Leave the *Cloud Shell* open and let the installation run.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey, March 2023
