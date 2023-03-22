@@ -46,12 +46,12 @@ You should have a text editor, where you can paste the commands and URLs and mod
         ```bash
         $ ls -la ~/examples/bobs-books/
         total 16
-        drwxr-xr-x. 5 user oci  100 May  5 12:49 .
-        drwxr-xr-x. 7 user oci 4096 May  5 12:49 ..
-        drwxr-xr-x. 5 user oci 4096 May  5 12:49 bobbys-books
-        drwxr-xr-x. 5 user oci 4096 May  5 12:49 bobs-bookstore-order-manager
-        -rw-r--r--. 1 user oci  942 May  5 12:49 README.md
-        drwxr-xr-x. 4 user oci   72 May  5 12:49 roberts-books
+        drwxr-xr-x. 5 ankit_x_pa oci  100 Mar 21 12:14 .
+        drwxr-xr-x. 7 ankit_x_pa oci 4096 Mar 21 12:14 ..
+        drwxr-xr-x. 5 ankit_x_pa oci 4096 Mar 21 12:14 bobbys-books
+        drwxr-xr-x. 5 ankit_x_pa oci 4096 Mar 21 12:14 bobs-bookstore-order-manager
+        -rw-r--r--. 1 ankit_x_pa oci  942 Mar 21 12:14 README.md
+        drwxr-xr-x. 4 ankit_x_pa oci   72 Mar 21 12:14 roberts-books
         $
         ```
 
@@ -88,24 +88,21 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
     The resulting output is similar to the following (abbreviated to show only the start and end of output):
         ```bash
-        $ cd ~/examples/bobs-books/bobbys-books/bobbys-coherence/
         $ mvn clean install
         [INFO] Scanning for projects...
-        [INFO]
-        [INFO] ------------------------------------------------------------------------
+        [INFO] 
+        [INFO] ------------< io.verrazzano.example.books:bobbys-coherence >------------
         [INFO] Building bobbys-coherence 1.0-SNAPSHOT
-        [INFO] ------------------------------------------------------------------------
-
-        [INFO]
-        [INFO] --- maven-install-plugin:2.4:install (default-install) @ bobbys-coherence ---
-        [INFO] Installing /home/user/examples/bobs-books/bobbys-books/bobbys-coherence/target/bobbys-coherence.jar to /home/user/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.jar
-        [INFO] Installing /home/user/examples/bobs-books/bobbys-books/bobbys-coherence/pom.xml to /home/user/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.pom
+        [INFO] --------------------------------[ jar ]---------------------------------
+        [INFO] 
+        [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ bobbys-coherence ---
+        [[INFO] Installing /home/ankit_x_pa/examples/bobs-books/bobbys-books/bobbys-coherence/target/bobbys-coherence.jar to /home/ankit_x_pa/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.jar
+        [INFO] Installing /home/ankit_x_pa/examples/bobs-books/bobbys-books/bobbys-coherence/pom.xml to /home/ankit_x_pa/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.pom
         [INFO] ------------------------------------------------------------------------
         [INFO] BUILD SUCCESS
         [INFO] ------------------------------------------------------------------------
-        [INFO] Total time: 5.288 s
-        [INFO] Finished at: 2022-01-05T12:51:10Z
-        [INFO] Final Memory: 25M/199M
+        [INFO] Total time:  8.887 s
+        [INFO] Finished at: 2023-03-22T04:09:11Z
         [INFO] ------------------------------------------------------------------------
         $
         ```
@@ -127,16 +124,13 @@ You should have a text editor, where you can paste the commands and URLs and mod
         [INFO] Detecting the operating system and CPU architecture
         [INFO] ------------------------------------------------------------------------
 
-        [INFO]
-        [INFO] --- maven-install-plugin:2.4:install (default-install) @ bobbys-coherence ---
-        [INFO] Installing /home/user/examples/bobs-books/bobbys-books/bobbys-coherence/target/bobbys-coherence.jar to /home/user/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.jar
-        [INFO] Installing /home/user/examples/bobs-books/bobbys-books/bobbys-coherence/pom.xml to /home/user/.m2/repository/io/verrazzano/example/books/bobbys-coherence/1.0-SNAPSHOT/bobbys-coherence-1.0-SNAPSHOT.pom
+        [INFO] --- maven-jar-plugin:2.5:jar (default-jar) @ bobbys-helidon-stock-application ---
+        [INFO] Building jar: /home/ankit_x_pa/examples/bobs-books/bobbys-books/bobbys-helidon-stock-application/target/bobbys-helidon-stock-application.jar
         [INFO] ------------------------------------------------------------------------
         [INFO] BUILD SUCCESS
         [INFO] ------------------------------------------------------------------------
-        [INFO] Total time: 5.288 s
-        [INFO] Finished at: 2022-01-05T12:51:10Z
-        [INFO] Final Memory: 25M/199M
+        [INFO] Total time:  10.106 s
+        [INFO] Finished at: 2023-03-22T04:11:38Z
         [INFO] ------------------------------------------------------------------------
         $
         ```
@@ -150,14 +144,16 @@ You should have a text editor, where you can paste the commands and URLs and mod
     The output should be similar to the following:
         ```bash
         $ wget https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
-        --2022-01-05 12:54:41--  https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
-        Resolving download.java.net (download.java.net)... 23.55.248.91
-        Connecting to download.java.net (download.java.net)|23.55.248.91|:443... connected.
+        --2023-03-22 04:20:16--  https://download.java.net/java/GA/jdk14.0.2/205943a0976c4ed48cb16f1043c5c647/12/GPL/openjdk-14.0.2_linux-x64_bin.tar.gz
+        Resolving download.java.net (download.java.net)... 2.23.220.73
+        Connecting to download.java.net (download.java.net)|2.23.220.73|:443... connected.
         HTTP request sent, awaiting response... 200 OK
         Length: 198606200 (189M) [application/x-gzip]
         Saving to: ‘openjdk-14.0.2_linux-x64_bin.tar.gz’
-        100%[==================================================================================================================================================================================================================================>] 198,606,200  135MB/s   in 1.4s
-        2022-01-05 12:54:42 (135 MB/s) - ‘openjdk-14.0.2_linux-x64_bin.tar.gz’ saved [198606200/198606200]
+
+        100%[==============================================================================================================================>] 198,606,200  194MB/s   in 1.0s   
+
+        2023-03-22 04:20:17 (194 MB/s) - ‘openjdk-14.0.2_linux-x64_bin.tar.gz’ saved [198606200/198606200]
         $
         ```
 
@@ -167,16 +163,16 @@ You should have a text editor, where you can paste the commands and URLs and mod
     * End point for the Region
 
     You can find out your *Region Name* in top right corner in the Oracle Cloud Console, as shown in following image.
-    ![Container Registry](images/containerresgitry.png " ")
+    ![Container Registry](images/region-name.png" ")
 
 5. For finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. In the compartment, you will find the Namespace. Copy and save it in somewhere in your text editor. Keep it in the text editor, because we will also use it in Lab 6.
 
-    ![Open Registry](images/openregistry.png " ")
-    ![Copy Tenancynamespace](images/copytenancynamespace.png " ")
+    ![Open Registry](images/container-registry.png " ")
+    ![Copy Tenancynamespace](images/copy-tenancynamespace.png " ")
 
 6. To find out the endpoint for your Region, select this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In my case, it is *US EAST (Ashburn)* as the region name, thus its endpoint is *iad.ocir.io*. Find out your endpoint for your own *Region Name* and save it in the text editor. We will also need it for the next lab.
 
-    ![End Points](images/endpoints.png " ")
+    ![End Points](images/end-points.png " ")
 
 7. Now you have both the Tenancy Namespace and Endpoint for your region. Copy the following command and paste it in your text editor. Then replace the **`END_POINT_OF_YOUR_REGION`** with the endpoint of your region name, **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`your_first_name`** with your first name in lower case.
 
@@ -184,11 +180,11 @@ You should have a text editor, where you can paste the commands and URLs and mod
     <copy>docker build --force-rm=true -f Dockerfile -t END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/helidon-stock-application-your_first_name:1.0 .</copy>
     ```
 
-    ![Docker Build](images/dockerbuild.png " ")
+    ![Docker Build](images/docker-build.png " ")
 
-    ![Image Created](images/imagecreated.png " ")
+    ![Image Created](images/image-created.png " ")
  
-    > For example, in my case the command is `docker build --force-rm=true -f Dockerfile -t iad.ocir.io/tenancynamespace/helidon-stock-application-ankit`.
+    > For example, in my case the command is `docker build --force-rm=true -f Dockerfile -t lhr.ocir.io/tenancynamespace/helidon-stock-application-ankit`.
 
     This creates the Docker image, which we will push into the Oracle Cloud Container Registry repository in Lab 6. You need to copy the replaced full image name **`END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/helidon-stock-application-your_first_name:1.0`**  in your text editor.In Lab 6, when you will need to create the repository, you need to give it name **`helidon-stock-application-your_first_name`**.
 
@@ -198,4 +194,4 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey,  March 2023

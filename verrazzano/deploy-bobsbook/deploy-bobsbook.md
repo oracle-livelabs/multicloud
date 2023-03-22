@@ -215,8 +215,8 @@ For the deployment of the *Bobby's Books* sample application, we will use the ex
     ![Search WebLogic](images/searchweblogic.png " ")
 
 8. Click *weblogic* as shown and accept the license as you did for Verrazzano imagaes.
-
-    ![click weblogic](images/acceptagreement.png " ")
+    ![click weblogic](images/clickweblogic.png)
+    ![accept weblogic](images/acceptagreement.png " ")
     
 ## Task 2: Deploy the Bobby's Books application
 
@@ -226,8 +226,8 @@ We need to download the source code, where we have configuration files, `bobs-bo
 
     ```bash
     <copy>
-    curl -LSs  https://raw.githubusercontent.com/verrazzano/verrazzano/v1.4.1/examples/bobs-books/bobs-books-app.yaml >~/bobs-books-app.yaml
-    curl -LSs https://raw.githubusercontent.com/verrazzano/verrazzano/v1.4.1/examples/bobs-books/bobs-books-comp.yaml >~/bobs-books-comp.yaml
+    curl -LSs  https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.2/examples/bobs-books/bobs-books-app.yaml >~/bobs-books-app.yaml
+    curl -LSs https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.2/examples/bobs-books/bobs-books-comp.yaml >~/bobs-books-comp.yaml
     cd ~
     </copy>
     ```
@@ -429,4 +429,4 @@ Verify that the application configuration, domains, Coherence resources, and ing
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey,  March 2023

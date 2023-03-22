@@ -45,9 +45,9 @@ In this lab, you will:
         "consoleUrl": "https://verrazzano.default.xx.xx.xx.xx.nip.io",
         "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
         "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
-        "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
-        "openSearchDashboardsUrl": "https://kibana.vmi.system.default.xx.xx.xx.xx.nip.io",
-        "openSearchUrl": "https://elasticsearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+        "kialiUrl": "https://kiali.vmi.system.default.1xx.xx.xx.xx.nip.io",
+        "openSearchDashboardsUrl": "https://osd.vmi.system.default.1xx.xx.xx.xx.nip.io",
+        "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
         "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
         "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
         }
@@ -59,51 +59,49 @@ In this lab, you will:
     <copy>kubectl get secret --namespace verrazzano-system verrazzano -o jsonpath={.data.password} | base64 --decode; echo</copy>
     ```
 
-    ![Verrazzano Password](images/verrazzanopassword.png " ")
-
 3. Enter *verrazzano* as the user name and use the output of the previous command from the text editor, as the password then click *Sign In*.
 
-    ![Sign In](images/signin.png " ")
+    ![Sign In](images/sign-in.png " ")
 
 4. Select the application name, 'bobs-books', under OAM Applications as shown below:
 
-    ![OAM application](images/oamapplication.png " ")
+    ![OAM application](images/oam-application.png " ")
 
 5. Select the drop-down menu to sort by Name and then select the component Name, *bobby-helidon*.
 
-    ![Bobby Helidon](images/bobbyhelidon.png " ")
+    ![Bobby Helidon](images/bobby-helidon.png " ")
 
 6. In the previous lab, we modified the *bobs-books-comp.yaml* file which provides the specification for every component. Now, in the Verrazzano console, we will verify the changes that we made in Lab 7. Select *bobby-helidon* in *Workload Spec*.
 
-    ![Workload spec](images/workloadspec.png " ")
+    ![Workload spec](images/workload-spec.png " ")
 
     You will see that this component is using the new Docker image from the Oracle Cloud Container Registery repository.
 
-    ![Verify Changes](images/verifychanges.png " ")
+    ![Verify Changes](images/verify-changes.png " ")
 
 ## Task 3: Verify the Changes in the Grafana Console
 
 1. Select *Home* to go back to the Verrazzano Home Page.
 
-    ![Verrazzano Home](images/verrazzaohome.png " ")
+    ![Verrazzano Home](images/verrazzao-home.png " ")
 
 2. Select the link for Grafana to open the *Grafana Console*.
 
-    ![Grafana link](images/grafanahome.png " ")
+    ![Grafana link](images/grafana-link.png " ")
 
 3. Select *Home*, type *Helidon*, and then select *Helidon Monitoring Dashboard*.
 
-    ![Search Helidon](images/helidon.png " ")
+    ![Search Helidon](images/search-helidon.png " ")
 
 
 4. In the ServiceID, select *bobs-books_default_bobs-books_bobby-helidon* and in the instance, select the newly created instance. In this case, you will get information for the modified *bobby-helidon-stock-application*.
 
-    ![New Component](images/newcomponent.png " ")
+    ![New Component](images/new-component.png " ")
 
     Congratulations! You have successfully completed the labs.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, November 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, March 2023

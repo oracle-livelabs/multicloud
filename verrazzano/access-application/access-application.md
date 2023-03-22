@@ -101,7 +101,7 @@ In this lab, you will:
    ![Submit Order](images/submitorder.png " ")
 11. Go back to the *Order Manager* page and select the *Refresh* button to check if your order is successfully recorded in the order manager.
 
-   ![Verify Order](images/verifyorder.png " ")
+   ![Verify Order](images/verify-order.png " ")
 
 ## Task 2: Explore the Rancher Console
 
@@ -121,8 +121,8 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
       "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
       "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchDashboardsUrl": "https://kibana.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchUrl": "https://elasticsearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchDashboardsUrl": "https://osd.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
       "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
       "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
       }
@@ -175,7 +175,6 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 13. You can view the application logs for the application. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start. To view the Component associated with the application, click *Components*.
       ![Bobbys Log](images/bobs-log.png)
-      ![Bobbys Component](images/bobs-component.png)
 
 14. You can view all the components of the *bobs-books* application here. To view what are the related resources, click *Related Resources*.
       ![Bobs Resource](images/bobs-resource.png)
@@ -215,33 +214,33 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 5. The Grafana Home Page opens. Select *Home*  at the top left.
 
-    ![Grafana Homepage](images/grafanahomepage.png " ")
+    ![Grafana Homepage](images/grafana-homepage.png " ")
 
 6. Type *WebLogic* and you will see *WebLogic Server Dashboard* under *General*. Select *WebLogic Server Dashboard*.
 
-    ![Search WebLogic](images/searchweblogic.png " ")
+    ![Search WebLogic](images/search-weblogic.png" ")
 
     Here you can observe the two domains under *Domain* and Running Servers, Deployed Applications, Server Name and their Status, Heap Usage, Running Time, JVM Heap. If your application has resources like JDBC and JMS, you can also get details about it here.
 
-    ![WebLogic Dashboard](images/weblogicdashboard.png " ")
+    ![WebLogic Dashboard](images/weblogic-dashboard.png " ")
 
 7. Now, select WebLogic Server Dashboard and type *Helidon* and you will see *Helidon Monitoring Dashboard*. Select *Helidon Monitoring Dashboard*.
 
-    ![Helidon](images/helidon.png " ")
+    ![Helidon](images/search-helidon.png " ")
 
     Here you can see various details like the *Status* of your application and its *Uptime*, Garbage Collector, and Mark Sweep Total and its Time, Thread Count.
 
-    ![Helidon Dashboard](images/helidondashboard.png " ")
+    ![Helidon Dashboard](images/helidon-dashboard.png " ")
 
 8. Now, select Helidon Monitoring Dashboard and type *Coherence* and you will see *Coherence Dashboard Main*. Select *Coherence Dashboard Main*.
 
-    ![Coherence](images/coherence.png " ")
+    ![Coherence](images/search-coherence.png " ")
 
 9. Here you can see the details of the *Coherence Cluster*. For the Bobby's Books application, we have two Coherence clusters, one for Bobby's Books and another for Robert's Books. You need to select the drop-down menu for *Cluster Name* to view both the clusters.
 
-    ![Bobby Cluster](images/bobbycluster.png " ")
+    ![Bobby Cluster](images/bobby-cluster.png " ")
 
-    ![Robert Cluster](images/robertcluster.png " ")
+    ![Robert Cluster](images/robert-cluster.png " ")
 
 ## Task 4: Explore the Kiali Console
 
@@ -251,22 +250,22 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. On Left side, Click on Graph.
 
-   ![Kiali Dashboard](images/kialidashboard.png " ")
+   ![Kiali Dashboard](images/kiali-dashboard.png " ")
 
 3. In the Namespace dropdown, check the box for *bobs-books* and make the curser move outside the dropdown. 
-   ![Bobs Namespace](images/bobsnamespace.png " ")
+   ![Bobs Namespace](images/bobs-namespace.png " ")
 
 4. You can view the graphical view of *bobs-books* application. Click *Legend* to view the Legend view.
 
-   ![Graphical View](images/graphicalview.png " ")
+   ![Graphical View](images/graphical-view.png " ")
 
 5. Here you can view, what each shapes represents, like circle represents the *Workloads*.
 
-   ![Legend View](images/legendview.png " ")
+   ![Legend View](images/legend-view.png " ")
 
 6. On Left side, Click on *Applications* to view all the deployed applications.
 
-   ![Applications](images/applications.png " ")
+   ![Applications](images/kiali-applications.png " ")
 
 
 ## Task 5: Explore the OpenSearch Dashboards
@@ -275,29 +274,14 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana link](images/opensearch-link.png)
 
-2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary. The first time *OpenSearch Dashboards* shows the welcome page. It offers built-in sample data to try OpenSearch but you can select the **Explore on my own** option because Verrazzano completed the necessary configuration and the application data is already available.
-
-      ![Kibana welcome page](images/opensearch-proceed.png)
+2. Click *Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)* if necessary.
 
 3. On the OpenSearch homepage click the **Home** -> **Discover**.
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-bobs-books` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
-
-      ![Index pattern](images/create-index.png)
-      ![Opensearch index](images/opensearch-index.png)
-
-5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
-
-      ![Index pattern](images/time-filter.png)
-
-6. When the index is ready you need to click *Hamburger menu* -> *Discover*. 
-
-      ![Index pattern](images/discover-2.png)
-
-7. Make sure your have purchased one book from Bobbys Front end application and you have verified the same in Bobs Order manager web page. Press **Enter** or click **Refresh**. You should get at least one result.
-       ![Log result](images/log-result.png)
+4. Select the *`verrazzano-applications*`* namespace as shown, then search for *books* and press **Enter** or click **Refresh**. You should get the logs containing *books*. 
+       ![Log result](images/search-books.png)
 
 ## Task 6: Explore the Prometheus Console
 
@@ -307,7 +291,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. On the Prometheus dashboard page type *get* into the search field and click your custom metric *application_org_books_bobby_BookResource_getBook_total*.
+3. On the Prometheus dashboard page type *get* into the search field and click your custom metric *`application_org_books_bobby_BookResource_getBook_total`*.
 
       ![Prometheus execute](images/prometheus-query.png)
 
@@ -316,8 +300,6 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       ![Prometheus value](images/execute-query.png)
 
       >You can also add another metric to your dashboard. Discover the available, default metrics in the list.
-
-   Leave the *Cloud Shell* open; we will use it for upcoming labs.
 
 ## Task 7: Explore the Keycloak Console
 
@@ -348,4 +330,4 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey,  March 2023
