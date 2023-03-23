@@ -77,8 +77,8 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
       "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
       "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchDashboardsUrl": "https://kibana.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchUrl": "https://elasticsearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchDashboardsUrl": "https://osd.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
       "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
       "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
       }
@@ -193,20 +193,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
-
-      ![Index pattern](images/create-index.png)
-      ![Opensearch index](images/opensearch-index.png)
-
-5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
-
-      ![Index pattern](images/time-filter.png)
-
-6. When the index is ready you need to click *Hamburger menu* -> *Discover*. 
-
-      ![Index pattern](images/discover-2.png)
-
-7. Type the custom log entry value you created in the Helidon application: `Help requested` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
+4. Select the *`verrazzano-application*`* namespace as shown and then type the custom log entry value you created in the Helidon application: `help ` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
       >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
@@ -230,6 +217,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 4. Click **Execute** and check the result below. You should see your metric's current value which means how many requests were completed by your endpoint. You can also switch to *Graph* view instead of the *Console* mode.
 
       ![Prometheus value](images/execute-query.png)
+      ![Graph view](images/graph-view.png)
 
       >You can also add another metric to your dashboard. Discover the available, default metrics in the list.
 
@@ -290,4 +278,4 @@ Congratulations you have completed the Helidon application deployment on Verrazz
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey, March 2023

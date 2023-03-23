@@ -61,7 +61,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     ![Enter Data](images/enter-data.png " ")
 
-5. On the *Review* page, click *Create Cluster* to create the new network resources and the new cluster.
+5. On the Review page, select the check box for *Create a Basic cluster* and then click *Create cluster* to create the new network resources and the new cluster.
 
     ![Review Cluster](images/review-cluster.png " ")
 
@@ -69,7 +69,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     ![Network Resource](images/network-resource.png " ")
 
-    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).Then, you may continue your labs.
+    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes). You don't need to wait, you may proceed with lab 2.
 
     ![cluster provision](images/cluster-provision.png " ")
 
