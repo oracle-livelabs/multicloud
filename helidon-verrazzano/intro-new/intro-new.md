@@ -48,7 +48,7 @@ Verrazzano includes the following capabilities:
 - Integrated security
 - DevOps and GitOps enablement
 
-![Verrazzano](images/Verrazzano_Components.png)
+![Verrazzano](images/verrazzano.png)
 
 
 ## Learn More

@@ -94,9 +94,9 @@ You may need to run this command several times until you see the output similar 
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE    VERSION
-    10.0.10.235   Ready    node    4m32s   v1.24.1
-    10.0.10.82    Ready    node    4m32s   v1.24.1
-    10.0.10.90    Ready    node    4m28s   v1.24.1
+    10.0.10.158   Ready    node    4m32s   v1.24.1
+    10.0.10.164   Ready    node    4m32s   v1.24.1
+    10.0.10.231   Ready    node    4m28s   v1.24.1
     ```
 
     > If you see the node's information, then the configuration was successful.
@@ -107,7 +107,7 @@ You may need to run this command several times until you see the output similar 
 1. Download the latest Verrazzano CLI.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-1.5.1-linux-amd64.tar.gz</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-1.5.2-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
@@ -120,7 +120,7 @@ You may need to run this command several times until you see the output similar 
 2. Download the checksum file.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-1.5.1-linux-amd64.tar.gz.sha256</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-1.5.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
@@ -135,19 +135,19 @@ You may need to run this command several times until you see the output similar 
 3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>sha256sum -c verrazzano-1.5.1-linux-amd64.tar.gz.sha256</copy>
+    <copy>sha256sum -c verrazzano-1.5.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    verrazzano-1.5.1-linux-amd64.tar.gz: OK
+    verrazzano-1.5.2-linux-amd64.tar.gz: OK
     ```
 
 4. Unpack and move to the vz binary,
 
     ```bash
-    <copy>tar xvf verrazzano-1.5.1-linux-amd64.tar.gz
-    cd ~/verrazzano-1.5.1/bin/</copy>
+    <copy>tar xvf verrazzano-1.5.2-linux-amd64.tar.gz
+    cd ~/verrazzano-1.5.2/bin/</copy>
     ```
 
 5. Test to ensure that the version you installed is up-to-date.
@@ -158,9 +158,9 @@ You may need to run this command several times until you see the output similar 
 
     The output should be similar to the following:
     ```bash
-    Version: v1.5.1
-    BuildDate: 2023-03-03T22:25:50Z
-    GitCommit: 0576f21c8787ea948cb6cfbf1cdea52ef276749a
+    Version: v1.5.2
+    BuildDate: 2023-03-15T23:56:21Z
+    GitCommit: 0326ee67fb4bf559024537e77be65213ab230c5e
     ```
 
 
@@ -187,21 +187,26 @@ Verrazzano supports the following installation profiles: development (`dev`), pr
 
     The output should be similar to the following:
     ```bash
-    Installing Verrazzano version v1.5.1
-    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.5.1/verrazzano-platform-operator.yaml
-    customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
+    Installing Verrazzano version v1.5.2
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
     serviceaccount/verrazzano-platform-operator created
     clusterrole.rbac.authorization.k8s.io/verrazzano-managed-cluster created
     clusterrolebinding.rbac.authorization.k8s.io/verrazzano-platform-operator created
     service/verrazzano-platform-operator created
+    service/verrazzano-platform-operator-webhook created
     deployment.apps/verrazzano-platform-operator created
-    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
-    Waiting for verrazzano-platform-operator to be ready before starting install - 17 seconds
-    2023-03-03T11:41:33.360Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
-    2023-03-03T11:41:33.449Z info Validate update
-    2023-03-03T11:41:34.033Z info Starting EventSource
+    deployment.apps/verrazzano-platform-operator-webhook created
+    mutatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-mysql-backup created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator-webhook created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-mysqlinstalloverrides created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-requirements-validator created
+    Waiting for verrazzano-platform-operator to be ready before starting install - 23 seconds
+    2023-03-21T09:48:40.827Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
+    2023-03-21T09:48:41.065Z info Starting EventSource
+    2023-03-21T09:48:41.065Z info Starting EventSource
+    2023-03-21T09:48:41.065Z info Starting EventSource
     ```
 
     > It takes around 15 to 20 minutes to complete the installation. This command installs the Verrazzano platform operator and applies the Verrazzano custom resource. Installation logs will be streamed to the command window until the installation has completed or until the default timeout (30m) has been reached.

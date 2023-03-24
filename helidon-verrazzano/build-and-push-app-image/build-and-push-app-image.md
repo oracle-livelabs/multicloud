@@ -30,11 +30,12 @@ You need the following information:
 * Region Name
 * Tenancy Namespace
 * Endpoint for the Region
-    >Copy this information to a text editor so that you can refer to it throughout the lab.
+    
+> Copy this information to a text editor so that you can refer to it throughout the lab.
 
 
 1. Locate your *Region Name*. <br>
-Your *Region Name* is located in the top right corner of the Oracle Cloud Console, in this example, it is shown as *US EAST (Ashburn)*. Yours may be different.
+Your *Region Name* is located in the top right corner of the Oracle Cloud Console, in this example, it is shown as *UK South (London)*. Yours may be different.
 
     ![Container Registry](images/region-name.png)
 
@@ -46,7 +47,7 @@ In the Console, open the navigation menu and click **Developer Services**. Under
     ![Tenancy Namespace](images/name-space.png)
 
 3. Locate the *Endpoint for Your Region*. <br>
-Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *US EAST (Ashburn)* (as the region name) and its endpoint is *iad.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text editor. You will also need it for the next lab.
+Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text editor. You will also need it for the next lab.
 
     ![End Points](images/end-points.png)
 
@@ -57,12 +58,12 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     ```bash
     <copy>docker build -t ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp-your_first_name:1.0 .</copy>
     ```
-    When the command is ready then run in the Cloud Shell from the `~/quickstart-mp/` directory. The build will produce the following result:
+    When the command is ready then run in the Cloud Shell from the *`~/quickstart-mp/`* directory. The build will produce the following result:
 
     ```bash
     $ cd ~/quickstart-mp/
-    $ docker build iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name:1.0 .
-    > docker pull iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name:1.0
+    $ docker build lhr.ocir.io/tenancynamespace/quickstart-mp-ankit:1.0 .
+    > docker pull lhr.ocir.io/tenancynamespace/quickstart-mp-ankit:1.0
     [+] Building 107.5s (19/19) FINISHED                                                                                                            
     => [internal] load build definition from Dockerfile                                                                                       0.1s
     => => transferring dockerfile: 785B                                                                                                       0.1s
@@ -95,12 +96,12 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     => [build 5/7] ADD src src                                                                                                                0.1s
     => [build 6/7] RUN mvn package -DskipTests                                                                                               10.8s
     => [build 7/7] RUN echo "done!"                                                                                                           0.5s
-    => [stage-1 3/4] COPY --from=build /helidon/target/quickstart-mp.jar ./                                                                   0.1s
+    => [stage-1 3/4] COPY --from=build /helidon/target/quickstart-mp-ankit.jar ./                                                                   0.1s
     => [stage-1 4/4] COPY --from=build /helidon/target/libs ./libs                                                                            0.1s
     => exporting to image                                                                                                                     0.1s
     => => exporting layers                                                                                                                    0.1s
     => => writing image sha256:587a079ad854fc79e768acda11fc05dd87d37013261249e778e80749798c2837                                               0.0s
-    => => naming to iad.ocir.io/weblogick8s/quickstart-mp-your_first_name:1.0                                                                           0.0s
+    => => naming to lhr.ocir.io/tenancynamespace/quickstart-mp-ankit:1.0                                                                           0.0s
     ```
 
 5. This creates the Docker image, which you can check in your local repository.
@@ -109,86 +110,82 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     $ docker images
 
     REPOSITORY                                                                           TAG                               IMAGE ID       CREATED         SIZE
-    iad.ocir.io/tenancynamespace/quickstart-mp                                                1.0                               587a079ad854   5 minutes ago   243MB
+    lhr.ocir.io/tenancynamespace/quickstart-mp-ankit                                               1.0                               587a079ad854   5 minutes ago   243MB
     ```
-    Copy to your text editor the replaced full image name `ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp:1.0` because you will need it later.
+    Copy to your text editor the replaced full image name `ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp-ankit:1.0` because you will need it later.
 
 ## Task 2: Generate an Authentication Token to log in to the Oracle Cloud Container Registry
 
 In this step, we are going to generate an *Authentication Token*, that we will use to log in to the Oracle Cloud Container Registry.
 
-1. In the Console, open the navigation menu and click **Identity and Security**. Under **Identity**, click **Users**.
+1. Select the User Icon in the top right corner and then select *My Profile*.
 
-    ![Users](images/oci-users.png)
+    ![My Profile](images/my-profile.png)
 
-2. Click on the non-federated user name to view the details. (The non-federated user name should be your email address -without any prefix- what was used during the trial signup.)
+2. Scroll down and select *Auth Tokens*.
 
-    ![User](images/registered-email.png)
+    ![Auth Token](images/auth-token.png)
 
-3. On the User Detail page scroll down and click **Auth Tokens**.
+3. Click *Generate Token*.
 
-    ![Auth tokens](images/auth-tokens.png)
+    ![Generate tokens](images/generate-token.png)
 
-4. Click **Generate Token**.
+4. Copy *`quickstart-mp-your_first_name`* and paste it in the Description box and click *Generate Token*.
 
-    ![Generate Token](images/generate-token.png)
+    ![Create Token](images/create-token.png)
 
-5. Copy *quickstart-mp* and paste it in the *Description* box and click **Generate Token**.
+5. Click *Copy* under Generated Token and paste it into the text editor. You cannot copy it later, so make sure you have a copy of this token saved. Then ,click *Close*.
 
-    ![Token create](images/create-token.png)
-
-6. Click **Copy** under Generated Token and paste it into the text editor. You cannot copy it later, so make sure you have a copy of this token saved.
-
-    ![Generated Token](images/copy-token.png)
+    ![Copy token](images/copy-token.png)
 
 ## Task 3: Push the Helidon Application (quickstart-mp) Docker Image to your Container Registry Repository
 
-In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is US East (Ashburn). You will need this information for this task.
-    ![Endpoint](images/end-point.png)
+1. In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is UK South (London). You will need this information for this task.
+    ![End point](images/end-points.png)
 
-1. Copy the following command and paste it into your text editor and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
+2. Copy the following command and paste it into your text editor and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
 
-    >In our example the Region Name is *US East (Ashburn)* and the endpoint is *iad.ocir.io*. You will need your specific information for this task.
+    >In our example the Region Name is *UK South (London)* and the endpoint is *lhr.ocir.io*. You will need your specific information for this task.
 
     ```bash
     <copy>docker login ENDPOINT_OF_REGION_NAME</copy>
     ```
 
-2. In the previous step, you also determined the tenancy namespace.
+3. In the previous step, you also determined the tenancy namespace.
 Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
-    * Replace `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace
-    * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text editor and paste it into the *Cloud Shell*.
+    * Replace *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace
+    * Replace *`YOUR_ORACLE_CLOUD_USERNAME`* with your Oracle Cloud Account user name and then copy the replaced username from your text editor and paste it into the *Cloud Shell*.
     * For Password, copy and paste the Authentication Token from your text editor (or wherever you saved it.)
 
     ```bash
-    $ docker login iad.ocir.io
+    $ docker login lhr.ocir.io
     Username: NAMESPACE_OF_YOUR_TENANCY/YOUR_ORACLE_CLOUD_USERNAME
     Password:
     Login Succeeded
     ```
-3. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
-    ![Container Registry](images/container-registry2.png)
+4. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
+    ![Container Registry](images/container-registry.png)
 
-4. Select the compartment and then click **Create Repository**.
+5. Select the compartment and then click **Create Repository**.
     ![Repository Create](images/repository-create.png)
 
-5. Select the compartment and enter *`quickstart-mp-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
+6. Select the compartment and enter *`quickstart-mp-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
 
     ![Repository Description](images/describe-repository.png)
 
-6. After the repository *`quickstart-mp-your_first_name`* has been created you can verify in the repository list and its settings.
+7. After the repository *`quickstart-mp-your_first_name`* has been created you can verify in the repository list and its settings.
 
     ![Verify Namespace](images/verify-namespace.png)
 
-7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/quickstar-mp-your_first_name:1.0 with Docker image full name, which you saved earlier.
+8. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/quickstar-mp-your_first_name:1.0 with Docker image full name, which you saved earlier.
 
     ```bash
     <copy>docker push ENDPOINT_OF_YOUR_REGION_NAME/NAMESPACE_OF_YOUR_TENANCY/quickstart-mp-your_first_name:1.0</copy>
     ```
     The result should look like this:
     ```bash
-    $ docker push iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name:1.0
-    The push refers to a repository [iad.ocir.io/tenancynamespace/quickstart-mp-your_first_name]
+    $ docker push lhr.ocir.io/tenancynamespace/quickstart-mp-ankit:1.0
+    The push refers to a repository [lhr.ocir.io/tenancynamespace/quickstart-mp-ankit]
     0795b8384c47: Pushed
     131452972f9d: Pushed
     93c53f2e9519: Pushed
@@ -199,14 +196,14 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
     1.0: digest: sha256:355fa56eab185535a58c5038186381b6d02fd8e0bcb534872107fc249f98256a size: 1786
     ```
 
-8. After the *docker push* command runs successfully, expand the *`quickstart-mp-your_first_name`* repository and you will notice a new image has been uploaded to this repository.
+9. After the *docker push* command runs successfully, expand the *`quickstart-mp-your_first_name`* repository and you will notice a new image has been uploaded to this repository.
 
-    ![Image uploaded](images/verify-push.png)
+    ![Image uploaded](images/image-uploaded.png)
 
-9. Leave the *Cloud Shell* and Container Registry repository page open; you will need them for the next labs.
+10. Leave the *Cloud Shell* and Container Registry repository page open; you will need them for the next labs.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey, March 2023
