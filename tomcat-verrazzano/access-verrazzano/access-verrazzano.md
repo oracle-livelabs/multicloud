@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You deployed the Helidon *quickstart-mp* application. In this lab, we will access the application and verify using multiple management tools provided by Verrazzano.
+You deployed the tomcat application. In this lab, we will access the application and verify using multiple management tools provided by Verrazzano.
 
 Estimated Time: 15 minutes
 
@@ -46,17 +46,18 @@ Kiali is the user interface to Istio, and it is super simple to use. From the Ve
 In this lab, you will:
 
 * Explore the Rancher console.
+* Explore the Prometheus console.
 * Explore the Grafana console.
 * Explore the OpenSearch Dashboards.
-* Explore the Prometheus console.
-* Explore the Rancher console.
 * Explore the Kiali console.
+* Explore the Keycloak console.
+
 
 ### Prerequisites
 
 * Kubernetes (OKE) cluster running on the Oracle Cloud Infrastructure.
 * Verrazzano installed on a Kubernetes (OKE) cluster.
-* Deployed Helidon *quickstart-mp* application.
+* Deployed tomcat sample application.
 
 
 ## Task 1: Explore the Rancher Console
@@ -77,8 +78,8 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
       "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
       "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchDashboardsUrl": "https://kibana.vmi.system.default.xx.xx.xx.xx.nip.io",
-      "openSearchUrl": "https://elasticsearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchDashboardsUrl": "https://osd.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
       "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
       "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
       }
@@ -121,18 +122,18 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Rancher Home](images/rancher-home.png)
 
-11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *hello-helidon-appconf* application within the *hello-helidon* namespace.
-      ![Helidon Application](images/helidon-application.png)
+11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *tomcat-appconf* application within the *tomcat-ns* namespace.
+      ![Tomcat Application](images/tomcat-application.png)
 
 12. You can view the pods associated with the application. The pod name contains an auto-generated unique string to identify that particular replica. To view the logs of pods, Click *Three dots* -> *View Logs*.
-      ![Helidon Components](images/view-pod-logs.png)
+      ![Tomcat Components](images/view-pod-logs.png)
 
 13. You can view the application logs for the application. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start. To view the Component associated with the application, click *Components*.
       ![Application logs](images/view-pod-log.png)
 
 14. This application has only one component.To view what are the related resources, click *Related Resources*.
-      ![Helidon Resource](images/helidon-resource.png)
-      ![Helidon Resources](images/helidon-resources.png)
+      ![Tomcat Resource](images/tomcat-resource.png)
+      ![Tomcat Resources](images/tomcat-resources.png)
 
 15. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
       ![Verrazzano Cluster](images/verrazzano-cluster.png)
@@ -167,17 +168,19 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![proceed](images/grafana-proceed.png)
 
-5. The Grafana home page opens. Click **Home** at the top left.
+5. Click on the *+* icon and then click *Import* as shown below.
+      ![import](images/import.png)
+      
+6. Enter the *6340* as value for *Import via grafana.com* and click *Load*.
+      ![load ID](images/load-id.png)
 
-      ![Home](images/grafana-home.png)
+7. Select *Prometheus* as default Datasource and click *Import*.
+      ![Import Datasource](images/import-datasource.png)
 
-6. Type `Helidon` and you will see *Helidon Monitoring Dashboard* under **General**. Click **Helidon Monitoring Dashboard**.
+8. Select *tomcat-ns* as namespace and *tomcat-container* as container, then you will be able to see the *Heap Used*, *Mem Committed* and other data as shown below.
+      ![select namespace](images/select-namespace.png)
 
-      ![Helidon dashboard](images/search-helidon.png)
-
-7. Observe the JVM details of the Helidon *quickstart-mp* application such as Status, Heap Usage, Running Time, JVM Heap, Thread Count, HTTP Requests, etc. This is a prebuilt dashboard specifically for Helidon workloads. Of course, you can customize this dashboard according to your needs and add custom diagnostics information.
-
-      ![Dashboard](images/helidon-dashboard.png)
+      > From Grafana.com, you can get more id to import in grafana console.
 
 ## Task 3: Explore the OpenSearch Dashboards
 
@@ -193,26 +196,13 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
-
-      ![Index pattern](images/create-index.png)
-      ![Opensearch index](images/opensearch-index.png)
-
-5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
-
-      ![Index pattern](images/time-filter.png)
-
-6. When the index is ready you need to click *Hamburger menu* -> *Discover*. 
-
-      ![Index pattern](images/discover-2.png)
-
-7. Type the custom log entry value you created in the Helidon application: `Help requested` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
-      >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
+4. Invoke the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
-      <copy>curl -k https://$(kubectl get gateway hello-helidon-hello-helidon-appconf-gw -n hello-helidon -o jsonpath={.spec.servers[0].hosts[0]})/help/allGreetings; echo</copy>
+      <copy>curl -k https://$(kubectl get gateways.networking.istio.io tomcat-ns-tomcat-appconf-gw -n tomcat-ns -o jsonpath={.spec.servers[0].hosts[0]})/sample-webapp/log; echo</copy>
       ```
 
+5. Select the *`verrazzano-application*`* namespace as shown and then type the custom log entry value you created in the tomcat application: `Logs ` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result.
       ![Log result](images/log-result.png)
 
 ## Task 4: Explore the Prometheus Console
@@ -223,7 +213,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. On the Prometheus dashboard page type *help* into the search field and click your custom metric *application _me _user _mp _quickstart _GreetHelpResource _helpCalled _total*.
+3. On the Prometheus dashboard page type *tomcat* into the search field and click metric *tomcat_requestcount_total* and then click *Execute*.
 
       ![Prometheus execute](images/prometheus-query.png)
 
@@ -284,10 +274,10 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 6. Here you can view default configuration done by Verrazzano.
       ![Keycloak Home](images/keycloak-realms.png)
 
-Congratulations you have completed the Helidon application deployment on Verrazzano lab.
+Congratulations you have completed the tomcat application deployment on Verrazzano lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey, March 2023

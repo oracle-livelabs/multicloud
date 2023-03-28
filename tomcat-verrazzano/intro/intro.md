@@ -2,17 +2,17 @@
 
 ## About this Workshop
 
-This lab offers attendees an intro-level, hands-on session with Helidon and Verrazzano. You will learn how to make and assemble services and deploy them on an enterprise container platform.
+Deploying a Tomcat application on a Kubernetes cluster can be a complex process that involves managing multiple containers, configuring networking, and ensuring high availability and scalability. To simplify this process, many organizations are turning to containerization technologies such as Docker and Kubernetes.
 
-This is a BYOL (Bring Your Laptop) session, so bring your Windows, OSX, or Linux laptop. You will need JDK 11+, Apache Maven (3.6), and Docker installed before you begin.
+Docker allows for the creation of portable container images that can be deployed on any platform, while Kubernetes provides a powerful orchestration engine that can manage the deployment and scaling of containers.
 
-During this lab, you will install Helidon CLI tools and develop the HTTP microservice application. For Verrazzano, you will set up Oracle Kubernetes Engine (OKE) on Oracle Cloud Infrastructure using the Oracle Cloud Free Tier account. The Free Tier account is sufficient to explore and learn how to run and operate microservice applications on an enterprise level.
+Oracle Verrazzano is a cloud-native platform that provides a unified management experience for deploying and operating containerized applications on Kubernetes clusters. It simplifies the deployment of complex applications by providing a consistent set of tools and APIs that can be used to manage and monitor applications across multiple clusters.
 
-The goal of this workshop is that you learn the basics of using Helidon and Verrazzano and understand how they can help you in your projects. If you want to learn more about the capabilities of these projects, then continue to explore using your Oracle Free Tier cloud account and Oracle Cloud Infrastructure.
+In this workshop, we will explore the process of deploying a Tomcat application Docker image to an Oracle Kubernetes cluster using Verrazzano. We will cover the steps involved in creating a Docker image, configuring Verrazzano, deploying the application, and monitoring its performance. 
+
+By the end of this workshop, you will have a clear understanding of how to deploy containerized applications on an Oracle Kubernetes cluster using Verrazzano.
 
 This workshop is designed to be as self-explanatory as possible, but feel free to ask for clarification or assistance along the way.
-
-> Provisioning the Oracle Kubernetes Engine (OKE) and installing Verrazzano can take several minutes. To save time, you will be asked to do your development and environment setup in parallel. Follow the instructions and switch between tasks when it is required and necessary.
 
 Estimated Time: 90 minutes
 
@@ -20,29 +20,24 @@ Estimated Time: 90 minutes
 
 * Set up your Oracle Cloud Free Tier account (if you haven't done so already).
 * Set up an Oracle Kubernetes Engine instance on the Oracle Cloud Infrastructure.
-* Install the Verrazzano platform.
-* Deploy the *Helidon MP* application.
-* Monitor the *Helidon MP* application using Verrazzano tools, including Kibana, Grafana and Prometheus.
+* Install the Verrazzano production profile.
+* Create sample tomcat application docker image.
+* Deploy tomcat application to OKE using Verrazzano.
+* Explore Grafana, Prometheus and OpenSearch Dashboard console.
 
 ### Prerequisites
-This lab assumes you have the following installed on your machine:
-* JDK 11+
-* Apache Maven (3.6)
-* Docker
+
+* You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 
 
-## About Helidon
+## Learn More
 
-Helidon is an open-source microservices framework introduced by Oracle that provides a collection of Java libraries designed for creating lightweight and fast microservices-based applications. The framework supports two programming models for writing microservices: Helidon SE and Helidon MP.
+**About Tomcat**
 
-While Helidon SE is designed to be a microframework that supports the reactive programming model, Helidon MP is an implementation of the MicroProfile specification. Since MicroProfile has its roots in Java EE, the MicroProfile APIs follow a familiar, declarative approach with heavy use of annotations. This makes it a good choice for Java EE developers.
+Apache Tomcat is an open-source web server and servlet container that is widely used to deploy Java-based web applications. Tomcat is designed to be lightweight, efficient, and easy to use, and it provides a rich set of features for managing and deploying web applications. 
 
-The MicroProfile features aim at the implementation of microservices. You can find APIs for defining REST Clients, monitoring the application, reading technical and functional statistics and configuring the application.
-Helidon has also added additional APIs to the core set of Microprofile APIs giving you all the capabilities you need for writing modern cloud-native applications.
 
-> The [MicroProfile](https://microprofile.io/) standard builds on Jakarta EE. Like Jakarta EE, MicroProfile is open source and is developed by the Eclipse Foundation. Implementation with MicroProfile takes place in the libraries or application servers implementing the standard, just like Jakarta EE.
-
-## About Verrazzano
+**About Verrazzano**
 
 Verrazzano is an end-to-end enterprise container platform for deploying cloud-native and traditional applications in multi-cloud and hybrid environments. It is made up of a curated set of open source components – many that you may already use and trust, and some that were written specifically to pull together all of the pieces that make Verrazzano a cohesive and easy-to-use platform.
 
@@ -56,14 +51,11 @@ Verrazzano includes the following capabilities:
 
 ![Verrazzano](images/verrazzano.png)
 
-
-## Learn More
-
-* [https://helidon.io](https://helidon.io)
+* [https://tomcat.apache.org/](https://tomcat.apache.org/)
 * [https://verrazzano.io/](https://verrazzano.io/)
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey, March 2023
