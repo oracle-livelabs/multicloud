@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Deploy Tomcat application docker image to Oracle Kubernetes Cluster",
+    "workshoptitle": "Deploy a Tomcat application to OKE using Verrazzano",
     "help": "livelabs-help-weblogic_us@oracle.com",
     "tutorials": [
         {

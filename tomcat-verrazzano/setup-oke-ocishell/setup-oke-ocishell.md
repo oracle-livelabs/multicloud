@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This lab walks you through the steps to create a managed Kubernetes environment on the Oracle Cloud Infrastructure.
+This lab shows you how the *Quick Start* feature creates and configures all the necessary resources for a 3-node Kubernetes cluster. All the nodes will be deployed in different availability domains to ensure high availability.
+
+For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
 Estimated time: 15 minutes
 
@@ -12,24 +14,12 @@ Oracle Cloud Infrastructure Container Engine for Kubernetes is a fully-managed, 
 
 ### Objectives
 
-In this lab, you will:
-
 * Create an OKE (Oracle Kubernetes Engine) instance.
 * Open the OCI Cloud Shell and configure `kubectl` to interact with the Kubernetes cluster.
 
 ### Prerequisites
 
 * You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
-
-To create the Container Engine for Kubernetes (OKE), complete the following steps:
-
-* Create the network resources (VCN, subnets, security lists, etc.).
-* Create a cluster.
-* Create a `NodePool`.
-
-This lab shows you how the *Quick Start* feature creates and configures all the necessary resources for a 3-node Kubernetes cluster. All the nodes will be deployed in different availability domains to ensure high availability.
-
-For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
 ## Task 1: Create an OKE cluster
 

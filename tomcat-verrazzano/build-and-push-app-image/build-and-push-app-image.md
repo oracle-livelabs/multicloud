@@ -21,7 +21,7 @@ Estimated Time: 10 minutes
 
 1. Copy and paste the following command to download the source code for this workshop.
     ```bash
-    <copy>curl -LSs https://github.com/oracle-livelabs/multicloud/blob/main/tomcat-verrazzano/build-and-push-app-image/code/tomcat-examples.zip?raw=true >~/tomcat-examples.zip</copy>
+    <copy>curl -LSs https://objectstorage.uk-london-1.oraclecloud.com/p/5DhoxZ22MseWaoSjG3EoBRf6DF5JbQ1QyR7tHa2qem-7IHb7nNEymF1ZSm2eA1ix/n/lrv4zdykjqrj/b/ankit-bucket/o/tomcat-examples.zip >~/tomcat-examples.zip</copy>
     ```
 
 2. Copy and paste the following command to unzip the source code and change the current directory to application folder.
