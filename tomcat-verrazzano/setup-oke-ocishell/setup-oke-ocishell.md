@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. The nodes will be deployed in different availability domains to ensure high availability.
+This lab shows you how the *Quick Start* feature creates and configures all the necessary resources for a 3-node Kubernetes cluster. All the nodes will be deployed in different availability domains to ensure high availability.
 
 For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
-Estimated Time: 10 minutes
+Estimated time: 15 minutes
 
 ### About Product/Technology
 
@@ -14,69 +14,124 @@ Oracle Cloud Infrastructure Container Engine for Kubernetes is a fully-managed, 
 
 ### Objectives
 
-You will use the *Quick Create* cluster feature to create an OKE (Oracle Kubernetes Engine) instance with the required network resources, a node pool, and three worker nodes. The *Quick Create* approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks.
-
+* Create an OKE (Oracle Kubernetes Engine) instance.
+* Open the OCI Cloud Shell and configure `kubectl` to interact with the Kubernetes cluster.
 
 ### Prerequisites
 
-You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
-
+* You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 
 ## Task 1: Create an OKE cluster
 
+The *Quick Create* feature uses the default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
-1. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Kubernetes Clusters (OKE)**.
+1. In the Console, select the *Hamburger Menu -> Developer Services -> Kubernetes Clusters (OKE)* as shown.
 
-    ![Hamburger Menu](images/menu.png)
+    ![Hamburger Menu](images/hamburger-menu.png " ")
 
-2. On the Cluster List dialogue, select the Compartment where you are allowed to create a cluster and then click **Create Cluster**.
+2. In the Cluster List page, select the Compartment of your choice, where you are allowed to create a cluster, and then click *Create Cluster*.
 
-    > You must select a compartment that allows you to create a cluster and a repository inside the Oracle Container Registry.
+    > You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
 
-    ![Select Compartment](images/select-compartment.png)
+    ![Select Compartment](images/select-compartment.png " ")
 
-3. On the Create Cluster dialogue, click **Quick Create** and click **Submit**.
+3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*.
 
-    ![Launch Workflow](images/launch-workflow.png)
+    ![Launch Workflow](images/launch-workflow.png " ")
 
-    *Quick Create* will automatically create a new cluster with the default settings, along with new network resources for the new cluster.
+    *Quick Create* will create a new cluster with the default settings, along with new network resources for the new cluster.
 
-4. Specify the following configuration details on the Cluster Creation dialogue (pay attention to the value you place in the **Shape** field):
+    Specify the following configuration details on the Cluster Creation page (please pay attention to the value you place in the *Shape* field):
 
-    * **Name**: The name of the cluster. Accept the default value.
-    * **Compartment**: The name of the compartment. Accept the default value.
-    * **Kubernetes Version**: The version of Kubernetes. Select the **v1.24.1** version.
-    * **Kubernetes API Endpoint**: Determines if the cluster master nodes are going to be routable or not. Select the **Public Endpoint** value.
-    * **Kubernetes Worker Nodes**: Determines if the cluster worker nodes are going to be routable or not. Accept the default value **Private Workers**.
-    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select **VM.Standard.E4.Flex**. You need to select *3* as the number of *OCPUs* and *48* as the *Amount of Memory(GB)*.<br>
-    > **Caution**: *VM.Standard.E4.Flex is recommended because Verrazzano has many components. The default VM.Standard2.1 can be enough for testing purposes but the installation takes much longer.*
+    * **Name**: The name of the cluster. Leave the default value.
+    * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.24.1* as Kubernetes version.
+    * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
+    * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
+    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
+    * **Image**: Select the default image with Kubernetes version *1.24.1*.
+    * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
-    * **Number of nodes**: The number of worker nodes to create. Accept the default value, **3**.
+    > *PLEASE BE VERY CAREFUL TO NOT LEAVE THE DEFAULT SHAPE; THE DEFAULT SHAPE IS TOO SMALL TO FIT ALL THE VERRAZZANO COMPONENTS*
 
-    ![Quick Cluster](images/quickcluster.png)
-    ![Enter Data](images/enterdata.png)
+    ![Quick Cluster](images/quick-cluster.png " ")
 
-5. Click **Next** to review the details you entered for the new cluster.
+4. Click *Next* to review the details you entered for the new cluster.
 
+    ![Enter Data](images/enter-data.png " ")
 
-6. On the Review page, click **Create Cluster** to create the new network resources and the new cluster.
+5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
 
-    ![Review Cluster](images/reviewcluster.png)
+    ![Review Cluster](images/review-cluster.png " ")
 
-    > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click **Close**.
+    > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click *Close*.
 
-    ![Network Resource](images/network-creation.png)
+    ![Network Resource](images/network-resource.png " ")
 
-    > The new cluster is shown on the Cluster Details page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).
+    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).Then, you may continue your labs.
 
-    ![cluster1](images/cluster-provision.png)
+    ![cluster provision](images/cluster-provision.png " ")
 
-    ![cluster1](images/cluster-active.png)
+    ![cluster access](images/cluster-access.png " ")
 
-7. To save time don't wait until the Active state, continue with the next Helidon application development lab. Before the Verrazzano installation, you will come back to verify and configure the OKE cluster access.
+## Task 2: Configure `kubectl` (Kubernetes Cluster CLI)
+
+Oracle Cloud Infrastructure (OCI) Cloud Shell is a web browser-based terminal, accessible from the Oracle Cloud Console. The Cloud Shell provides access to a Linux shell, with a pre-authenticated Oracle Cloud Infrastructure CLI and other useful tools (*Git, kubectl, helm, OCI CLI*) to complete the Verrazzano tutorials. The Cloud Shell is accessible from the Console. Your Cloud Shell will appear in the Oracle Cloud Console as a persistent frame of the Console, and will stay active as you navigate to different pages of the Console.
+
+You will use the *Cloud Shell* to complete this workshop.
+
+We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It needs a `kubeconfig` file. This will be generated using the OCI CLI which is pre-authenticated, so there’s no setup to do before you can start using it.
+
+1. Click *Access Cluster* on your cluster detail page.
+
+    > If you moved away from that page, then open the navigation menu and under *Developer Services*, select *Kubernetes Clusters (OKE)*. Select your cluster and go the detail page.
+
+    ![Access Cluster](images/access-cluster.png " ")
+
+    > A dialog is displayed from which you can open the Cloud Shell and contains the customized OCI command that you need to run, to create a Kubernetes configuration file.
+
+2. Leave the default *Cloud Shell Access* and first select the *Copy* link to copy the `oci ce...` command to the Cloud Shell.
+
+    ![Copy kubectl Config](images/copy-config.png " ")
+
+3. Now, click *Launch Cloud Shell* to open the built in console. Then close the configuration dialog before you paste the command into the *Cloud Shell*.
+
+    ![Launch Cloud Shell](images/launch-cloudshell.png " ")
+
+4. Copy the command from the clipboard (Ctrl+V or right click and copy) into the Cloud Shell and run the command.
+
+    For example, the command looks like the following:
+
+    ```bash
+    oci ce cluster create-kubeconfig --cluster-id ocid1.cluster.oc1.phx.aaaaaaaaaezwen..................zjwgm2tqnjvgc2dey3emnsd --file $HOME/.kube/config --region us-phoenix-1 --token-version 2.0.0
+    ```
+
+    ![kubectl config](images/kube-config.png " ")
+
+5. Now check that `kubectl` is working, for example, using the `get node` command. you may need to run this command several times until you see the output similar to following.
+
+    ```bash
+    <copy>kubectl get node</copy>
+    ```
+
+    ```bash
+    $ kubectl get node
+    NAME          STATUS   ROLES   AGE   VERSION
+    10.0.10.178   Ready    node    11m   v1.24.1
+    10.0.10.164   Ready    node    11m   v1.24.1
+    10.0.10.231   Ready    node    11m   v1.24.1
+    ```
+
+    > If you see the node's information, then the configuration was successful.
+
+6. You can minimize and restore the terminal size at any time using the controls at the top right corner of the Cloud Shell.
+
+    ![cloud shell](images/cloudshell.png " ")
+
+You may now **proceed to the next lab**.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2023
+* **Last Updated By/Date** - Ankit Pandey,  March 2023
