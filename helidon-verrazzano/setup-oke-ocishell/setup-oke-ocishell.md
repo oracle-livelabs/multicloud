@@ -53,7 +53,9 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
     * **Image**: Select the default image with Kubernetes version *1.24.1*.
     * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
-    > *PLEASE BE VERY CAREFUL TO NOT LEAVE THE DEFAULT SHAPE; THE DEFAULT SHAPE IS TOO SMALL TO FIT ALL THE VERRAZZANO COMPONENTS*
+    > *PLEASE MAKE SURE THAT YOU CHANGE THE SHAPE AS PER THE INSTRUCTIONS, THE
+DEFAULT SHAPE IN THE QUICK START IS TOO SMALL TO FIT ALL THE VERRAZZANO
+COMPONENTS*
 
     ![Quick Cluster](images/quick-cluster.png " ")
 
@@ -61,7 +63,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     ![Enter Data](images/enter-data.png " ")
 
-5. On the Review page, select the check box for *Create a Basic cluster* and then click *Create cluster* to create the new network resources and the new cluster.
+5. On the Review page, select the check box for *Create a Basic cluster* and then click *Create cluster* to create the new network resources and the new cluster. Basic clusters support all the core functionality provided by Kubernetes and Container Engine for Kubernetes, but none of the enhanced features that Container Engine for Kubernetes provides with enhanced clusters (such as virtual nodes, cluster add-on management, workload identity, and additional worker nodes per cluster).
 
     ![Review Cluster](images/review-cluster.png " ")
 
