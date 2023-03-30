@@ -142,7 +142,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Cluster Explorer](images/cluster-dashboard.png)
 
-17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed application.
+17. The whole deployment doesn't have any impact on the OKE cluster. Now click **Workload** and then **Deployments** item in the left side menu to check deployed application.
 
       ![Nodes](images/node.png)
 
