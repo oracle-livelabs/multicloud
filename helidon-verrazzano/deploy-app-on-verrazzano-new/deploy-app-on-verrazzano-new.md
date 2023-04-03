@@ -88,12 +88,21 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
 
     To deploy the Hello Helidon application, copy and paste the following two commands as shown. The `hello-helidon-comp.yaml` file contains definitions of various OAM components, where, an OAM component is a Kubernetes Custom Resource describing an application’s general composition and environment requirements.
     ```bash
-    <copy>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.1/examples/hello-helidon/hello-helidon-comp.yaml -n hello-helidon</copy>
+    <copy>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.2/examples/hello-helidon/hello-helidon-comp.yaml -n hello-helidon</copy>
     ```
     The `hello-helidon-app.yaml` file is a Verrazzano application configuration file, which provides environment-specific customizations.
     ```bash
-    <copy>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.1/examples/hello-helidon/hello-helidon-app.yaml -n hello-helidon</copy>
+    <copy>kubectl apply -f https://raw.githubusercontent.com/verrazzano/verrazzano/v1.5.2/examples/hello-helidon/hello-helidon-app.yaml -n hello-helidon</copy>
     ```
+
+    > The action of deploying the application with verrazzano does the following intelligent workload management task.
+      * Creating Service accounts and authorization policy if required
+      * Deploy the application 
+      * Set up the gateway & virtual services as required.
+      *	Set up certificates, secrets, network policies as required with Istio.
+      *	Kick of Automated observability management
+          - Scrapping of logs into OpenSearch
+          - Pulling all the monitoring information into Prometheus and Grafana
 
 4. Wait for the pods to be in *Running* status. Use this *kubectl* command to wait for all the pods to be in the *Running* state within the hello-helidon namespace. It takes around 1-2 minutes.
 
