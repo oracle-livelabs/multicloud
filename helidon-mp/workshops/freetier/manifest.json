@@ -12,7 +12,7 @@
             "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
-            "title": "Lab 1: Generate Helidon MP project using Project Starter",
+            "title": "Lab 1: Generate Helidon MP project through Project Starter",
             "filename": "../../generate-project/generate-project.md"
         },
         {
@@ -20,7 +20,7 @@
             "filename": "../../create-native-image/create-native-image.md"
         },
         {
-            "title": "Lab 3: Modify the application by adding a custom Endpoint",
+            "title": "Lab 3: Modify the application by add a custom Endpoint",
             "filename": "../../modify-application/modify-application.md"
         },
         {
