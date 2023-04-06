@@ -59,44 +59,48 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
 
 3. For Application Type, select *Quickstart* and then click *Next*.
 
-4. For Media Support, select *Jackson* and then click *Next*.
+4. For Media Support, select *JSON-B* and then click *Next*.
 
 5. For Customize Project, select the default values and click on *Downloads*. This will pop up in a window, save this *myproject.zip* to the location of your choice. In the rest of this workshop, myproject name will be used. if you choose a different name, please change respectively.
 
 
 ## Task 2: Build and run the helidon project locally
 
-1. In Cloud Console, click the *Code Editor* icon as shown.
+1. In Cloud Console, click the *Developer tools* icon as shown then click *Code Editor*.
     ![code editor](images/code-editor.png)
 
 2. In Code Editor, click *Terminal* -> *New Terminal*.
     ![open terminal](images/open-terminal.png)
 
-3. Copy and paste the below command in the terminal, to create *helidon-project* folder. where we  will downloads the default myproject.zip file.
+3. Copy and paste the below command in the terminal, to create *myproject* folder. where we  will downloads the default myproject.zip file.
 
     ```bash
-    <copy>mkdir -p ~/helidon-project</copy>
+    <copy>mkdir -p ~/helidon-project/myproject</copy>
     ```
 
-4. In Code Editor, in EXPLORER window, you can see your username. you can see the *helidon-project* folder here, click on it. Now click on *File* -> *Upload Files..*, then specify the location where you have downloaded the project.
-    ![explorer](images/explorer.png)
+4. In Code Editor, Click *File* -> *Open*.
+    ![Open Folder](images/open-folder.png)
+
+5. Select the *helidon-project* folder and click *Open*.
+    ![Open Helidon](images/open-helidon.png)
+
+
+6. In Code Editor, in EXPLORER window, you can see your *HELIDON-PROJECT*. you can see the *myproject* folder here, click on it. Now click on *File* -> *Upload Files..*, then specify the location where you have downloaded the project and select the zip file and click *Open*.
+    ![myproject](images/myproject.png)
     ![upload files](images/upload-files.png)
 
-5. Copy and paste the following command to unzip the *myproject.zip* file.
+7. Copy and paste the following command to unzip the *myproject.zip* file.
     ```bash
-    <copy>cd ~/helidon-project
-    unzip ~/helidon-project/myproject.zip
-    cd ~</copy>
+    <copy>cd ~/helidon-project/myproject
+    unzip myproject.zip
+    </copy>
     ```
 
-6. In Code Editor, click *File* -> *Open*.
-    ![open project](images/open-project.png)
+8. Expand the *myproject* folder, to view the project structure.
+    ![Expand Project](images/expand-project.png)
 
-7. Select the *myproject* folder and click *Open*. You can view the project structure in Code Editor.
-    ![select folder](images/select-folder.png)
-    ![view project](images/view-project.png)
 
-8. To run this project we will use Maven 3.8+ and JDK 17+. In Oracle cloud, you have various JDK provided. Here we will select GraalVM JDK. Copy and paste the following command in the terminal, to know your default JDK.
+9. To run this project we will use Maven 3.8+ and JDK 17+. In Oracle cloud, you have various JDK provided. Here we will select GraalVM JDK. Copy and paste the following command in the terminal, to know your default JDK.
 
     ```bash
     <copy>csruntimectl java list</copy>
@@ -106,51 +110,53 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     > The JDK with * *asterisk* in the beginning is your default JDK. If you have any other JDK then graalvmeejdk, then change the default JDK version by running the below command. Please use the shown version of graalvmeejdk, as it may different then what is shown in command.
 
     ```bash
-    <copy>csruntimectl java set graalvmeejdk-17.0.4.1</copy>
+    <copy>csruntimectl java set graalvmeejdk-17</copy>
     ```
-9. To configure the required maven, copy and paste the following command in the terminal.
+10. To configure the required maven, copy and paste the following command in the terminal.
     ```bash
-    <copy>wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
-    tar -xzvf apache-maven-3.8.6-bin.tar.gz
-    PATH=~/helidon-project/myproject/apache-maven-3.8.6/bin:$PATH</copy>
+    <copy>cd ~/helidon-project/myproject/
+    wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
+    tar -xzvf apache-maven-3.8.8-bin.tar.gz
+    PATH=~/helidon-project/myproject/apache-maven-3.8.8/bin:$PATH</copy>
     ```
     ![configure maven](images/configure-maven.png)
 
-10. To verify that you have the correct version of JDK and Maven as shown below, run the following command in the terminal.
+11. To verify that you have the correct version of JDK and Maven as shown below, run the following command in the terminal.
     ```bash
     <copy>mvn -v</copy>
     ```
     ![verify pre-requisite](images/verify-prerequisite.png)
 
-11. From the *myproject* folder, run the following command to build the project.
+12. From the *myproject* folder, run the following command to build the project.
     ```bash
-    <copy>mvn clean package</copy>
+    <copy>cd ~/helidon-project/myproject/myproject
+    mvn clean package</copy>
     ```
     ![build project](images/build-project.png)
-    > Make sure, you are running this command from *~/helidon-project/myproject* folder.You should see *BUILD SUCCESS* at the end of the execution of this command.
+    > You should see *BUILD SUCCESS* at the end of the execution of this command.
 
-12. Copy and paste the following command into the terminal, to run this application. You will see the output similar to that shown in the below screenshot.
+13. Copy and paste the following command into the terminal, to run this application. You will see the output similar to that shown in the below screenshot.
     ```bash
     <copy>java -jar target/myproject.jar</copy>
     ```
     ![run project](images/run-project.png)
 
-> Note down the start time, it is 5140 milliseconds. we will compare this time with the native image executable later.
+> Note down the start time, it is 4822 milliseconds. we will compare this time with the native image executable later.
 
-13. Open a new terminal/console and run the following commands to check the application:
+14. Open a new terminal/console in Code Editor and run the following commands to check the application:
 
     ```bash
     <copy>
     curl -X GET http://localhost:8080/greet
     </copy>
-    {"message":"Hello World!","greeting":null}
+    {"message":"Hello World!"}
     ```
 
     ```bash
     <copy>
     curl -X GET http://localhost:8080/greet/Joe
     </copy>
-    {"message":"Hello Joe!","greeting":null}
+    {"message":"Hello Joe!"}
     ```
 
     ```bash
@@ -163,10 +169,10 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     <copy>
     curl -X GET http://localhost:8080/greet/Jose
     </copy>
-    {"message":"Hola Jose!","greeting":null}
+    {"message":"Hola Jose!"}
     ```
 
-14. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running*.
+15. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running*.
 IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 
@@ -177,4 +183,4 @@ IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023
