@@ -19,12 +19,20 @@ In this lab, you will:
 
 In this task, we install the *Ingress Controller*.
 
-1. Click *Ingress Controller*. You can see some pre-filled values, let it remain the same and click *Install Ingress Controller*.
+1. Copy and paste the following command in the terminal to update the helm version and verify it.
+    ```bash
+    <copy>curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+    helm version</copy>
+    ```
+
+2. Click *Ingress Controller*. You can see some pre-filled values, let it remain the same and click *Install Ingress Controller*.
     ![Install Ingress Controller](images/install-ingress-controller.png)
     > **For your information only:**<br>
     > This successfully install the *traefik-operator* ingress controller to Kubernetes namespace *traefik-ns*. 
 
-2. Once you see *Ingress Controller Installation Complete*, click *Ok*.
+3. Once you see *Ingress Controller Installation Complete*, click *Ok*.
     ![Ingress Controller Installed](images/ingress-controller-installed.png)
 
 
@@ -66,7 +74,9 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
 6. To update the Inress Routes, click *Update Ingress Routes*.
     ![Update Ingress Routes](images/update-ingress-routes.png)
 
-7. Once you see *Ingress Routes Update Complete* window, Click *Ok*.
+7. In the *Update Existing Ingress Routes*, Click *Yes*.
+
+8. Once you see *Ingress Routes Update Complete* window, Click *Ok*.
     ![Update Ingress Complete](images/update-ingress-complete.png)
     
     > You need to notedown this IP and save it in text file.
@@ -75,4 +85,4 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, March 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

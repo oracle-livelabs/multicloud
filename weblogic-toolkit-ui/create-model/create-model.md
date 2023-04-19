@@ -122,4 +122,4 @@ In this task, we validate the model and prepare the model to be deployed on Orac
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, May 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023
