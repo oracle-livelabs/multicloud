@@ -26,57 +26,66 @@ In this lab, you will:
 
 The *Quick Create* feature uses the default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
-In this task, we uses the *Quick Create* features to create the Oracle Kubernetes Cluster. 
+1. In the Console, select the *Hamburger Menu -> Developer Services -> Kubernetes Clusters (OKE)* as shown.
 
-1. In the Console, select the *Hamburger Menu* -> *Developer Services* -> *Kubernetes Clusters (OKE)* as shown.
-        ![Developer Services](images/developer-services.png)
+    ![Hamburger Menu](images/hamburger-menu.png " ")
 
-2. In the Cluster List page, select the Compartment of your choice, where you are allowed to create a cluster, and then click *Create Cluster*.
-        ![Select Compartment](images/select-compartment-cluster.png)
-> You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
+2. In the Cluster List page, select the Compartment, and then click *Create Cluster*.
 
-3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*. `Quick Create` will create a new cluster with the default settings, along with new network resources for the new cluster.
+    > You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
 
-![Launch Workflow](images/launch-workflow.png)
+    ![Select Compartment](images/select-compartment.png " ")
 
-4. Specify the following configuration details on the Cluster Creation page (please pay attention to the value you place in the *Shape* field):
+3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*.
+
+    ![Launch Workflow](images/launch-workflow.png " ")
+
+    *Quick Create* will create a new cluster with the default settings, along with new network resources for the new cluster.
+
+    Specify the following configuration details on the Cluster Creation page (please pay attention to the value you place in the *Shape* field):
 
     * **Name**: The name of the cluster. Leave the default value.
-    * **Compartment**: The name of the compartment. Leave the default value.
-    * **Kubernetes version**: The version of Kubernetes. Leave the default value which should be *v1.22.5* or select the latest version available.
+    * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.24.1* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
-    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard2.1* (which is typically available in Oracle Free Tier Account).
+    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard2.1* (which is typically available in Oracle Free Tier Account). Select the 1 OCPUs and 16 GB as Amount of Memory.
+    * **Image**: Select the default image with Kubernetes version *1.24.1*.
     * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
-        Click *Next* to review the details you entered for the new cluster.
 
-        ![Cluster Detail1](images/cluster-detail1.png)
-        ![Cluster Detail](images/cluster-detail2.png)
+    ![Quick Cluster](images/quick-cluster1.png " ")
+    ![Enter Data](images/enter-data.png " ")
 
-5. On the *Review* page, click *Create Cluster* to create the new network resources and the new cluster.
-        ![Create Cluster](images/create-cluster.png)
+4. Click *Next* to review the details you entered for the new cluster.
+
+5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
+
+    ![Review Cluster](images/review-cluster.png " ")
+
     > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click *Close*.
-      ![Network Resources](images/network-resources.png)
 
+    ![Network Resource](images/network-resource.png " ")
 
-    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes). Please don't wait and proceed for the next task.
+    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes). You don't need to wait, please proceed to next task.
+
+    ![cluster access](images/cluster-access.png " ")
 
 ## Task 2: Creation of an Repository
 
 In this task, you creates a public repository. In lab 5, we will push Auxiliary Image into this repository.
 
 1. In the Console, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry* as shown.
-    ![Container Registry Icon](images/container-registry-icon.png)
+    ![Container Registry](images/container-registry.png)
 
 2. Select your compartment, where you are allowed to create the repository. Click *Create Repository*.
-    ![Select Compartment](images/select-compartment.png)
+    ![Create Repository](images/create-repository.png)
 
-3. Enter *`test-model`* as Repository name and Access as *Public* then click *Create repository*.
+3. Enter *`test-model-your_firstname`* as Repository name and Access as *Public* then click *Create repository*.
     ![Repository Details](images/repository-details.png)
 
 4. Once your repository is ready. Please note down the tenancy namespace in your text file inside the text editor.
-    ![Note Tenancy NameSpace](images/note-tenancy-namespace.png)
+    ![Note Tenancy NameSpace](images/tenancy-namespace.png)
 
 
 
@@ -132,4 +141,4 @@ Oracle Cloud Infrastructure Container Engine for Kubernetes is a fully-managed, 
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, March 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

@@ -40,4 +40,4 @@ The WKT UI provides a graphical user interface that wraps the WKT tools, Docker,
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, April 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023
