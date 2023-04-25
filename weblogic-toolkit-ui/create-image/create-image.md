@@ -22,7 +22,7 @@ In this lab, you will:
 
 In this task, we are creating an Auxiliary image, which we will push to the Oracle Cloud Container Registry.
 
-1. Click *Image*. We already preset *Image Tag* with the below value. 
+1. Click *Image*. For Primary Image, we will use the below *weblogic* Image.So leave default values under *Primary Image* section as shown 
 
     ```bash
     <copy>container-registry.oracle.com/middleware/weblogic:12.2.1.3-ol8</copy>
