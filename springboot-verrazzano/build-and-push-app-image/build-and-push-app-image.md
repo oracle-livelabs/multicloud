@@ -62,11 +62,11 @@ Your *Region Name* is located in the top right corner of the Oracle Cloud Consol
 In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
     ![Tenancy Namespace](images/container-registry.png)
 
-    > The tenancy namespace is listed in the compartment. Copy and save it in a text file. You will use this information in the next lab, too.
+    > The tenancy namespace is listed in the compartment. Copy and save it in a text file. 
     ![Tenancy Namespace](images/name-space.png)
 
 3. Locate the *Endpoint for Your Region*. <br>
-Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. You will also need it for the next lab.
+Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. 
 
     ![End Points](images/end-points.png)
 
@@ -81,7 +81,7 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
 
     ```bash
     $ cd ~/springboot-app/
-    $ $ docker build -t lhr.ocir.io/tenancy-namespace/springboot-ankit:v1 .
+    $ docker build -t lhr.ocir.io/tenancy-namespace/springboot-ankit:v1 .
     Sending build context to Docker daemon  206.7MB
     Step 1/14 : FROM ghcr.io/oracle/oraclelinux:7-slim AS build_base
     Trying to pull repository ghcr.io/oracle/oraclelinux ... 
@@ -166,8 +166,8 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
 
     ```bash
     $ docker images
-    REPOSITORY                                TAG IMAGE ID    CREATED      SIZE
-    lhr.ocir.io/lrv4zdykjqrj/springboot-ankit v1 a701fa912f2 3 minutes ago 664MB
+    REPOSITORY                            TAG     IMAGE ID    CREATED      SIZE
+    lhr.ocir.io/namespace/springboot-ankit v1    a701fa912f2 3 minutes ago 664MB
     ghcr.io/oracle/oraclelinux            7-slim 1d56b1a0fd8 3 weeks ago   138MB
     $ 
     ```
@@ -213,8 +213,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 3. In the previous step, you also determined the tenancy namespace.
 Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
     * Replace `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace
-    * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text editor and paste it into the *Cloud Shell*.
-    * For Password, copy and paste the Authentication Token from your text editor (or wherever you saved it.)
+    * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text file and paste it into the *Cloud Shell*.
+    * For Password, copy and paste the Authentication Token from your text file (or wherever you saved it.)
 
     ```bash
     $ docker login lhr.ocir.io
@@ -232,15 +232,15 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 
     ![Repository Description](images/describe-repository.png)
 
-7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text file and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/springboot-your_first_name:1.0 with Docker image full name, which you saved earlier.
+7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text file and then replace *`ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/springboot-your_firstname:1.0* with Docker image full name, which you saved earlier.
 
     ```bash
     <copy>docker push ENDPOINT_OF_YOUR_REGION_NAME/NAMESPACE_OF_YOUR_TENANCY/springboot-ankit:v1</copy>
     ```
     The result should look like this:
     ```bash
-    $ docker push lhr.ocir.io/tenancynamespace/springboot-ankit:v1
-    The push refers to repository [lhr.ocir.io/tenancynamespace/springboot-ankit]
+    $ docker push lhr.ocir.io/namespace/springboot-ankit:v1
+    The push refers to repository [lhr.ocir.io/namespace/springboot-ankit]
     31118271414e: Pushed 
     e6144652ec48: Pushed 
     a5ac4d4576aa: Pushed 

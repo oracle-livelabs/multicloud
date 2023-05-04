@@ -118,7 +118,7 @@ To run this lab, you must have:
 
 
 
-## Task 1: Deploy the Tomcat sample application 
+## Task 1: Deploy the Spring boot application 
 
 
 1. Create a `springboot` namespace for the springboot application. We will keep all Kubernetes artefacts in a separate namespace.
@@ -193,7 +193,7 @@ To run this lab, you must have:
 ## Task 2: Verify the Successful Deployment of the Springboot Application
 
 
-1. Verify the `/sample-webapp/` endpoint. To determine the URL that was constructed from the external/load balancer IP and application configuration, execute the following command:
+1. Verify the `/facts` endpoint. To determine the URL that was constructed from the external/load balancer IP and application configuration, execute the following command:
 
     ```bash
     <copy>echo https://$(kubectl get gateways.networking.istio.io springboot-springboot-appconf-gw -n springboot -o jsonpath={.spec.servers[0].hosts[0]})/facts</copy>
