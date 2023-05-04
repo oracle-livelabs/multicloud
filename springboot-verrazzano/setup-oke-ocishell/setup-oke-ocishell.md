@@ -46,7 +46,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
     * **Kubernetes version**: The version of Kubernetes. Select *1.24.1* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
-    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
+    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the **2 OCPUs** and **32 GB** as Amount of Memory.
     * **Image**: Select the default image with Kubernetes version *1.24.1*.
     * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
@@ -58,7 +58,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     ![Enter Data](images/enter-data.png " ")
 
-5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
+5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create cluster* to create the new network resources and the new cluster.
 
     ![Review Cluster](images/review-cluster.png " ")
 
