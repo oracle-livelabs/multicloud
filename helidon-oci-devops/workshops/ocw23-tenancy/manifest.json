@@ -1,0 +1,51 @@
+{
+    "workshoptitle": "The Lifecycle of Helidon Microservice Application Development with OCI DevOps service",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type": "freetier",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
+            "title": "Lab 1: Provision the Infrastructure",
+            "type": "freetier",
+            "filename": "../../provision-infrastructure/provision-infrastructure.md"
+        },
+        {
+            "title": "Lab 2: Generate Helidon MP application",
+            "type": "freetier",
+            "filename": "../../create-application/create-application.md"
+        },
+        {
+            "title": "Lab 3: Explore logs and metrics explorer",
+            "type": "freetier",
+            "filename": "../../observability-management/observability-management.md"
+        },
+        {
+            "title": "Lab 4: Simulate a patch scenario",
+            "type": "freetier",
+            "filename": "../../simulate-patch/simulate-patch.md"
+        },
+		{
+            "title": "Lab 5: Modify Helidon application for Object Storage integration",
+            "type": "freetier",
+            "filename": "../../os-support/os-support.md"
+        },
+		{
+            "title": "Lab 6: Clean up the OCI Resources (Optional)",
+            "type": "freetier",
+            "filename": "../../cleanup-resources/cleanup-resources.md"
+        },
+        {
+            "title": "Oracle CloudWorld 2023 - Get Help",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/support/ocwsupportlab/ocwsupportlab.md"
+        }
+   ]
+}
