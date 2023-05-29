@@ -102,7 +102,8 @@ In this lab, you will:
     You will have output similar to that shown below:
     ![update config](images/update-config.png)
 
-    > Invoking this script will perform the following:
+    > **MANDATORY TO BE READ:-**
+    * Invoking this script will perform the following:
     * Updates in *~/oci-mp/server/src/main/resources/application.yaml* config file to set up a Helidon feature that sends Helidon-generated metrics to the OCI monitoring service.
         * **compartmentId** - Compartment ocid that is used for this demo
         * **namespace** - This can be any string but for this demo, this will be set to helidon_metrics.

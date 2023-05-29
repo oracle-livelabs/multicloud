@@ -30,7 +30,7 @@ In this lab, you will:
 3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop. 
 
     ```bash
-    <copy>curl -LSs https://objectstorage.uk-london-1.oraclecloud.com/p/p6rJ_WzkJq_THpuLmDPqyX0gcHYj-R_G25A4W0tMTsoV5pDbeQoqgegIK_PL6395/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip >~/devops_helidon_to_instance_ocw_hol.zip
+    <copy>curl -LSs https://objectstorage.uk-london-1.oraclecloud.com/p/fLbfBpQ_4Kt_Yrf6MQaDjkQFXT7auhgYmms1XNA6ajRhFug9w3eHHcKFzC14ecKB/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip >~/devops_helidon_to_instance_ocw_hol.zip
     unzip ~/devops_helidon_to_instance_ocw_hol.zip</copy>
     ```
 ![download source code](images/download-sourcecode.png)
@@ -109,7 +109,8 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     terraform apply -auto-approve</copy>
     ```
 
-    > This will provide the following resources required for DevOps:
+    > **MANDATORY TO BE READ:-**
+    This will provide the following resources required for DevOps:
     * **OCI DevOps Service** 
         * **OCI DevOps Project** that will contain all the DevOps components needed for this project.
         * **OCI Code Repository** that will host the Application source code project.

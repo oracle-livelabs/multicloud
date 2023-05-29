@@ -36,7 +36,8 @@ In this lab, you will:
     ```
     ![object storage added](images/os-added.png)
 
-    > * From the constructor's argument section, added the *ObjectStorage objectStorageClient* parameter. Since this is part of *@Injected* annotation, the parameter will automatically be processed and set by Helidon to contain the client which can be used to communicate with the Object Storage service without having to add several lines of **OCI SDK** code for that purpose.
+    > **MANDATORY TO BE READ:-**
+    * From the constructor's argument section, added the *ObjectStorage objectStorageClient* parameter. Since this is part of *@Injected* annotation, the parameter will automatically be processed and set by Helidon to contain the client which can be used to communicate with the Object Storage service without having to add several lines of **OCI SDK** code for that purpose.
     * From the same constructor's argument section, added **ConfigProperty** which will extract value from an **oci.bucket.name** property in the configuration. This has earlier been populated in **microprofile-config.properties** during the initial application setup when a utility script called **`update_config_values.sh`** was executed from the **`devops_helidon_to_instance_ocw_hol`** repository directory.
     * Using **getNamespace() Object Storage SDK** method, retrieve the Object Storage's namespace as it will be used later to retrieve or store an object:
     ```bash

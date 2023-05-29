@@ -4,6 +4,8 @@
 
 In this workshop, you will learn how to build, maintain, and upgrade a **Helidon microservice application** from start to finish using the **OCI DevOps service**. We'll demonstrate how to accelerate and streamline the entire lifecycle management process, utilizing JDK20 with Virtual Threads technology.
 
+*IT IS IMPORTANT TO GO THROUGH THE **"MANDATORY TO BE READ"** SECTION*.
+
 Estimated time: 5 minutes
 
 ### Objectives
