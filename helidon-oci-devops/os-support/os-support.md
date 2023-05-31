@@ -17,7 +17,7 @@ In this lab, you will:
 
 * An Oracle Free Tier(Trial), Paid or LiveLabs Cloud Account
 
-## Task 1: Modify the Helidon application for  Obejct storage integration
+## Task 1: Modify the Helidon application for Object Storage integration
 
 1. In **Code Editor**, click the file name **`pom.xml`** under *~/oci-mp/server/* to open it and add the **Object Storage OCI SDK** dependency inside the **dependencies** clause as shown below.
     ```bash
@@ -36,7 +36,8 @@ In this lab, you will:
     ```
     ![object storage added](images/os-added.png)
 
-    > * From the constructor's argument section, added the *ObjectStorage objectStorageClient* parameter. Since this is part of *@Injected* annotation, the parameter will automatically be processed and set by Helidon to contain the client which can be used to communicate with the Object Storage service without having to add several lines of **OCI SDK** code for that purpose.
+    > **MANDATORY TO BE READ:-**
+    * From the constructor's argument section, added the *ObjectStorage objectStorageClient* parameter. Since this is part of *@Injected* annotation, the parameter will automatically be processed and set by Helidon to contain the client which can be used to communicate with the Object Storage service without having to add several lines of **OCI SDK** code for that purpose.
     * From the same constructor's argument section, added **ConfigProperty** which will extract value from an **oci.bucket.name** property in the configuration. This has earlier been populated in **microprofile-config.properties** during the initial application setup when a utility script called **`update_config_values.sh`** was executed from the **`devops_helidon_to_instance_ocw_hol`** repository directory.
     * Using **getNamespace() Object Storage SDK** method, retrieve the Object Storage's namespace as it will be used later to retrieve or store an object:
     ```bash
@@ -114,7 +115,7 @@ In this lab, you will:
     import com.oracle.bmc.objectstorage.responses.GetObjectResponse;</copy>
     ```
 
-## Task 2: Trigger the DevOps pipeline
+## Task 2: Push the Helidon application code change and trigger the DevOps pipeline
 
 1. Copy and paste the following command in the terminal **to commit and push the change**.
     ```bash
@@ -129,7 +130,7 @@ In this lab, you will:
 2. Wait until the **DevOps lifecycle** is completed by monitoring the build and deployment pipeline logs.
     ![deployment run](images/deployment-run.png)
 
-## Task 3: Verify the successful Object Strogate integration
+## Task 3: Verify the successful Object Storage integration
 
 Test by using curl and check that a new **hello.txt** object has been added to the **bucket**. Validate that the size of the object is the same as the size of the greeting word. For example, if the greeting word is *Hello*, then the size should be **5**. If the greeting word is *Hola*, then the size should be **4**.
 

@@ -42,7 +42,7 @@ In this lab, you will:
      ```bash
     <copy>./helidon init</copy>
     ```
-2. When it prompts for the *Helidon version*, copy and paste the below value to the terminal. When you Click **Copy**, it just copy the **4.0.0-ALPHA6**, but we are showing the complete output.
+2. When it prompts for the *Helidon version*, copy and paste the below value to the terminal. When you click **Copy**, it just copy the **4.0.0-ALPHA6**, but we are showing the complete output.
     ```bash
     Helidon version (default: 3.2.0): <copy>4.0.0-ALPHA6</copy>
     ```
@@ -73,6 +73,8 @@ In this lab, you will:
     Java package name (default: me.username.mp.oci): <copy>ocw.hol.mp.oci</copy>
     ```
 
+7. When promted for *Start development loop? (default: n):*, press *Enter* to select the default value.
+
     > Once completed, this will generate an **oci-mp** project.
 
 ## Task 3: Modify the Helidon application for logging and metrics explorer
@@ -87,7 +89,8 @@ In this lab, you will:
 
 3. Open a new terminal, Copy and paste the following command to **copy the build and deployment pipeline specs** from the *`devops_helidon_to_instance_ocw_hol`* folder.
     ```bash
-    <copy>cp ~/devops_helidon_to_instance_ocw_hol/pipeline_specs/* .</copy>
+    <copy>cd ~/oci-mp/
+    cp ~/devops_helidon_to_instance_ocw_hol/pipeline_specs/* .</copy>
     ```
 
 4. Add **.gitignore** so files and directories that are not needed to be part of the repository will be ignored by git.
@@ -102,7 +105,8 @@ In this lab, you will:
     You will have output similar to that shown below:
     ![update config](images/update-config.png)
 
-    > Invoking this script will perform the following:
+    > **MANDATORY TO BE READ:-**
+    * Invoking this script will perform the following:
     * Updates in *~/oci-mp/server/src/main/resources/application.yaml* config file to set up a Helidon feature that sends Helidon-generated metrics to the OCI monitoring service.
         * **compartmentId** - Compartment ocid that is used for this demo
         * **namespace** - This can be any string but for this demo, this will be set to helidon_metrics.
@@ -137,9 +141,9 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     ![copy token](images/copy-token.png)
 
 
-## Task 5: Use git to upload the Helidon application code to the OCI Code repository in your DevOps project
+## Task 5: Sync up the Helidon application project to the OCI Code repository in your DevOps project
 
-1. The terminal should already be in the *oci-mp* directory, but if it is not, go inside that directory.
+1. Open a new terminal, Copy and paste the following command to navigate to the *oci-mp* directory.
     ```bash
     <copy>cd ~/oci-mp</copy>
     ```
@@ -172,59 +176,61 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy>git pull origin main</copy>
     ```
 
-7. This will prompt for a username and password. Use <tenancy name>/<username> for the username and OCI user **auth token** that was generated at **task 4** for the password.
+7. This will prompt for a username and password. Use **tenancy name**/**username** for the username and OCI user **auth token** that was generated at **task 4** for the password.
     ![git username](images/git-username.png)
     ![git password](images/git-password.png)
 
 8. You will have output similar to the following. If not, please check that you have run every git command correctly.
     ![git pull sync](images/git-pull-sync.png)
 
-9. **Stage** all the files for the git commit.
+
+
+## Task 6: Push the Helidon application code and trigger the DevOps pipeline
+
+1. **Stage** all the files for the git commit.
     ```bash
     <copy>git add .
     git status</copy>
     ```
 
-10. Perform the first **commit**.
+2. Perform the first **commit**.
     ```bash
     <copy>git commit -m "Helidon oci-mp first commit"</copy>
     ```
 
-## Task 6: Trigger the DevOps pipeline
-
-1. **Push** the changes to the remote repository.
+3. **Push** the changes to the remote repository.
     ```bash
     <copy>git push -u origin main</copy>
     ```
     > This will trigger the DevOps to start the build pipeline.
 
-2. Open the [Cloud Console](https://cloud.oracle.com/) in new tab, Click *Hamburger menu* -> *Developer Services* -> *Projects* under **DevOps**.
+4. Open the [Cloud Console](https://cloud.oracle.com/) in new tab, Click *Hamburger menu* -> *Developer Services* -> *Projects* under **DevOps**.
     ![devops project](images/devops-project.png)
 
-3. Select the compartment, which you have created in **Lab 1** and then Click *devops-project-helidon-ocw-hol-string* to open the **DevOps Project**.
+5. Select the compartment, which you have created in **Lab 1** and then Click *devops-project-helidon-ocw-hol-string* to open the **DevOps Project**.
     ![select compartment](images/select-compartment.png)
 
-4. Under *Latest build history*, you will see the *runs* and Status as *Accepted/In Progress*. Click on the latest runs as shown below.
+6. Under *Latest build history*, you will see the *Runs* and Status as *Accepted/In Progress*. Click on the latest runs as shown below.
     ![build history](images/build-history.png)
 
-5. Once the build pipeline completed all three stages, you will see output as shown below.
+7. Once the build pipeline completed all three stages, you will see output as shown below. You can click the arrow just before the stages, to view, what action they are performing. This action, we have defind in *`build_spec.yaml`* file in *oci-mp* folder.
     ![build run first](images/build-run-first.png)
 
-6. In Build run progress, In the third stage, click on **Three dots** and then click **View deployment** as shown below. This will open the **deployment pipeline**. 
+8. In Build run progress, In the third stage, click on **Three dots** and then click **View deployment** as shown below. This will open the **deployment pipeline**. 
     ![view deployment](images/view-deployment.png)
 
-7. Here you can see *Deployment Progress*. Once you have the deployment pipeline completed, you will see the output as shown below.
+9. Here you can see *Deployment Progress*. Once you have the deployment pipeline completed, you will see the output as shown below. You can click the arrow just before the stage, to view, what action they are performing. This action, we have defind in *`deployment_spec.yaml`* file in *oci-mp* folder.
     ![deployment run](images/deployment-run.png)
 
     > This successfully deploys the Helidon application to **Compute instances** in OCI.
 
-8. To view the logs of the deployment pipeline, click on **Three dots** near to deployment stage and click **View details** as shown below.
+10. To view the logs of the deployment pipeline, click on **Three dots** near to deployment stage and click **View details** as shown below.
     ![view logs](images/view-logs.png)
 
-9. Scroll down the logs and verify the **JDK flavour**, It should be **Open JDK** as shown below.
+11. Scroll down the logs and verify the **JDK flavour**, It should be **Open JDK** as shown below.
     ![open jdk](images/open-jdk.png)
 
-    > As part of **Lab 4**, we will replace Open JDK with Oracle JDK. These logs verify that you are currently using **Open JDK 20**. 
+    > As part of **Lab 4**, we will replace Open JDK with Oracle JDK. These logs verify that you are currently using **Open JDK 20** with Virtual Threads. 
 
 You may now **proceed to the next lab.**
 

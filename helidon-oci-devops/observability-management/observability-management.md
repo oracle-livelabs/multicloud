@@ -71,7 +71,7 @@ In this task, we validate **OCI logging SDK** integration to push messages to th
 1. In Cloud console, Click *Hamburger menu* -> *Observability & Management* -> *Logs*. 
     ![logs menu](images/logs-menu.png)
 
-2. Select the correct compartment and then click **devops-log-helidon-ocw-hol** as shown below.
+2. Select the correct compartment, and then select the *`app-log-group-helidon-ocw-hol`* as **Log Group** then click **app-log-helidon-ocw-hol** as shown below.
     ![select compartment](images/select-compartment.png)
 
 3. In **Filter by time**, select **Today** from dropdown and you can see the application logs. 
