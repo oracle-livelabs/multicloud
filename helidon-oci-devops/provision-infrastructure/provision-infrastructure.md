@@ -30,7 +30,7 @@ In this lab, you will:
 3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop. 
 
     ```bash
-    <copy>curl -LSs https://objectstorage.uk-london-1.oraclecloud.com/p/fLbfBpQ_4Kt_Yrf6MQaDjkQFXT7auhgYmms1XNA6ajRhFug9w3eHHcKFzC14ecKB/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip >~/devops_helidon_to_instance_ocw_hol.zip
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/3NJ7lRjsmxIOlBSg4wBXzJ1xR5KVbKsiZCUayb3aEetGvG-geTZW95YxN7kwqj3q/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
     unzip ~/devops_helidon_to_instance_ocw_hol.zip</copy>
     ```
 ![download source code](images/download-sourcecode.png)
@@ -41,7 +41,7 @@ In this lab, you will:
 5. Select the *`devops_helidon_to_instance_ocw_hol`* in your home directory and click *Open*.
 ![open devops](images/open-devops.png)
 
-6. Click the file name *terraform.tfvars* inside the *init* folder of *`devops_helidon_to_instance_ocw_hol`* as shown. You can see we have four variables (**`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** ) for which we need to provide the values. 
+6. Click the file name *terraform.tfvars* inside the *`devops_helidon_to_instance_ocw_hol`* folder as shown. You can see we have four variables (**`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** ) for which we need to provide the values. 
 ![open tfvars](images/open-tfvars.png)
 
 7. In your browser, open a **new tab** for [Cloud Console](https://cloud.oracle.com/). We will use this tab to get the value of the above variables.
@@ -52,7 +52,7 @@ In this lab, you will:
 9. Click *Copy* to copy the **OCID** for tenancy and paste it in *terraform.tfvars* file as the value of *`tenancy_ocid`*.
 ![copy tenancy ocid](images/copy-tenancyocid.png)
 
-10. You can find your home region name in the Cloud console as shown below. Then open the [URL](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) to find endpoints of this region. For example, in my case, *India South(Hyderabad)* is the home region and its endpoint is *ap-hyderabad-1*. Paste the end point of your home region in *terraform.tfvars* file as the value of *region*.
+10. You can find your home region name in the Cloud console as shown below. Then open the [ENDPOINTS URL](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) to find endpoints of this region. For example, in my case, *India South(Hyderabad)* is the home region and its endpoint is *ap-hyderabad-1*. Paste the end point of your home region in *terraform.tfvars* file as the value of *region*.
 ![home region](images/home-region.png)
 ![end points](images/end-points.png)
 
@@ -83,7 +83,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     terraform plan
     terraform apply -auto-approve</copy>
     ```
-    you will see output similar to below. Please observe the output to know what the terraform script creates. Also, you can refer the code to see its implementation.
+    you will see output similar to below. Please **observe the output** to know what the terraform script creates. Also, you can refer the code to see its implementation.
     ![init created](images/init-created.png)
 
 ## Task 3: Create a DevOps project and its resources
@@ -93,16 +93,12 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     <copy>cd ~/devops_helidon_to_instance_ocw_hol/main/</copy>
     ```
 
-2. Copy and paste the following command to update the *terraform.tfvars* inside *main* folder. This will update the value of **`tenancy_ocid`**, **region**, and **`user_ocid`**.
+2. Copy and paste the following command to update the **compartment_ocid** of a newly created compartment in  *terraform.tfvars* inside *`devops_helidon_to_instance_ocw_hol`* folder. 
     ```bash
-    <copy>cp ../init/terraform.tfvars .</copy>
-    ```
-3. Copy and paste the following command to update the **compartment_ocid** of a newly created compartment in  *terraform.tfvars* inside *main* folder. 
-    ```bash
-    <copy>.../utils/update_compartment.sh</copy>
+    <copy>../utils/update_compartment.sh</copy>
     ```
 
-4. Copy and paste the following command in the terminal to provision all the DevOps resources.
+3. Copy and paste the following command in the terminal to provision all the DevOps resources.
     ```bash
     <copy>terraform init
     terraform plan
@@ -130,10 +126,10 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
         * **OCI Compute Instance** that opens port 8080 from the firewall. This is where the application will be eventually deployed.
     * **OCI Virtual Cloud Network (VCN) with Security List** containing an Ingress that opens port 8080. Port 8080 is where the Helidon application will be accessed from. The OCI VCN will be used by the OCI Compute Instance for its network needs.
 
-5. Diagram below depicts how the DevOps setup will work:
+4. Diagram below depicts how the DevOps setup will work:
     ![devops diagram](images/devops-diagram.png)
 
-6. You will get a similar output as shown below. You need to copy these values and paste them into a text file. So we can use it later in the workshop.
+5. You will get a similar output as shown below. You need to copy these values and paste them into a text file. So we can use it later in the workshop.
     ![tf output](images/tf-output.png)
 
 
