@@ -35,7 +35,7 @@ To run this lab, you must have:
     > Please ignore the warnings/problems, you notice in Code Editor while opening this folder.
 
 
-3. Copy and paste the following command to set the PATH and JAVA_HOME variable.
+3. Open a new terminal, and then copy and paste the following command to set the PATH and JAVA_HOME variable.
     ```bash
     <copy>PATH=~/jdk-19.0.2/bin:~/apache-maven-3.8.3/bin:$PATH
     JAVA_HOME=~/jdk-19.0.2</copy>
