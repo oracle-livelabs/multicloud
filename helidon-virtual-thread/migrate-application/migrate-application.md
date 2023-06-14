@@ -38,7 +38,7 @@ Estimated Time: 20 minutes
 6. Go back to Code Editor, In HELIDON-LEVELUP-2023-MAIN, and click *docs*.
     ![Select docs](images/select-docs.png)
 
-7. Click *File* -> *Upload Files*. 
+7. Click *File* -> *Upload Files* and select the *myproject.zip* from the location where you have saved this file earlier and then click *Open*.
     ![Upload Files](images/upload-files.png)
 
 8. You will see *myproject.zip* file under *docs* folder.
