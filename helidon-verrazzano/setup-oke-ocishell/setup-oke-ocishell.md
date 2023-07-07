@@ -45,25 +45,23 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
     Specify the following configuration details on the Cluster Creation page (please pay attention to the value you place in the *Shape* field):
 
     * **Name**: The name of the cluster. Leave the default value.
-    * **Compartment**: The name of the compartment. Leave the default value.
-    * **Kubernetes version**: The version of Kubernetes. Select *1.24.1* as Kubernetes version.
+    * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.26.2* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
+    * **Node Type**: Select *Managed* as Node type. 
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
-    * **Image**: Select the default image with Kubernetes version *1.24.1*.
+    * **Image**: Select the default image with Kubernetes version *1.26.2*.
     * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
-    > *PLEASE MAKE SURE THAT YOU CHANGE THE SHAPE AS PER THE INSTRUCTIONS, THE
-DEFAULT SHAPE IN THE QUICK START IS TOO SMALL TO FIT ALL THE VERRAZZANO
-COMPONENTS*
+    > *PLEASE BE VERY CAREFUL TO NOT LEAVE THE DEFAULT SHAPE; THE DEFAULT SHAPE IS TOO SMALL TO FIT ALL THE VERRAZZANO COMPONENTS*
 
     ![Quick Cluster](images/quick-cluster.png " ")
+    ![Node number](images/node-number.png " ")
 
 4. Click *Next* to review the details you entered for the new cluster.
 
-    ![Enter Data](images/enter-data.png " ")
-
-5. On the Review page, select the check box for *Create a Basic cluster* and then click *Create cluster* to create the new network resources and the new cluster. Basic clusters support all the core functionality provided by Kubernetes and Container Engine for Kubernetes, but none of the enhanced features that Container Engine for Kubernetes provides with enhanced clusters (such as virtual nodes, cluster add-on management, workload identity, and additional worker nodes per cluster).
+5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
 
     ![Review Cluster](images/review-cluster.png " ")
 
@@ -71,11 +69,12 @@ COMPONENTS*
 
     ![Network Resource](images/network-resource.png " ")
 
-    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes). You don't need to wait, you may proceed with lab 2.
+    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).Then, you may continue your labs.
 
     ![cluster provision](images/cluster-provision.png " ")
 
     ![cluster access](images/cluster-access.png " ")
+
 
 
 

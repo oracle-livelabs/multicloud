@@ -22,7 +22,7 @@ Verrazzano includes the following capabilities:
 - Integrated security
 - DevOps and GitOps enablement
 
-![Verrazzano](images/Verrazzano_Components.png)
+![Verrazzano](images/verrazzano.png)
 
 ### Objectives
 <if type="freetier">
@@ -42,4 +42,4 @@ Verrazzano includes the following capabilities:
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2023
+* **Last Updated By/Date** - Ankit Pandey, July 2023

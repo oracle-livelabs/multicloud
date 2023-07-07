@@ -48,7 +48,7 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 1. Download the latest vz CLI.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-1.5.2-linux-amd64.tar.gz</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
@@ -61,7 +61,7 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 2. Download the checksum file.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-1.5.2-linux-amd64.tar.gz.sha256</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
@@ -76,19 +76,19 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>sha256sum -c verrazzano-1.5.2-linux-amd64.tar.gz.sha256</copy>
+    <copy>sha256sum -c verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    verrazzano-1.5.2-linux-amd64.tar.gz: OK
+    verrazzano-1.6.0-linux-amd64.tar.gz: OK
     ```
 
 4. Unpack and move to the vz binary directory,
 
     ```bash
-    <copy>tar xvf verrazzano-1.5.2-linux-amd64.tar.gz
-    cd ~/verrazzano-1.5.2/bin/</copy>
+    <copy>tar xvf verrazzano-1.6.0-linux-amd64.tar.gz
+    cd ~/verrazzano-1.6.0/bin/</copy>
     ```
 
 5. Test to ensure that the version you installed is up-to-date.
@@ -99,9 +99,9 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 
     The output should be similar to the following:
     ```bash
-    Version: v1.5.2
-    BuildDate: 2023-03-15T23:56:21Z
-    GitCommit: 0326ee67fb4bf559024537e77be65213ab230c5e
+    Version: v1.6.0
+    BuildDate: 2023-06-27T01:27:54Z
+    GitCommit: c04ecd4313e66cd6b0ed53f1e3dcf9a7d792f139
     ```
 
 
@@ -131,7 +131,8 @@ In this lab, we are going to install the *development profile of Verrazzano*, wh
 
 Verrazzano installs a curated set of open source components. The following table lists each component, its version, and a brief description.
 
-![Verrazzano Profile](images/verrazzano-components.png " ")
+![Verrazzano Profile](images/verrazzano-profile.png " ")
+![Verrazzano Profiles](images/verrazzano-profiles.png " ")
 
 According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
 
@@ -153,8 +154,8 @@ An ingress controller is something that helps provide access to Docker container
 
     The output should be similar to the following:
     ```bash
-    Installing Verrazzano version v1.5.2
-    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.5.2/verrazzano-platform-operator.yaml
+    Installing Verrazzano version v1.6.0
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
     serviceaccount/verrazzano-platform-operator created
@@ -169,10 +170,6 @@ An ingress controller is something that helps provide access to Docker container
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-mysqlinstalloverrides created
     validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-requirements-validator created
     Waiting for verrazzano-platform-operator to be ready before starting install - 23 seconds
-    2023-03-21T09:48:40.827Z info Reconciling Verrazzano resource default/example-verrazzano, generation 1, version 
-    2023-03-21T09:48:41.065Z info Starting EventSource
-    2023-03-21T09:48:41.065Z info Starting EventSource
-    2023-03-21T09:48:41.065Z info Starting EventSource
     ```
 
     <if type="freetier">
