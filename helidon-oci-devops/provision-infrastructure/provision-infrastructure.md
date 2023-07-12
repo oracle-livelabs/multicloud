@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will create a **compartment**, **dynamic groups**, **user group and policies**. Then you will create a **DevOps project** and its related resources using the Terraform in **OCI Code Editor**.
+In this lab, you will create a **compartment**, **dynamic groups**, **user group and policies**. Then you will create a **DevOps project** and its related resources using the Terraform service in **OCI Code Editor**.
 
 Estimated time: 10 minutes
 
@@ -35,14 +35,17 @@ In this lab, you will:
     ```
 ![download source code](images/download-sourcecode.png)
 
-4. To open the source code *`devops_helidon_to_instance_ocw_hol`* in the workspace, click *File*-> *Open*.
+4. To open the source code *`devops_helidon_to_instance_ocw_hol`* in **Code Editor**, click *File*-> *Open*.
 ![open source code](images/open-sourcecode.png)
 
 5. Select the *`devops_helidon_to_instance_ocw_hol`* in your home directory and click *Open*.
 ![open devops](images/open-devops.png)
 
-6. Click the file name *terraform.tfvars* inside the *`devops_helidon_to_instance_ocw_hol`* folder as shown. You can see we have four variables (**`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** ) for which we need to provide the values. 
+6. Click the file name *terraform.tfvars* inside the *`devops_helidon_to_instance_ocw_hol`* folder as shown. You can see we have variables **`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** which we will customize for your trial cloud account. 
 ![open tfvars](images/open-tfvars.png)
+
+> If you don't see the project. You may need to click the *Explorer* icon in Code Editor.
+![exlorer](images/explorer.png)
 
 7. In your browser, open a **new tab** for [Cloud Console](https://cloud.oracle.com/). We will use this tab to get the value of the above variables.
 
@@ -52,15 +55,16 @@ In this lab, you will:
 9. Click *Copy* to copy the **OCID** for tenancy and paste it in *terraform.tfvars* file as the value of *`tenancy_ocid`*.
 ![copy tenancy ocid](images/copy-tenancyocid.png)
 
-10. You can find your home region name in the Cloud console as shown below. Then open the [ENDPOINTS URL](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) to find endpoints of this region. For example, in my case, *India South(Hyderabad)* is the home region and its endpoint is *ap-hyderabad-1*. Paste the end point of your home region in *terraform.tfvars* file as the value of *region*.
-![home region](images/home-region.png)
-![end points](images/end-points.png)
-
-11. To get the **`user_ocid`**, click *User icon* and then click *My profile* as shown.
+10. To get the **`user_ocid`**, click *User icon* and then click *My profile* as shown.
 ![my profile](images/my-profile.png)
 
-12. Click *Copy* to copy the **OCID** for the user and paste it in *terraform.tfvars* file as the value of *`user_ocid`*.
+11. Click *Copy* to copy the **OCID** for the user and paste it in *terraform.tfvars* file as the value of *`user_ocid`*.
 ![copy user ocid](images/copy-userocid.png)
+
+
+12. To find the region name, click **Manage regions** as shown below. Then copy the **Region Identifier** of your home region and paste it in *terraform.tfvars* file as the value of *region*.
+![manage region](images/manage-region.png)
+![region name](images/region-name.png)
 
 13. Finally, your *terraform.tfvars* should look like this. Leave the value of *`compartment_ocid`* as it is. We will replace the value, once the compartment will be created as part of Task 2.
 ![init tfvars](images/init-tfvars.png)
@@ -86,6 +90,8 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     you will see output similar to below. Please **observe the output** to know what the terraform script creates. Also, you can refer the code to see its implementation.
     ![init created](images/init-created.png)
 
+    > If there are any errors, check to ensure that you have properly set the values correctly in **terraform.tfvars** file.
+
 ## Task 3: Create a DevOps project and its resources
 
 1. In the terminal, copy and paste the following command to navigate to the *main* folder.
@@ -105,7 +111,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     terraform apply -auto-approve</copy>
     ```
 
-    > **MANDATORY TO BE READ:-**
+    > **Please Read:-**
     This will provide the following resources required for DevOps:
     * **OCI DevOps Service** 
         * **OCI DevOps Project** that will contain all the DevOps components needed for this project.
@@ -129,7 +135,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
 4. Diagram below depicts how the DevOps setup will work:
     ![devops diagram](images/devops-diagram.png)
 
-5. You will get a similar output as shown below. You need to copy these values and paste them into a text file. So we can use it later in the workshop.
+5. You will get a similar output as shown below.
     ![tf output](images/tf-output.png)
 
 

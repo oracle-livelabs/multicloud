@@ -50,6 +50,10 @@ You may now **proceed to the next lab.**
 
 * [Reference Architecture: Understand modern app deployment strategies with Oracle Cloud Infrastructure DevOps](https://docs.oracle.com/en/solutions/mod-app-deploy-strategies-oci/index.html)
 * [https://helidon.io/](https://helidon.io/)
+* [https://medium.com/helidon](https://medium.com/helidon)
+* [https://github.com/helidon-io/helidon](https://github.com/helidon-io/helidon)
+* [https://www.youtube.com/Helidon_Project](https://www.youtube.com/Helidon_Project)
+* [https://helidon.slack.com](https://helidon.slack.com)
 
 ## Acknowledgements
 
