@@ -149,7 +149,7 @@ Test by using curl and check that a new **hello.txt** object has been added to t
 3. In **Cloud Console**, Click *Hamburger menu* -> *Storage* -> *Buckets* as shown.
     ![bucket menu](images/bucket-menu.png)
 
-4. Select the correct compartment and click **app-bucket-helidonocw-hol-string** to open the **bucket*.
+4. Select the correct compartment and click **app-bucket-helidonocw-hol-string** to open the **bucket**.
     ![select compartment](images/select-compartment.png)
 
 5. Check that the bucket now contains an object **hello.txt** and has a size of **5 bytes** because the greeting word is **Hello**. You can also download the object and verify that the content is indeed *Hello*.
