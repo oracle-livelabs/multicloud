@@ -101,6 +101,13 @@ The Helidon **oci-mp** application adds a **Health Check** feature to validate *
 
 You may now **proceed to the next lab.**
 
+## Learn More
+
+* [OCI Application with Helidon](https://medium.com/helidon/oci-application-with-helidon-caa78cacaee5)
+* [Helidon MP Metrics](https://helidon.io/docs/v3/#/mp/metrics/metrics)
+* [Helidon MP Metrics Guide ](https://helidon.io/docs/v3/#/mp/guides/metrics)
+* [Helidon MP Health](https://helidon.io/docs/v3/#/mp/health)
+* [Helidon MP Health Check Guide](https://helidon.io/docs/v3/#/mp/guides/health)
 
 ## Acknowledgements
 

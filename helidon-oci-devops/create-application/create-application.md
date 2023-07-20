@@ -105,7 +105,7 @@ In this lab, you will:
     You will have output similar to that shown below:
     ![update config](images/update-config.png)
 
-    > **MANDATORY TO BE READ:-**
+    > **Please Read:-**
     * Invoking this script will perform the following:
     * Updates in *~/oci-mp/server/src/main/resources/application.yaml* config file to set up a Helidon feature that sends Helidon-generated metrics to the OCI monitoring service.
         * **compartmentId** - Compartment ocid that is used for this demo
@@ -117,8 +117,9 @@ In this lab, you will:
      * Update in *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* config file to set up *oci.bucket.name* property to contain the Object Storage bucket name that was provisioned by the terraform scripts that will be used in a later exercise to demonstrate Object Storage support from a Helidon application.
 
 6. Open the file *~/oci-mp/server/src/main/resources/application.yaml* in Code editor to verify that the value of **compartmentId** and **namespace** are updated.
+![application yaml](images/application-yaml.png)
 
-7. Open the file *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* in Code editor to verify that the value of **oci.monitoring.compartmentId**, **oci.monitoring.namespace**and **oci.logging.id** are updated.
+7. Open the file *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* in Code editor to verify that the value of **oci.monitoring.compartmentId**, **oci.monitoring.namespace**, **oci.logging.id** and **oci.bucket.name** are updated. *oci.bucket.name* will be used later in Lab 5.
 
 
 ## Task 4: Generate an Authentication Token to push the code to the OCI Code repository
@@ -137,7 +138,7 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 4. Copy *oci-mp* and paste it in the Description box and click *Generate Token*.
     ![token description](images/token-description.png)
 
-5. Select *Copy* under Generated Token and paste it into the text file. We cannot copy it later. Then click *Close*.
+5. Select **Copy** under Generated Token and paste/save it into a text file using an editor of your choice. Remember that the token cannot be retrieved later so it is important to keep a copy of this now. Once done, click **Close**.
     ![copy token](images/copy-token.png)
 
 
@@ -163,6 +164,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy>git remote add origin $(~/devops_helidon_to_instance_ocw_hol/main/get.sh code_repo_https_url)
     git remote -v</copy>
     ```
+
+    > **git remote -v** is to verify that the origin has been set.
 
 5. Configure git to use the **credential helper** store so that OCI repository's username and password will be entered only once on git commands that require them. Also, set **user.name** and **user.email** which is required by git commit.
     ```bash
@@ -192,6 +195,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy>git add .
     git status</copy>
     ```
+
+    > git status will output all the files in the repository.
 
 2. Perform the first **commit**.
     ```bash
@@ -227,12 +232,19 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 10. To view the logs of the deployment pipeline, click on **Three dots** near to deployment stage and click **View details** as shown below.
     ![view logs](images/view-logs.png)
 
-11. Scroll down the logs and verify the **JDK flavour**, It should be **Open JDK** as shown below.
+11. Scroll down the logs and verify that the JDK flavor is **Open JDK**. Also note from the logs that the Helidon application leverages the new **Virtual Threads** feature in Java as shown below.
     ![open jdk](images/open-jdk.png)
 
-    > As part of **Lab 4**, we will replace Open JDK with Oracle JDK. These logs verify that you are currently using **Open JDK 20** with Virtual Threads. 
+    > As part of **Lab 4**, we will replace **Open JDK** with **Oracle JDK**. 
 
 You may now **proceed to the next lab.**
+
+## Learn More
+
+* [Helidon CLI](https://helidon.io/docs/v3/#/about/cli)
+* [Helidon MP Quick Start Guide](https://helidon.io/docs/v3/#/mp/guides/quickstart)
+* [Helidon MP Config Sources](https://helidon.io/docs/v3/#/mp/config/advanced-configuration)
+* [Helidon MP Config Sources](https://helidon.io/docs/v3/#/mp/guides/config)
 
 ## Acknowledgements
 
