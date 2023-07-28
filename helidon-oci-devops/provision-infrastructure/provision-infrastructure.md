@@ -6,6 +6,9 @@ In this lab, you will create a **compartment**, **dynamic groups**, **user group
 
 Estimated time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Provision the infrastructure](videohub:1_tnhjvsxr)
+
 ### Objectives
 
 In this lab, you will:

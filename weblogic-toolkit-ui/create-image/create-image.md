@@ -36,24 +36,23 @@ In this task, we are creating an Auxiliary image, which we will push to the Orac
     * End point for the Region
     * Tenancy Namespace
 
-    You can find out your *Region Name* in top right corner in the Oracle Cloud Console.
-    ![Region Name](images/region-name.png)
 
-3. To find out the endpoint for your Region, click this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In my case, it is *UK South (London)* as the region name, thus its endpoint is *lhr.ocir.io*. Find out your endpoint for your own *Region Name* and save it in your text file.
-    ![Region Endpoints](images/region-endpoints.png)
-    > No need to copy **https://**. 
+3. To find the End point for the region, click **Manage regions** as shown below. Then copy the **Region Identifier** of your home region and paste it in the text file.
+![manage region](images/manage-region.png)
+![end points](images/end-points.png)
+ 
 
-4. In lab 3, you already noted the tenancy namespace in your text file. If not, then for finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. Select your own compartment, you will find the Namespace as shown.
+4. In lab 3, you already noted the tenancy namespace in your text file. If not, then for finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. Select the repository you created, you will find the Namespace as shown.
     ![Tenancy Namespace](images/tenancy-namespace.png)
 
 5. Now you have both the Tenancy Namespace and Endpoint for your region. Copy the following command and paste it in your text file. Then replace the `END_POINT_OF_YOUR_REGION` with the endpoint of your region name, `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace. Click on *Auxiliary Image* tab as shown.
     ![Auxiliary Tab](images/auxiliary-tab.png)
 
     ````bash
-    <copy>END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/test-model:v1</copy>
+    <copy>END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/test-model-your_first_name:v1</copy>
     ````
 
-> For example, in my case Auxiliary Image tag is `lhr.ocir.io/tenancynamespace/test-model:v1`.
+> For example, in my case Auxiliary Image tag is `lhr.ocir.io/tenancynamespace/test-model-ankit:v1`.
 
 6. In step 4, you also determined the tenancy namespace.
 Enter the  Auxiliary Image Registry Push Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
@@ -89,4 +88,4 @@ Enter the  Auxiliary Image Registry Push Username as follows: `NAMESPACE_OF_YOUR
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

@@ -46,33 +46,25 @@ We are creating a Docker image, which you will upload to the Oracle Cloud Contai
 
 You need the following information:
 
-* Region Name
 * Tenancy Namespace
 * Endpoint for the Region
 
     > Copy this information to a text file so that you can refer to it throughout the lab.
 
 
-1. Locate your *Region Name*. <br>
-Your *Region Name* is located in the top right corner of the Oracle Cloud Console, in this example, it is shown as *UK South (London)*. Yours may be different.
+1. For finding the Namespace of the tenancy, click *User* Icon -> *Tenancy*  as shown. In the **Object storage settings**, you will find the Namespace. Copy and save it in your text file, because we will also use it later.
 
-    ![Region Name](images/region-name.png)
+    ![Copy Tenancynamespace](images/copy-tenancynamespace.png " ")
 
-2. Locate the *Tenancy Namespace*. <br>
-In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
-    ![Tenancy Namespace](images/container-registry.png)
 
-    > The tenancy namespace is listed in the compartment. Copy and save it in a text file. 
-    ![Tenancy Namespace](images/name-space.png)
-
-3. Locate the *Endpoint for Your Region*. <br>
+2. Locate the *Endpoint for Your Region*. <br>
 Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. 
 
     ![End Points](images/end-points.png)
 
     >Now you have both the tenancy namespace and endpoint for your region.
 
-4. Copy the following command and paste it into your text file. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
+3. Copy the following command and paste it into your text file. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
 
     ```bash
     <copy>docker build -t ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/springboot-your_first_name:v1 .</copy>
@@ -162,7 +154,7 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     $
     ```
 
-5. This creates the Docker image, which you can check in your local repository.
+4. This creates the Docker image, which you can check in your local repository.
 
     ```bash
     $ docker images
@@ -225,7 +217,7 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 4. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
     ![Container Registry](images/container-registry.png)
 
-5. Select the compartment and then click **Create Repository**.
+5. Select the compartment and then click **Create**.
     ![Repository Create](images/repository-create.png)
 
 6. Select the compartment and enter *`springboot-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
@@ -254,7 +246,6 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 
 8. After the *docker push* command runs successfully, expand the *`springboot-ankit:v1`* repository and you will notice a new image has been uploaded to this repository.
 
-    ![Image uploaded](images/verify-push.png)
 
 You may now **proceed to the next lab**.
 
@@ -262,4 +253,4 @@ You may now **proceed to the next lab**.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

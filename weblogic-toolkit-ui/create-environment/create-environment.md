@@ -46,11 +46,12 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     * **Name**: The name of the cluster. Leave the default value.
     * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
-    * **Kubernetes version**: The version of Kubernetes. Select *1.24.1* as Kubernetes version.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.26.2* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
+    * **Node type**: Select *Managed* as node type. 
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
-    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard2.1* (which is typically available in Oracle Free Tier Account). Select the 1 OCPUs and 16 GB as Amount of Memory.
-    * **Image**: Select the default image with Kubernetes version *1.24.1*.
+    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 1 OCPUs and 16 GB as Amount of Memory.
+    * **Image**: Select the default image with Kubernetes version *1.26.2*.
     * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
 
@@ -78,10 +79,10 @@ In this task, you creates a public repository. In lab 5, we will push Auxiliary 
 1. In the Console, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry* as shown.
     ![Container Registry](images/container-registry.png)
 
-2. Select your compartment, where you are allowed to create the repository. Click *Create Repository*.
+2. Select your compartment, where you are allowed to create the repository. Click *Create repository*.
     ![Create Repository](images/create-repository.png)
 
-3. Enter *`test-model-your_firstname`* as Repository name and Access as *Public* then click *Create repository*.
+3. Enter *`test-model-your_firstname`* as Repository name and Access as *Public* then click *Create*.
     ![Repository Details](images/repository-details.png)
 
 4. Once your repository is ready. Please note down the tenancy namespace in your text file inside the text editor.
@@ -141,4 +142,4 @@ Oracle Cloud Infrastructure Container Engine for Kubernetes is a fully-managed, 
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

@@ -178,6 +178,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 14. You can view all the components of the *bobs-books* application here. To view what are the related resources, click *Related Resources*.
       ![Bobs Resource](images/bobs-resource.png)
+      ![Bobs Resources](images/bobs-resources.png)
 
 15. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
       ![Verrazzano Cluster](images/verrazzano-cluster.png)
@@ -189,11 +190,11 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed applications.
 
-      ![Nodes](images/node.png)
+      ![clustr nodes](images/cluster-nodes.png)
 
 18. You can see several deployments.
 
-      ![Deployments](images/deployments.png)
+      ![Deployments](images/cluster-deployments.png)
 
 ## Task 3: Explore the Grafana Console
 
@@ -330,4 +331,4 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey,  March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

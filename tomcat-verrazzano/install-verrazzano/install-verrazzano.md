@@ -48,7 +48,7 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 1. Download the latest vz CLI.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
@@ -61,7 +61,7 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 2. Download the checksum file.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
@@ -76,19 +76,19 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>sha256sum -c verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
+    <copy>sha256sum -c verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    verrazzano-1.6.0-linux-amd64.tar.gz: OK
+    verrazzano-1.6.2-linux-amd64.tar.gz: OK
     ```
 
 4. Unpack and move to the vz binary directory,
 
     ```bash
-    <copy>tar xvf verrazzano-1.6.0-linux-amd64.tar.gz
-    cd ~/verrazzano-1.6.0/bin/</copy>
+    <copy>tar xvf verrazzano-1.6.2-linux-amd64.tar.gz
+    cd ~/verrazzano-1.6.2/bin/</copy>
     ```
 
 5. Test to ensure that the version you installed is up-to-date.
@@ -99,9 +99,9 @@ In Lab 1, you created configuration file to access Kubernetes cluster on the Ora
 
     The output should be similar to the following:
     ```bash
-    Version: v1.6.0
-    BuildDate: 2023-06-27T01:27:54Z
-    GitCommit: c04ecd4313e66cd6b0ed53f1e3dcf9a7d792f139
+    Version: v1.6.2
+    BuildDate: 2023-07-21T12:06:02Z
+    GitCommit: 5cd8a2f8670000d2ef0b02404e3169699d87f26b
     ```
 
 
@@ -113,7 +113,7 @@ An installation profile is a well-known configuration of Verrazzano settings tha
 Verrazzano supports the following installation profiles: development (`dev`), production (`prod`), and managed cluster (`managed-cluster`).
 
 The following image describes the Verrazzano installation profiles.
-![Install Profile](images/installprofile.png)
+   ![Install Profile](images/installprofile.png)
 
 To change profiles in any of the following commands, set the *VZ_PROFILE* environment variable to the name of the profile you want to install.
 
@@ -154,8 +154,8 @@ An ingress controller is something that helps provide access to Docker container
 
     The output should be similar to the following:
     ```bash
-    Installing Verrazzano version v1.6.0
-    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-platform-operator.yaml
+    Installing Verrazzano version v1.6.2
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
     serviceaccount/verrazzano-platform-operator created
@@ -188,7 +188,7 @@ An ingress controller is something that helps provide access to Docker container
 
 Verrazzano installs multiple objects in multiple namespaces. Verrazzano components are installed in the namespace *verrazzano-system*.
 
-1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have 14 pods in the *Running* state.
+1. Please verify that all the pods associated with the multiple objects have a *Running* status.
 
     ```bash
     <copy>kubectl get pods -n verrazzano-system</copy>
@@ -219,10 +219,10 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
     weblogic-operator-webhook-f7ff8c8cf     1/1     Running   0       22m
     ```
 
-    Leave the *Cloud Shell* open; we need it for Lab 3.
+    Leave the *Cloud Shell* open; we need it for Lab 4.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey,  March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

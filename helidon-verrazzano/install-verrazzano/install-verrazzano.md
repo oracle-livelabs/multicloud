@@ -120,7 +120,7 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
 1. Download the latest vz CLI.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
@@ -133,7 +133,7 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
 2. Download the checksum file.
 
     ```bash
-    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
@@ -148,19 +148,19 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
 3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>sha256sum -c verrazzano-1.6.0-linux-amd64.tar.gz.sha256</copy>
+    <copy>sha256sum -c verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    verrazzano-1.6.0-linux-amd64.tar.gz: OK
+    verrazzano-1.6.2-linux-amd64.tar.gz: OK
     ```
 
 4. Unpack and move to the vz binary directory,
 
     ```bash
-    <copy>tar xvf verrazzano-1.6.0-linux-amd64.tar.gz
-    cd ~/verrazzano-1.6.0/bin/</copy>
+    <copy>tar xvf verrazzano-1.6.2-linux-amd64.tar.gz
+    cd ~/verrazzano-1.6.2/bin/</copy>
     ```
 
 5. Test to ensure that the version you installed is up-to-date.
@@ -171,9 +171,9 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
 
     The output should be similar to the following:
     ```bash
-    Version: v1.6.0
-    BuildDate: 2023-06-27T01:27:54Z
-    GitCommit: c04ecd4313e66cd6b0ed53f1e3dcf9a7d792f139
+    Version: v1.6.2
+    BuildDate: 2023-07-21T12:06:02Z
+    GitCommit: 5cd8a2f8670000d2ef0b02404e3169699d87f26b
     ```
 
 
@@ -200,8 +200,8 @@ Verrazzano supports the following installation profiles: development (`dev`), pr
 
     The output should be similar to the following:
     ```bash
-    Installing Verrazzano version v1.6.0
-    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.0/verrazzano-platform-operator.yaml
+    Installing Verrazzano version v1.6.2
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-platform-operator.yaml
     customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
     namespace/verrazzano-install created
     serviceaccount/verrazzano-platform-operator created
@@ -226,4 +226,4 @@ Verrazzano supports the following installation profiles: development (`dev`), pr
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

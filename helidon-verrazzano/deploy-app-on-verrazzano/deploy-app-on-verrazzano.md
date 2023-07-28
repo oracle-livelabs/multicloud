@@ -277,4 +277,4 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

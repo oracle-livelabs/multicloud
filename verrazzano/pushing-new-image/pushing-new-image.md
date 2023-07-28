@@ -37,16 +37,16 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
     ![Token create](images/token-create.png " ")
 
-5. Select *Copy* under Generated Token and paste it in the text editor. We cannot copy it later.
+5. Select *Copy* under Generated Token and paste it in the text file. We cannot copy it later.
 
     ![Copy Token](images/copy-token.png " ")
 
 ## Task 2: Push the bobbys-helidon-stock-application Docker image to your Oracle Cloud Container Registry Repository
 
 
-1. In Lab 5, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and saved the endpoint for your Region name in a text editor. In my case, it is UK South (London).
+1. In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is UK South (London). You will need this information for this task.
+    ![End point](images/end-point.png)
 
-    ![Endpoint](images/end-points.png " ")
 
  2. Copy the following command and paste it in your text editor and then replace the **`END_POINT_OF_REGION_NAME`** with the endpoint of your region.
 
@@ -54,7 +54,7 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy> docker login `END_POINT_OF_REGION_NAME`</copy>
     ```
 <if type="freetier">
-3. In the previous lab, you determined the Tenancy Namespace. Make the user name as follows: **`NAMESPACE_OF_YOUR_TENANCY`/oracleidentitycloudservice/`YOUR_ORACLE_CLOUD_USERNAME`**. Here, replace **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`YOUR_ORACLE_CLOUD_USERNAME`** with your Oracle Cloud Account user name and then copy the replaced user name from your text editor and paste it in the *Cloud Shell*. For Password , paste the Authentication Token from your text editor or where you saved it.
+3. In the previous lab, you determined the Tenancy Namespace. Make the user name as follows: **`NAMESPACE_OF_YOUR_TENANCY`/oracleidentitycloudservice/`YOUR_ORACLE_CLOUD_USERNAME`**. Here, replace **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`YOUR_ORACLE_CLOUD_USERNAME`** with your Oracle Cloud Account user name and then copy the replaced user name from your text file and paste it in the *Cloud Shell*. For Password , paste the Authentication Token from your text editor or where you saved it.
     ![Login Registry](images/login-registry.png " ")
 </if>
 
@@ -71,7 +71,7 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
     ![Repository Create](images/repository-create.png " ")
 
-6. Select the compartment and enter *`helidon-stock-application-your_first_name`* as the Repository Name, then choose Access as *Public* and then click *Create Repository*.
+6. Select the compartment and enter *`helidon-stock-application-your_first_name`* as the Repository Name, then choose Access as *Public* and then click *Create*.
 
     ![Repository Data](images/repository-data.png " ")
 
@@ -89,7 +89,7 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
     After the *docker push* command runs successfully, expand the *`helidon-stock-application-your_first_name`* repository and you will notice a new image has been uploaded in this repository.
 
-    ![Image uploaded](images/image-uploaded.png " ")
+    
 
     Leave the *Cloud Shell* and Container Registry repository page open; we will need them for the next labs.
 
