@@ -29,7 +29,7 @@ In this task, we navigate through the resources in on-premise *test-domain* usin
     ![Clipboard](images/clipboard.png)
  > **Important**- You can see the *Clipboard*, for copy and paste between the host machine and remote desktop, we use the *Clipboard*. For example, if you want to copy from the host machine and want to paste it inside the remote desktop, you need to first paste in the clipboard first, then you can paste it in remote desktop. Again click on *Arrow Icon* to hide the *Settings* option.
 
-2. Enter *weblogic/Welcome1%* as `Username/Password`, then click *Login*. You can see, we have WebLogic Server version *12.2.1.3.0*.   
+2. Click on  *Oracle WebLogic Server* tab and enter *weblogic/Welcome1%* as `Username/Password`, then click *Login*. You can see, we have WebLogic Server version *12.2.1.3.0*.   
     ![Login Admin Console](images/login-admin-console.png)
 
 3. To view available servers, expand *Environment* and click *Servers*. You can see, we have one dynamic clusters with 5 managed servers. 
@@ -62,7 +62,6 @@ For simplicity of lab, we created *`base_project.wktproj`*, which preset the loc
     > we also specify the location for *JAVA HOME* and *ORACLE_HOME*. WebLogic Kubernetes Toolkit UI uses this directory when invoking the WebLogic Deployer Tooling and WebLogic Image Tool. <br>
     > To build new images, inspect images and interact with image repositories, the WKT UI application uses an image build tool, which defaults to docker.<br>
     ![Kubernetes Cluster Type](images/kubernetes-cluster-type.png)
-    ![Software Locations](images/software-locations.png)
 
 4. Enter *welcome1* as **Password** and then click *Unlock*.
     ![unlock](images/unlock.png)
@@ -95,7 +94,7 @@ In this task, we perform introspection of an on-premise domain, which creates a 
 
 In this task, we validate the model and prepare the model to be deployed on Oracle Kubernetes Cluster (OKE).
 
-1. To Validate the model, click *Validate Model*.
+1. Click *Code View* and to validate the model, click *Validate Model*.
     ![Validate Model](images/validate-model.png)
     > **For your information only:**<br>
     > Validate model invokes the WDT [Validate Model Tool](https://oracle.github.io/weblogic-deploy-tooling/userguide/tools/validate/), which validates that the model and its related artifacts  are well-formed and provides help on the valid attributes and subfolder for a particular model location.
@@ -122,4 +121,4 @@ In this task, we validate the model and prepare the model to be deployed on Orac
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

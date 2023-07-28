@@ -145,7 +145,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
 17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed application.
 
-      ![Nodes](images/node.png)
+      ![Nodes](images/cluster-nodes.png)
 
 18. You can see several deployments. 
 
@@ -280,4 +280,4 @@ Congratulations you have completed the tomcat application deployment on Verrazza
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

@@ -11,7 +11,6 @@ Estimated time: 05 minutes
 In this lab, you will:
 
 * Verify the changes in the Bobby's Books application.
-* Verify the changes in the Verrazzano Console.
 * Verify the changes in the Grafana Console.
 
 ### Prerequisites
@@ -28,60 +27,10 @@ In this lab, you will:
 
     ![Bobby's Book](images/bobbysbooks.png " ")
 
-## Task 2: Verify the Changes in the Verrazzano Console
 
-1. You determined the endpoints for the Verrazzano Console as part of Lab 4, but, if you want to get the link for the Verrazzano console, copy the following command and run it in the *Cloud Shell*.
+## Task 2: Verify the Changes in the Grafana Console
 
-    ```bash
-    <copy>kubectl get vz -o jsonpath="{.items[].status.instance}" | jq .</copy>
-    ```
-
-    You can see the link for the Verrazzano Console, select it to open the console.
-
-    The output should be similar to the following:
-        ```bash
-        $ kubectl get vz -o jsonpath="{.items[].status.instance}" | jq .
-        {
-        "consoleUrl": "https://verrazzano.default.xx.xx.xx.xx.nip.io",
-        "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
-        "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
-        "kialiUrl": "https://kiali.vmi.system.default.1xx.xx.xx.xx.nip.io",
-        "openSearchDashboardsUrl": "https://osd.vmi.system.default.1xx.xx.xx.xx.nip.io",
-        "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
-        "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
-        "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
-        }
-        ```
-
-2. In Lab4, if you saved the password for the Verrazzano Console, you can use it to log in to the Verrazzano Console. Otherwise, run the following command in the *Cloud Shell* to get the password and paste it in your text editor.
-
-    ```bash
-    <copy>kubectl get secret --namespace verrazzano-system verrazzano -o jsonpath={.data.password} | base64 --decode; echo</copy>
-    ```
-
-3. Enter *verrazzano* as the user name and use the output of the previous command from the text editor, as the password then click *Sign In*.
-
-    ![Sign In](images/sign-in.png " ")
-
-4. Select the application name, 'bobs-books', under OAM Applications as shown below:
-
-    ![OAM application](images/oam-application.png " ")
-
-5. Select the drop-down menu to sort by Name and then select the component Name, *bobby-helidon*.
-
-    ![Bobby Helidon](images/bobby-helidon.png " ")
-
-6. In the previous lab, we modified the *bobs-books-comp.yaml* file which provides the specification for every component. Now, in the Verrazzano console, we will verify the changes that we made in Lab 7. Select *bobby-helidon* in *Workload Spec*.
-
-    ![Workload spec](images/workload-spec.png " ")
-
-    You will see that this component is using the new Docker image from the Oracle Cloud Container Registery repository.
-
-    ![Verify Changes](images/verify-changes.png " ")
-
-## Task 3: Verify the Changes in the Grafana Console
-
-1. Select *Home* to go back to the Verrazzano Home Page.
+1. Go back to the Verrazzano Home Page.
 
     ![Verrazzano Home](images/verrazzao-home.png " ")
 
@@ -104,4 +53,4 @@ In this lab, you will:
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

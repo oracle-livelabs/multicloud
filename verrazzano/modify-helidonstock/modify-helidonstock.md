@@ -162,17 +162,15 @@ You should have a text editor, where you can paste the commands and URLs and mod
     * Tenancy Namespace
     * End point for the Region
 
-    You can find out your *Region Name* in top right corner in the Oracle Cloud Console, as shown in following image.
-    ![Container Registry](images/region-name.png" ")
 
-5. For finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. In the compartment, you will find the Namespace. Copy and save it in somewhere in your text editor. Keep it in the text editor, because we will also use it in Lab 6.
+5. For finding the Namespace of the tenancy, click *User* Icon -> *Tenancy*  as shown. In the **Object storage settings**, you will find the Namespace. Copy and save it in somewhere in your text file, because we will also use it in Lab 6.
 
-    ![Open Registry](images/container-registry.png " ")
     ![Copy Tenancynamespace](images/copy-tenancynamespace.png " ")
 
-6. To find out the endpoint for your Region, select this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In my case, it is *US EAST (Ashburn)* as the region name, thus its endpoint is *iad.ocir.io*. Find out your endpoint for your own *Region Name* and save it in the text editor. We will also need it for the next lab.
 
-    ![End Points](images/end-points.png " ")
+6. To find the End point for the region, click **Manage regions** as shown below. Then copy the **Region Identifier** of your home region and paste it in the text file.
+![manage region](images/manage-region.png)
+![end points](images/end-points.png)
 
 7. Now you have both the Tenancy Namespace and Endpoint for your region. Copy the following command and paste it in your text editor. Then replace the **`END_POINT_OF_YOUR_REGION`** with the endpoint of your region name, **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`your_first_name`** with your first name in lower case.
 
@@ -194,4 +192,4 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey,  March 2023
+* **Last Updated By/Date** - Ankit Pandey,  August 2023

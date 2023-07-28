@@ -96,4 +96,4 @@ This section provides support for installing the WebLogic Kubernetes Operator (t
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023

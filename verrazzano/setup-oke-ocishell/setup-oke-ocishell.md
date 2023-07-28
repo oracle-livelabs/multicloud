@@ -127,9 +127,9 @@ We will use `kubectl` to manage the cluster remotely using the Cloud Shell. It n
     ```bash
     $ kubectl get node
     NAME          STATUS   ROLES   AGE   VERSION
-    10.0.10.101   Ready    node    11m   v1.26.2
-    10.0.10.29    Ready    node    11m   v1.26.2
-    10.0.10.37    Ready    node    11m   v1.26.2
+    10.0.10.192   Ready    node    11m   v1.26.2
+    10.0.10.219   Ready    node    11m   v1.26.2
+    10.0.10.90    Ready    node    11m   v1.26.2
     ```
 
     > If you see the node's information, then the configuration was successful.
@@ -144,4 +144,4 @@ Leave this *Cloud Shell* open; we will use it for further labs.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey,  March 2023
+* **Last Updated By/Date** - Ankit Pandey,  August 2023

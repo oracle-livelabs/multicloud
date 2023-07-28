@@ -39,32 +39,20 @@ We are creating a Docker image, which you will upload to the Oracle Cloud Contai
 
 You need the following information:
 
-* Region Name
 * Tenancy Namespace
 * Endpoint for the Region
-    >Copy this information to a text editor so that you can refer to it throughout the lab.
+
+    > Copy this information to a text file so that you can refer to it throughout the lab.
+
+1. For finding the Namespace of the tenancy, click *User* Icon -> *Tenancy*  as shown. In the **Object storage settings**, you will find the Namespace. Copy and save it in your text file, because we will also use it later.
+
+    ![Copy Tenancynamespace](images/copy-tenancynamespace.png " ")
 
 
-1. Locate your *Region Name*. <br>
-Your *Region Name* is located in the top right corner of the Oracle Cloud Console, in this example, it is shown as *UK South (London)*. Yours may be different.
+2. Open a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text file. In our example, the Region Name is UK South (London). You will need this information for this task.
+    ![End point](images/end-point.png)
 
-    ![Region Name](images/region-name.png)
-
-2. Locate the *Tenancy Namespace*. <br>
-In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
-    ![Tenancy Namespace](images/container-registry.png)
-
-    > The tenancy namespace is listed in the compartment. Copy and save it in a text editor. You will use this information in the next lab, too.
-    ![Tenancy Namespace](images/name-space.png)
-
-3. Locate the *Endpoint for Your Region*. <br>
-Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text editor. You will also need it for the next lab.
-
-    ![End Points](images/end-points.png)
-
-    >Now you have both the tenancy namespace and endpoint for your region.
-
-4. Copy the following command and paste it into your text editor. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
+3. Copy the following command and paste it into your text editor. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
 
     ```bash
     <copy>docker build -t ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/tomcat-example-your_first_name:v1 .</copy>
@@ -122,7 +110,7 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     $
     ```
 
-5. This creates the Docker image, which you can check in your local repository.
+4. This creates the Docker image, which you can check in your local repository.
 
     ```bash
     $ docker images
@@ -158,8 +146,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
 ## Task 4: Push the tomcat Application Docker Image to your Container Registry Repository
 
-1. In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is UK South (London). You will need this information for this task.
-    ![Endpoint](images/end-points.png)
+1. In Task 2 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text file. In our example, the Region Name is UK South (London). You will need this information for this task.
+    ![Endpoint](images/end-point.png)
 
 2. Copy the following command and paste it into your text editor and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
 
@@ -187,11 +175,11 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 5. Select the compartment and then click **Create Repository**.
     ![Repository Create](images/repository-create.png)
 
-6. Select the compartment and enter *`tomcat-example-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
+6. Select the compartment and enter *`tomcat-example-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create**.
 
     ![Repository Description](images/describe-repository.png)
 
-7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/tomcat-example-your_first_name:1.0 with Docker image full name, which you saved earlier.
+7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/`tomcat-example-your_first_name`:1.0 with Docker image full name, which you saved earlier.
 
     ```bash
     <copy>docker push ENDPOINT_OF_YOUR_REGION_NAME/NAMESPACE_OF_YOUR_TENANCY/tomcat-example-ankit:v1</copy>
@@ -216,7 +204,6 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 
 8. After the *docker push* command runs successfully, expand the *`tomcat-example-ankit:v1`* repository and you will notice a new image has been uploaded to this repository.
 
-    ![Image uploaded](images/verify-push.png)
 
 You may now **proceed to the next lab**.
 
@@ -224,4 +211,4 @@ You may now **proceed to the next lab**.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023
