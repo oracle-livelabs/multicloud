@@ -6,6 +6,9 @@ This lab walks you through the steps to clean up the OCI resource created in thi
 
 Estimated time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[clean up resources](videohub:1_cyuzrf2g)
+
 ### Objectives
 
 In this lab, you will:

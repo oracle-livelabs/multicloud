@@ -6,6 +6,9 @@ In this lab, you will verify the successful deployment of the Helidon applicatio
 
 Estimated time: 5 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Explore logs and metrics explorer](videohub:1_7a0qaaif)
+
 ### Objectives
 
 In this lab, you will:
