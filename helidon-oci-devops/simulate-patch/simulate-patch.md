@@ -6,6 +6,9 @@ This lab will attempt to simulate a patching scenario. Take a case where the ini
 
 Estimated time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Simulate a patch scenario](videohub:1_4pecvhmf)
+
 ### Objectives
 
 In this lab, you will:

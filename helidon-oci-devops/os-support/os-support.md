@@ -6,6 +6,9 @@ The objective of this lab is to demonstrate **how to add Object Storage access**
 
 Estimated time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Object Storage support](videohub:1_p5v2wehm)
+
 ### Objectives
 
 In this lab, you will:

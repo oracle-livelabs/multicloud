@@ -6,6 +6,8 @@ This lab walks you through the steps to create a **Helidon MP** application usin
 
 Estimated time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Generate Helidon MP application](videohub:1_i4j33ed4)
 ### Objectives
 
 In this lab, you will:
