@@ -1,4 +1,4 @@
-# Provision the Infrastructure
+# Provision of the Infrastructure
 
 ## Introduction
 
