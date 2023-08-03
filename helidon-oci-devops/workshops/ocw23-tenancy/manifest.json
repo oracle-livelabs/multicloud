@@ -10,35 +10,35 @@
         {
             "title": "Get Started",
             "description": "Prerequisites",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/event-register-free-tier-account.md"
         },
         {
-            "title": "Lab 1: Provision the Infrastructure",
+            "title": "Lab 1: Provision of the Infrastructure",
             "type": "freetier",
             "filename": "../../provision-infrastructure/provision-infrastructure.md"
         },
         {
-            "title": "Lab 2: Generate Helidon MP application",
+            "title": "Lab 2: Generate Helidon MP Application",
             "type": "freetier",
             "filename": "../../create-application/create-application.md"
         },
         {
-            "title": "Lab 3: Explore logs and metrics explorer",
+            "title": "Lab 3: Explore Logs and Metrics Explorer",
             "type": "freetier",
             "filename": "../../observability-management/observability-management.md"
         },
         {
-            "title": "Lab 4: Simulate a patch scenario",
+            "title": "Lab 4: Simulate a Patch Scenario",
             "type": "freetier",
             "filename": "../../simulate-patch/simulate-patch.md"
         },
 		{
-            "title": "Lab 5: Modify Helidon application for Object Storage integration",
+            "title": "Lab 5: Modify the Helidon Application to Add Object Storage Support",
             "type": "freetier",
             "filename": "../../os-support/os-support.md"
         },
 		{
-            "title": "Lab 6: Clean up the OCI Resources (Optional)",
+            "title": "Lab 6: Clean Up the OCI Resources(Optional)",
             "type": "freetier",
             "filename": "../../cleanup-resources/cleanup-resources.md"
         },

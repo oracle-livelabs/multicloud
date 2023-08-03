@@ -1,4 +1,4 @@
-# Generate a Helidon MP application
+# Generate Helidon MP Application
 
 ## Introduction
 

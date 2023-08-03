@@ -1,4 +1,4 @@
-# Simulate a patch scenario
+# Simulate a Patch Scenario
 
 ## Introductions
 
