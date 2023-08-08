@@ -35,9 +35,11 @@ You need the following information:
     ![Copy Tenancynamespace](images/copy-tenancynamespace.png " ")
 
 
-2. To find the End point for the region, click **Manage regions** as shown below. Then copy the **Region Identifier** of your home region and paste it in the text file.
-![manage region](images/manage-region.png)
-![end points](images/end-points.png)
+2. Locate the *Endpoint for Your Region*. Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. You will also need it for the next lab.
+
+    ![End Points](images/end-point.png " ")
+
+    >Now you have both the tenancy namespace and endpoint for your region.
 
 3. Copy the following command and paste it into your text editor. Then replace the *`ENDPOINT_OF_YOUR_REGION`* with the endpoint of your region name, *`NAMESPACE_OF_YOUR_TENANCY`* with your tenancy's namespace and *`your_first_name`* with your's first name.
 
