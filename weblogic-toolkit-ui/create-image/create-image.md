@@ -9,6 +9,8 @@
 
 In this Lab, we use WebLogic server 12.2.1.3.0-ol8 image as Primary Image. Also, we create an auxiliary image, and push it to Oracle Container Image Registry repository using the generated authentication token. 
 
+Estimated Lab Time: 10 minutes
+
 Watch the video below for a quick walk-through of the lab.
 [Creation of Images for the OKE on OCI](videohub:1_nzveoikz)
 
@@ -37,9 +39,11 @@ In this task, we are creating an Auxiliary image, which we will push to the Orac
     * Tenancy Namespace
 
 
-3. To find the End point for the region, click **Manage regions** as shown below. Then copy the **Region Identifier** of your home region and paste it in the text file.
-![manage region](images/manage-region.png)
-![end points](images/end-points.png)
+3. Locate the *Endpoint for Your Region*. Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. You will also need it for the next lab.
+
+    ![End Points](images/end-point.png " ")
+
+    >Now you have both the tenancy namespace and endpoint for your region.
  
 
 4. In lab 3, you already noted the tenancy namespace in your text file. If not, then for finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. Select the repository you created, you will find the Namespace as shown.
