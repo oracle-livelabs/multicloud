@@ -6,7 +6,7 @@ This workshop shows an end to end migration of an on-premise WebLogic Server Dom
 
 ![Lab flow](images/lab-flow.png)
 
-Estimated Lab Time: 120 minutes
+Estimated Time: 120 minutes
 
 ### About Product/Technology
 
