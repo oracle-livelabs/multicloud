@@ -6,6 +6,8 @@ This workshop shows an end to end migration of an on-premise WebLogic Server Dom
 
 ![Lab flow](images/lab-flow.png)
 
+Estimated Time: 120 minutes
+
 ### About Product/Technology
 
 The WebLogic Kubernetes Toolkit (WKT) is a collection of open source tools that help you provision WebLogic-based applications to run in Linux containers on a Kubernetes cluster. WKT includes the following tools:<br>
