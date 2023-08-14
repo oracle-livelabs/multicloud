@@ -22,7 +22,7 @@ Estimated Time: 90 minutes
 * Set up an Oracle Kubernetes Engine instance on the Oracle Cloud Infrastructure.
 * Install the Verrazzano platform.
 * Deploy the *Helidon MP* application.
-* Monitor the *Helidon MP* application using Verrazzano tools, including Kibana, Grafana and Prometheus.
+* Monitor the *Helidon MP* application using Verrazzano tools, including OpenSearch, Grafana and Prometheus.
 
 ### Prerequisites
 This lab assumes you have the following installed on your machine:
@@ -64,6 +64,6 @@ Verrazzano includes the following capabilities:
 
 ## Acknowledgements
 
-* **Author** -  Peter Nagy
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Peter Nagy, September 2021
+* **Author** -  Ankit Pandey
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, August 2023

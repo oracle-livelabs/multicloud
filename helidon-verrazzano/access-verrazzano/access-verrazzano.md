@@ -37,15 +37,20 @@ Rancher is a platform that enables Verrazzano to run containers on multiple Kube
 
 [https://rancher.com/](https://rancher.com/)
 
+**Kiali**
+
+Kiali is the user interface to Istio, and it is super simple to use. From the Verrazzano console, you can directly access Kiali. From there, you can see the traffic flows and any hot spots or trouble areas. You can then drill down to see the details of each. Kiali uses metrics data from Envoy stored in Prometheus to build the graphical model
+
 ### Objectives
 
 In this lab, you will:
 
-* Explore the Verrazzano console.
+* Explore the Rancher console.
 * Explore the Grafana console.
 * Explore the OpenSearch Dashboards.
 * Explore the Prometheus console.
 * Explore the Rancher console.
+* Explore the Kiali console.
 
 ### Prerequisites
 
@@ -54,7 +59,7 @@ In this lab, you will:
 * Deployed Helidon *quickstart-mp* application.
 
 
-## Task 1: Explore the Verrazzano Console
+## Task 1: Explore the Rancher Console
 
 Verrazzano installs several consoles. The endpoints for an installation are stored in the `Status` field of the installed Verrazzano Custom Resource.
 
@@ -68,72 +73,91 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
       ```bash
       $ kubectl get vz -o jsonpath="{.items[].status.instance}" | jq .
       {
-      "consoleUrl": "https://verrazzano.default.XX.XX.XX.XX.nip.io",
-      "elasticUrl": "https://elasticsearch.vmi.system.default.XX.XX.XX.XX.nip.io",
-      "grafanaUrl": "https://grafana.vmi.system.default.XX.XX.XX.XX.nip.io",
-      "keyCloakUrl": "https://keycloak.default.XX.XX.XX.XX.nip.io",
-      "kialiUrl": "https://kiali.vmi.system.default.XX.XX.XX.XX.nip.io",
-      "kibanaUrl": "https://kibana.vmi.system.default.XX.XX.XX.XX.nip.io",
-      "prometheusUrl": "https://prometheus.vmi.system.default.1XX.XX.XX.XX.nip.io",
-      "rancherUrl": "https://rancher.default.XX.XX.XX.XX.nip.io"
+      "consoleUrl": "https://verrazzano.default.xx.xx.xx.xx.nip.io",
+      "grafanaUrl": "https://grafana.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "keyCloakUrl": "https://keycloak.default.xx.xx.xx.xx.nip.io",
+      "kialiUrl": "https://kiali.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchDashboardsUrl": "https://osd.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "openSearchUrl": "https://opensearch.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "prometheusUrl": "https://prometheus.vmi.system.default.xx.xx.xx.xx.nip.io",
+      "rancherUrl": "https://rancher.default.xx.xx.xx.xx.nip.io"
       }
       $
       ```
 
 
-2. Use the `https://verrazzano.default.YOUR_UNIQUE_IP.nip.io` to open the Verrazzano console.
+2. Use the `https://rancher.default.YOUR_UNIQUE_IP.nip.io` to open the Rancher console.
 
 3. Verrazzano *dev* profile use self-signed certificates, so you need to click **Advanced** to accept risk and skip the warning.
 
-      ![Advanced](images/verrazzano-advanced.png)
+      ![Advanced](images/rancher-advanced.png)
 
-4. Click **Proceed to verrazzano default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+4. Click **Proceed to rancher default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
-      ![Proceed](images/verrazzano-proceed.png)
+      ![Proceed](images/rancher-proceed.png)
 
-5. Because it redirects to the Keycloak console URL for authentication, click **Advanced**.
+5. Click *Log in with Keycloak*.
+      ![Rancher login](images/keycloak-login.png)
+
+6. Because it redirects to the Keycloak console URL for authentication, click **Advanced**.
 
       ![Keycloak Authentication](images/keycloak-advanced.png)
 
-6. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
+7. Click **Proceed to Keycloak default XX.XX.XX.XX.nip.io(unsafe)**. If you are not getting this option for proceeding, just type *thisisunsafe* without any space anywhere inside this chrome browser window. As you are typing in the chrome browser window, you can't see it, but as soon as you finish typing *thisisunsafe*, you can see the next page immediately. You can find more details [here](https://verrazzano.io/latest/docs/faq/faq/#enable-google-chrome-to-accept-self-signed-verrazzano-certificates).
 
       ![Proceed](images/keycloak-proceed.png)
 
-7. Now we need the username and password for the Verrazzano console. *Username* is *verrazzano* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Verrazzano Console*.
+8. Now we need the username and password for the Verrazzano console. *Username* is *verrazzano* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Rancher Console*.
 
       ```bash
       <copy>kubectl get secret --namespace verrazzano-system verrazzano -o jsonpath={.data.password} | base64 --decode; echo</copy>
       ```
 
-8. Copy the password and go back to the browser, where the *Verrazzano Console* is open. Paste the password in the *Password* field and enter *verrazzano* as *Username* and then click **Sign In**.
+9. Copy the password and go back to the browser, where the *Rancher Console* is open. Paste the password in the *Password* field and enter *verrazzano* as *Username* and then click **Sign In**.
 
       ![SignIn](images/verrazzano-sign-in.png)
 
-9. From the home page of the Verrazzano Console, you can see *System Telemetry*, and because we installed the *Development Profile* of Verrazzano, you can see it in the **General Information** section. You can see the Helidon *quickstart-mp* application under **OAM Applications**. Click **hello-helidon-appconf** to view components of this application.
+10. From the home page of the rancher console, you can view the Verrazzano Links. you can access any of these consoles from rancher console.Click *Hamburger menu* -> *Verrazzano*.
 
-      ![Home Page](images/verrazzano-homepage.png)
+      ![Rancher Home](images/rancher-home.png)
 
-10. There is only one component for this application as you can see under **Components**. To explore the configuration click the **OAM Component Ref:** *hello-helidon-component* component as shown:
+11. Click *Applications*. This section shows all the applications with their namespace and is managed by Verrazzano. Click the *hello-helidon-appconf* application within the *hello-helidon* namespace.
+      ![Helidon Application](images/helidon-application.png)
 
-      ![hello-helidon](images/verrazzano-components.png)
+12. You can view the pods associated with the application. The pod name contains an auto-generated unique string to identify that particular replica. To view the logs of pods, Click *Three dots* -> *View Logs*.
+      ![Helidon Components](images/view-pod-logs.png)
 
-11. You can see *General Information* for this component. To learn about the *Workload Spec*, click **hello-helidon-component** as shown:
+13. You can view the application logs for the application. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start. To view the Component associated with the application, click *Components*.
+      ![Application logs](images/view-pod-log.png)
 
-      ![Workload spec](images/workload-spec.png)
+14. This application has only one component.To view what are the related resources, click *Related Resources*.
+      ![Helidon Resource](images/helidon-resource.png)
+      ![Helidon Resources](images/helidon-resources.png)
 
-12. Here you can see the configuration details for the *hello-helidon-component* component. Click **Close**.
+15. Click *Hamburgar menu* -> *local*, to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+      ![Verrazzano Cluster](images/verrazzano-cluster.png)
 
-      ![configuration](images/configuration.png)
+
+16. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
+
+      ![Cluster Explorer](images/cluster-dashboard.png)
+
+17. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check deployed application.
+
+      ![Nodes](images/cluster-nodes.png)
+
+18. You can see several deployments. 
+
+      ![Deployments](images/deployment.png)
 
 ## Task 2: Explore the Grafana Console
 
-1. Click **Home** to go back to Verrazzano Console Home Page.
-
-      ![Home](images/grafana-link.png)
+1. Click *Hamburgar menu* -> *Home*.
+      ![Home](images/ranchar-menu.png)
 
 2. On the home page, you'll see the link for opening the *Grafana console*. Click the link for the **Grafana Console** as shown:
 
-      ![Grafana Home](images/grafana-link2.png)
+      ![Grafana Home](images/grafana-link.png)
 
 3. Click **Advanced**.
 
@@ -169,20 +193,7 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 
       ![Kibana dashboard click](images/discover-1.png)
 
-4. To find a log entry in OpenSearch first you need to define the index pattern. Click *Create index pattern*. Type `verrazzano-application-hello-helidon` in the **Index Pattern name**. Select the result from the list below and click **Next step** as shown.
-
-      ![Index pattern](images/create-index.png)
-      
-
-5. On the next page select *@timestamp* as **Time Filter** field name and click **Create Index pattern**.
-
-      ![Index pattern](images/time-filter.png)
-
-6. When the index is ready you need to click *Home* -> *Discover*. 
-
-      ![Index pattern](images/discover-2.png)
-
-7. Type the custom log entry value you created in the Helidon application: `Help requested` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
+4. Select the *`verrazzano-application*`* namespace as shown and then type the custom log entry value you created in the Helidon application: `help ` into the filter textbox. Press **Enter** or click **Refresh**. You should get at least one result. 
       >If you haven't hit the application endpoint, or that happened a long time ago, simply invoke again the following HTTP request in the Cloud Shell against your endpoint. You can execute requests multiple times.
 
       ```bash
@@ -206,59 +217,65 @@ Verrazzano installs several consoles. The endpoints for an installation are stor
 4. Click **Execute** and check the result below. You should see your metric's current value which means how many requests were completed by your endpoint. You can also switch to *Graph* view instead of the *Console* mode.
 
       ![Prometheus value](images/execute-query.png)
+      ![Graph view](images/graph-view.png)
 
       >You can also add another metric to your dashboard. Discover the available, default metrics in the list.
 
-## Task 5: Explore the Rancher Console
+## Task 5: Explore the Kiali Console
 
-1. Go back to the Verrazzano home page and click **Rancher** console.
+1. Go back to the Verrazzano home page and click **Kiali** console.
 
-      ![Rancher link](images/rancher-link.png)
+      ![Rancher link](images/kiali-link.png)
 
 2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
 
-3. Rancher requires separate credentials. In the Verrazzano `dev` profile the username is *admin*. To get the password to execute the following command in Cloud Shell which extracts from the proper secret configuration:
+3. On Left side, Click on Graph.
+
+   ![Kiali Dashboard](images/kiali-dashboard.png " ")
+
+4. In the Namespace dropdown, check the box for *verrazzano-system* and make the curser move outside the dropdown. 
+   ![Bobs Namespace](images/verrazzano-namespace.png " ")
+
+5. You can view the graphical view of *verrazzano-system* namespace. Click *Legend* to view the Legend view.
+
+   ![Graphical View](images/graphical-view.png " ")
+
+6. Here you can view, what each shapes represents, like circle represents the *Workloads*.
+
+   ![Legend View](images/legend-view.png " ")
+
+7. On Left side, Click on *Applications* to view the deployed applications.
+
+   ![Applications](images/applications.png " ")
+
+## Task 6: Explore the Keycloak Console
+
+1. Go back to the Verrazzano home page and click **Keycloak** console.
+
+      ![Keycloak link](images/keycloak-link.png)
+
+2. Click **Proceed to ... default XX.XX.XX.XX.nip.io(unsafe)** if prompted.
+
+3. On the Welcome to Keycloak page, click *Administration Console*.
+      ![Keycloak home](images/keycloak-home.png)
+
+4. Now we need the username and password for the Keycloak console. *Username* is *keycloakadmin* and to find out the password, go back to the *Cloud Shell* and paste the following command to find out the password for the *Keycloak Console*.
+
       ```bash
-      <copy>kubectl get secret --namespace cattle-system rancher-admin-secret -o jsonpath={.data.password} | base64 --decode; echo</copy>
+      <copy>kubectl get secret --namespace keycloak keycloak-http -o jsonpath={.data.password} | base64  --decode; echo</copy>
       ```
-4. Using the values above login to the Rancher console.
 
-      ![Rancher login](images/rancher-login.png)
-      > You may notice a checkbox for *Allow collection of anonymous statistics*, Check this box and click *Got It*.
-      ![Rancher Welcome](images/rancher-welcome.png)
+5. Copy the password and go back to the browser, where the *Keycloak Console* is open. Paste the password in the *Password* field and enter *keycloakadmin* as *Username* and then click **Sign In**.
 
-5. On the Cluster Manager page you can monitor and manage multiple clusters controlled by Verrazzano. In this lab, you have only one (OKE) cluster. Click on the **local** to open the *Cluster Explorer*. The *Cluster Explorer* allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+      ![SignIn](images/keycloak-sign-in.png)
 
-      ![Cluster Manager](images/rancherlocal.png)
-
-6. The dashboard gives an overview of the cluster and the deployed applications. The number of resources belongs to the *User Namespaces* which is practically almost all the resources including the system too. You can filter by namespace at top of the dashboard, but this is not necessary now. Click on the **Nodes** item in the left side menu to get an overview of the current load of the nodes.
-
-      ![Cluster Explorer](images/cluster-dashboard.png)
-
-7. The whole deployment doesn't have any impact on the OKE cluster. Now click on the **Deployment** item in the left side menu to check your Helidon quickstart-mp application.
-
-      ![Nodes](images/node.png)
-
-8. You can see several deployments. Click on the *hello-helidon-deployment*.
-
-      ![Deployments](images/deployment.png)
-
-9. On the *Deployment* page you can see your application deployment. A deployment provides declarative updates for pods and replica sets. The pod name contains an auto-generated unique string to identify that particular replica. To see how many and what type of containers are running in this pod click on the name.
-
-      ![Helidon deployment](images/helidon-deployment.png)
-
-10. You should see two containers in the pod. The *hello-helidon-container* runs the "real" application and the other is the sidecar container which is automatically injected and necessary to take the advantage of the Istio features. Here you can check the application's log in the container. Click on the dotted menu button at the top right corner and select **View Logs**.
-
-      ![Pod](images/view-logs.png)
-
-11. Make sure that the Helidon quickstart-mp application's container is selected in the log window. Find the custom `Help requested!` log entry. If you can't see the application log then click the **Settings** (blue button with the gear icon) and change the time filter to show all the log entries from the container start.
-
-      ![Pod](images/log.png)
+6. Here you can view default configuration done by Verrazzano.
+      ![Keycloak Home](images/keycloak-realms.png)
 
 Congratulations you have completed the Helidon application deployment on Verrazzano lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, August 2023

@@ -6,6 +6,8 @@ This lab walks you through the process of pulling a docker image from the Oracle
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Run Helidon Application native docker image in Compute Instance](videohub:1_dsfd22u5)
 
 ### Objectives
 
@@ -33,8 +35,9 @@ To run this lab, you must have:
 
 3. Select the following values and click *Create*.</br>
     **Name:** Leave default.</br>
+    **Create in compatment** Select your own compartment.
     **Image:** Select *Oracle Linux 8* image.</br>
-    **Shape:** Select the shape **VM.Standard.E3.Flex** and then select 1 OCPU with 16GB memory.</br>
+    **Shape:** Select the shape **VM.Standard.E4.Flex** and then select 1 OCPU with 16GB memory.</br>
     **Primary network:** select *Create new virtual cloud network* and leave default values.</br>
     **Subnet:** select *Create new public subnet* and leave default values.</br>
     **Public IP address:** select *Assign a public IPv4 address*.</br>
@@ -102,14 +105,14 @@ To run this lab, you must have:
     <copy>
     curl -X GET http://localhost:8080/greet
     </copy>
-    {"message":"Hello World!","greeting":null}
+    {"message":"Hello World!"}
     ```
 
     ```bash
     <copy>
     curl -X GET http://localhost:8080/greet/Joe
     </copy>
-    {"message":"Hello Joe!","greeting":null}
+    {"message":"Hello Joe!"}
     ```
 
     ```bash
@@ -122,7 +125,7 @@ To run this lab, you must have:
     <copy>
     curl -X GET http://localhost:8080/greet/Jose
     </copy>
-    {"message":"Hola Jose!","greeting":null}
+    {"message":"Hola Jose!"}
     ```
 
     Congratulations you have completed the Helidon application deployment on Compute instance in Oracle Cloud Infrastructure.
@@ -132,4 +135,4 @@ To run this lab, you must have:
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

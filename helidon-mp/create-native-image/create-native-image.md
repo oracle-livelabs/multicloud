@@ -6,6 +6,9 @@ In this lab, you will learn how to build a GraalVM native image for a Helidon MP
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build Helidon MP Application native image](videohub:1_0hftfgfy)
+
 ### About GraalVM native image
 
 GraalVM is a high-performance JDK distribution that can accelerate any Java workload running on the HotSpot JVM.
@@ -34,54 +37,58 @@ GraalVM Enterprise Edition is available for use on Oracle Cloud Infrastructure (
 
     you will see output similar to below.
     ```bash
-    [INFO] 2022.09.01 11:29:24 INFO io.helidon.common.LogConfig Thread[main,5,main]: Logging at initialization configured using classpath: /logging.properties
-    [INFO] [1/7] Initializing...                                                                                   (20.7s @ 0.20GB)
-    [INFO]  Version info: 'GraalVM 22.2.0 Java 17 EE'
-    [INFO]  Java version info: '17.0.4+11-LTS-jvmci-22.2-b05'
-    [INFO]  C compiler: gcc (redhat, x86_64, 11.2.1)
-    [INFO]  Garbage collector: Serial GC
-    [INFO]  2 user-specific feature(s)
-    [INFO]  - io.helidon.integrations.graal.mp.nativeimage.extension.WeldFeature
-    [INFO]  - io.helidon.integrations.graal.nativeimage.extension.HelidonReflectionFeature
-    [INFO] [2/7] Performing analysis...  [*********]                                                              (210.2s @ 1.98GB)
-    [INFO]   19,158 (92.36%) of 20,743 classes reachable
-    [INFO]   28,255 (64.17%) of 44,034 fields reachable
-    [INFO]  100,934 (64.48%) of 156,539 methods reachable
-    [INFO]    1,099 classes,   576 fields, and 6,428 methods registered for reflection
-    [INFO]       65 classes,    70 fields, and    58 methods registered for JNI access
-    [INFO]        6 native libraries: dl, m, pthread, rt, stdc++, z
-    [INFO] [3/7] Building universe...                                                                              (25.4s @ 3.11GB)
-    [INFO] [4/7] Parsing methods...      [*****]                                                                   (25.2s @ 2.02GB)
-    [INFO] [5/7] Inlining methods...     [***]                                                                     (11.1s @ 2.64GB)
-    [INFO] [6/7] Compiling methods...    [**********************]                                                 (505.2s @ 2.61GB)
-    [INFO] [7/7] Creating image...                                                                                 (17.8s @ 3.74GB)
-    [INFO]   49.46MB (57.89%) for code area:    59,480 compilation units
-    [INFO]   35.14MB (41.14%) for image heap:  514,061 objects and 129 resources
-    [INFO]  852.35KB ( 0.97%) for other data
-    [INFO]   85.44MB in total
-    [INFO] ------------------------------------------------------------------------------------------------------------------------
-    [INFO] Top 10 packages in code area:                               Top 10 object types in image heap:
-    [INFO]    4.51MB com.oracle.svm.core.code                            10.17MB byte[] for code metadata
-    [INFO]    1.58MB sun.security.ssl                                     4.23MB byte[] for java.lang.String
-    [INFO]    1.44MB java.util                                            3.53MB java.lang.Class
-    [INFO]    1.33MB com.sun.media.sound                                  3.22MB java.lang.String
-    [INFO]  972.41KB io.netty.buffer                                      2.92MB byte[] for general heap data
-    [INFO]  961.71KB com.sun.crypto.provider                              1.22MB byte[] for reflection metadata
-    [INFO]  803.92KB jdk.proxy4                                           1.03MB byte[] for embedded resources
-    [INFO]  781.86KB io.helidon.config                                  898.03KB com.oracle.svm.core.hub.DynamicHubCompanion
-    [INFO]  725.47KB java.util.concurrent                               591.34KB java.util.HashMap$Node
-    [INFO]  702.80KB java.lang                                          546.16KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
-    [INFO]   35.34MB for 692 more packages                                6.23MB for 4555 more object types
-    [INFO] ------------------------------------------------------------------------------------------------------------------------
-    [INFO]                        44.6s (5.3% of total time) in 108 GCs | Peak RSS: 5.22GB | CPU load: 1.69
-    [INFO] ------------------------------------------------------------------------------------------------------------------------
-    [INFO] Produced artifacts:
-    [INFO]  /home/ankit_x_pa/myproject/target/myproject (executable)
-    [INFO]  /home/ankit_x_pa/myproject/target/myproject.build_artifacts.txt (txt)
-    [INFO] ========================================================================================================================
-    [INFO] Finished generating 'myproject' in 13m 53s.
+    [1/7] Initializing...                                                                                  (18.4s @ 0.19GB)
+    Version info: 'GraalVM 22.3.1 Java 17 EE'
+    Java version info: '17.0.6+9-LTS-jvmci-22.3-b11'
+    C compiler: gcc (redhat, x86_64, 12.1.1)
+    Garbage collector: Serial GC
+    2 user-specific feature(s)
+    - io.helidon.integrations.graal.mp.nativeimage.extension.WeldFeature
+    - io.helidon.integrations.graal.nativeimage.extension.HelidonReflectionFeature
+    2023.04.06 04:22:45 INFO io.helidon.common.LogConfig Thread[main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    [2/7] Performing analysis...  [*********]                                                             (208.1s @ 2.13GB)
+    18,899 (92.48%) of 20,436 classes reachable
+    27,626 (63.50%) of 43,504 fields reachable
+    97,938 (64.48%) of 151,894 methods reachable
+    1,068 classes,   565 fields, and 6,861 methods registered for reflection
+        65 classes,    70 fields, and    58 methods registered for JNI access
+        6 native libraries: dl, m, pthread, rt, stdc++, z
+    [3/7] Building universe...                                                                             (25.3s @ 3.10GB)
+    [4/7] Parsing methods...      [*****]                                                                  (23.1s @ 3.36GB)
+    [5/7] Inlining methods...     [***]                                                                     (9.1s @ 1.66GB)
+    [6/7] Compiling methods...    [[6/7] Compiling methods...    [********************]                                                  (436.2s @ 2.94GB)
+    [7/7] Creating image...                                                                                (20.5s @ 2.37GB)
+    50.11MB (58.19%) for code area:    56,410 compilation units
+    35.15MB (40.82%) for image heap:  506,032 objects and 128 resources
+    867.91KB ( 0.98%) for other data
+    86.11MB in total
+    -----------------------------------------------------------------------------------------------------------------------
+    Top 10 packages in code area:                              Top 10 object types in image heap:
+    4.03MB com.oracle.svm.core.code                           10.20MB byte[] for code metadata
+    1.67MB sun.security.ssl                                    4.17MB byte[] for java.lang.String
+    1.53MB java.util                                           3.47MB java.lang.Class
+    1.48MB org.jboss.weld.logging                              3.20MB java.lang.String
+    1.45MB com.sun.media.sound                                 2.86MB byte[] for general heap data
+    1.01MB io.netty.buffer                                     1.22MB byte[] for reflection metadata
+    919.44KB java.lang.invoke                                    1.03MB byte[] for embedded resources
+    906.25KB com.sun.crypto.provider                           885.89KB com.oracle.svm.core.hub.DynamicHubCompanion
+    812.44KB java.util.concurrent                              594.09KB java.util.HashMap$Node
+    752.97KB io.helidon.config                                 539.66KB c.o.svm.core.hub.DynamicHub$ReflectionMetadata
+    35.21MB for 674 more packages                               6.36MB for 4412 more object types
+    -----------------------------------------------------------------------------------------------------------------------
+                        40.7s (5.3% of total time) in 111 GCs | Peak RSS: 5.12GB | CPU load: 1.63
+    -----------------------------------------------------------------------------------------------------------------------
+    Produced artifacts:
+    /home/ankit_x_pa/helidon-project/myproject/myproject/target/myproject (executable)
+    /home/ankit_x_pa/helidon-project/myproject/myproject/target/myproject.build_artifacts.txt (txt)
+    =======================================================================================================================
+    Finished generating 'myproject' in 12m 40s.
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  13:00 min
+    [INFO] Finished at: 2023-04-06T04:35:07Z
+    [INFO] ------------------------------------------------------------------------
 
     ```
 
@@ -92,10 +99,10 @@ GraalVM Enterprise Edition is available for use on Oracle Cloud Infrastructure (
     <copy>./target/myproject</copy>
     ```
     ![run native-image](images/run-native.png)
-    > You can see the application startup time is 145 milliseconds, which is almost 35 times faster.
+    > You can see the application startup time is 142 milliseconds, which is almost 35 times faster.
 
 
-2. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "./target/myproject" command is running.
+2. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "./target/myproject" command is running*. IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 
 
@@ -103,4 +110,4 @@ GraalVM Enterprise Edition is available for use on Oracle Cloud Infrastructure (
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

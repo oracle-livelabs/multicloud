@@ -23,7 +23,7 @@ Verrazzano includes the following capabilities:
 
 In this lab, you will:
 
-* Install the Verrazzano platform operator.
+* Install the Verrazzano command-line tool.
 * Install the development (`dev`) profile of Verrazzano.
 * Verify the successful Verrazzano installation.
 
@@ -42,64 +42,69 @@ In Lab 1, you created a Kubernetes cluster on the Oracle Cloud Infrastructure. Y
 In Lab 1, you created configuration file to access Kubernetes cluster on the Oracle Cloud Infrastructure. You will use that Kubernetes cluster, *cluster1*, for installing the development profile of Verrazzano.
 </if>
 
-## Task 1: Install the Verrazzano Platform Operator
+## Task 1: Install the vz CLI
 
-Verrazzano provides a platform [operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to manage the life cycle of Verrazzano installations. You can install, uninstall, and update Verrazzano installations by updating the [Verrazzano custom resource](https://verrazzano.io/docs/reference/api/verrazzano/verrazzano/).
 
-Before installing Verrazzano, we need to install the Verrazzano Platform Operator.
-
-1. Copy the following command and paste it in the *Cloud Shell* to run it.
+1. Download the latest vz CLI.
 
     ```bash
-    <copy>kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz</copy>
     ```
     The output should be similar to the following:
     ```bash
-    $ kubectl apply -f https://github.com/verrazzano/verrazzano/releases/download/v1.3.2/operator.yaml
-    customresourcedefinition.apiextensions.k8s.io/verrazzanomanagedclusters.clusters.verrazzano.io created
-    customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
-    namespace/verrazzano-install created
-    serviceaccount/verrazzano-platform-operator created
-    clusterrole.rbac.authorization.k8s.io/verrazzano-managed-cluster created
-    clusterrolebinding.rbac.authorization.k8s.io/verrazzano-platform-operator created
-    service/verrazzano-platform-operator created
-    deployment.apps/verrazzano-platform-operator created
-    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator created
-    $
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 39.7M  100 39.7M    0     0  23.6M      0  0:00:01  0:00:01 --:--:-- 32.7M
     ```
-    > This `operator.yaml` file contains information about the operator and the service accounts and custom resource definitions. By running this *kubectl apply* command, we are specifying whatever is in the `operator.yaml` file.
-    > All deployments in Kubernetes happen in a namespace. When we deploy the Verrazzano Platform Operator, it happens in the namespace called "verrazzano-install".
 
-2. To find out the deployment status for the Verrazzano Platform Operator, copy the following command and paste it in the *Cloud Shell*.
+2. Download the checksum file.
 
     ```bash
-    <copy>kubectl -n verrazzano-install rollout status deployment/verrazzano-platform-operator</copy>
+    <copy>curl -LO https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
   The output should be similar to the following:
 
     ```bash
-    $ kubectl -n verrazzano-install rollout status deployment/verrazzano-platform-operator
-    deployment "verrazzano-platform-operator" successfully rolled out
-    $
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   102  100   102    0     0    218      0 --:--:-- --:--:-- --:--:--   218
     ```
 
-    
-    > Confirm that the operator pod associated with the Verrazzano Platform Operator is correctly defined and running. A Pod is a unit which runs containers / images and Pods belong to nodes.
-
-3. To find out the pod status, copy and paste the following command in the *Cloud Shell*.
+3. Validate the binary against the checksum file.
 
     ```bash
-    <copy>kubectl -n verrazzano-install get pods</copy>
+    <copy>sha256sum -c verrazzano-1.6.2-linux-amd64.tar.gz.sha256</copy>
     ```
 
     The output should be similar to the following:
     ```bash
-    $ kubectl -n verrazzano-install get pods
-    NAME                                           READY   STATUS    RESTARTS   AGE
-    verrazzano-platform-operator-f56788bfc-rgql6   1/1     Running   0          71s
-    $
+    verrazzano-1.6.2-linux-amd64.tar.gz: OK
     ```
+
+4. Unpack and move to the vz binary directory,
+
+    ```bash
+    <copy>tar xvf verrazzano-1.6.2-linux-amd64.tar.gz
+    cd ~/verrazzano-1.6.2/bin/</copy>
+    ```
+
+5. Test to ensure that the version you installed is up-to-date.
+
+    ```bash
+    <copy>./vz version</copy>
+    ```
+
+    The output should be similar to the following:
+    ```bash
+    Version: v1.6.2
+    BuildDate: 2023-07-21T12:06:02Z
+    GitCommit: 5cd8a2f8670000d2ef0b02404e3169699d87f26b
+    ```
+
+
 
 ## Task 2: Installation of the Verrazzano development profile
 
@@ -124,9 +129,10 @@ In this lab, we are going to install the *development profile of Verrazzano*, wh
 * It is for evaluation purposes.
 * Single-node Opensearch cluster topology.
 
-The following image describes the Verrazzano components that are installed with each profile.
+Verrazzano installs a curated set of open source components. The following table lists each component, its version, and a brief description.
 
-![Verrazzano Profile](images/verrazzanoprofile.png " ")
+![Verrazzano Profile](images/verrazzano-profile.png " ")
+![Verrazzano Profiles](images/verrazzano-profiles.png " ")
 
 According to our DNS choice, we can use nip.io (wildcard DNS) or [Oracle OCI DNS](https://docs.cloud.oracle.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm). In this lab, we are going to install using nip.io (wildcard DNS).
 
@@ -135,8 +141,8 @@ An ingress controller is something that helps provide access to Docker container
 1. Install using the nip.io DNS Method. Copy the following command and paste it in the *Cloud Shell* to install Verrazzano.
 
     ```bash
-    <copy>kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
+    <copy>./vz install -f - <<EOF
+    apiVersion: install.verrazzano.io/v1beta1
     kind: Verrazzano
     metadata:
       name: example-verrazzano
@@ -148,45 +154,41 @@ An ingress controller is something that helps provide access to Docker container
 
     The output should be similar to the following:
     ```bash
-    $ kubectl apply -f - <<EOF
-    apiVersion: install.verrazzano.io/v1alpha1
-    kind: Verrazzano
-    metadata:
-      name: example-verrazzano
-    spec:
-      profile: dev
-    EOF
-    verrazzano.install.verrazzano.io/example-verrazzano created
-    $
+    Installing Verrazzano version v1.6.2
+    Applying the file https://github.com/verrazzano/verrazzano/releases/download/v1.6.2/verrazzano-platform-operator.yaml
+    customresourcedefinition.apiextensions.k8s.io/verrazzanos.install.verrazzano.io created
+    namespace/verrazzano-install created
+    serviceaccount/verrazzano-platform-operator created
+    clusterrole.rbac.authorization.k8s.io/verrazzano-managed-cluster created
+    clusterrolebinding.rbac.authorization.k8s.io/verrazzano-platform-operator created
+    service/verrazzano-platform-operator created
+    service/verrazzano-platform-operator-webhook created
+    deployment.apps/verrazzano-platform-operator created
+    deployment.apps/verrazzano-platform-operator-webhook created
+    mutatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-mysql-backup created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-operator-webhook created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-mysqlinstalloverrides created
+    validatingwebhookconfiguration.admissionregistration.k8s.io/verrazzano-platform-requirements-validator created
+    Waiting for verrazzano-platform-operator to be ready before starting install - 23 seconds
     ```
 
     <if type="freetier">
-    > It takes around 15 to 20 minutes to complete the installation.
+    > It takes around 15 to 20 minutes to complete the installation. This command installs the Verrazzano platform operator and applies the Verrazzano custom resource.
     </if>
 
     <if type="livelabs">
-    > It takes around 8 to 10 minutes to complete the installation.
+    > It takes around 8 to 10 minutes to complete the installation. This command installs the Verrazzano platform operator and applies the Verrazzano custom resource.
     </if>
 
 
-2. To verify the successful installation, copy the following command and paste it in the *Cloud Shell*. It checks for the condition, if *InstallComplete* condition is met, and notifies you. Here *example-verrazzano* is the name of the *Verrazzano Custom Resource*.
+2. Wait for the installation to complete. Installation logs will be streamed to the command window until the installation has completed or until the default timeout (30m) has been reached.
 
-    ```bash
-    <copy>kubectl wait --timeout=20m --for=condition=InstallComplete verrazzano/example-verrazzano</copy>
-    ```
-
-    The output should be similar to the following:
-    ```bash
-    $ kubectl wait --timeout=20m --for=condition=InstallComplete verrazzano/example-verrazzano
-    verrazzano.install.verrazzano.io/example-verrazzano condition met
-    $
-    ```
 
 ## Task 3: Verification of a successful Verrazzano installation
 
 Verrazzano installs multiple objects in multiple namespaces. Verrazzano components are installed in the namespace *verrazzano-system*.
 
-1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have 16 pods in the *Running* state.
+1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have all the pods in the *Running* state.
 
     ```bash
     <copy>kubectl get pods -n verrazzano-system</copy>
@@ -195,31 +197,32 @@ Verrazzano installs multiple objects in multiple namespaces. Verrazzano componen
     The output should be similar to the following:
 
     ```bash
-    kubectl get pods -n verrazzano-system
-    NAME                                           READY STATUS    RESTARTS   AGE
-    coherence-operator-dcfb446df-5dckp             1/1   Running   1          8m57s
-    fluentd-cgrg5                                  2/2   Running   1          6m22s
-    fluentd-jztnn                                  2/2   Running   1          6m22s
-    fluentd-n4s95                                  2/2   Running   1          6m22s
-    oam-kubernetes-runtime-549db9798b-grxj4        1/1   Running   0          8m50s
-    verrazzano-application-operator-54668f668-bng5 1/1   Running   0          8m9s
-    verrazzano-authproxy-86fb64c9f-4mffq           2/2   Running   0          6m22s
-    verrazzano-console-6c8d4875cf-r6bsv            2/2   Running   0          6m22s
-    verrazzano-monitoring-operator-787bfc7f86-p6qb 1/1   Running   0          6m22s
-    verrazzano-operator-6cc79dfdcc-6l9lt           1/1   Running   0          6m22s
-    vmi-system-es-master-0                         2/2   Running   0          4m37s
-    vmi-system-grafana-666f6854b4-xrmwf            2/2   Running   0          4m37s
-    vmi-system-kiali-5949966fb8-gczd5              2/2   Running   0          6m17s
-    vmi-system-kibana-95d8c5d96-9qr9j              2/2   Running   0          4m37s
-    vmi-system-prometheus-0-74478c9d44-gk85g       3/3   Running   0          3m6s
-    weblogic-operator-5df5f94bd7-tkg74             2/2   Running   0          8m17s
-    $
+    $   kubectl get pods -n verrazzano-system
+    NAME                                    READY   STATUS  RESTARTS AGE
+    coherence-operator-b5dc669c6-rk2sm      1/1     Running   1       23m
+    fluentd-54f5x                           2/2     Running   1       11m
+    fluentd-h7mgh                           2/2     Running   1       11m
+    fluentd-xcdfz                           2/2     Running   0       11m
+    oam-kubernetes-runtime-5b48f944b-cx7b9  1/1     Running   0       24m
+    verrazzano-application-operator-665c5   1/1     Running   0       22m
+    verrazzano-application-operator-webhook 1/1     Running   0       22m
+    verrazzano-authproxy-67776ff58b-8l      3/3     Running   0       21m
+    verrazzano-cluster-operator-67dc5695    1/1     Running   0       14m
+    verrazzano-cluster-operator-webhook     1/1     Running   0       14m
+    verrazzano-console-7d95c98cb9-9ql2      2/2     Running   0       20m
+    verrazzano-monitoring-operator-59f      2/2     Running   0       21m
+    vmi-system-es-master-0                  2/2     Running   0       19m
+    vmi-system-grafana-7fd956b585-2tbgl     3/3     Running   0       19m
+    vmi-system-kiali-dd87546d6-ddxss        2/2     Running   0       22m
+    vmi-system-osd-7687d6fccf-nm7kt         2/2     Running   0       14m
+    weblogic-operator-54979449f4-njgrq      2/2     Running   0       22m
+    weblogic-operator-webhook-f7ff8c8cf     1/1     Running   0       22m
     ```
 
-Leave the *Cloud Shell* open; we need it for Lab 3.
+    Leave the *Cloud Shell* open; we need it for Lab 3.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey,  August 2023

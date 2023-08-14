@@ -6,6 +6,9 @@ In this lab, you will build a *native* Docker image with your Helidon applicatio
 
 Estimated Time: 15 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Build and Push Helidon Application Image to Oracle Cloud Container Registry](videohub:1_mh1brw5t)
+
 ### Objectives
 
 * Build and package your application using Docker.
@@ -56,64 +59,96 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     ```bash
     <copy>docker build -t ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/myproject-your_first_name:1.0 -f Dockerfile.native .</copy>
     ```
-    When the command is ready then run in the terminal inside Code Editor from the `~/myproject/` directory. The build will produce the following result at the end:
+    When the command is ready then run in the terminal inside Code Editor from the *`~/helidon-project/myproject/myproject`* directory. The build will produce the following result at the end:
 
     ```bash
-    $ docker build -t lhr.ocir.io/tenancynamespace/myproject-your_first_name:1.0 -f Dockerfile.native .
+    $ docker build -t lhr.ocir.io/tenancynamespace/myproject-ankit:1.0 -f Dockerfile.native .
 
-    [INFO] [myproject:70]     (clinit):   2,003.59 ms,  4.84 GB
-    [INFO] [myproject:70]   (typeflow):  46,911.76 ms,  4.84 GB
-    [INFO] [myproject:70]    (objects): 254,111.73 ms,  4.84 GB
-    [INFO] [myproject:70]   (features):  24,428.97 ms,  4.84 GB
-    [INFO] [myproject:70]     analysis: 331,810.15 ms,  4.84 GB
-    [INFO] [myproject:70]     universe:  19,777.47 ms,  4.85 GB
-    [INFO] [myproject:70]      (parse):  17,328.01 ms,  4.85 GB
-    [INFO] [myproject:70]     (inline):  34,953.90 ms,  4.43 GB
-    [INFO] [myproject:70]    (compile): 154,736.98 ms,  4.56 GB
-    [INFO] [myproject:70]      compile: 215,343.56 ms,  4.56 GB
-    [INFO] [myproject:70]        image:  19,270.03 ms,  4.62 GB
-    [INFO] [myproject:70]        write:   2,909.02 ms,  4.62 GB
-    [INFO] [myproject:70]      [total]: 609,016.44 ms,  4.62 GB
-    [INFO] # Printing build artifacts to: /helidon/target/myproject.build_artifacts.txt
+    [1/7] Initializing...                                                                                   (15.7s @ 0.14GB)
+    Version info: 'GraalVM 22.3.0 Java 17 CE'
+    Java version info: '17.0.5+8-jvmci-22.3-b08'
+    C compiler: gcc (redhat, x86_64, 11.3.1)
+    Garbage collector: Serial GC
+    2 user-specific feature(s)
+    - io.helidon.integrations.graal.mp.nativeimage.extension.WeldFeature
+    - io.helidon.integrations.graal.nativeimage.extension.HelidonReflectionFeature
+    2023.04.06 05:41:01 INFO io.helidon.common.LogConfig Thread[main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    [2/7] Performing analysis...  [**********]                                                             (202.8s @ 1.92GB)
+    18,812 (92.77%) of 20,278 classes reachable
+    27,564 (63.52%) of 43,392 fields reachable
+    87,900 (62.22%) of 141,268 methods reachable
+    1,068 classes,   565 fields, and 6,864 methods registered for reflection
+        65 classes,    70 fields, and    58 methods registered for JNI access
+        6 native libraries: dl, m, pthread, rt, stdc++, z
+    [3/7] Building universe...                                                                              (27.6s @ 3.15GB)
+    [4/7] Parsing methods...      [*****]                                                                   (22.5s @ 3.00GB)
+    [5/7] Inlining methods...     [***]                                                                     (11.9s @ 1.84GB)
+    [6/7] Compiling methods...    [************]                                                           (156.5s @ 3.05GB)
+    [7/7] Creating image...                                                                                 (15.6s @ 2.44GB)
+    35.03MB (45.80%) for code area:    57,947 compilation units
+    39.02MB (51.01%) for image heap:  477,987 objects and 128 resources
+    2.44MB ( 3.19%) for other data
+    76.49MB in total
+    ------------------------------------------------------------------------------------------------------------------------
+    Top 10 packages in code area:                               Top 10 object types in image heap:
+    1.63MB sun.security.ssl                                     7.71MB byte[] for code metadata
+    1.20MB com.sun.media.sound                                  4.60MB java.lang.Class
+    1.17MB java.util                                            3.93MB java.lang.String
+    822.87KB java.lang.invoke                                     3.41MB byte[] for java.lang.String
+    717.54KB com.sun.crypto.provider                              3.22MB byte[] for general heap data
+    517.57KB io.helidon.config                                    1.58MB com.oracle.svm.core.hub.DynamicHubCompanion
+    510.02KB java.util.concurrent                                 1.13MB byte[] for reflection metadata
+    481.49KB jdk.proxy4                                           1.03MB byte[] for embedded resources
+    474.98KB java.lang                                          915.61KB java.util.HashMap$Node
+    468.42KB com.sun.org.apache.xerces.internal.impl            781.21KB java.lang.String[]
+    26.70MB for 671 more packages                                9.83MB for 4584 more object types
+    ------------------------------------------------------------------------------------------------------------------------
+                            31.0s (6.6% of total time) in 59 GCs | Peak RSS: 4.80GB | CPU load: 1.60
+    ------------------------------------------------------------------------------------------------------------------------
+    Produced artifacts:
+    /helidon/target/myproject (executable)
+    /helidon/target/myproject.build_artifacts.txt (txt)
+    ========================================================================================================================
+    Finished generating 'myproject' in 7m 48s.
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  10:19 min
-    [INFO] Finished at: 2022-09-02T02:17:13Z
+    [INFO] Total time:  08:04 min
+    [INFO] Finished at: 2023-04-06T05:48:33Z
     [INFO] ------------------------------------------------------------------------
-    Removing intermediate container 7459a8fded63
-    ---> ceae283fafca
+    Removing intermediate container e400c5c6897b
+    ---> 20099e4619d6
     Step 10/15 : RUN echo "done!"
-    ---> Running in 0d428f253a5b
+    ---> Running in a8eddd448e48
     done!
-    Removing intermediate container 0d428f253a5b
-    ---> f1baf6f6e2a7
+    Removing intermediate container a8eddd448e48
+    ---> ebfd3064dc68
     Step 11/15 : FROM scratch
     ---> 
     Step 12/15 : WORKDIR /helidon
-    ---> Running in a1e07d0ed3e1
-    Removing intermediate container a1e07d0ed3e1
-    ---> 75c33e343012
+    ---> Running in 46be56a98462
+    Removing intermediate container 46be56a98462
+    ---> eaf15b746a1c
     Step 13/15 : COPY --from=build /helidon/target/myproject .
-    ---> 4bd6a176d7df
+    ---> a69ac5933048
     Step 14/15 : ENTRYPOINT ["./myproject"]
-    ---> Running in e9b47124756f
-    Removing intermediate container e9b47124756f
-    ---> b7c99eff01ed
+    ---> Running in 71633a601e7f
+    Removing intermediate container 71633a601e7f
+    ---> cd9f22bfa4b3
     Step 15/15 : EXPOSE 8080
-    ---> Running in 65224e9ac1b5
-    Removing intermediate container 65224e9ac1b5
-    ---> 52dbfa806fdc
-    Successfully built 52dbfa806fdc
-    Successfully tagged lhr.ocir.io/tenancynamespace/myproject-ankit:1.0 
+    ---> Running in 4b9763eb49fa
+    Removing intermediate container 4b9763eb49fa
+    ---> aa8b6e7b04c0
+    Successfully built aa8b6e7b04c0
+    Successfully tagged lhr.ocir.io/lrv4zdykjqrj/myproject-ankit:1.0
     ```
 
 5. This creates the Docker image, which you can check in your local repository.
 
     ```bash
     $ docker images
-    REPOSITORY    TAG    IMAGE ID            CREATED             SIZE
-    lhr.ocir.io/tenancynamespace/myproject-ankit   1.0  6a0213536020  11 hours ago        424MB
+    REPOSITORY                     TAG IMAGE ID        CREATED           SIZE
+    lhr.ocir.io/tn/myproject-ankit 1.0 aa8b6e7b04c0 About a minute ago   80.2MB
     ```
     Copy to your text editor the replaced full image name `ENDPOINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/myproject-your_first_name:1.0` because you will need it later.
 
@@ -129,14 +164,14 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     <copy>
     curl -X GET http://localhost:8080/greet
     </copy>
-    {"message":"Hello World!","greeting":null}
+    {"message":"Hello World!"}
     ```
 
     ```bash
     <copy>
     curl -X GET http://localhost:8080/greet/Joe
     </copy>
-    {"message":"Hello Joe!","greeting":null}
+    {"message":"Hello Joe!"}
     ```
 
     ```bash
@@ -149,43 +184,39 @@ Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Co
     <copy>
     curl -X GET http://localhost:8080/greet/Jose
     </copy>
-    {"message":"Hola Jose!","greeting":null}
+    {"message":"Hola Jose!"}
     ```
 
 ## Task 2: Generate an Authentication Token to log in to the Oracle Cloud Container Registry
 
 In this step, we are going to generate an *Authentication Token*, that we will use to log in to the Oracle Cloud Container Registry.
 
-1. In the Console, open the navigation menu and click **Identity and Security**. Under **Identity**, click **Users**.
+1. Select the User Icon in the top right corner and then select *My Profile*.
 
-    ![Users](images/oci-users.png)
+    ![My Profile](images/my-profile.png " ")
 
-2. Click on the non-federated user name to view the details. (The non-federated user name should be your email address -without any prefix- what was used during the trial signup.)
+2. Scroll down and select *Auth Tokens*.
 
-    ![User](images/registered-email.png)
+    ![Auth tokens](images/auth-token.png " ")
 
-3. On the User Detail page scroll down and click **Auth Tokens**.
+3. Click *Generate Token*.
 
-    ![Auth tokens](images/auth-tokens.png)
+    ![Generate Token](images/generate-token.png " ")
 
-4. Click **Generate Token**.
+4. Copy *`myproject-your_first_name`* and paste it in the *Description* box and click *Generate Token*.
 
-    ![Generate Token](images/generate-token.png)
+    ![Token create](images/token-create.png " ")
 
-5. Copy *myproject* and paste it in the *Description* box and click **Generate Token**.
+5. Select *Copy* under Generated Token and paste it in the text editor. We cannot copy it later. Then click *Close*.
 
-    ![Token create](images/create-token.png)
-
-6. Click **Copy** under Generated Token and paste it into the text file. You cannot copy it later, so make sure you have a copy of this token saved.
-
-    ![Generated Token](images/copy-token.png)
+    ![Copy Token](images/copy-token.png " ")
 
 ## Task 3: Push the Helidon Application (myproject) Docker Image to your Container Registry Repository
 
-In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text file. In our example, the Region Name is UK South (London). You will need this information for this task.
+1. In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text file. In our example, the Region Name is UK South (London). You will need this information for this task.
     ![Endpoint](images/end-points.png)
 
-1. Copy the following command and paste it into your text file and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
+2. Copy the following command and paste it into your text file and then replace the `ENDPOINT_OF_REGION_NAME` with the endpoint of your region.
 
     >In our example the Region Name is *UK South (London)* and the endpoint is *lhr.ocir.io*. You will need your specific information for this task.
 
@@ -193,7 +224,7 @@ In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Cont
     <copy>docker login ENDPOINT_OF_REGION_NAME</copy>
     ```
 
-2. In the previous step, you also determined the tenancy namespace.
+3. In the previous step, you also determined the tenancy namespace.
 Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
     * Replace `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace
     * Replace `YOUR_ORACLE_CLOUD_USERNAME` with your Oracle Cloud Account user name and then copy the replaced username from your text file and paste it into the *Cloud Shell*.
@@ -205,40 +236,35 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
     Password:
     Login Succeeded
     ```
-3. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
+4. Navigate back to the Container Registry. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Container Registry**.
     ![Container Registry](images/container-registry.png)
 
-4. Select the compartment and then click **Create Repository**.
+5. Select the compartment and then click **Create Repository**.
     ![Repository Create](images/repository-create.png)
 
-5. Select the compartment and enter *`myproject-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
+6. Select the compartment and enter *`myproject-your_first_name`* as the Repository Name, then choose Access as **Public** and click **Create Repository**.
 
     ![Repository Description](images/describe-repository.png)
 
-6. After the repository *`myproject-your_first_name`* has been created you can verify in the repository list and its settings.
+7. After the repository *`myproject-your_first_name`* has been created you can verify in the repository list and its settings.
 
     ![Verify Namespace](images/verify-namespace.png)
 
-7. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text file and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/myproject-your_first_name:1.0 with Docker image full name, which you saved earlier.
+8. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text file and then replace `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/myproject-your_first_name:1.0 with Docker image full name, which you saved earlier.
 
     ```bash
     <copy>docker push ENDPOINT_OF_YOUR_REGION_NAME/NAMESPACE_OF_YOUR_TENANCY/myproject-your_first_name:1.0</copy>
     ```
     The result should look like this:
     ```bash
-    $ docker push lhr.ocir.io/tenancynamespace/myproject-your_first_name:1.0
-    The push refers to a repository [lhr.ocir.io/tenancynamespace/myproject-your_first_name]
-    0795b8384c47: Pushed
-    131452972f9d: Pushed
-    93c53f2e9519: Pushed
-    3b78b65a4be9: Pushed
-    e1434e7d0308: Pushed
-    17679d5f39bd: Pushed
-    300b011056d9: Pushed
-    1.0: digest: sha256:355fa56eab185535a58c5038186381b6d02fd8e0bcb534872107fc249f98256a size: 1786
+    $ docker push lhr.ocir.io/tenancynamespace/myproject-ankit:1.0 The push refers to repository [lhr.ocir.io/tenancynamespace/myproject-ankit]
+    0bf9e88b7284: Pushed 
+    0acc08535a89: Pushed 
+    1.0: digest: sha256:3e8cc0ff23d256499dff8d907150b639925687aed0c41008cbe1794bc02433e2 size: 735
+    $
     ```
 
-8. After the *docker push* command runs successfully, expand the *`myproject-your_first_name`* repository and you will notice a new image has been uploaded to this repository.
+9. After the *docker push* command runs successfully, expand the *`myproject-your_first_name`* repository and you will notice a new image has been uploaded to this repository.
 
     ![Image uploaded](images/verify-push.png)
 
@@ -247,4 +273,4 @@ Enter the Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_US
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

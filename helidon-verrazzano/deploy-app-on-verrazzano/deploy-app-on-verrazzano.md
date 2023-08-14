@@ -126,16 +126,11 @@ To run this lab, you must have:
 * Verrazzano installation started on a Kubernetes (OKE) cluster.
 * Container packaged Helidon *quickstart-mp* application available in a container registry.
 
-## Task 1: Verify the Verrazzano Installation is Complete
+## Task 1: Verification of a successful Verrazzano installation
 
-1. In Lab 3, we ran the below copy of the command in the Cloud Shell. This command checks that the *InstallComplete* condition has been met and notifies you. In this example, *example-verrazzano* is the name of the *Verrazzano Custom Resource*.
+Verrazzano installs multiple objects in multiple namespaces. Verrazzano components are installed in the namespace *verrazzano-system*.
 
-    ```bash
-    <copy>kubectl wait --timeout=20m --for=condition=InstallComplete verrazzano/example-verrazzano</copy>
-    ```
-    When the process is complete you should see the `verrazzano.install.verrazzano.io/example-verrazzano condition met` response.
-
-    Or, another option is to check that the pods associated with Verrazzano have a *Running* status. You will have 16 pods in the *Running* state.
+1. Please verify that all the pods associated with the multiple objects have a *Running* status. You will have pods in the *Running* state as shown below.
 
     ```bash
     <copy>kubectl get pods -n verrazzano-system</copy>
@@ -144,25 +139,26 @@ To run this lab, you must have:
     The output should be similar to the following:
 
     ```bash
-    kubectl get pods -n verrazzano-system
-    NAME                                           READY STATUS    RESTARTS   AGE
-    coherence-operator-dcfb446df-5dckp             1/1   Running   1          8m57s
-    fluentd-cgrg5                                  2/2   Running   1          6m22s
-    fluentd-jztnn                                  2/2   Running   1          6m22s
-    fluentd-n4s95                                  2/2   Running   1          6m22s
-    oam-kubernetes-runtime-549db9798b-grxj4        1/1   Running   0          8m50s
-    verrazzano-application-operator-54668f668-bng5 1/1   Running   0          8m9s
-    verrazzano-authproxy-86fb64c9f-4mffq           2/2   Running   0          6m22s
-    verrazzano-console-6c8d4875cf-r6bsv            2/2   Running   0          6m22s
-    verrazzano-monitoring-operator-787bfc7f86-p6qb 1/1   Running   0          6m22s
-    verrazzano-operator-6cc79dfdcc-6l9lt           1/1   Running   0          6m22s
-    vmi-system-es-master-0                         2/2   Running   0          4m37s
-    vmi-system-grafana-666f6854b4-xrmwf            2/2   Running   0          4m37s
-    vmi-system-kiali-5949966fb8-gczd5              2/2   Running   0          6m17s
-    vmi-system-kibana-95d8c5d96-9qr9j              2/2   Running   0          4m37s
-    vmi-system-prometheus-0-74478c9d44-gk85g       3/3   Running   0          3m6s
-    weblogic-operator-5df5f94bd7-tkg74             2/2   Running   0          8m17s
-    $
+    $   kubectl get pods -n verrazzano-system
+    NAME                                     READY   STATUS    RESTARTS  AGE
+    coherence-operator-b5dc669c6-rk2sm       1/1     Running     4       46m
+    fluentd-54f5x                            2/2     Running     2       46m
+    fluentd-h7mgh                            2/2     Running     1       46m
+    fluentd-xcdfz                            2/2     Running     0       46m
+    oam-kubernetes-runtime-5b48f944b-cx7b9   1/1     Running     0       46m
+    verrazzano-application-operator-665c5c94 1/1     Running     0       46m
+    verrazzano-application-operator-webhook  1/1     Running     0       46m
+    verrazzano-authproxy-67776ff58b-8lkzs    3/3     Running     0       46m
+    verrazzano-cluster-operator-67dc569555   1/1     Running     0       46m
+    verrazzano-cluster-operator-webhook-57f  1/1     Running     0       46m
+    verrazzano-console-7d95c98cb9-9ql2x      2/2     Running     0       46m
+    verrazzano-monitoring-operator-59ff9576  2/2     Running     0       46m
+    vmi-system-es-master-0                   2/2     Running     0       46m
+    vmi-system-grafana-7fd956b585-2tbgl      3/3     Running     0       46m
+    vmi-system-kiali-dd87546d6-ddxss         2/2     Running     0       46m
+    vmi-system-osd-7687d6fccf-nm7kt          2/2     Running     0       46m
+    weblogic-operator-54979449f4-njgrq       2/2     Running     0       46m
+    weblogic-operator-webhook-f7ff8c8cf      1/1     Running     0       46m
     ```
 
 ## Task 2: Deploy the Helidon quickstart-mp application
@@ -280,5 +276,5 @@ To run this lab, you must have:
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, August 2023

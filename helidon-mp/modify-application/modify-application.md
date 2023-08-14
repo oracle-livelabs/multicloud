@@ -6,6 +6,8 @@ In this lab, you add a custom endpoint to JAVA Class in Code Editor.
 
 Estimated Time: 10 minutes
 
+Watch the video below for a quick walk-through of the lab.
+[Modify Helidon MP application in Code Editor](videohub:1_sv1iug41)
 
 ### Objectives
 
@@ -57,10 +59,10 @@ In this lab, you will:
     ```
     > It randomly provides the title out of 5 options, you can run this command multiple times.
 
-3. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
+3. *Stop the **myproject** application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running*. IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 ## Acknowledgements
 
 * **Author** -  Dmitry Aleksandrov
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2022
+* **Last Updated By/Date** - Ankit Pandey, April 2023

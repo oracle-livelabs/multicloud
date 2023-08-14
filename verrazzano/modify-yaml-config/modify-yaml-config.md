@@ -34,13 +34,13 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
     ![Open file](images/openfile.png " ")
 
-3. As part of Lab 5, you saved your Docker image full name. You need to copy the following line and paste it in your text editor. Then, you need to replace `docker image full name` with your Docker image name. Then copy the modified line and press *i* to insert the text in the `*bobs-books-comp.yaml*` file. Paste the output at line number 153 (make sure you keep the indentation) and comment out the exiting line with *#* as shown in the following image, then press *Esc* and then type *:wq* to save the file.
+3. As part of Lab 5, you saved your Docker image full name. You need to copy the following line and paste it in your text editor. Then, you need to replace `docker image full name` with your Docker image name. Then copy the modified line and press *i* to insert the text in the `*bobs-books-comp.yaml*` file. Paste the output at line number 148 (make sure you keep the indentation) and comment out the exiting line number 147 with *#* as shown in the following image, then press *Esc* and then type *:wq* to save the file.
 
     ```bash
     <copy>image:  `docker image full name`</copy>
     ```
 
-    ![Insert line](images/insertline.png " ")
+    ![Insert line](images/insert-line.png " ")
 
 ## Task 2: Apply the Changes using `kubectl`
 
@@ -102,10 +102,10 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
     After you see that all the pods are in the *Running* Status, press *CTRL + C* to kill this command.
 
-Leave the *Cloud Shell* open as we also need it for our last lab.
+    Leave the *Cloud Shell* open as we also need it for our last lab.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey,  August 2023

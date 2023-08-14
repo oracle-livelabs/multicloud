@@ -215,8 +215,8 @@ For the deployment of the *Bobby's Books* sample application, we will use the ex
     ![Search WebLogic](images/searchweblogic.png " ")
 
 8. Click *weblogic* as shown and accept the license as you did for Verrazzano imagaes.
-
-    ![click weblogic](images/acceptagreement.png " ")
+    ![click weblogic](images/clickweblogic.png)
+    ![accept weblogic](images/acceptagreement.png " ")
     
 ## Task 2: Deploy the Bobby's Books application
 
@@ -226,8 +226,8 @@ We need to download the source code, where we have configuration files, `bobs-bo
 
     ```bash
     <copy>
-    curl -LSs  https://raw.githubusercontent.com/verrazzano/verrazzano/v1.3.2/examples/bobs-books/bobs-books-app.yaml >~/bobs-books-app.yaml
-    curl -LSs https://raw.githubusercontent.com/verrazzano/verrazzano/v1.3.2/examples/bobs-books/bobs-books-comp.yaml >~/bobs-books-comp.yaml
+    curl -LSs  https://raw.githubusercontent.com/verrazzano/verrazzano/v1.6.2/examples/bobs-books/bobs-books-app.yaml >~/bobs-books-app.yaml
+    curl -LSs https://raw.githubusercontent.com/verrazzano/verrazzano/v1.6.2/examples/bobs-books/bobs-books-comp.yaml >~/bobs-books-comp.yaml
     cd ~
     </copy>
     ```
@@ -376,9 +376,9 @@ Verify that the application configuration, domains, Coherence resources, and ing
     The output should be similar to the following:
     ```bash
     $ kubectl get Coherence -n bobs-books
-      NAME                CLUSTER             ROLE                REPLICAS   READY   PHASE
-      bobbys-coherence    bobbys-coherence    bobbys-coherence    1          1       Ready
-      roberts-coherence   roberts-coherence   roberts-coherence   2          2       Ready
+    NAME              CLUSTER           ROLE           REPLICAS  READY PHASE
+    bobbys-coherence  bobbys-coherence  bobbys-coherence  1       1    Ready
+    roberts-coherence roberts-coherence roberts-coherence 2       2    Ready
     $
     ```
 
@@ -406,27 +406,27 @@ Verify that the application configuration, domains, Coherence resources, and ing
 
     ```bash
     $ kubectl get pods -n bobs-books
-    NAME                                            READY    STATUS    RESTARTS   AGE
-    bobbys-coherence-0                               2/2     Running   0          7m51s
-    bobbys-front-end-adminserver                     4/4     Running   0          5m28s
-    bobbys-front-end-managed-server1                 4/4     Running   0          4m30s
-    bobbys-helidon-stock-application-5f74cbc-cw4x4   2/2     Running   0          7m54s
-    bobs-bookstore-adminserver                       4/4     Running   0          4m31s
-    bobs-bookstore-managed-server1                   4/4     Running   0          3m41s
-    mysql-6bc8f9f785-n4qjh                           2/2     Running   0          5m52s
-    robert-helidon-65b8874988-7x5vj                  2/2     Running   0          7m53s
-    robert-helidon-65b8874988-vnntp                  2/2     Running   0          7m54s
-    roberts-coherence-0                              2/2     Running   0          7m52s
-    roberts-coherence-1                              2/2     Running   0          7m51s
+    NAME                                          READY STATUS    RESTARTS   AGE
+    bobbys-coherence-0                             2/2  Running   0          7m51s
+    bobbys-front-end-adminserver                   4/4  Running   0          5m28s
+    bobbys-front-end-managed-server1               4/4  Running   0          4m30s
+    bobbys-helidon-stock-application-5f74cbc-cw4x4 2/2  Running   0          7m54s
+    bobs-bookstore-adminserver                     4/4  Running   0          4m31s
+    bobs-bookstore-managed-server1                 4/4  Running   0          3m41s
+    mysql-6bc8f9f785-n4qjh                         2/2  Running   0          5m52s
+    robert-helidon-65b8874988-7x5vj                2/2  Running   0          7m53s
+    robert-helidon-65b8874988-vnntp                2/2  Running   0          7m54s
+    roberts-coherence-0                            2/2  Running   0          7m52s
+    roberts-coherence-1                            2/2  Running   0          7m51s
     $
     ```
 
     > Note the pod name for **bobbys-helidon-stock-application**. When we redeploy this component, you will notice that this pod will go into a *Terminating* status and new pod will start and come in the *Running* state in Lab 7.
 
-Leave the *Cloud Shell* open; we will use it for the next labs as well.
+    Leave the *Cloud Shell* open; we will use it for the next labs as well.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey,  August 2023

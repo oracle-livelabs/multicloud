@@ -33,7 +33,7 @@ In this lab, you will:
 1. To apply the changes, copy and paste the following command in the *Cloud Shell*. When you will apply the change, a new pod will initialize for serving requests for new component, while the pod associated with the old component will continue serving requests. Later, after the new pod will reaches to the *Running* state, then the old pod will begin being *Terminated*. Eventually, only the new pod will be in the *Running* state.
 
     ```bash
-    <copy>kubectl apply -f ~/bobs-books-comp-mod.yaml</copy>
+    <copy>kubectl apply -f ~/bobs-books-comp-mod.yaml -n bobs-books</copy>
     ```
 
     ![Apply changes](images/applychanges.png " ")
@@ -79,5 +79,5 @@ Leave the *Cloud Shell* open as we also need it for our last lab.
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, February 2023

@@ -16,17 +16,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-* This workshop assumes that you have reservation of this workshop on LiveLabs. Once your environment is ready, Click on *Launch Workshop*.
-        ![Launch Workshop](images/launchworkshop.png " ")
-* On this page, you will find your *Tenancy name*, *Region*, *User name* and *Compartment*. We need this information as we proceed further in this workshop. Click on *Copy Password*  and then click *Launch Console*.
-        ![Launch Console](images/launchconsole.png " ")
-
-* Enter the copied password here and click *Sign In*.
-        ![Sign In](images/signin.png " ")
-
-* Enter the copied password and new password here. Click on *Save New Password*.
-        ![Change Password](images/changepassword.png " ")
-
+* This workshop assumes that you have reservation of this workshop on LiveLabs. 
 
 ## Task 1: Configure `kubectl` (Kubernetes Cluster CLI)
 
@@ -91,5 +81,5 @@ Leave this *Cloud Shell* open; we will use it for further labs.
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, February 2023

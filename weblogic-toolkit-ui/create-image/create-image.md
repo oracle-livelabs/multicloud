@@ -1,4 +1,5 @@
 # Creation of Images for the Oracle Container Engine for Kubernetes (OKE) on Oracle Cloud Infrastructure (OCI)
+
 ## Introduction
 
 **Primary Image** - The image containing the Oracle Fusion Middleware software. It is used as the basis of all containers that run WebLogic Servers for the domain.
@@ -7,6 +8,11 @@
     ![Image Structure](images/image-structure.png)
 
 In this Lab, we use WebLogic server 12.2.1.3.0-ol8 image as Primary Image. Also, we create an auxiliary image, and push it to Oracle Container Image Registry repository using the generated authentication token. 
+
+Estimated Lab Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Creation of Images for the OKE on OCI](videohub:1_nzveoikz)
 
 ### Objectives
 
@@ -18,7 +24,7 @@ In this lab, you will:
 
 In this task, we are creating an Auxiliary image, which we will push to the Oracle Cloud Container Registry.
 
-1. Click *Image*. We already preset *Image Tag* with the below value. 
+1. Click *Image*. For Primary Image, we will use the below *weblogic* Image.So leave default values under *Primary Image* section as shown 
 
     ```bash
     <copy>container-registry.oracle.com/middleware/weblogic:12.2.1.3-ol8</copy>
@@ -32,24 +38,25 @@ In this task, we are creating an Auxiliary image, which we will push to the Orac
     * End point for the Region
     * Tenancy Namespace
 
-    You can find out your *Region Name* in top right corner in the Oracle Cloud Console.
-    ![Region Name](images/region-name.png)
 
-3. To find out the endpoint for your Region, click this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In my case, it is *UK South (London)* as the region name, thus its endpoint is *lhr.ocir.io*. Find out your endpoint for your own *Region Name* and save it in your text file.
-    ![Region Endpoints](images/region-endpoints.png)
-    > No need to copy **https://**. 
+3. Locate the *Endpoint for Your Region*. Refer to the table documented at this URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab). In the example shown, the endpoint for the region is *UK South (London)* (as the region name) and its endpoint is *lhr.ocir.io*. Locate the endpoint for your own *Region Name* and save it in the text file. You will also need it for the next lab.
 
-4. In lab 3, you already noted the tenancy namespace in your text file. If not, then for finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. Select your own compartment, you will find the Namespace as shown.
+    ![End Points](images/end-point.png " ")
+
+    >Now you have both the tenancy namespace and endpoint for your region.
+ 
+
+4. In lab 3, you already noted the tenancy namespace in your text file. If not, then for finding the Namespace of the tenancy, select the *Hamburger Menu* -> *Developer Services* -> *Container Registry*, as shown. Select the repository you created, you will find the Namespace as shown.
     ![Tenancy Namespace](images/tenancy-namespace.png)
 
 5. Now you have both the Tenancy Namespace and Endpoint for your region. Copy the following command and paste it in your text file. Then replace the `END_POINT_OF_YOUR_REGION` with the endpoint of your region name, `NAMESPACE_OF_YOUR_TENANCY` with your tenancy's namespace. Click on *Auxiliary Image* tab as shown.
     ![Auxiliary Tab](images/auxiliary-tab.png)
 
     ````bash
-    <copy>END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/test-model:v1</copy>
+    <copy>END_POINT_OF_YOUR_REGION/NAMESPACE_OF_YOUR_TENANCY/test-model-your_first_name:v1</copy>
     ````
 
-> For example, in my case Auxiliary Image tag is `lhr.ocir.io/tenancynamespace/test-model:v1`.
+> For example, in my case Auxiliary Image tag is `lhr.ocir.io/tenancynamespace/test-model-ankit:v1`.
 
 6. In step 4, you also determined the tenancy namespace.
 Enter the  Auxiliary Image Registry Push Username as follows: `NAMESPACE_OF_YOUR_TENANCY`/`YOUR_ORACLE_CLOUD_USERNAME`. <br>
@@ -85,4 +92,4 @@ Enter the  Auxiliary Image Registry Push Username as follows: `NAMESPACE_OF_YOUR
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, March 2022
+* **Last Updated By/Date** - Ankit Pandey, August 2023

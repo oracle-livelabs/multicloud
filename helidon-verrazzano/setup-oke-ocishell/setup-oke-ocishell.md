@@ -2,11 +2,11 @@
 
 ## Introduction
 
-In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. The nodes will be deployed in different availability domains to ensure high availability.
+In this lab, you will create a 3-node Kubernetes cluster configured with all of the necessary network resources. The nodes will be deployed in different fault domains to ensure high availability.
 
-For more information about OKE and custom cluster deployment, see the [Oracle Container Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
+For more information about OKE and custom cluster deployment, see the [Oracle Kubernetes Engine](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) documentation.
 
-Estimated Time: 10 minutes
+Estimated Time: 15 minutes
 
 ### About Product/Technology
 
@@ -19,64 +19,67 @@ You will use the *Quick Create* cluster feature to create an OKE (Oracle Kuberne
 
 ### Prerequisites
 
-You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
+* You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 
 
 ## Task 1: Create an OKE cluster
 
+The *Quick Create* feature uses the default settings to create a *quick cluster* with new network resources as required. This approach is the fastest way to create a new cluster. If you accept all the default values, you can create a new cluster in just a few clicks. New network resources for the cluster are created automatically, along with a node pool and three worker nodes.
 
-1. In the Console, open the navigation menu and click **Developer Services**. Under **Containers & Artifacts**, click **Kubernetes Clusters (OKE)**.
+1. In the Console, select the *Hamburger Menu -> Developer Services -> Kubernetes Clusters (OKE)* as shown.
 
-    ![Hamburger Menu](images/menu.png)
+    ![Hamburger Menu](images/hamburger-menu.png " ")
 
-2. On the Cluster List dialogue, select the Compartment where you are allowed to create a cluster and then click **Create Cluster**.
+2. In the Cluster List page, select the Compartment of your choice, where you are allowed to create a cluster, and then click *Create Cluster*.
 
-    > You must select a compartment that allows you to create a cluster and a repository inside the Oracle Container Registry.
+    > You need to select a compartment in which you are allowed to create a cluster and also, a repository inside the Oracle Container Registry.
 
-    ![Select Compartment](images/select-compartment.png)
+    ![Select Compartment](images/select-compartment.png " ")
 
-3. On the Create Cluster dialogue, click **Quick Create** and click **Submit**.
+3. In the Create Cluster Solution dialog, select *Quick Create* and click *Submit*.
 
-    ![Launch Workflow](images/launch-workflow.png)
+    ![Launch Workflow](images/launch-workflow.png " ")
 
-    *Quick Create* will automatically create a new cluster with the default settings, along with new network resources for the new cluster.
+    *Quick Create* will create a new cluster with the default settings, along with new network resources for the new cluster.
 
-4. Specify the following configuration details on the Cluster Creation dialogue (pay attention to the value you place in the **Shape** field):
+    Specify the following configuration details on the Cluster Creation page (please pay attention to the value you place in the *Shape* field):
 
-    * **Name**: The name of the cluster. Accept the default value.
-    * **Compartment**: The name of the compartment. Accept the default value.
-    * **Kubernetes Version**: The version of Kubernetes. Select the **v1.23.4** version.
-    * **Kubernetes API Endpoint**: Determines if the cluster master nodes are going to be routable or not. Select the **Public Endpoint** value.
-    * **Kubernetes Worker Nodes**: Determines if the cluster worker nodes are going to be routable or not. Accept the default value **Private Workers**.
-    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select **VM.Standard.E4.Flex**. You need to select *3* as the number of *OCPUs* and *48* as the *Amount of Memory(GB)*.<br>
-    > **Caution**: *VM.Standard.E4.Flex is recommended because Verrazzano has many components. The default VM.Standard2.1 can be enough for testing purposes but the installation takes much longer.*
+    * **Name**: The name of the cluster. Leave the default value.
+    * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.26.2* as Kubernetes version.
+    * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
+    * **Node Type**: Select *Managed* as Node type. 
+    * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Private Workers* value.
+    * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
+    * **Image**: Select the default image with Kubernetes version *1.26.2*.
+    * **Number of nodes**: The number of worker nodes to create. Leave the default value, *3*.
 
-    * **Number of nodes**: The number of worker nodes to create. Accept the default value, **3**.
+    > *PLEASE BE VERY CAREFUL TO NOT LEAVE THE DEFAULT SHAPE; THE DEFAULT SHAPE IS TOO SMALL TO FIT ALL THE VERRAZZANO COMPONENTS*
 
-    ![Quick Cluster](images/quickcluster.png)
-    ![Enter Data](images/cluster-shape.png)
+    ![Quick Cluster](images/quick-cluster.png " ")
+    ![Node number](images/node-number.png " ")
 
-5. Click **Next** to review the details you entered for the new cluster.
+4. Click *Next* to review the details you entered for the new cluster.
+
+5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
+
+    ![Review Cluster](images/review-cluster.png " ")
+
+    > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click *Close*.
+
+    ![Network Resource](images/network-resource.png " ")
+
+    > Then, the new cluster is shown on the *Cluster Details* page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).Then, you may continue your labs.
+
+    ![cluster provision](images/cluster-provision.png " ")
+
+    ![cluster access](images/cluster-access.png " ")
 
 
-6. On the Review page, click **Create Cluster** to create the new network resources and the new cluster.
 
-    ![Review Cluster](images/reviewcluster.png)
-
-    > You see the network resources being created for you. Wait until the request to create the node pool is initiated and then click **Close**.
-
-    ![Network Resource](images/network-creation.png)
-
-    > The new cluster is shown on the Cluster Details page. When the master nodes are created, the new cluster gains a status of *Active* (it takes about 7 minutes).
-
-    ![cluster1](images/cluster-provision.png)
-
-    ![cluster1](images/cluster-active.png)
-
-7. To save time don't wait until the Active state, continue with the next Helidon application development lab. Before the Verrazzano installation, you will come back to verify and configure the OKE cluster access.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, April 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, August 2023

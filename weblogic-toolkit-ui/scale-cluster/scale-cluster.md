@@ -4,6 +4,11 @@
 
 In this lab, we scale a WebLogic Cluster. Here, we modify the value to *3* and re-deploy the domain.
 
+Estimated Lab Time: 5 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Scaling a WebLogic Cluster](videohub:1_tgp1x4zs)
+
 ### Objectives
 
 In this lab, you will:
@@ -37,7 +42,7 @@ In this task, you just need to modify the *Replica* value from 2 to 3 and re-dep
 6. Go back to browser, where you have the application page open. Click Refresh button, you will see the load balancing between three managed server now.
     ![new server](images/new-server.png)
 
-7. Go back to WebLogic Remote Console, click on Monitoring Tree -> Running Servers. You will notice managed-server3 here also.
+7. Go back to WebLogic Remote Console, click on *Monitoring Tree* -> *Environment* -> *Servers*. You will notice managed-server3 here also.
     ![remote console](images/remote-console.png)
 
 
@@ -47,4 +52,4 @@ In this task, you just need to modify the *Replica* value from 2 to 3 and re-dep
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, March 2022
+* **Last Updated By/Date** - Ankit Pandey, August 2023

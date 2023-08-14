@@ -21,32 +21,32 @@ You should have a text editor, where you can paste the commands and URLs and mod
 
 In this step, we are going to generate an *Authentication Token*, that we will use to log in to the Oracle Cloud Container Registry.
 
-1. Select the User Icon in the top right corner and then select *User Settings*.
+1. Select the User Icon in the top right corner and then select *My Profile*.
 
-    ![User Settings](images/usersettings.png " ")
+    ![User Settings](images/user-settings.png " ")
 
 2. Scroll down and select *Auth Tokens*.
 
-    ![Auth tokens](images/authtoken.png " ")
+    ![Auth tokens](images/auth-token.png " ")
 
 3. Click *Generate Token*.
 
-    ![Generate Token](images/generatetoken.png " ")
+    ![Generate Token](images/generate-token.png " ")
 
 4. Copy *`helidon-stock-application-your_first_name`* and paste it in the *Description* box and click *Generate Token*.
 
-    ![Token create](images/tokencreate.png " ")
+    ![Token create](images/token-create.png " ")
 
-5. Select *Copy* under Generated Token and paste it in the text editor. We cannot copy it later.
+5. Select *Copy* under Generated Token and paste it in the text file. We cannot copy it later.
 
-    ![Copy Token](images/copytoken.png " ")
+    ![Copy Token](images/copy-token.png " ")
 
 ## Task 2: Push the bobbys-helidon-stock-application Docker image to your Oracle Cloud Container Registry Repository
 
 
-1. In Lab 5, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and saved the endpoint for your Region name in a text editor. In my case, it is US East (Ashburn).
+1. In Task 1 of this lab, you opened a URL [https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab](https://docs.oracle.com/en-us/iaas/Content/Registry/Concepts/registryprerequisites.htm#Availab) and determined the endpoint for your Region name and copied it to a text editor. In our example, the Region Name is UK South (London). You will need this information for this task.
+    ![End point](images/end-point.png)
 
-    ![Endpoint](images/endpoint.png " ")
 
  2. Copy the following command and paste it in your text editor and then replace the **`END_POINT_OF_REGION_NAME`** with the endpoint of your region.
 
@@ -54,8 +54,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy> docker login `END_POINT_OF_REGION_NAME`</copy>
     ```
 <if type="freetier">
-3. In the previous lab, you determined the Tenancy Namespace. Make the user name as follows: **`NAMESPACE_OF_YOUR_TENANCY`/oracleidentitycloudservice/`YOUR_ORACLE_CLOUD_USERNAME`**. Here, replace **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`YOUR_ORACLE_CLOUD_USERNAME`** with your Oracle Cloud Account user name and then copy the replaced user name from your text editor and paste it in the *Cloud Shell*. For Password , paste the Authentication Token from your text editor or where you saved it.
-    ![Login Registry](images/loginregistry.png " ")
+3. In the previous lab, you determined the Tenancy Namespace. Make the user name as follows: **`NAMESPACE_OF_YOUR_TENANCY`/oracleidentitycloudservice/`YOUR_ORACLE_CLOUD_USERNAME`**. Here, replace **`NAMESPACE_OF_YOUR_TENANCY`** with your tenancy's namespace and **`YOUR_ORACLE_CLOUD_USERNAME`** with your Oracle Cloud Account user name and then copy the replaced user name from your text file and paste it in the *Cloud Shell*. For Password , paste the Authentication Token from your text editor or where you saved it.
+    ![Login Registry](images/login-registry.png " ")
 </if>
 
 <if type="livelabs">
@@ -65,19 +65,19 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 
 4. Go back to the Container Registry, select *Hamburger Menu -> Developer Services -> Container Registry*.
 
-    ![Container Registry](images/containerregistry.png " ")
+    ![Container Registry](images/container-registry.png " ")
 
 5. Select the compartment and then click *Create Repository*.
 
-    ![Repository Create](images/repositorycreate.png " ")
+    ![Repository Create](images/repository-create.png " ")
 
-6. Select the compartment and enter *`helidon-stock-application-your_first_name`* as the Repository Name, then choose Access as *Public* and then click *Create Repository*.
+6. Select the compartment and enter *`helidon-stock-application-your_first_name`* as the Repository Name, then choose Access as *Public* and then click *Create*.
 
-    ![Repository Data](images/repositorydata.png " ")
+    ![Repository Data](images/repository-data.png " ")
 
     After the repository *`helidon-stock-application-your_first_name`* has been created, you can verify the Namespace and it should be same as your tenancy's namespace.
 
-    ![Verify Namespace](images/verifynamespace.png " ")
+    ![Verify Namespace](images/verify-namespace.png" ")
 
 7. As part of Lab 5, you copied the Docker image full name into your text editor. To push your Docker image into your repository inside the Oracle Cloud Container Registry, copy and paste the following command in your text editor and then replace *`ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/`helidon-stock-application-your_first_name`:1.0* with Docker image full name, which you have saved in your text editor.
 
@@ -85,16 +85,16 @@ In this step, we are going to generate an *Authentication Token*, that we will u
     <copy>docker push `ENDPOINT_OF_YOUR_REGION_NAME`/`NAMESPACE_OF_YOUR_TENANCY`/helidon-stock-application-your_first_name:1.0</copy>
     ```
 
-    ![Docker push](images/dockerpush.png " ")
+    ![Docker push](images/docker-push.png " ")
 
     After the *docker push* command runs successfully, expand the *`helidon-stock-application-your_first_name`* repository and you will notice a new image has been uploaded in this repository.
 
-    ![Image uploaded](images/imageuploaded.png " ")
+    
 
-Leave the *Cloud Shell* and Container Registry repository page open; we will need them for the next labs.
+    Leave the *Cloud Shell* and Container Registry repository page open; we will need them for the next labs.
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Peter Nagy
-* **Last Updated By/Date** - Ankit Pandey, May 2022
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey,  March 2023

@@ -1,0 +1,63 @@
+# Introduction
+
+## About this Workshop
+
+This lab offers attendees an intro-level, hands-on session with Oracle Kubernetes Engine, Verrazzano and Helidon. You will learn how to deploy a sample hello helidon application on OKE using Verrazzano. 
+
+During this lab, you will set up Oracle Kubernetes Engine (OKE) on Oracle Cloud Infrastructure (OCI) using the Oracle Cloud Free Tier account. The Free Tier account is sufficient to explore and learn how to run and operate microservice applications on an enterprise level.
+
+The goal of this workshop is that you learn the basics of using OKE and Verrazzano and understand how they can help you in your enterpise. If you want to learn more about the capabilities of these projects, then continue to explore using your Oracle Free Tier cloud account and Oracle Cloud Infrastructure.
+
+This workshop is designed to be as self-explanatory as possible, but feel free to ask for clarification or assistance along the way.
+
+Estimated Time: 60 minutes
+
+### Objectives
+
+* Set up your Oracle Cloud Free Tier account (if you haven't done so already).
+* Set up an Oracle Kubernetes Engine instance on the Oracle Cloud Infrastructure.
+* Install the Verrazzano platform.
+* Deploy the *Simple Hello Helidon* application.
+* Monitor the *Simple Hello Helidon* application using Verrazzano tools, including Rancher, Opensearch, Grafana and Prometheus.
+
+### Prerequisites
+
+* You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
+
+
+## About Helidon
+
+Helidon is an open-source microservices framework introduced by Oracle that provides a collection of Java libraries designed for creating lightweight and fast microservices-based applications. The framework supports two programming models for writing microservices: Helidon SE and Helidon MP.
+
+While Helidon SE is designed to be a microframework that supports the reactive programming model, Helidon MP is an implementation of the MicroProfile specification. Since MicroProfile has its roots in Java EE, the MicroProfile APIs follow a familiar, declarative approach with heavy use of annotations. This makes it a good choice for Java EE developers.
+
+The MicroProfile features aim at the implementation of microservices. You can find APIs for defining REST Clients, monitoring the application, reading technical and functional statistics and configuring the application.
+Helidon has also added additional APIs to the core set of Microprofile APIs giving you all the capabilities you need for writing modern cloud-native applications.
+
+> The [MicroProfile](https://microprofile.io/) standard builds on Jakarta EE. Like Jakarta EE, MicroProfile is open source and is developed by the Eclipse Foundation. Implementation with MicroProfile takes place in the libraries or application servers implementing the standard, just like Jakarta EE.
+
+## About Verrazzano
+
+Verrazzano is an end-to-end enterprise container platform for deploying cloud-native and traditional applications in multi-cloud and hybrid environments. It is made up of a curated set of open source components – many that you may already use and trust, and some that were written specifically to pull together all of the pieces that make Verrazzano a cohesive and easy-to-use platform.
+
+Verrazzano includes the following capabilities:
+- Hybrid and multicluster workload management
+- Special handling for WebLogic, Coherence, and Helidon applications
+- Multicluster infrastructure management
+- Integrated and pre-wired application monitoring
+- Integrated security
+- DevOps and GitOps enablement
+
+![Verrazzano](images/verrazzano.png)
+
+
+## Learn More
+
+* [https://helidon.io](https://helidon.io)
+* [https://verrazzano.io/](https://verrazzano.io/)
+
+## Acknowledgements
+
+* **Author** -  Ankit Pandey
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, March 2023

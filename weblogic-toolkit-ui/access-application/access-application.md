@@ -21,6 +21,10 @@ The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.3, 12
 
 In this lab, we access the application *opdemo* and verify the successful migration of an offline on-premise domain. we also verify the loadbalancing between managed server pods. Later, we use WebLogic Remote Console, to verify the successful deployment of resources of test-domain in kubernetes environment.
 
+Estimated Lab Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Testing Application Deployment](videohub:1_kcvw3xrf)
 
 ### Objectives
 
@@ -61,19 +65,19 @@ In this task, we explore the WebLogic Remote Console. We create connection to *A
     URL:  `Copy_IP_From_TextFile`</br>
     ![Connection Details](images/connection-details.png)
 
-4. Click on *Edit Tree* icon, then Select *Services* -> *JDBC System Resources*. You can observe the same Datasouce, which we had seen in on-premise domain.
+4. Click on *Edit Tree* icon, then Select *Services* -> *Data Sources*. You can observe the same Datasouce, which we had seen in on-premise domain.
     ![Verify Datasources](images/verify-datasources.png)
 
-5. Click on **Monitoring Tree** Icon as shown then select **Running Servers**. You can see we have **Admin Server** and 2 Managed Server pods are running. Click on **admin-server**, you can see WebLogic Version is **12.2.1.3.0**.
-    ![Running Servers](images/wls-version.png)
+5. To display what servers are running in your domain. Click on **Monitoring Tree** Icon as shown then select **Environment** -> **Servers**. You can see we have **Admin Server** and 2 Managed Server pods are running. 
+    ![Running Servers](images/running-server-status.png)
 
-6. To display what servers are running in your domain. Click the **Configuration view Tree** icon, click **Environment** and **Servers**. In the servers drop down box, select **Status- Monitoring Tree**.
-    ![Server Status](images/running-server-status.png)
-    ![Running](images/running.png)
+6. Click on **admin-server**, you can see WebLogic Version is **12.2.1.3.0**. 
+    ![Server Status](images/wls-version.png)
+    
 
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Kamryn Vinson, March 2022
+* **Last Updated By/Date** - Ankit Pandey, August 2023
