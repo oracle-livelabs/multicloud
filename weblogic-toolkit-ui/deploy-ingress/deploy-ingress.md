@@ -1,13 +1,13 @@
-# Deployment of Ingress Controller to the Oracle Container Engine for Kubernetes (OKE) on Oracle Cloud Infrastructure (OCI) From WebLogic Kubernetes Toolkit UI
+# Deploy Ingress Controller to Oracle Kubernetes Cluster (OKE)
 
 ## Introduction
 
 In this lab, we install the *Traefik* Ingress Controller. Later, we updates the *Ingress Routes* to access the application and admin server.
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Deploy Ingress Controller to OKE Cluster](videohub:1_4eiomya3)
+[Deploy Ingress Controller to OKE Cluster](videohub:1_4kih00fi)
 
 ### Objectives
 

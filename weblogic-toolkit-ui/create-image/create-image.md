@@ -1,4 +1,4 @@
-# Creation of Images for the Oracle Container Engine for Kubernetes (OKE) on Oracle Cloud Infrastructure (OCI)
+# Create a Auxiliary Image and Push it into Oracle Container Image Registry
 
 ## Introduction
 
@@ -9,10 +9,10 @@
 
 In this Lab, we use WebLogic server 12.2.1.3.0-ol8 image as Primary Image. Also, we create an auxiliary image, and push it to Oracle Container Image Registry repository using the generated authentication token. 
 
-Estimated Lab Time: 10 minutes
+Estimated Time: 10 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Creation of Images for the OKE on OCI](videohub:1_nzveoikz)
+[Creation of Images for the OKE on OCI](videohub:1_y5o56oe5)
 
 ### Objectives
 

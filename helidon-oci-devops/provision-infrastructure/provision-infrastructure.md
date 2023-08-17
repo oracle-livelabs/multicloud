@@ -33,7 +33,7 @@ In this lab, you will:
 3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop. 
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/NkeOirm718ot5bzRl60d38WdF-nGPKFdvl8mqzOaFChts3s6r-X8pq-Qn2ux9A0T/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/IxV3cO7Uf5VnbniLEmx8zOBhr6liix40QWNTnTy0TTBcGdrLaRNSt2IJYxBPHqdw/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
     unzip ~/devops_helidon_to_instance_ocw_hol.zip</copy>
     ```
 ![download source code](images/download-sourcecode.png)
@@ -76,7 +76,7 @@ In this lab, you will:
 
 The goal of this task is to prepare the environment for the DevOps setup by creating a Compartment, Dynamic Group, User Group and policies. This section requires a user with administrator privilege. If you don't have it, make sure to request another user with such privilege to run this for you.
 
-1. In the terminal, copy and paste the following command to navigate to the *init* folder.
+1. Open a terminal, copy and paste the following command to navigate to the *init* folder.
     ```bash
     <copy>cd ~/devops_helidon_to_instance_ocw_hol/init/</copy>
     ```
@@ -148,4 +148,4 @@ You may now **proceed to the next lab.**
 
 * **Author** -  Keith Lustria
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, May 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023
