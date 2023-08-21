@@ -1,13 +1,13 @@
-# Scale the WebLogic Cluster 
+# Scale a WebLogic Cluster (Optional) 
 
 ## Introduction
 
 In this lab, we scale a WebLogic Cluster. Here, we modify the value to *3* and re-deploy the domain.
 
-Estimated Lab Time: 5 minutes
+Estimated Time: 5 minutes
 
 Watch the video below for a quick walk-through of the lab.
-[Scaling a WebLogic Cluster](videohub:1_tgp1x4zs)
+[Scaling a WebLogic Cluster](videohub:1_mcl3p6td)
 
 ### Objectives
 

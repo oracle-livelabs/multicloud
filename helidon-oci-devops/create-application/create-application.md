@@ -44,9 +44,21 @@ In this lab, you will:
      ```bash
     <copy>./helidon init</copy>
     ```
-2. When it prompts for the *Helidon version*, copy and paste the below value to the terminal. When you click **Copy**, it just copy the **4.0.0-ALPHA6**, but we are showing the complete output.
+2. When it prompts for the *Helidon version*, Enter *4* to see all versions and then enter *35* to select the *4.0.0-ALPHA6* version as shown below.
     ```bash
-    Helidon version (default: 3.2.0): <copy>4.0.0-ALPHA6</copy>
+    Helidon versions
+    (1) 3.2.2 
+    (2) 2.6.2 
+    (3) 4.0.0-M1 
+    (4) Show all versions 
+    Enter selection (default: 1): 4
+    -----------------------------
+    -----------------------------
+    (33) 2.0.1 
+    (34) 2.0.0 
+    (35) 4.0.0-ALPHA6 
+    (36) 4.0.0-M1 
+    Enter selection (default: 1): 35 
     ```
 
 3. When prompted to *Select a Flavor*, copy and paste the below value to the terminal.
@@ -217,6 +229,8 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 5. Select the compartment, which you have created in **Lab 1** and then Click *devops-project-helidon-ocw-hol-string* to open the **DevOps Project**.
     ![select compartment](images/select-compartment.png)
 
+    > Refresh the browser,If you don't see the new compartment.
+
 6. Under *Latest build history*, you will see the *Runs* and Status as *Accepted/In Progress*. Click on the latest runs as shown below.
     ![build history](images/build-history.png)
 
@@ -252,4 +266,4 @@ You may now **proceed to the next lab.**
 
 * **Author** -  Keith Lustria
 * **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, May 2023
+* **Last Updated By/Date** - Ankit Pandey, August 2023
