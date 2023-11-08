@@ -14,7 +14,7 @@ In this lab, you will:
 * Update the Ingress Routes.
 
 
-## Task 1: Installtion of Ingress Controller to the Oracle Kubernetes Cluster
+## Task 1: Installtion of Ingress Controller to the WebLogic for OKE Stack [WLS for OKE]
 
 In this task, we install the *Ingress Controller*.
 

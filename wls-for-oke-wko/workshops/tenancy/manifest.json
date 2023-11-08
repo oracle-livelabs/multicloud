@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Deploy WebLogic Application to WebLogic for OKE through WebLogic Kubernetes Toolkit UI",
+  "workshoptitle": "Deploy WebLogic Application to WebLogic for OKE Stack [WLS for OKE] through WebLogic Kubernetes Toolkit UI",
   "help": "livelabs-help-weblogic_us@oracle.com",
   "tutorials": [
     {
@@ -35,15 +35,15 @@
       "filename": "../../create-image/create-image.md"
     },
     {
-      "title": "Lab 6: Deploy WebLogic Operator to Oracle Kubernetes Cluster (OKE)",
+      "title": "Lab 6: Deploy WebLogic Operator to WebLogic for OKE Stack [WLS for OKE]",
       "filename": "../../deploy-operator/deploy-operator.md"
     },
     {
-      "title": "Lab 7: Deploy WebLogic Domain to Oracle Kubernetes Cluster (OKE)",
+      "title": "Lab 7: Deploy WebLogic Domain to WebLogic for OKE Stack [WLS for OKE]",
       "filename": "../../deploy-domain/deploy-domain.md"
     },
     {
-      "title": "Lab 8: Deploy Ingress Controller to Oracle Kubernetes Cluster (OKE)",
+      "title": "Lab 8: Deploy Ingress Controller to WebLogic for OKE Stack [WLS for OKE]",
       "filename": "../../deploy-ingress/deploy-ingress.md"
     },
     {

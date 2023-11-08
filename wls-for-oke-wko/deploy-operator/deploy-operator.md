@@ -15,7 +15,7 @@ In this lab, you will:
 * Install the WebLogic Kubernetes Operator to Kubernetes Cluster.
 
 
-## Task 1: Configure kubectl (Kubernetes Cluster CLI) to connect to Oracle Kubernetes Cluster
+## Task 1: Configure kubectl (Kubernetes Cluster CLI) to connect to WebLogic for OKE Stack [WLS for OKE]
 In this Task, we creats the configuration file *.oci/config* and *.kube/config* in */home/opc* directory. This configuration file allow us to access Oracle Kubernetes Cluster (OKE) from this virtual machine.
 
 
@@ -50,7 +50,7 @@ In this Task, we creats the configuration file *.oci/config* and *.kube/config* 
     <copy>chmod 600 ~/.kube/config</copy>
     ```
 
-## Task 2: View the Cloud Resources of Oracle WebLogic Server for OKE Stack
+## Task 2: View the Cloud Resources of WebLogic for OKE Stack [WLS for OKE]
 
 1. In OCI Console, Click the **navigation menu**, select **Developer Services**. Under the Resource Manager group, click **Stacks**.
 
@@ -90,7 +90,7 @@ to save this file.
     ![proxy config](images/proxy-config.png)
 
 
-## Task 4: Verify Connectivity of WebLogic Kubernetes Toolkit UI to Oracle Kubernetes Cluster
+## Task 4: Verify Connectivity of WebLogic Kubernetes Toolkit UI to WebLogic for OKE Stack [WLS for OKE]
 In this task, we verify the connectivity to *Oracle Kubernetes Cluster(OKE)* from the `WebLogic Kubernetes Toolkit UI` application.
 
 1. Go back to WebLogic Kubernetes Tool Kit UI, Click *Activities* and select the WebLogic Kubernetes Tool Kit UI window. 
@@ -101,7 +101,7 @@ In this task, we verify the connectivity to *Oracle Kubernetes Cluster(OKE)* fro
 3. Once you see *Verify Kubernetes Client Connectivity Success* window, Click *Ok*.
     ![Successfully Connected](images/successfully-connected.png)
 
-## Task 5: Update the WebLogic Kubernetes Operator to Oracle Kubernetes Cluster
+## Task 5: Update the WebLogic Kubernetes Operator to WebLogic for OKE Stack [WLS for OKE]
 This section provides support for installing the WebLogic Kubernetes Operator (the “operator”) in the target Kubernetes cluster. 
 
 1. Click **WebLogic Operator**. Specify the following configuration details  and click **Update Operator**.
