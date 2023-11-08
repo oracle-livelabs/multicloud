@@ -12,7 +12,7 @@ In this lab, you will:
 
 * Deploy the WebLogic Domain to Kubernetes Cluster.
 
-## Task 1: Deploy the WebLogic Domain to the Oracle Kubernetes Cluster
+## Task 1: Deploy the WebLogic Domain to the WebLogic for OKE Stack [WLS for OKE]
 
 In this task, we deploy the Kubernetes custom resource for the WebLogic domain to Kubernetes Cluster.
 
