@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Move WebLogic Applications to OKE with the WebLogic Kubernetes ToolKit UI",
+  "workshoptitle": "Optimize WebLogic clusters with Kubernetes Horizontal Pod Autoscaler and the WebLogic Monitoring Exporter",
   "help": "livelabs-help-weblogic_us@oracle.com",
   "tutorials": [
     {
