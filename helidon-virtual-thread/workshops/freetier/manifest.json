@@ -28,7 +28,7 @@
             "filename": "../../modify-application/modify-application.md"
         },
         {
-            "title": "Lab 4: MicroProfile Running on Virtual Threads",
+            "title": "Lab 4: Create a Helidon 3 application and then migrate it to Helidon 4",
             "filename": "../../migrate-application/migrate-application.md"
         },
         {

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this lab, you will start with a Helidon 3 application running on our original reactive Web Server based on Netty. You will then migrate the application to Helidon 4 running on the new Helidon Nima WebServer using virtual threads.
+In this lab, you will start with a Helidon 3 application running on our original reactive Web Server based on Netty. You will then migrate the application to Helidon 4 running on the new Helidon WebServer using virtual threads.
 
 [Lab4 walkthrough](videohub:1_zr1m00ba)
 
@@ -35,18 +35,18 @@ Estimated Time: 20 minutes
 
 5. For Customize Project, select the default values and click on *Downloads*. This will pop up in a window, save this *myproject.zip* to the location of your choice. In the rest of this workshop, the *myproject* name will be used. if you choose a different name, please change respectively.
 
-6. Go back to Code Editor, In HELIDON-LEVELUP-2023-MAIN, and click *docs*.
+6. Go back to Code Editor, In helidon-virtual-thread, and click *helidon-3*.
     ![Select docs](images/select-docs.png)
 
 7. Click *File* -> *Upload Files* and select the *myproject.zip* from the location where you have saved this file earlier and then click *Open*.
     ![Upload Files](images/upload-files.png)
 
-8. You will see *myproject.zip* file under *docs* folder.
+8. You will see *myproject.zip* file under *helidon-3* folder.
     ![Zip File](images/zip-file.png)
 
 9. copy and paste the following command to unzip the file.
     ```bash
-    <copy>cd ~/helidon-levelup-2023-main/docs/
+    <copy>cd ~/helidon-virtual-thread/helidon-3/
     unzip myproject.zip</copy>
     ```
 
@@ -108,12 +108,12 @@ Estimated Time: 20 minutes
 
 ## Task 2: Migrate the Helidom MicroProfile application to Helidon 4
 
-1. For myproject, open the *pom.xml* file and change the parent pom from *3.1.1* to *4.0.0-ALPHA5*.
+1. For myproject, open the *pom.xml* file and change the parent pom from *3.2.5* to *4.0.3*.
     ```bash
     <parent>
         <groupId>io.helidon.applications</groupId>
         <artifactId>helidon-mp</artifactId>
-        <version>4.0.0-ALPHA5</version>
+        <version>4.0.3</version>
         <relativePath/>
     </parent>
     ```
@@ -129,7 +129,7 @@ Estimated Time: 20 minutes
 
 4. Copy and paste the following command to run the application.
     ```bash
-    <copy>java --enable-preview  -jar target/myproject.jar</copy>
+    <copy>java -jar target/myproject.jar</copy>
     ```
     You will have output similar to the following.
     ```bash
@@ -145,12 +145,12 @@ Estimated Time: 20 minutes
     ```
 5.  Look at the server output and note that the thread is now a VirtualThread.
 
-6. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java --enable-preview  -jar target/myproject.jar" command is running.
+6. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
 
 Congratulations, you have completed the Helidon virtual thread workshop.
 
 ## Acknowledgements
 
-* **Author** -  Joe DiPol
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, Feb 2023
+* **Author** -  Ankit Pandey    
+* **Contributors** - Ankit Pandey, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, January 2024
