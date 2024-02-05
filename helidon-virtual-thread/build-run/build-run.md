@@ -1,4 +1,4 @@
-# Build and Run the Helidon Nima and Reactive application
+# Build and Run the Helidon Blocking and Reactive application
 
 ## Introduction
 
@@ -16,7 +16,7 @@ In this lab, you will:
 
 * Build, run and test the Helidon Blocking application
 * Build, run and test the Helidon Reactive application
-* Analyse the simplicity of the Nima application comparative to Reactive application
+* Analyse the simplicity of the Blocking application comparative to Reactive application
 
 ### Prerequisites
 
@@ -141,7 +141,7 @@ To run this lab, you must have:
 
 ## Task 2: Build and Run the Reactive application
 
-1. Copy and paste the following command to build the nima application.
+1. Copy and paste the following command to build the reactive application.
     ```bash
     <copy>cd ~/helidon-virtual-thread/reactive/
     mvn clean package -DskipTests</copy>
