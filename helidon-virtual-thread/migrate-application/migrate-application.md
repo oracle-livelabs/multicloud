@@ -12,8 +12,8 @@ Estimated Time: 20 minutes
 
 ### Objectives
 
-* Generate, build and run a Helidon MicroProfile application using Helidon Starter.
-* Migrate the Helidon 3 Microprofile application to Helidon 4
+* Generate, build and run a Helidon MP application using Helidon Starter.
+* Migrate the Helidon 3 MP application to Helidon 4
 
 ### Prerequisites
 
@@ -25,15 +25,20 @@ Estimated Time: 20 minutes
 1. Copy the below URL and paste it into the browser to open the Helidon Project page.
 
     ```bash
-    <copy>https://helidon.io/starter/</copy>
+    <copy>https://helidon.io/starter/3.2.5</copy>
     ```
 2. Under Generate Your Project, select *Helidon MP* as Helidon Flavor and then click *Next*.
 
 3. For Application Type, select *Quickstart* and then click *Next*.
 
-4. For Media Support, select *Jackson* and then click *Next*.
+4. For Media Support, select *JSON-B* and then click *Next*.
 
 5. For Customize Project, select the default values and click on *Downloads*. This will pop up in a window, save this *myproject.zip* to the location of your choice. In the rest of this workshop, the *myproject* name will be used. if you choose a different name, please change respectively.
+
+6. Copy and paste the following command to create the directory **helidon-3**
+    ```bash
+    <copy>mkdir ~/helidon-virtual-thread/helidon-3</copy>
+    ```
 
 6. Go back to Code Editor, In helidon-virtual-thread, and click *helidon-3*.
     ![Select docs](images/select-docs.png)
@@ -64,11 +69,11 @@ Estimated Time: 20 minutes
     You will see output similar to the following:
     ```bash
     $ java -jar target/myproject.jar
-    2023.02.28 03:48:36 INFO io.helidon.common.LogConfig Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
-    2023.02.28 03:48:39 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
-    2023.02.28 03:48:40 INFO io.helidon.webserver.NettyWebServer Thread[#31,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x5b66bd2a, L:/0.0.0.0:8080]
-    2023.02.28 03:48:41 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 4816 milliseconds (since JVM startup).
-    2023.02.28 03:48:41 INFO io.helidon.common.HelidonFeatures Thread[#32,features-thread,5,main]: Helidon MP 3.1.2 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
+    2024.02.05 09:18:14 INFO io.helidon.common.LogConfig Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    2024.02.05 09:18:17 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
+    2024.02.05 09:18:18 INFO io.helidon.webserver.NettyWebServer Thread[#30,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x1902a6e4, L:/0.0.0.0:8080]
+    2024.02.05 09:18:18 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 3382 milliseconds (since JVM startup).
+    2024.02.05 09:18:18 INFO io.helidon.common.HelidonFeatures Thread[#31,features-thread,5,main]: Helidon MP 3.2.5 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
     ```
 
 13. Go back to the terminal,from where you run the curl commands and run the following commands to check the application:
@@ -106,7 +111,7 @@ Estimated Time: 20 minutes
 18. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
 
 
-## Task 2: Migrate the Helidom MicroProfile application to Helidon 4
+## Task 2: Migrate the Helidom MP application to Helidon 4
 
 1. For myproject, open the *pom.xml* file and change the parent pom from *3.2.5* to *4.0.3*.
     ```bash
@@ -133,17 +138,46 @@ Estimated Time: 20 minutes
     ```
     You will have output similar to the following.
     ```bash
-    $ java --enable-preview  -jar target/myproject.jar
-    2023.02.28 03:56:17 INFO io.helidon.logging.jul.JulProvider Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
-    2023.02.28 03:56:21 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
-    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x613cc6f8] http://0.0.0.0:8080 bound for socket '@default'
-    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.ServerListener VirtualThread[#25,start @default (/0.0.0.0:8080)]/runnable@ForkJoinPool-1-worker-1: [0x613cc6f8] direct writes
-    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Helidon Níma 4.0.0-ALPHA5
-    2023.02.28 03:56:22 INFO io.helidon.nima.webserver.LoomServer Thread[#1,main,5,main]: Started all channels in 19 milliseconds. 5131 milliseconds since JVM startup. Java 19.0.2+7-44
-    2023.02.28 03:56:22 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 5144 milliseconds (since JVM startup).
-    2023.02.28 03:56:22 INFO io.helidon.common.features.HelidonFeatures Thread[#28,features-thread,5,main]: Helidon MP 4.0.0-ALPHA5 features: [CDI, Config, Health, Metrics, Open API, Server, WebServer]
+    $ java -jar target/myproject.jar
+    There is no Helidon logging implementation on classpath, skipping log configuration.
+    Feb 05, 2024 9:28:33 AM org.jboss.weld.bootstrap.WeldStartup <clinit>
+    INFO: WELD-000900: 5.1.1 (SP2)
+    Feb 05, 2024 9:28:34 AM org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory create
+    INFO: WELD-ENV-000020: Using jandex for bean discovery
+    Feb 05, 2024 9:28:34 AM org.jboss.weld.bootstrap.WeldStartup startContainer
+    INFO: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+    Feb 05, 2024 9:28:34 AM org.jboss.weld.event.ExtensionObserverMethodImpl checkRequiredTypeAnnotations
+    INFO: WELD-000411: Observer method [BackedAnnotatedMethod] public org.glassfish.jersey.ext.cdi1x.internal.ProcessAllAnnotatedTypes.processAnnotatedType(@Observes ProcessAnnotatedType<?>, BeanManager) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+    Feb 05, 2024 9:28:34 AM org.jboss.weld.event.ExtensionObserverMethodImpl checkRequiredTypeAnnotations
+    INFO: WELD-000411: Observer method [BackedAnnotatedMethod] private io.helidon.microprofile.openapi.OpenApiCdiExtension.processAnnotatedType(@Observes ProcessAnnotatedType<X>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+    Feb 05, 2024 9:28:35 AM io.helidon.openapi.OpenApiFeature <init>
+    WARNING: Static OpenAPI file not found, checked: [META-INF/openapi.json, META-INF/openapi.yaml, META-INF/openapi.yml]
+    Feb 05, 2024 9:28:36 AM io.helidon.microprofile.server.ServerCdiExtension addApplication
+    INFO: Registering JAX-RS Application: HelidonMP
+    Feb 05, 2024 9:28:36 AM org.glassfish.jersey.server.wadl.WadlFeature configure
+    WARNING: JAX-B API not found . WADL feature is disabled.
+    Feb 05, 2024 9:28:36 AM io.helidon.webserver.ServerListener start
+    INFO: [0x0571f5b8] http://0.0.0.0:8080 bound for socket '@default'
+    Feb 05, 2024 9:28:36 AM io.helidon.webserver.LoomServer startIt
+    INFO: Started all channels in 16 milliseconds. 3036 milliseconds since JVM startup. Java 21.0.2+13-LTS-58
+    Feb 05, 2024 9:28:36 AM io.helidon.microprofile.server.ServerCdiExtension startServer
+    INFO: Server started on http://localhost:8080 (and all other host addresses) in 3043 milliseconds (since JVM startup).
+    Feb 05, 2024 9:28:37 AM io.helidon.common.features.HelidonFeatures features
+    INFO: Helidon MP 4.0.3 features: [CDI, Config, Health, Metrics, Open API, Server]
     ```
-5.  Look at the server output and note that the thread is now a VirtualThread.
+5. Go back to the terminal,from where you run the curl commands and run the following commands to check the application:
+
+    ```bash
+    <copy>
+    curl -X GET http://localhost:8080/greet
+    </copy>
+    {"message":"Hello World!"}
+    ```
+
+6. Look at the server output in the terminal where you started the server. You will have server output similar to the following:
+    ```bash
+    Running on thread VirtualThread[#31,[0x0571f5b8 0x2d2dbfe7] WebServer socket]/runnable@ForkJoinPool-1-worker-3
+    ```
 
 6. Stop the *myproject* application by entering `Ctrl + C` in the terminal where the "java -jar target/myproject.jar" command is running.
 

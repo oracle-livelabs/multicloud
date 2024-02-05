@@ -33,7 +33,7 @@ In earlier versions of Helidon developers could pick from two programming models
 In Helidon 4 Oracle is introducing a webserver written from the ground up to use JEP 425 virtual threads. Helidon 4 provides an easy-to-use programming model with outstanding performance. With virtual threads, threads are no longer a scarce resource to be carefully pooled and managed. Instead, they are an abundant resource that can be created as needed to handle nearly unlimited concurrent requests. Because each request runs in its dedicated thread it is free to perform blocking operations -- like calling a database, or another service. And it can do so in a simple synchronous way with no fear of blocking a platform thread and starving other requests. You no longer need to resort to complicated asynchronous code to implement a low-overhead, highly concurrent service.
 
 
-The Helidon web server intends to replace Netty in the Helidon ecosystem. It also can be used by other frameworks as an embedded web server component.
+The Helidon web server replaces Netty in the Helidon ecosystem. It also can be used by other frameworks as an embedded web server component.
 
 ### Prerequisites
 This lab assumes you have:
