@@ -6,7 +6,7 @@ In this lab, You will use Oracle Code Editor to build, run and modify microservi
 
 You will also see how it compares to more complex reactive programming.
 
-During this lab, you will use Helidon Project Starter to develop a Helidon Microprofile application.  It’s highly customizable, providing various options that allow users to select Helidon features they want to add to their project. Then, you will migrate the application on Helidon 3.2.5 to Helidon 4 running on the new Helidon WebServer using virtual threads.
+During this lab, you will use Helidon Project Starter to develop a Helidon Microprofile application.  It’s highly customizable, providing various options that allow users to select Helidon features they want to add to their project. Then, you will migrate the application on Helidon 3.2.6 to Helidon 4 running on the new Helidon WebServer using virtual threads.
 
 This workshop is designed to be as self-explanatory as possible, but feel free to ask for clarification or assistance along the way.
 
@@ -15,10 +15,10 @@ Estimated Time: 90 minutes
 ### Objectives
 
 * Explore OCI Code Editor
-* Build and run the Blocking application
-* Build and run the Reactive application
-* Analyse the simplicity of the Blocking application
-* Compare stack trace for Blocking and Reactive application
+* Build and run the Helidon 4(Virtual thread) application
+* Build and run the Helidon 3 (Reactive) application
+* Analyse the simplicity of the Helidon 4 application
+* Compare stack trace for Helidon 4 and Helidon 3 application
 * Generate a Helidon MP application
 * Migrate the Helidon 3 application to Helidon 4
 
@@ -50,4 +50,4 @@ This lab assumes you have:
 
 * **Author** -  Ankit Pandey    
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2024
+* **Last Updated By/Date** - Ankit Pandey, February 2024

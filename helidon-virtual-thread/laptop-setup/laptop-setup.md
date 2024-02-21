@@ -35,7 +35,7 @@ Estimated Time: 10 minutes
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/gj6zo6xKgkyRGVFwJOSNxMo1yBCuMseHkd5Q3hHGkV_DTiWcIsnQY0Azk1jUBdaH/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/rVrUQ0uOAEN8FYlVDhnVBAWu7zJcU8bIKrhWUn9Ndx0lNHeATTbmOkca7u3Dgm50/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
     ```
     
 
@@ -50,4 +50,4 @@ You may now *proceed to the next lab*.
 
 * **Author** -  Ankit Pandey    
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2024
+* **Last Updated By/Date** - Ankit Pandey, February 2024

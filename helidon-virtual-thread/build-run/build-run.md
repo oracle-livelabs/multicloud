@@ -1,8 +1,8 @@
-# Build and Run the Helidon Blocking and Reactive application
+# Build and Run the Helidon Virtual thread and Reactive application
 
 ## Introduction
 
-This lab walks you through the process of building and running the Blocking and Reactive Helidon applications in Oracle Code Editor inside Oracle Cloud Infrastructure.
+This lab walks you through the process of building and running the Helidon 4 and Helidon 3 Reactive applications in Oracle Code Editor inside Oracle Cloud Infrastructure.
 
 [Lab2 walkthrough](videohub:1_e88ydqwt)
 
@@ -14,9 +14,9 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 
-* Build, run and test the Helidon Blocking application
-* Build, run and test the Helidon Reactive application
-* Analyse the simplicity of the Blocking application comparative to Reactive application
+* Build, run and test the Helidon 4 Virtual thread application
+* Build, run and test the Helidon 3 Reactive application
+* Analyse the simplicity of the Virtual thread application comparative to Reactive application
 
 ### Prerequisites
 
@@ -25,7 +25,7 @@ To run this lab, you must have:
 * Oracle Cloud Account
 * Completed Lab 1, which install the required JDK and maven.
 
-## Task 1: Build and Run the Blocking application
+## Task 1: Build and Run the Helidon 4 application
 
 1. Click *File* -> *Open* in Code Editor.
     ![Open Project](images/open-project.png)
@@ -62,40 +62,41 @@ To run this lab, you must have:
 
 5. Copy and paste the following command to build the blocking application.
     ```bash
-    <copy>cd ~/helidon-virtual-thread/blocking/
+    <copy>cd ~/helidon-virtual-thread/virtualthread/
     mvn clean package -DskipTests</copy>
     ```
 
     You will have output similar to the following:
     ```bash
-    [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-blocking ---
-    [INFO] Building jar: /home/ankit_x_pa/helidon-virtual-thread/blocking/target/example-blocking.jar
+    [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-virtual-thread ---
+    [INFO] Building jar: /home/ankit_x_pa/helidon-virtual-thread/virtualthread/target/example-virtual-thread.jar
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  6.423 s
-    [INFO] Finished at: 2024-01-29T09:47:25Z
+    [INFO] Total time:  3.258 s
+    [INFO] Finished at: 2024-02-21T08:20:52Z
     [INFO] ------------------------------------------------------------------------
+    $
     ```
 
 6. Copy and paste the following command in the terminal to run the blocking version of the application:
     ```bash
-    <copy>java -jar target/example-blocking.jar</copy>
+    <copy>java -jar target/example-virtual-thread.jar</copy>
     ```
     You will have output similar to the following:
     ```bash
-    $ java -jar target/example-blocking.jar
-    Jan 29, 2024 9:50:54 AM io.helidon.config.MetaConfigFinder lambda$findSource$9
+    $ java -jar target/example-virtual-thread.jar
+    Feb 21, 2024 8:22:10 AM io.helidon.config.MetaConfigFinder lambda$findSource$9
     WARNING: Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    Jan 29, 2024 9:50:55 AM io.helidon.common.features.HelidonFeatures features
-    INFO: Helidon SE 4.0.3 features: [Config, Encoding, Media, WebClient, WebServer]
-    Jan 29, 2024 9:50:55 AM io.helidon.webserver.ServerListener start
-    INFO: [0x3bb340e6] http://0.0.0.0:44963 bound for socket '@default'
-    Jan 29, 2024 9:50:55 AM io.helidon.webserver.LoomServer startIt
-    INFO: Started all channels in 55 milliseconds. 1088 milliseconds since JVM startup. Java 21.0.2+13-LTS-58
+    Feb 21, 2024 8:22:10 AM io.helidon.webserver.ServerListener start
+    INFO: [0x20695538] http://0.0.0.0:38197 bound for socket '@default'
+    Feb 21, 2024 8:22:10 AM io.helidon.common.features.HelidonFeatures features
+    INFO: Helidon SE 4.0.5 features: [Config, Encoding, Media, WebClient, WebServer]
+    Feb 21, 2024 8:22:10 AM io.helidon.webserver.LoomServer startIt
+    INFO: Started all channels in 41 milliseconds. 645 milliseconds since JVM startup. Java 21.0.2+13-LTS-58
     ```
 
-7. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 44963. Similarly, find out your server port number.
+7. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 38197. Similarly, find out your server port number.
 
 8. To open new terminal, click *Terminal* -> *New Terminal*. We will use this terminal to run *curl* commands. 
     ![New Terminal](images/new-terminal.png)
@@ -107,7 +108,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    curl http://localhost:44963/one
+    curl http://localhost:38197/one
     remote_1
     $
     ```
@@ -118,7 +119,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:44963/sequence
+    $ curl http://localhost:38197/sequence
     Combined results: [remote_2, remote_3, remote_4, remote_5, remote_6, remote_7, remote_8, remote_9, remote_10, remote_11]
     $
     ```
@@ -131,7 +132,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:44963/parallel
+    $ curl http://localhost:38197/parallel
     Combined results: [remote_21, remote_18, remote_12, remote_13, remote_14, remote_15, remote_16, remote_17, remote_19, remote_20]
     $
     ``` 
@@ -149,13 +150,15 @@ To run this lab, you must have:
 
     You will have output similar to the following:
     ```bash
+    [INFO] --- maven-dependency-plugin:3.0.0:copy-dependencies (copy-libs) @ example-reactive ---
+    [INFO] 
     [INFO] --- maven-jar-plugin:3.0.2:jar (default-jar) @ example-reactive ---
     [INFO] Building jar: /home/ankit_x_pa/helidon-virtual-thread/reactive/target/example-reactive.jar
     [INFO] ------------------------------------------------------------------------
     [INFO] BUILD SUCCESS
     [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  4.677 s
-    [INFO] Finished at: 2024-01-29T09:56:04Z
+    [INFO] Total time:  3.023 s
+    [INFO] Finished at: 2024-02-21T08:25:36Z
     [INFO] ------------------------------------------------------------------------
     $
     ```
@@ -167,13 +170,13 @@ To run this lab, you must have:
     You will have output similar to the following:
     ```bash
     $ java -jar target/example-reactive.jar
-    2024.01.29 09:57:32.363 Logging at initialization configured using classpath: /logging.properties
-    2024.01.29 09:57:32.753 Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    2024.01.29 09:57:33.156 Helidon SE 3.2.5 features: [Config, Fault Tolerance, Tracing, WebServer]
-    2024.01.29 09:57:33.384 Channel '@default' started: [id: 0x6623b841, L:/0.0.0.0:42095]
+    2024.02.21 08:30:28.921 Logging at initialization configured using classpath: /logging.properties
+    2024.02.21 08:30:29.191 Configuration file application.yaml is on classpath, yet there is no parser configured for it
+    2024.02.21 08:30:29.449 Helidon SE 3.2.5 features: [Config, Fault Tolerance, Tracing, WebServer]
+    2024.02.21 08:30:29.601 Channel '@default' started: [id: 0x3ab38b5d, L:/0.0.0.0:33547]
     ```
 
-3. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 42095. Similarly, find out your server port number.
+3. Write down the port number on which the server runs (see the log entry for @default). For example, in our output, the port number is 33547. Similarly, find out your server port number.
 
 4. Go back to the terminal, which we opened in Task 1 for running the curl command.
     
@@ -183,7 +186,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:42095/one
+    $ curl http://localhost:33547/one
     remote_1
     $
     ```
@@ -194,7 +197,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:42095/sequence
+    $ curl http://localhost:33547/sequence
     Combined results: [remote_2, remote_3, remote_4, remote_5, remote_6, remote_7, remote_8, remote_9, remote_10, remote_11]
     $
     ```
@@ -207,7 +210,7 @@ To run this lab, you must have:
     ```
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:42095/parallel
+    $ curl http://localhost:33547/parallel
     Combined results: [remote_17, remote_16, remote_13, remote_20, remote_12, remote_19, remote_18, remote_14, remote_21, remote_15]
     $
     ``` 
@@ -215,14 +218,14 @@ To run this lab, you must have:
 
 8. Press the *Ctrl + C* in the terminal where *java -jar * command is running to to stop the server.
 
-## Task 3: Analyse the simplicity of the Blocking application
+## Task 3: Analyse the simplicity of the Helidon 4 application
 
-**Blocking vs. Reactive**
+**Virtual thread vs. Reactive**
 
-Let’s compare the implementations between blocking and Helidon SE (reactive) for the same task.
+Let’s compare the implementations between Virtual thread and Helidon SE (reactive) for the same task.
 
 * Both implementations execute REST calls using the Helidon WebClient
-* The blocking implementation is straightforward to follow:
+* The Virtual thread implementation is straightforward to follow:
     - The execution flow is reflected by the statement order in the code
     - There are no calls to intricate or semantically-rich library calls
     - Debugging is straightforward
@@ -233,8 +236,8 @@ Let’s compare the implementations between blocking and Helidon SE (reactive) f
     - Debugging is more difficult
 
 
-1. Open the *blocking/src/main/java/io/examples/helidon/blocking/BlockingService.java* file to see how endpoints are implemented in the blocking version of the application.
-    ![Blocking Block](images/nima-block.png)
+1. Open the *virtualthread/src/main/java/io/examples/helidon/virtualthread/BlockingService.java* file to see how endpoints are implemented in the blocking version of the application.
+    ![Blocking Block](images/virtual-thread.png)
 
 2. Open the *reactive/src/main/java/io/examples/helidon/reactive/ReactiveService.java* file to see how endpoints are implemented in the reactive version of the application.
     ![Reactive Service](images/reactive-service.png)
@@ -257,4 +260,4 @@ You may now *proceed to the next lab*.
 
 * **Author** -  Ankit Pandey    
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2024
+* **Last Updated By/Date** - Ankit Pandey, February 2024

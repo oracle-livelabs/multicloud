@@ -1,8 +1,8 @@
-# Modify the Helidon Blocking and Reactive application and analyse the stack trace
+# Modify the Helidon Virtual thread and Reactive application and analyse the stack trace
 
 ## Introduction
 
-In this lab, you will modify the helidon blocking and reactive application. Then you will rebuild the application and analyse the stack trace in case of exceptions.
+In this lab, you will modify the helidon 4 and reactive application. Then you will rebuild the application and analyse the stack trace in case of exceptions.
 
 [Lab3 walkthrough](videohub:1_gq37iysp)
 
@@ -13,8 +13,8 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
-* Modify, build and run the Helidon Blocking application
-* Make an exception in request to analyse stack trace for the Blocking application
+* Modify, build and run the Helidon 4 (Virtual thread) application
+* Make an exception in request to analyse stack trace for the Helidon 4 application
 * Modify, build and run the Helidon Reactive application
 * Make an exception in request to analyse stack trace for reactive application
 
@@ -22,36 +22,36 @@ In this lab, you will:
 
 * You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 
-## Task 1: Modify the Blocking application and build the application
+## Task 1: Modify the Helidon 4 application and build the application
 
-1. Go back to the file *blocking/src/main/java/io/examples/helidon/blocking/BlockingService.java*, and add the following line to method *one* as shown.
+1. Go back to the file *virtualthread/src/main/java/io/examples/helidon/virtualthread/BlockingService.java*, and add the following line to method *one* as shown.
     ```bash
     <copy>System.out.println("## one " + Thread.currentThread());</copy>
     ```
-    ![Modify Nima](images/modify-nima.png)
+    ![Modify Helidon 4](images/modify-virtualthread.png)
 
 2. Copy and paste the following command into the terminal to build the application.
     ```bash
-    <copy>cd ~/helidon-virtual-thread/blocking/
+    <copy>cd ~/helidon-virtual-thread/virtualthread/
     mvn clean package -DskipTests</copy>
     ```
     > Make sure to use the terminal, where you have set the PATH and JAVA_HOME variables.
 
 3. Copy and paste the following command to run the blocking application.
     ```bash
-    <copy>java -jar target/example-blocking.jar</copy>
+    <copy>java -jar target/example-virtual-thread.jar</copy>
     ```
     You will have output similar to the following:
     ```bash
-    $ java -jar target/example-blocking.jar
-    Jan 29, 2024 10:34:35 AM io.helidon.config.MetaConfigFinder lambda$findSource$9
+    $ java -jar target/example-virtual-thread.jar
+    Feb 21, 2024 10:26:59 AM io.helidon.config.MetaConfigFinder lambda$findSource$9
     WARNING: Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    Jan 29, 2024 10:34:36 AM io.helidon.common.features.HelidonFeatures features
-    INFO: Helidon SE 4.0.3 features: [Config, Encoding, Media, WebClient, WebServer]
-    Jan 29, 2024 10:34:36 AM io.helidon.webserver.ServerListener start
-    INFO: [0x34354190] http://0.0.0.0:45043 bound for socket '@default'
-    Jan 29, 2024 10:34:36 AM io.helidon.webserver.LoomServer startIt
-    INFO: Started all channels in 48 milliseconds. 1073 milliseconds since JVM startup. Java 21.0.2+13-LTS-58
+    Feb 21, 2024 10:26:59 AM io.helidon.common.features.HelidonFeatures features
+    INFO: Helidon SE 4.0.5 features: [Config, Encoding, Media, WebClient, WebServer]
+    Feb 21, 2024 10:26:59 AM io.helidon.webserver.ServerListener start
+    INFO: [0x32b6199e] http://0.0.0.0:40789 bound for socket '@default'
+    Feb 21, 2024 10:26:59 AM io.helidon.webserver.LoomServer startIt
+    INFO: Started all channels in 40 milliseconds. 692 milliseconds since JVM startup. Java 21.0.2+13-LTS-58
     ```
     
 4. Go back to the terminal, which you open for running the curl command. Copy and paste the following curl command to the terminal.
@@ -61,17 +61,17 @@ In this lab, you will:
 
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:45043/one
+    $ curl http://localhost:40789/one
     remote_1
     $
     ```
 
 5. Observe the output in the server log, you will see something like the below:
     ```bash
-    ## one VirtualThread[#29,[0x34354190 0x10a7fe66] WebServer socket]/runnable@ForkJoinPool-1-worker-3
+    ## one VirtualThread[#29,[0x32b6199e 0x49abf544] WebServer socket]/runnable@ForkJoinPool-1-worker-3
     ```
 
-## Task 2: Analyse stack trace for the Blocking application
+## Task 2: Analyse stack trace for the Helidon 4 application
 
 1. Copy and paste the following command to force an exception(count must be an integer!)
     ```bash
@@ -147,10 +147,10 @@ In this lab, you will:
     You will have output similar to the following:
     ```bash
     $ java -jar target/example-reactive.jar
-    2024.01.29 10:41:16.985 Logging at initialization configured using classpath: /logging.properties
-    2024.01.29 10:41:17.374 Configuration file application.yaml is on classpath, yet there is no parser configured for it
-    2024.01.29 10:41:17.755 Helidon SE 3.2.5 features: [Config, Fault Tolerance, Tracing, WebServer]
-    2024.01.29 10:41:18.013 Channel '@default' started: [id: 0x164b113b, L:/0.0.0.0:42187]
+    2024.02.21 10:59:50.605 Logging at initialization configured using classpath: /logging.properties
+    2024.02.21 10:59:50.853 Configuration file application.yaml is on classpath, yet there is no parser configured for it
+    2024.02.21 10:59:51.099 Helidon SE 3.2.5 features: [Config, Fault Tolerance, Tracing, WebServer]
+    2024.02.21 10:59:51.273 Channel '@default' started: [id: 0x4a0416a4, L:/0.0.0.0:43755]
     ```
     
 4. Go back to the terminal, which you open for running the curl command. Copy and paste the following curl command to the terminal.
@@ -160,7 +160,7 @@ In this lab, you will:
 
     You will have output similar to the following:
     ```bash
-    $ curl http://localhost:42187/one
+    $ curl http://localhost:43755/one
     remote_1
     $
     ```
@@ -170,7 +170,7 @@ In this lab, you will:
     ## one Thread[#23,nioEventLoopGroup-3-1,10,main]
     ```
     
-    > This is a Netty event loop thread, you may block a VirtualThread. This means the Helidon WebServer request handlers can use simple blocking code, but the reactive handlers must not.
+    > This is a Netty event loop thread, Netty is reactive and it's threads must not be blocked. Helidon 4 on the other hand has virtual thread based WebServer and it's request handlers can be blocked, that allows use of simple blocking code in Helidon 4 request handlers instead of complicated reactive constructs like in Helidon 3.
 
 ## Task 4: Analyse stack trace for Reactive application
 
@@ -181,14 +181,14 @@ In this lab, you will:
 
     You will output similar to the following:
     ```bash
-    $ curl http://localhost:42187/parallel?count=foo
+    $ curl http://localhost:43755/parallel?count=foo
     For input string: "foo"
     $
     ```
 
 2. Check the server log, you will have output similar to the below:
     ```bash
-    2024.01.29 10:43:30.583 Default error handler: Unhandled exception encountered.
+    2024.02.21 11:02:56.370 Default error handler: Unhandled exception encountered.
     java.util.concurrent.ExecutionException: Unhandled 'cause' of this exception encountered.
             at io.helidon.webserver.RequestRouting$RoutedRequest.defaultHandler(RequestRouting.java:398)
             at io.helidon.webserver.RequestRouting$RoutedRequest.nextNoCheck(RequestRouting.java:379)
@@ -238,7 +238,7 @@ In this lab, you will:
             at io.helidon.webserver.RequestRouting$RoutedRequest.next(RequestRouting.java:326)
             ... 35 more
     ``` 
-    > Let’s compare the stack trace of blocking and Helidon SE (reactive) for the same type of exception.
+    > Let’s compare the stack trace of Helidon 4 and Helidon 3 (reactive) for the same type of exception.
     * Reactive traces are long and include calls from an event loop managers (e.g. Netty)
     * The event loop manager can call any of the handlers registered by the application
         - The execution flow is not necessarily conducive to the code order
@@ -255,4 +255,4 @@ You may now *proceed to the next lab*.
 
 * **Author** -  Ankit Pandey    
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, January 2024
+* **Last Updated By/Date** - Ankit Pandey, February 2024
