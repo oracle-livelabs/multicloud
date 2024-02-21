@@ -20,7 +20,7 @@
             "filename": "../../laptop-setup/laptop-setup.md"
         },
         {
-            "title": "Lab 2: Build and run the application",
+            "title": "Lab 2: Build and Run the Helidon Virtual thread and Reactive application",
             "filename": "../../build-run/build-run.md"
         },
         {
@@ -28,7 +28,7 @@
             "filename": "../../modify-application/modify-application.md"
         },
         {
-            "title": "Lab 4: MicroProfile Running on Virtual Threads",
+            "title": "Lab 4: Create a Helidon 3 application and then migrate it to Helidon 4",
             "filename": "../../migrate-application/migrate-application.md"
         },
         {

@@ -26,8 +26,8 @@ Estimated Time: 10 minutes
     ```bash
     <copy>wget https://archive.apache.org/dist/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz
     tar -xvf apache-maven-3.8.3-bin.tar.gz
-    wget https://download.oracle.com/java/19/latest/jdk-19_linux-x64_bin.tar.gz
-    tar -xzvf jdk-19_linux-x64_bin.tar.gz</copy>
+    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+    tar -xzvf jdk-21_linux-x64_bin.tar.gz</copy>
     ```
 
 ## Task 2: Download the Helidon source code
@@ -35,19 +35,19 @@ Estimated Time: 10 minutes
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -LSs https://github.com/oracle-livelabs/multicloud/blob/main/helidon-virtual-thread/setup-environment/code/helidon-levelup-2023-main.zip?raw=true >~/helidon-levelup-2023-main.zip </copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/rVrUQ0uOAEN8FYlVDhnVBAWu7zJcU8bIKrhWUn9Ndx0lNHeATTbmOkca7u3Dgm50/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
     ```
     
 
-2. Copy and paste the following command to unzip the *helidon-levelup-2023-main.zip*.
+2. Copy and paste the following command to unzip the *helidon-virtual-thread.zip*.
     ```bash
-    <copy>unzip ~/helidon-levelup-2023-main.zip</copy>
+    <copy>unzip ~/helidon-virtual-thread.zip</copy>
     ```
 
 You may now *proceed to the next lab*.
 
 ## Acknowledgements
 
-* **Author** -  Joe DiPol
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, Feb 2023
+* **Author** -  Ankit Pandey    
+* **Contributors** - Ankit Pandey, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, February 2024
