@@ -19,7 +19,7 @@ This lab assumes you have:
 
     *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
 
-    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/bh1LaVd0DpYAVbAcrL4k-Y1WLC-KAEo117Msw7P2kN-xvNOWGaVcGtjxnkBVumb8/n/natdsecurity/b/stack/o/wls-oke-toolkit-mkplc-freetier.zip)
+    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5U-YjPCTNUQxm2QnMFFb28o7BTl1Ttoztpx6aDowWT0oc0nBmJpTuBNUQYC0OdFM/n/c4u02/b/hosted_workshops/o/stacks/wls-oke-toolkit-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
