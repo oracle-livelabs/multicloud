@@ -34,8 +34,8 @@ Estimated Time: 10 minutes
     ```bash
     <copy>wget https://archive.apache.org/dist/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz
     tar -xvf apache-maven-3.8.3-bin.tar.gz
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
-    tar -xzvf jdk-21_linux-x64_bin.tar.gz</copy>
+    wget https://download.oracle.com/java/21/archive/jdk-21.0.2_linux-aarch64_bin.tar.gz
+    tar -xzvf jdk-21.0.2_linux-aarch64_bin.tar.gz</copy>
     ```
 
 ## Task 3: Download the Helidon source code
