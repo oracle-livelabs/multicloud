@@ -43,6 +43,6 @@ Helidon has also added additional APIs to the core set of Microprofile APIs givi
 
 ## Acknowledgements
 
-* **Author** -  Dmitry Aleksandrov
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

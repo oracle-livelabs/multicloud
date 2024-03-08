@@ -55,13 +55,17 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     ```bash
     <copy>https://helidon.io/starter/</copy>
     ```
-2. Under Generate Your Project, select *Helidon MP* as Helidon Flavor and then click *Next*.
 
-3. For Application Type, select *Quickstart* and then click *Next*.
+2. Select the latest **3.x** as Helidon version.
+    ![helidon version](images/helidon-version.png)
 
-4. For Media Support, select *JSON-B* and then click *Next*.
+3. Under Generate Your Project, select *Helidon MP* as Helidon Flavor and then click *Next*.
 
-5. For Customize Project, select the default values and click on *Downloads*. This will pop up in a window, save this *myproject.zip* to the location of your choice. In the rest of this workshop, myproject name will be used. if you choose a different name, please change respectively.
+4. For Application Type, select *Quickstart* and then click *Next*.
+
+5. For Media Support, select *JSON-B* and then click *Next*.
+
+6. For Customize Project, select the default values and click on *Downloads*. This will pop up in a window, save this *myproject.zip* to the location of your choice. In the rest of this workshop, myproject name will be used. if you choose a different name, please change respectively.
 
 
 ## Task 2: Build and run the helidon project locally
@@ -110,7 +114,7 @@ As of version 22.2.0, GraalVM Enterprise JDK 17 and Native Image are pre-install
     > The JDK with * *asterisk* in the beginning is your default JDK. If you have any other JDK then graalvmeejdk, then change the default JDK version by running the below command. Please use the shown version of graalvmeejdk, as it may different then what is shown in command.
 
     ```bash
-    <copy>csruntimectl java set graalvmeejdk-17</copy>
+    <copy>csruntimectl java set graalvmjdk-17</copy>
     ```
 10. To configure the required maven, copy and paste the following command in the terminal.
     ```bash
@@ -181,6 +185,6 @@ IT IS VERY IMPORTANT, OTHERWISE YOU WILL FACE ISSUES IN THE LAB LATER.
 
 ## Acknowledgements
 
-* **Author** -  Dmitry Aleksandrov
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

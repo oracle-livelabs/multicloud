@@ -40,6 +40,7 @@ In this lab, you will:
     ![add code](images/add-code.png)
 
 4. To save the content of the file, in Code Editor, click *File* -> *Save*.
+
     > AutoSave is enabled by default in Code Editor.
 
 
@@ -63,6 +64,6 @@ In this lab, you will:
 
 ## Acknowledgements
 
-* **Author** -  Dmitry Aleksandrov
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

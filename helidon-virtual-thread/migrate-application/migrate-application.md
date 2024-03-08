@@ -232,6 +232,6 @@ Congratulations, you have completed the Helidon virtual thread workshop.
 
 ## Acknowledgements
 
-* **Author** -  Ankit Pandey    
-* **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2024
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

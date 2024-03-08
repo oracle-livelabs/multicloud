@@ -64,6 +64,6 @@ Code Editor's direct integration with Cloud Shell allows you access to the Graal
 
 ## Acknowledgements
 
-* **Author** -  Ankit Pandey    
-* **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2024
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024
