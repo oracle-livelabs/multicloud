@@ -37,7 +37,7 @@ The Helidon web server replaces Netty in the Helidon ecosystem. It also can be u
 
 ### Prerequisites
 This lab assumes you have:
-* Oracle Cloud Account
+* Oracle Cloud Account or Laptop with permissions to install software if required
 
 
 
@@ -48,6 +48,6 @@ This lab assumes you have:
 
 ## Acknowledgements
 
-* **Author** -  Ankit Pandey    
-* **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2024
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024
