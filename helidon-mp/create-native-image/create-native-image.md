@@ -108,6 +108,6 @@ GraalVM Enterprise Edition is available for use on Oracle Cloud Infrastructure (
 
 ## Acknowledgements
 
-* **Author** -  Dmitry Aleksandrov
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

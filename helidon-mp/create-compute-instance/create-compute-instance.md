@@ -14,6 +14,7 @@ Watch the video below for a quick walk-through of the lab.
 In this lab, you will:
 
 * Create a compute instance
+* Configure OS Management service to manage packages on compute instances
 * Install Docker in Compute instance
 * Run the application native image docker container inside compute instance.
 
@@ -47,7 +48,35 @@ To run this lab, you must have:
 4. Once the instance gets created, click *Copy* to copy the public IP of the instance.
     ![copy ip](images/copy-ip.png)
 
-## Task 2: Install docker on compute instance
+
+## Task 2: Configure OS Management service to manage packages on compute instances 
+
+1. To install the required software, we need to configure the OS management service for the compute instance. Click **Hamburger menu**
+-> **Compute** -> **Instance**.
+
+2. Click on the Instance which you created in task 1.
+
+3. Under **Resources**, Click **OS Management** and then click on **Three dots**.
+    ![os management](images/os-management.png)
+
+4. Click **View OS Management details**.
+
+5. Under **Resources**, click **Software Sources** and then click  **Add**.
+    ![add software](images/add-software.png)
+
+6. Check the box for **Oracle Linux 8 BaseOS Latest (x86_64)** and click **Add**.
+    ![add oracle8](images/add-oracle8.png)
+
+7. Again click **Add** under *Software Sources* and check the packages as shown in below screenshot.    
+    ![add subpackage](images/add-subpackage.png)
+
+
+
+
+
+
+
+## Task 3: Install docker on compute instance
 
 1. In the terminal inside the Code Editor, run the following command to create a private key.
     ```bash
@@ -84,7 +113,7 @@ To run this lab, you must have:
     <copy>ssh -i ~/.ssh/opc.key opc@REPLACE_THIS_WITH_YOUR_PUBLIC_IP</copy>
     ```
 
-## Task 3: Pull and run the Greeting app in the Compute instance
+## Task 4: Pull and run the Greeting app in the Compute instance
 
 
 1. Run the following command to pull the docker image from Oracle Container Image Registry.
@@ -133,6 +162,6 @@ To run this lab, you must have:
 
 ## Acknowledgements
 
-* **Author** -  Dmitry Aleksandrov
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, April 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024

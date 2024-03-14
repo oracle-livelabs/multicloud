@@ -34,8 +34,8 @@ Estimated Time: 10 minutes
     ```bash
     <copy>wget https://archive.apache.org/dist/maven/maven-3/3.8.3/binaries/apache-maven-3.8.3-bin.tar.gz
     tar -xvf apache-maven-3.8.3-bin.tar.gz
-    wget https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
-    tar -xzvf jdk-21_linux-x64_bin.tar.gz</copy>
+    wget https://download.oracle.com/java/21/archive/jdk-21.0.2_linux-aarch64_bin.tar.gz
+    tar -xzvf jdk-21.0.2_linux-aarch64_bin.tar.gz</copy>
     ```
 
 ## Task 3: Download the Helidon source code
@@ -43,7 +43,7 @@ Estimated Time: 10 minutes
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/rVrUQ0uOAEN8FYlVDhnVBAWu7zJcU8bIKrhWUn9Ndx0lNHeATTbmOkca7u3Dgm50/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/mtb2d7fzfQKf9XEuSimkOBQnmR5yfbjUwcnPaMpAN5fcd8ENKwtzzlGeOrdpkZPt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
     ```
     
 
@@ -64,6 +64,6 @@ Code Editor's direct integration with Cloud Shell allows you access to the Graal
 
 ## Acknowledgements
 
-* **Author** -  Ankit Pandey    
-* **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2024
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, March 2024
