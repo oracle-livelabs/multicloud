@@ -25,8 +25,9 @@ Estimated Time: 20 minutes
 1. Copy the below URL and paste it into the browser to open the Helidon Project page.
 
     ```bash
-    <copy>https://helidon.io/starter/3.2.6</copy>
+    <copy>https://helidon.io/starter/</copy>
     ```
+    > From the version drop down, select the Helidon Version *3.x.x*.
 2. Under Generate Your Project, select *Helidon MP* as Helidon Flavor and then click *Next*.
 
 3. For Application Type, select *Quickstart* and then click *Next*.
@@ -68,7 +69,7 @@ Estimated Time: 20 minutes
     2024.02.21 11:19:11 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
     2024.02.21 11:19:11 INFO io.helidon.webserver.NettyWebServer Thread[#30,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x49f247d4, L:/0.0.0.0:8080]
     2024.02.21 11:19:11 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 2426 milliseconds (since JVM startup).
-    2024.02.21 11:19:11 INFO io.helidon.common.HelidonFeatures Thread[#31,features-thread,5,main]: Helidon MP 3.2.6 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
+    2024.02.21 11:19:11 INFO io.helidon.common.HelidonFeatures Thread[#31,features-thread,5,main]: Helidon MP 3.2.8 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
     ```
 
 13. Go back to the terminal,from where you run the curl commands and run the following commands to check the application:
@@ -108,7 +109,7 @@ Estimated Time: 20 minutes
 
 ## Task 2: Migrate the Helidom MP application to Helidon 4
 
-1. For myproject, open the *pom.xml* file and change the parent pom from *3.2.6* to *4.0.5*.
+1. For myproject, open the *pom.xml* file and change the parent pom from *3.2.8* to *4.0.5*.
     ```bash
     <parent>
         <groupId>io.helidon.applications</groupId>
