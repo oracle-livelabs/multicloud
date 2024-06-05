@@ -35,20 +35,20 @@ In this task, we will access the application using curl to do GET and PUT HTTP r
 2. Copy and paste the following command to place a **GET request**. You will have similar output as shown below.
     ```bash
     <copy>curl http://$PUBLIC_IP:8080/greet</copy>
-    {"message":"Hello World!","date":[2023,5,25]}
+    {"message":"Hello World!","date":[2024,6,5]}
     ```
 
 3. Hello to a name, i.e. to **Joe**. You will have similar output as shown below.
     ```bash
     <copy>curl http://$PUBLIC_IP:8080/greet/Joe</copy>
-    {"message":"Hello Joe!","date":[2023,5,23]}
+    {"message":"Hello Joe!","date":[2024,6,5]}
     ```
 
 4. Replace Hello with another greeting word, i.e. **Hola**. You will have similar output as shown below.
     ```bash
     <copy>curl -X PUT -H "Content-Type: application/json" -d '{"greeting" : "Hola"}' http://$PUBLIC_IP:8080/greet/greeting 
     curl http://$PUBLIC_IP:8080/greet</copy>
-    {"message":"Hola World!","date":[2023,5,23]}
+    {"message":"Hola World!","date":[2024,6,5]}
     ```
 
 ## Task 2: Explore OCI Metrics Explorer
@@ -114,6 +114,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-* **Author** -  Keith Lustria
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, June 2024

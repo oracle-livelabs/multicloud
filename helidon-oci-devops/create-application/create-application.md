@@ -44,22 +44,8 @@ In this lab, you will:
      ```bash
     <copy>./helidon init</copy>
     ```
-2. When it prompts for the *Helidon version*, Enter *4* to see all versions and then enter *35* to select the *4.0.0-ALPHA6* version as shown below.
-    ```bash
-    Helidon versions
-    (1) 3.2.2 
-    (2) 2.6.2 
-    (3) 4.0.0-M1 
-    (4) Show all versions 
-    Enter selection (default: 1): 4
-    -----------------------------
-    -----------------------------
-    (33) 2.0.1 
-    (34) 2.0.0 
-    (35) 4.0.0-ALPHA6 
-    (36) 4.0.0-M1 
-    Enter selection (default: 1): 35 
-    ```
+2. When it prompts for the *Helidon version*, Enter *4* to see all versions and then enter the option to select the *4.0.7* version.
+    
 
 3. When prompted to *Select a Flavor*, copy and paste the below value to the terminal.
     ```bash
@@ -68,7 +54,6 @@ In this lab, you will:
         Select a Flavor
         (1) se   | Helidon SE
         (2) mp   | Helidon MP
-        (3) nima | Helidon Níma
         Enter selection (default: 1): <copy>2</copy>
     ``` 
 4. When prompted to *Select an Application Type*, copy and paste the below value to the terminal.
@@ -77,7 +62,7 @@ In this lab, you will:
     (1) quickstart | Quickstart
     (2) database   | Database
     (3) custom     | Custom
-    (4) oci        | OCI
+    (4) oci                | OCI
     Enter selection (default:1):<copy>4</copy>
     ```
 5. When prompted for *Project groupId*, *Project artifactId* and *Project version*, just **accept the default values**.
@@ -264,6 +249,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-* **Author** -  Keith Lustria
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, June 2024
