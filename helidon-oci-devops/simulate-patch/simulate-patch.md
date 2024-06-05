@@ -2,7 +2,7 @@
 
 ## Introductions
 
-This lab will attempt to simulate a patching scenario. Take a case where the initial environment uses *Open JDK* for testing and eventually moves to use *Oracle JDK* when it is ready for production. The previous build and deployment pipeline already sets *Open JDK 20* as the Java flavour to use. In this lab, it will be replaced with *Oracle JDK 20*.
+This lab will attempt to simulate a patching scenario. Take a case where the initial environment uses *Open JDK* for testing and eventually moves to use *Oracle JDK* when it is ready for production. The previous build and deployment pipeline already sets *Open JDK 21* as the Java flavour to use. In this lab, it will be replaced with *Oracle JDK 21*.
 
 Estimated time: 10 minutes
 
@@ -25,7 +25,7 @@ In this lab, you will:
 1. As we have seen in **Lab 2**, In the previously completed **deployment pipeline log** and observed that near the bottom of the log it was using **Open JDK**.
     ![open jdk](images/open-jdk.png)
 
-2. In the **Code Editor**, click the file name **`build_spec.yaml`** to open it. Comment out the environment variable **`JDK20_TAR_GZ_INSTALLER`** that sets the URL path to an **Open JDK** installer at line number #15 and uncomment **`JDK20_TAR_GZ_INSTALLER`** that sets the URL path to an **Oracle JDK** installer at line number #16 as shown below. 
+2. In the **Code Editor**, click the file name **`build_spec.yaml`** to open it. Comment out the environment variable **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **Open JDK** installer at line number #15 and uncomment **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **Oracle JDK** installer at line number #16 as shown below. 
     ![modify jdk](images/modify-jdk.png)
     
 ## Task 2: Push the change and trigger the DevOps pipeline
@@ -34,7 +34,7 @@ In this lab, you will:
     ```bash
     <copy>git add .
     git status
-    git commit -m "Replace OpenJDK 20 with OracleJDK 20"
+    git commit -m "Replace OpenJDK 21 with OracleJDK 21"
     git push</copy>
     ```
 
@@ -72,6 +72,6 @@ You may now **proceed to the next lab.**
 
 ## Acknowledgements
 
-* **Author** -  Keith Lustria
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, June 2024
