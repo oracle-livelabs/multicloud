@@ -20,7 +20,31 @@ This lab assumes you have:
 * An Oracle Cloud account
 * Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
 
-## Task 1: SSH Login to WebLogic Node from the CloudShell
+## Task 1: Download and configure the JMeter for the Cloud Shell
+
+In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud Shell. We use Jmeter for simulating the CPU Load in the WebLogic Cluster.
+
+1. Copy and paste the following command in the Cloud Shell to download the Jmeter and confiure it the Cloud Shell environment as shown below.
+    ```bash
+    <copy>cd ~
+    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
+    unzip apache-jmeter-5.6.3.zip
+    PATH=~/apache-jmeter-5.6.3/bin:$PATH</copy>
+    ```
+
+## Task 2: Download Load generating files
+
+In this task, We download the files in the Cloud Shell. Thi
+
+1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increate the CpuLoad.
+
+    ```bash
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
+    unzip autoscale-workshop.zip
+    cd ~/autoscale-workshop</copy>
+    ```
+
+## Task 3: SSH Login to WebLogic Node from the CloudShell
 
 In this task, We connect to WebLogic Node from the Cloud Shell using the SSH Key, Bastion IP and WebLogic Node IP. Then, We download and deploy a sample application **RCMWeb** to WebLogic Cluster. We use this application to increase the CpuProcessLoad on WebLogic Cluster.
 
@@ -61,29 +85,7 @@ In this task, We connect to WebLogic Node from the Cloud Shell using the SSH Key
 7. Enter **exit** twice to go back to local user in the Cloud Shell environment as shown below.
     ![back cloudshell](images/back-cloudshell.png)
 
-## Task 2: Download and configure the JMeter for the Cloud Shell
 
-In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud Shell. We use Jmeter for simulating the CPU Load in the WebLogic Cluster.
-
-1. Copy and paste the following command in the Cloud Shell to download the Jmeter and confiure it the Cloud Shell environment as shown below.
-    ```bash
-    <copy>cd ~
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
-    unzip apache-jmeter-5.6.3.zip
-    PATH=~/apache-jmeter-5.6.3/bin:$PATH</copy>
-    ```
-
-## Task 3: Download Load generating configuration files
-
-In this task, We download the files in the Cloud Shell. Thi
-
-1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increate the CpuLoad.
-
-    ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
-    unzip autoscale-workshop.zip
-    cd ~/autoscale-workshop</copy>
-    ```
 
 You may now proceed to the next lab.
 

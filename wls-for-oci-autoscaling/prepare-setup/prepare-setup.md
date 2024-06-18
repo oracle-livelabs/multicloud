@@ -105,7 +105,8 @@ In this task, we create a SSH key pair in the Cloud Shell. We will use this SSH 
     <copy>cat ~/.ssh/id_rsa.pub</copy>
     ```
      ![copy ssh](images/copy-ssh.png)
-     > Don't close Cloud Shell, we will use this in lab 3. 
+
+     > Don't close Cloud Shell, we will use this in other labs as well. 
 
 You may now proceed to the next lab.
 

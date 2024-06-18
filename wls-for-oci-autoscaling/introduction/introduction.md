@@ -26,13 +26,13 @@ After creating an Oracle WebLogic Server domain, you can administer the domain a
 
 ### Objectives
 
-* Create a Application Performance Monitoring domain
+* Create an Application Performance Monitoring domain
 * Create Stack: Oracle WebLogic Server Enterprise Edition BYOL
 * Validate the stack and copy the IP of BASTION, LOAD BALANCER and WLS NODE
 * Download and configure the JMeter for the Cloud Shell
-* Download Load generatings configuration file
-* Observe the Alarms created by WebLogic for OCI stack
-* Generate the CPU Load on WebLogic Server to view scaleout and scalein respectively
+* Download the Load generatings configuration file
+* Observe the Alarms created by WebLogic for the OCI stack
+* Generate the CPU Load on WebLogic Server to view scaleout and scale-in respectively
 * Delete Autoscaling Resources
 * Destroy Stack Resources and delete stack
            
