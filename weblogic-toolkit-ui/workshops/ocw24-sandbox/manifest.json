@@ -1,0 +1,53 @@
+{
+  "workshoptitle": "Migrate WebLogic Server Environments to Kubernetes",
+  "help": "livelabs-help-weblogic_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Migrate WebLogic Server Environments to Kubernetes",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Lab 1: Get Started",
+      "description": "Verify Setup of compute instance",
+      "filename": "https://oracle-livelabs.github.io/common/labs/verify-compute/verify-compute-ssh-and-novnc.md"
+    },
+    {
+      "title": "Lab 2: Modify a WKT UI Project and Create a Model file",
+      "filename": "../../create-model-ocw/create-model-ocw.md"
+    },
+    {
+      "title": "Lab 3: Create a Auxiliary Image and Push it into Oracle Container Image Registry",
+      "filename": "../../create-image-ocw/create-image-ocw.md"
+    },
+    {
+      "title": "Lab 4: Deploy WebLogic Operator to Oracle Kubernetes Cluster (OKE)",
+      "filename": "../../deploy-operator-ocw/deploy-operator-ocw.md"
+    },
+    {
+      "title": "Lab 5: Deploy WebLogic Domain to Oracle Kubernetes Cluster (OKE)",
+      "filename": "../../deploy-domain-ocw/deploy-domain-ocw.md"
+    },
+    {
+      "title": "Lab 6: Deploy Ingress Controller to Oracle Kubernetes Cluster (OKE)",
+      "filename": "../../deploy-ingress-ocw/deploy-ingress-ocw.md"
+    },
+    {
+      "title": "Lab 7: Test the Application Deployment",
+      "filename": "../../access-application-ocw/access-application-ocw.md"
+    },
+    {
+      "title": "Lab 8: Scale a WebLogic Cluster (Optional)",
+      "filename": "../../scale-cluster-ocw/scale-cluster-ocw.md"
+    },
+    {
+      "title": "Lab 9: Make a upgrade in WebLogic Server Version (Optional)",
+      "filename": "../../upgrade-version-ocw/upgrade-version-ocw.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## About this Workshop
 
-This workshop shows an end to end migration of an on-premise WebLogic Server Domain into the containers and makes it runable in OCI with Oracle Container Engine for Kubernetes (OKE). We demonstrate the graphical interface of WebLogic Kubernetes Toolkit UI as well as WebLogic Deployer Tool and Weblogic Kubernetes Operator. We demonstrate how the migration process could be simplified and accelerated by using a DevOps-oriented set of tooling.
+This workshop shows an end-to-end migration of an on-premise WebLogic Server Domain into the containers and makes it runable in OCI with Oracle Container Engine for Kubernetes (OKE). We demonstrate the graphical interface of WebLogic Kubernetes Toolkit UI as well as WebLogic Deployer Tool and Weblogic Kubernetes Operator. We demonstrate how the migration process could be simplified and accelerated by using a DevOps-oriented set of tooling.
 
 ![Lab flow](images/lab-flow.png)
 
@@ -13,7 +13,7 @@ Watch the video below for a quick walk-through of the lab.
 
 ### About Product/Technology
 
-The WebLogic Kubernetes Toolkit (WKT) is a collection of open source tools that help you provision WebLogic-based applications to run in Linux containers on a Kubernetes cluster. WKT includes the following tools:<br>
+The WebLogic Kubernetes Toolkit (WKT) is a collection of open-source tools that help you provision WebLogic-based applications to run in Linux containers on a Kubernetes cluster. WKT includes the following tools:<br>
 
 * [WebLogic Deploy Tooling (WDT)](https://github.com/oracle/weblogic-deploy-tooling) - A set of single-purpose, lifecycle tools that operate off of a single metadata model representation of a WebLogic domain.
 * [WebLogic Image Tool (WIT)](https://github.com/oracle/weblogic-image-tool) - A tool for creating Linux container images for running WebLogic domains.
@@ -26,7 +26,7 @@ The WKT UI provides a graphical user interface that wraps the WKT tools, Docker,
 
 * Creation of Virtual Machine From Marketplace image
 * Set up an Oracle Kubernetes Engine Instance on the Oracle Cloud Infrastructure
-* Modifying a WKT UI Project and Creation of Model file
+* Modifying a WKT UI Project and creating of Model file
 * Creation of Auxiliary Image and Pushing it in Oracle Container Image Registry
 * Deploy WebLogic Operator to Oracle Kubernetes Cluster (OKE)
 * Deploy WebLogic Domain to Oracle Kubernetes Cluster (OKE)
@@ -44,5 +44,5 @@ The WKT UI provides a graphical user interface that wraps the WKT tools, Docker,
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, August 2023
+* **Contributors** - Sid Joshi , Maciej Gruszka, 
+* **Last Updated By/Date** - Ankit Pandey, July 2024
