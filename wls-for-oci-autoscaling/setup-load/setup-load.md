@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Before demonstrating autoscaling in the WebLogic for OCI stack, certain prerequisites must be fulfilled. This guide outlines the steps to SSH login to the WebLogic Node from the CloudShell, download and configure JMeter within the Cloud Shell environment, and obtain the load-generating configuration file. These preparations are essential for effectively simulating and observing autoscaling behavior.
+Before demonstrating autoscaling in the WebLogic for OCI stack, certain prerequisites must be fulfilled. This guide outlines the steps to validate stack deployment, and extract essential IP addresses for the Bastion, Load Balancer, and WebLogic Server (WLS) Node. Then, you will ssh login to the WebLogic Node from the CloudShell. These steps are crucial for ensuring a functional and accessible WebLogic environment.
 
 Estimated Time: 10 minutes
 
@@ -10,9 +10,8 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
+* Validate the stack and copy the IP of **Bastion**, **Load balancer** and **WLS Node**
 * SSH Login to WebLogic Node from the CloudShell
-* Download and configure the JMeter for the Cloud Shell
-* Download Load generatings configuration file
 
 ### Prerequisites
 This lab assumes you have:
@@ -20,40 +19,34 @@ This lab assumes you have:
 * An Oracle Cloud account
 * Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
 
-## Task 1: Download and configure the JMeter for the Cloud Shell
+## Task 1: Validate the stack and copy the IP of Bastion, Load balancer and WLS Node
 
-In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud Shell. We use Jmeter for simulating the CPU Load in the WebLogic Cluster.
+In this task, we verify the creation of the stack and save IP of Bastion, Load Balancer and WebLogic Node.  
 
-1. Copy and paste the following command in the Cloud Shell to download the Jmeter and confiure it the Cloud Shell environment as shown below.
-    ```bash
-    <copy>cd ~
-    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
-    unzip apache-jmeter-5.6.3.zip
-    PATH=~/apache-jmeter-5.6.3/bin:$PATH</copy>
-    ```
+1. Go back to the browser tab, where you have the job running. Once you see job status as **SUCCEEDED**, it means your stack is successfully created. Click **Stack details** as shown below. 
+    ![job succeed](images/job-succeed.png)
 
-## Task 2: Download Load generating files
+2. In the stack details page, click on **Application information** tab as shown below.
+    ![application information](images/application-information.png)
 
-In this task, We download the files in the Cloud Shell. Thi
+3. From **WebLogic** section, copy the IP for WebLogic Server node from the **WebLogic Server Administration Console:** URL. For example in the below screen, IP is **10.0.2.170**. Also copy the IP for Load Balancer as shown below. Please save this values in the text file, we need it in the next task.
+    ![loadbalencer compute ip](images/loadbalencer-compute-ip.png)
+    > Don't take the value from the screenshot, they are just for reference. 
 
-1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increate the CpuLoad.
+4. Copy the public IP for Bastion node as shown below. Please save the value in the text file, we need it in the next task.
+    ![bastion ip](images/bastion-ip.png)
 
-    ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
-    unzip autoscale-workshop.zip
-    cd ~/autoscale-workshop</copy>
-    ```
 
-## Task 3: SSH Login to WebLogic Node from the CloudShell
+## Task 2: SSH Login to WebLogic Node from the CloudShell
 
-In this task, We connect to WebLogic Node from the Cloud Shell using the SSH Key, Bastion IP and WebLogic Node IP. Then, We download and deploy a sample application **RCMWeb** to WebLogic Cluster. We use this application to increase the CpuProcessLoad on WebLogic Cluster.
+In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key, Bastion IP and WebLogic Node IP. Then, we download and deploy a sample application **RCMWeb** to WebLogic Cluster. We use this application to increase the **CpuProcessLoad** on WebLogic Cluster.
 
-1. Go back to CloudShell, copy and paste the following command in text file and replace BASTION_IP and WLS_NODE_IP with the values, you saved in task 2 of lab 2.
+1. Go back to CloudShell, copy and paste the following command in the text file and replace **`<BASTION_IP>`** and **`<WLS_NODE_IP>`** with the values, you copied in task 1 of this lab.
     ```bash
     <copy>ssh  -o ProxyCommand="ssh -W %h:%p opc@<BASTION_IP>" opc@<WLS_NODE_IP></copy>
     ```
 
-2. Paste the modified command in Cloud Shell as shown below.
+2. Paste the modified command in Cloud Shell and enter **yes** as shown below.
     ![ssh node](images/ssh-node.png)
 
 3. Copy and paste the following command to change the user from **opc** to **oracle** as shown below.
@@ -62,9 +55,9 @@ In this task, We connect to WebLogic Node from the Cloud Shell using the SSH Key
     ```
     ![change user](images/change-user.png)
 
-4. Copy and paste the following command in the Cloud Shell to download the application. You will notice the **RCMWeb.war** in the terminal.
+4. Copy and paste the following command in the Cloud Shell to download the application. You will notice the **rcmweb.war** in the terminal.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/yZ3htfFbAV2KVsV7bkt1gUQI_Gdg5wnN1rRS9475Qu61BYgo3_jg2BpURxbwe1n2/n/lrv4zdykjqrj/b/ankit-bucket/o/RCMWeb.war
+    <copy>curl -O https://objectstorage.us-ashburn-1.oraclecloud.com/p/DngDhX3N6cSYkCOJdN04oEVpFNW4CZ-0AgJd6wseEpnOTyDVDmViRtD9lLs9We-Z/n/ocloud200/b/ocw24assets/o/rcmweb.war
     ls  ~</copy>
     ```
     ![download app](images/download-app.png)
@@ -74,9 +67,9 @@ In this task, We connect to WebLogic Node from the Cloud Shell using the SSH Key
     <copy>. /u01/app/oracle/middleware/oracle_common/common/bin/setWlstEnv.sh</copy>
     ```
 
-5. Copy and paste the following command in text file and replace the Value for `**WLS_PASSWord**`, `**USERNAME**` and `**WLS_NODE_IP**`.
+5. Copy and paste the following command in the text file and replace the Value for **`USERNAME`** and **`WLS_NODE_IP`**.
     ```bash
-    <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password <WLS_PASSWORD> -deploy -name RCMWeb -targets <USERNAME>_cluster ~/RCMWeb.war</copy>
+    <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password cloudworld24 -deploy -name RCMWeb -targets <USERNAME>_cluster ~/rcmweb.war</copy>
     ```
 
 6. Paste the modified command to deploy the application in Cloud Shell as shown below.
@@ -93,4 +86,4 @@ You may now proceed to the next lab.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Last Updated By/Date** - Ankit Pandey, July 2024

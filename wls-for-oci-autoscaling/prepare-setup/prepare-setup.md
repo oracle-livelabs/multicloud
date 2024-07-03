@@ -6,9 +6,6 @@ Before demonstrating autoscaling in the WebLogic for OCI stack, several prerequi
 Estimated Time: 10 minutes
 
 ### Objectives
-* Generate an Authentication token
-* Create Vault, Encryption key and secrets
-* Create a Application Performance Monitoring domain
 * Generate a pair of SSH key
 
 

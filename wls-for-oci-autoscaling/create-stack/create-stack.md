@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Setting up the Oracle WebLogic Server Enterprise Edition BYOL stack in Oracle Cloud Infrastructure (OCI) involves several key steps. This guide will help you create the stack, validate its deployment, and extract essential IP addresses for the Bastion, Load Balancer, and WebLogic Server (WLS) Node. These steps are crucial for ensuring a functional and accessible WebLogic environment.
+Setting up the Oracle WebLogic Server Enterprise Edition BYOL stack in Oracle Cloud Infrastructure (OCI) involves several key steps. This guide will help you create the stack, download and configure JMeter within the Cloud Shell environment, and obtain the load-generating configuration file. These preparations are essential for effectively simulating and observing autoscaling behavior.
 
 Estimated Time: 15 minutes
 
@@ -10,14 +10,14 @@ Estimated Time: 15 minutes
 
 In this lab, you will:
 * Create Stack: Oracle WebLogic Server Enterprise Edition BYOL
-* Validate the stack and copy the IP of BASTION, LOAD BALANCER and WLS NODE
+* Download and configure the JMeter for the Cloud Shell
+* Download Load generatings configuration file
 
 ### Prerequisites
 This lab assumes you have:
 
-* An Oracle Cloud account
+* An Oracle Cloud account.
 * You have generated the pair of SSH keys.
-* You have completed: **Lab: Prepare Setup**
 
 ## Task 1: Create Stack: Oracle WebLogic Server Enterprise Edition BYOL
 
@@ -37,15 +37,17 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 
 5. Enter your username as **Resource Name Prefix** and Click **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below.
     ![resource prefix](images/resource-prefix.png)
-    > Make sure you use your username as prefix, as we will use this in further labs.
+    > Make sure you use your username as prefix, as we will use this in further labs. For example, if your username is userN, then your Resource Name Prefix will be userN.
 
-6. Check the box for the **OCI Policies**, **Create a Virtual Cloud Network**, **Provision Load Balancer**, **Enable Exporting Logs to OCI Logging Service**, **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
+6. Check the box for the  **Create a Virtual Cloud Network**, **Provision Load Balancer**,  **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
     ![enable config](images/enable-config.png)
+    > Make sure the box for **OCI Policies**, **Enable Authentication Using Identity Cloud Service**, **Enable Exporting Logs to OCI Logging Service** are unchecked.
 
 7. In **Virtual Cloud Networking** section, enter the name for Virtual Cloud Networking Name as shown below.
     ![vcn name](images/vcn-name.png)
+    > If your username is userN, then enter the name **userNvcn**.
 
-8. In **WebLogic Domain Configuration** section, select the secret where we have stored the WebLogic Admin Server Password in **Validated Secret for WebLogic Server Admin Password** and leave other defaults as shown below.
+8. In **WebLogic Domain Configuration** section, select the secret where we have stored the WebLogic Admin Server Password in **Validated Secret for WebLogic Server Admin Password** and leave other defaults as shown below. It will be same for everyone.
     ![domain config](images/domain-config.png)
 
 9. In **WebLogic Server Compute Instance** section, select any availability domain in **WebLogic Administration Server Availability Domain** and leave other defaults as shown below.
@@ -57,15 +59,15 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 11. In **Load Balancer** section, keep the defaults as shown below.
     ![loadbalancer config](images/loadbalancer-config.png)
 
-12. In **Application Performance Monitoring** section, select the apm domain we created in lab 1 for **Application Performance Monitoring Domain** and leave other defaults as shown below. 
+12. In **Application Performance Monitoring** section, select the apm domain from the compartment **ocw24** and leave other defaults as shown below. 
     ![apm config](images/apm-config.png)
 
 13. In **Autoscaling** section,select the following values as shown below. </br>
     **WebLogic Monitoring Metrics**:    CPU Load</br>
     **Minimum Threshold Percent**:      10</br>
-    **Maximum Threshold Percent**:      60</br>
-    **Registry User Name**:             tenancynamespace/username</br>
-    **Validated Secret for OCIR Auth Token**: secret for auth token created in lab 1</br>
+    **Maximum Threshold Percent**:      80</br>
+    **Registry User Name**:             OCW24/testuser</br>
+    **Validated Secret for OCIR Auth Token**: select secret **authtoken** from **ocw24** compartment</br>
     **Notification Email**:             email id where you want to receive the notification</br>
     ![autoscale load](images/autoscale-load.png)
     ![autoscale registry](images/autoscale-registry.png)
@@ -82,26 +84,30 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
         ![email notification](images/email-notification.png)
         You will see the following messages for subscription confirmation.  
         ![subscription confirmed](images/subscription-confirmed.png)
+        Leave this browser tab open and Go back to **Cloud Shell**.
 
 
+## Task 2: Download and configure the JMeter for the Cloud Shell
 
+In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud Shell. We use Jmeter for simulating the CPU Load in the WebLogic Cluster.
 
-## Task 2: Validate the stack and copy the IP of BASTION, LOAD BALANCER and WLS NODE
+1. Copy and paste the following command in the Cloud Shell to download the Jmeter and unzip it as shown below.
+    ```bash
+    <copy>cd ~
+    wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
+    unzip apache-jmeter-5.6.3.zip</copy>
+    ```
 
-In this task, we verify the creation of the stack and save IP of Bastion, Load Balancer and WebLogic Node. We will use Bastion IP to connect to WebLogic Node from the Cloud Shell and WebLogic Node IP will be used to deploy the sample application **RCMWeb** to WebLogic Cluster later. 
+## Task 3: Download Load generating files
 
-1. Once you see the screen similar to below, it means your stack is successfully created.Click **Stack details** as shown below. 
-    ![job succeed](images/job-succeed.png)
+In this task, We download the files in the Cloud Shell. Thi
 
-2. In the stack details page, click on **Application information** tab as shown below.
-    ![application information](images/application-information.png)
+1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increate the CpuLoad.
 
-3. From **WebLogic** section, copy the IP for WebLogic Server node from the **WebLogic Server Administration Console:** URL. for example in my case, IP is **10.0.2.202**. Also copy the IP for Load Balancer as shown below.
-    ![loadbalencer compute ip](images/loadbalencer-compute-ip.png)
-
-4. Copy the public IP for Bastion node as shown below.
-    ![bastion ip](images/bastion-ip.png)
-
+    ```bash
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
+    unzip autoscale-workshop.zip</copy>
+    ```
 
 You may now proceed to the next lab.
 
@@ -109,4 +115,4 @@ You may now proceed to the next lab.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Last Updated By/Date** - Ankit Pandey, July 2024

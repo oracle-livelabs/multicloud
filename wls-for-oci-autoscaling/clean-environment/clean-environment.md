@@ -25,9 +25,9 @@ This lab assumes you have:
 
 In this task, we destroy the Autoscaling resources with in the Oracle Cloud Infrastructure.
 
-1. Copy and paste the following command in the text file and replace `**RESOURCE_PREFIX**` with your resource prefix. 
+1. Copy and paste the following command in the text file and replace **`RESOURCE_PREFIX`** with your resource prefix. 
     ```bash
-    <copycd ~/autoscale-workshop
+    <copy>cd ~/autoscale-workshop
     python3 remove_resources.py pre-destroy RESOURCE_PREFIX -f autoscaling</copy>
     ```
 
@@ -71,4 +71,4 @@ We hope you have found this workshop useful.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Last Updated By/Date** - Ankit Pandey, July 2024

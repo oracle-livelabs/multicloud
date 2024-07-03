@@ -1,5 +1,5 @@
 {
-  "workshoptitle": "Auto-scaling in Oracle WebLogic Server for OCI",
+  "workshoptitle": "Auto-scale in Oracle WebLogic Server for OCI",
   "help": "livelabs-help-weblogic_us@oracle.com",
   "tutorials": [
     {
@@ -15,7 +15,7 @@
     {
       "title": "Lab 1: Create the OCI resources",
       "description": "Create the OCI resources that are required for the creation of the WebLogic for OCI stack",
-      "filename": "../../prepare-setup/prepare-setup.md"
+      "filename": "../../sandbox-setup/sandbox-setup.md"
     },
     {
       "title": "Lab 2: Create a WebLogic for OCI stack from the Marketplace",
