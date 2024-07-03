@@ -15,7 +15,7 @@ Estimated Time: 90 minutes
 
 * Create Stack: Oracle WebLogic Server Enterprise Edition BYOL
 * Download and configure the JMeter for the Cloud Shell
-* Download the Load generatings configuration file
+* Download the Load generating configuration file
 * Validate the stack and copy the IP of Bastion, Load balancer and WLS Node
 * Observe the Alarms created by WebLogic for the OCI stack
 * Generate the CPU Load on WebLogic Server to view scaleout
