@@ -69,6 +69,7 @@ We hope you have found this workshop useful.
 
 ## Acknowledgements
 
+## Acknowledgements
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Contributors** - Adrian Padilla Duarte , Sid Joshi
 * **Last Updated By/Date** - Ankit Pandey, July 2024

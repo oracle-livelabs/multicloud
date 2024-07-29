@@ -8,7 +8,7 @@ The WebLogic Remote Console is a lightweight, open-source console that you can u
 
 You can install and run the WebLogic Remote Console anywhere, and connect to your domain using WebLogic REST APIs. You simply launch the desktop application and connect to the Administration Server of your domain. Or, you can start the console server, launch the console in a browser and then connect to the Administration Server.
 
-The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.3, 12.2.1.4, and 14.1.1.0.
+The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.4, and 14.x.
 
 **Key Features of the WebLogic Remote Console**
 
@@ -39,15 +39,15 @@ In this lab, you will:
 In this task, we access the **opdemo** application. We click on the refresh icon to make multiple requests to the application, to verify load-balancing between two managed server pods.
 
 1. click the link for **opdemo** and then add **?dsname=testDatasource** as shown below
- ```bash
-    <copy>?dsname=testDatasource</copy>
- ```
- ![Open Application](images/open-application.png)
- ![modify url](images/modify-url.png)
+      ```bash
+         <copy>?dsname=testDatasource</copy>
+      ```
+      ![Open Application](images/open-application.png)
+      ![modify url](images/modify-url.png)
 
 
-2. If you click on the Refresh icon, You can see load balancing between two managed server pods.
- ![Show Loadbalancing](images/show-load-balancing.png)
+2. If you click on the Refresh icon, You can see load balancing between two managed server pods. Copy the **Load Balancer IP**, we will need it in next task.
+       ![Show Loadbalancing](images/show-load-balancing.png)
 
 
 ## Task 2: Explore WebLogic Domain on Kubernetes Cluster using WebLogic Remote Console
@@ -60,7 +60,7 @@ In this task, we explore the WebLogic Remote Console. We create a connection to 
 2. In the **Kiosk** and Select **KubeEnv** and click **icon** for settings as shown.
  ![Admin Server Connection](images/adminserver-connection.png)
 
-3. Enter the **IP** you copied in last lab and click **OK**.<br>
+3. Enter **ECNJDemo99** as Password for Admin Server and enter the **Load Balancer IP** you copied in the last task than click **OK**.<br>
  ![Connection Details](images/connection-details.png)
 
 4. Click on **Edit Tree** icon, then Select **Services** -> **Data Sources**. You can observe the same Datasouce, which we had seen in the on-premise domain.

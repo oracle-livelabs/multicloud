@@ -24,8 +24,12 @@ In this lab, you will:
 
 In this task, we update the primary image to use the upgraded WebLogic Server 14.1.1.0-slim-8-ol8 image.
 
-1. Go back to WebLogic Kubernetes Toolkit UI, and click **WebLogic Domain**. Changed the WebLogic Server Tag to **14.1.1.0-slim-8-ol8**.
- ![Update Primary Image Tag](images/update-primary-image-tag.png)
+1. Go back to WebLogic Kubernetes Toolkit UI, and click **WebLogic Domain**. Change the WebLogic Server Tag to **14.1.1.0-slim-8-ol8**.
+
+      ```bash
+         <copy>14.1.1.0-slim-8-ol8</copy>
+      ```
+      ![Update Primary Image Tag](images/update-primary-image-tag.png)
 
 ## Task 2: Update a deployed application by a rolling restart of the server pods
 
@@ -40,19 +44,19 @@ In this task, we redeploy the WebLogic Domain. Later, we use the WebLogic Remote
  ![Deployment Complete](images/deployment-complete.png)
 
 3. Go back to **Terminal** copy the below command and paste it into the terminal. You will notice a rolling restart of servers one by one. First, Admin Server pods terminate and come in a **Running** state.
- ```bash
-    <copy>kubectl get pods -n test-domain-ns -w</copy>
- ```
- ![View Pods](images/view-pods.png)
+      ```bash
+         <copy>kubectl get pods -n test-domain-ns -w</copy>
+      ```
+      ![View Pods](images/view-pods.png)
 
 4. To Verify that the Admin Server and Managed Server pods are using the updated WebLogic Server image, click the Monitoring Tree icon and then select **Environment** -> **Servers** -> **admin-server**. You can see, it is using 14.1.1.0.
  ![WLS version](images/wls-version.png)
 
-Congratulation !!!
+      Congratulation !!!
 
-This is the end of the workshop.
+      This is the end of the workshop.
 
-We hope you have found this workshop useful.
+      We hope you have found this workshop useful.
 
 ## Acknowledgements
 

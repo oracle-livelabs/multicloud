@@ -24,18 +24,16 @@ The WKT UI provides a graphical user interface that wraps the WKT tools, Docker,
 
 ### Objectives
 
-* Creation of Virtual Machine From Marketplace image
-* Set up an Oracle Kubernetes Engine Instance on the Oracle Cloud Infrastructure
-* Modifying a WKT UI Project and creating of Model file
-* Creation of Auxiliary Image and Pushing it in Oracle Container Image Registry
-* Deploy WebLogic Operator to Oracle Kubernetes Cluster (OKE)
-* Deploy WebLogic Domain to Oracle Kubernetes Cluster (OKE)
-* Deploy Ingress Controller to Oracle Kubernetes Cluster (OKE)
-* Showing Load balancing between Managed Server pods and exploring WebLogic-Remote-Console
-* Scale a WebLogic Cluster
-* Update a deployed application by a rolling restart of the new image
-
-           
+*	Review existing on-prem environment
+*	Modifying a WKT UI Project and creating of Model file
+*	Creation of Auxiliary Image and Pushing it in Oracle Container Image Registry
+*	Deploy WebLogic Operator to Oracle Kubernetes Cluster (OKE)
+*	Deploy WebLogic Domain to Oracle Kubernetes Cluster (OKE)
+*	Deploy Ingress Controller to Oracle Kubernetes Cluster (OKE)
+*	Showing Load balancing between Managed Server pods and exploring WebLogic-Remote-Console
+*	Scale a WebLogic Cluster
+*	Upgrade WebLogic Server Version
+       
 
 ## Learn More
 

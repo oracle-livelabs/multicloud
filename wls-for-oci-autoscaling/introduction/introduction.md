@@ -43,7 +43,6 @@ After creating an Oracle WebLogic Server domain, you can administer the domain a
 * [Auto-scaling in Oracle WebLogic Server for OCI](https://blogs.oracle.com/weblogicserver/post/auto-scaling-in-oracle-weblogic-server-for-oci)
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Contributors** - Adrian Padilla Duarte , Sid Joshi
 * **Last Updated By/Date** - Ankit Pandey, July 2024

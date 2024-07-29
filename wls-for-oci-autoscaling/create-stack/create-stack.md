@@ -29,21 +29,20 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 2. Type **WebLogic** in the search box and then click **Oracle WebLogic Server Enterprise Edition BYOL** as shown below.
     ![search stack](images/search-stack.png)
 
-3.  Select the latest version available and choose your compartment and check the box for accepting the terms and condition. Click **Launch Stack**.
+3.  Select the latest version available and choose your **compartment** name from the data sheet and check the box for accepting the terms and condition. Click **Launch Stack**.
     ![launch stack](images/launch-stack.png)
 
 4. In **Stack information** section, leave everything default and click **Next**.
     ![stack info](images/stack-info.png)
 
-5. Enter your username as **Resource Name Prefix** and Click **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below.
+5. Enter your username as **Resource Name Prefix** and Click **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below. Make sure you use your username as prefix, as we will use this in further labs. For example, if your username is userN, then your Resource Name Prefix will be userN.
     ![resource prefix](images/resource-prefix.png)
-    > Make sure you use your username as prefix, as we will use this in further labs. For example, if your username is userN, then your Resource Name Prefix will be userN.
 
 6. Check the box for the  **Create a Virtual Cloud Network**, **Provision Load Balancer**,  **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
     ![enable config](images/enable-config.png)
     > Make sure the box for **OCI Policies**, **Enable Authentication Using Identity Cloud Service**, **Enable Exporting Logs to OCI Logging Service** are unchecked.
 
-7. In **Virtual Cloud Networking** section, enter the name for Virtual Cloud Networking Name as shown below.
+7. In **Virtual Cloud Networking** section, enter the name for Virtual Cloud Networking Name as shown below. If your username is userN, then enter the name as **userNvcn**.
     ![vcn name](images/vcn-name.png)
     > If your username is userN, then enter the name **userNvcn**.
 
@@ -66,9 +65,9 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
     **WebLogic Monitoring Metrics**:    CPU Load</br>
     **Minimum Threshold Percent**:      10</br>
     **Maximum Threshold Percent**:      80</br>
-    **Registry User Name**:             OCW24/testuser</br>
+    **Registry User Name**:             OCW24/testuser. To access image in the OCI registry to deploy autoscaling function, we have created this shared user.</br>
     **Validated Secret for OCIR Auth Token**: select secret **authtoken** from **ocw24** compartment</br>
-    **Notification Email**:             email id where you want to receive the notification</br>
+    
     ![autoscale load](images/autoscale-load.png)
     ![autoscale registry](images/autoscale-registry.png)
 
@@ -80,11 +79,7 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 
     > This will start a job as shown below.
         ![accepted job](images/accepted-job.png)
-        You will also receive notification from OCI for subscription confirmation as shown below. Click **confirm subscription** as shown below.
-        ![email notification](images/email-notification.png)
-        You will see the following messages for subscription confirmation.  
-        ![subscription confirmed](images/subscription-confirmed.png)
-        Leave this browser tab open and Go back to **Cloud Shell**.
+        
 
 
 ## Task 2: Download and configure the JMeter for the Cloud Shell
@@ -102,7 +97,7 @@ In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud
 
 In this task, We download the files in the Cloud Shell. Thi
 
-1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increate the CpuLoad.
+1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increase the CpuLoad.
 
     ```bash
     <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
@@ -112,7 +107,6 @@ In this task, We download the files in the Cloud Shell. Thi
 You may now proceed to the next lab.
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Contributors** - Adrian Padilla Duarte , Sid Joshi
 * **Last Updated By/Date** - Ankit Pandey, July 2024

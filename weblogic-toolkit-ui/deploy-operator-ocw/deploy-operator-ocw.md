@@ -31,13 +31,17 @@ This section provides support for installing the WebLogic Kubernetes Operator (t
 1. Click **WebLogic Operator**. Specify the following configuration details and click **Install Operator**.
 
     **Kubernetes Namespace** - The Kubernetes namespace to which to install the operator. Leave the **default** value.<br>
+
     **Kubernetes Service Account** - The Kubernetes service account for the operator to use when making Kubernetes API requests. Leave the **default** value.<br>
+
     **Helm Release Name to Use for Operator Installation** - The Helm release name to use to identify this installation. Leave the **default** value.<br>
+
+    **WebLogic Kubernetes Operator Version to Install** - Use the latest version as **default**.
 
  ![WebLogic Operator](images/weblogic-operator.png) 
     
     > **For your information only:**<br>
-    > !By default, the operator’s **Image Tag to Use** field is set to the image tag corresponding to the latest operator release version on the GitHub Container Registry.<br>
+    > By default, the operator’s **Image Tag to Use** field is set to the image tag corresponding to the latest operator release version on the GitHub Container Registry.<br>
     > The operator needs to know which WebLogic domains in the Kubernetes cluster it will manage. It does this at the Kubernetes namespace level, so any WebLogic domain in a Kubernetes namespace the operator is configured to manage will be managed by the operator instance being installed.<br>
     > For **Kubernetes Namespace Selection Strategy** field, we select **Label Selector**, which means any Kubernetes namespace with a **weblogic-operator=enabled** label will be managed by this operator.<br>
  ![Operator Image](images/operator-image.png)
@@ -52,7 +56,7 @@ This section provides support for installing the WebLogic Kubernetes Operator (t
     > For more information on **WebLogic Kubernetes Operator Image**, **Kubernetes Namespace Selection Strategy**, **WebLogic Kubernetes Role Bindings**, **External REST API Access**, **Third Party Integrations** and **Java Logging**, see the [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-toolkit-ui/navigate/kubernetes/k8s-wko/) documentation.
 
 2. Once you see **WebLogic Kubernetes Operator Installation Complete**, Click **Ok**.
- ![Operator Installed](images/operator-installed.png)
+   ![Operator Installed](images/operator-installed.png)
 
 ## Acknowledgements
 
