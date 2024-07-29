@@ -45,7 +45,7 @@ In this task, we navigate through the resources in on-premise **test-domain** us
 4. Click **Activities** and then type **Firefox** in search box. Click the icon for **Firefox**.
  ![open firefox](images/open-firefox.png)
 
-5. Copy and paste the below URL in the browser to open Admin Console and enter **weblogic/Welcome1%** as `Username/Password`, then click **Login**. 
+5. Copy and paste the below URL in the browser to open Admin Console and enter **weblogic/Welcome1%** as `Username/Password`, then click **Login**.
       ```bash
          <copy>http://localhost:7001/console</copy>
       ```
@@ -100,7 +100,7 @@ In this task, we perform introspection of an on-premise domain, which creates a 
 2. Click **File** -> **Add Model** -> **Discover Model(offline)**.
  ![Discover Model](images/discover-model.png)
 
-3. Click Open folder **icon** to open the **Domain Home**.
+3. Click Open folder **icon** to open the **Domain Home**. It opens the pop-up window in the back of WKTUI.
  ![Open Domain Hom](images/open-domain-home.png)
 
 4. In the Home folder, navigate to **`/home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/`** directory and select **test-domain** folder then  click **Select**. Click **OK**.

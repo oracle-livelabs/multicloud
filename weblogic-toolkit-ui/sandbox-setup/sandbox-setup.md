@@ -17,22 +17,34 @@ This lab assumes you have the following:
 - Browser like Chrome or Firefox
 
 
-## Task 1: Access Remote Desktop 
+## Task 1: Know your pre-created resources.
+
+In this task, you will understand the resources we created for you. you must have data sheet with you, where you will have the value of these resources.
+
+   **Remote Desktop** - We have setup a remote desktop for you, where we have installed the following software.
+   * WebLogic Server 12.2.1.4 <br>
+   * WebLogic toolkit UI <br>
+   * WebLogic Remote Console <br>
+   * Kubectl <br>
+   * Helm <br>
+   * Docker <br>
+   * JDK <br>
+
+**Oracle Cloud Infrastructure Container Engine for Kubernetes (OKE)**- We have created OKE cluster for you and configured the remote desktop, so that you can deploy WebLogic domain to OKE from the remote desktop.    
+
+
+**Registry User** - To access the image in the OCI registry, we have created the shared user **OCW24HOLUser**. 
+
+**OCIR Auth token** - In order to push the Auxiliary Image in the Oracle Cloud Infrastructure Registry, you must provide an auth token as Password. we have created an authentication token for the shared user.
+
+
+## Task 2: Access Remote Desktop 
 
 You should have received the remote desktop URL, which includes all the necessary software for this workshop.
 
 1. Open Firefox/Chrome browser and paste the shared URL in the address bar.
 
-## Task 2: Know your pre-created OCI resources.
 
-In this task, you will understand the resources we created for you. you must have data sheet with you, where you will have the value of these resources.
-
-   **Oracle Cloud Infrastructure Container Engine for Kubernetes (OKE)**- We have created OKE cluster for you and configured the remote desktop, so that you can deploy WebLogic domain to OKE from the remote desktop.    
-
-
-   **Registry User** - To access the image in the OCI registry, we have created the shared user **OCW24HOLUser**. 
-
-   **OCIR Auth token** - In order to push the Auxiliary Image in the Oracle Cloud Infrastructure Registry, you must provide an auth token as Password. we have created an authentication token for the shared user.
 
 
 

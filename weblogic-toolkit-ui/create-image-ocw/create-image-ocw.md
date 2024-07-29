@@ -25,10 +25,10 @@ In this lab, you will:
 In this task, we are creating an Auxiliary image, which we will push to the Oracle Cloud Container Registry.
 
 
-1. Click **Image** and then in image section click **Auxiliary Image**. We have prefilled the values for you. You need to replace **tag** with your username. For example, user1/user2.
+1. Click **Image**, then in the image section, click **Auxiliary Image**. Please update the Auxiliary Image **tag** with your user number. The URL has been prepared for you; all you need to do is replace tag with your user number. For example, for user3, replace lhr.ocir.io/lrv4zdykjqrj/test-model-ocw:**tag** with lhr.ocir.io/lrv4zdykjqrj/test-model-ocw:user3.
       ![image tag](images/image-tag.png)
 
-      >  Auxiliary image tag contains Endpoint for the Region, Tenancy Namespace and OCIR Registry Name respectively. 
+      >  The Auxiliary image tag follows the format `END_POINT_OF_YOUR_REGION`/`NAMESPACE_OF_YOUR_TENANCY`/`OCI_REGISTRY_NAME`:`TAG`. In this case, **lhr.ocir.io** represents the endpoint of the region, **lrv4zdykjqrj** is the tenancy namespace, and **test-model-ocw** is the registry name that we created for you in advance. 
  
  
 
