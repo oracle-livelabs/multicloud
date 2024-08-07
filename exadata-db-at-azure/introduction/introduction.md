@@ -23,7 +23,7 @@ In this workshop, you will learn how to:
 ### Prerequisites
 * An Oracle Free Tier, Always Free, Paid or LiveLabs Cloud Account
 * Familiarity with Oracle Cloud Infrastructure (OCI) is helpful
-* Some understanding of DB @Azure concepts is helpful
+* Basic knowledge about DB @Azure concepts is helpful
 * Familiarity with Oracle  Exadata Database is helpful
 
 

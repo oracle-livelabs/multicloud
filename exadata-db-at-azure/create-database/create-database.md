@@ -21,13 +21,13 @@ This lab assumes you have:
 
 ##  Task 1: Deploy CDB and PDB Database
 1. Login to Azure Portal (https://portal.azure.com) and navigate to All services. Then click on **Oracle Database@Azure**.
-    Navigate to **Oracle Exadata Database Service** and select Exadata Infrastructure and then click on the VM Cluster resource created in **Task2**.
+    Navigate to **Oracle Exadata Database Service** and select Exadata Infrastructure and then click on the VM Cluster resource created in Lab 3.
     Then click on **Go to OCI** hyperlink. 
     It will open OCI cloud console.
 
     ![](./images/deploy_db_image1.png " ")
 
-2. On OCi cloud console, scroll down to **Databases** tab and click on **Create database** button.
+2. On OCI cloud console, scroll down to **Databases** tab and click on **Create database** button.
     It will open a window to create a new database deploymnet - CDB and PDB.
 
     ![](./images/deploy_db_image2.png " ")
@@ -49,7 +49,7 @@ This lab assumes you have:
 
     ![](./images/deploy_db_image6.png " ")
 
-  You can select database database version from the available database versions.
+  You can select database version from the available database versions.
     
     ![](./images/deploy_db_image7.png " ")
 
