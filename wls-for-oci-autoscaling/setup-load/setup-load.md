@@ -29,9 +29,9 @@ In this task, we verify the creation of the stack and save IP of Bastion, Load B
 2. In the stack details page, click on the **Application information** tab as shown below.
  ![application information](images/application-information.png)
 
-3. From the **WebLogic** section, copy the **`WLS_NODE_IP`** for the WebLogic Server node from the **WebLogic Server Administration Console:** URL. For example in the below screen, IP is **10.0.2.170**. Also, copy the IP for Load Balancer as shown below. Please save these values as **`LOAD_BALANCER_IP`** in the text file, we need it in the next lab.
+3. From the **WebLogic** section, copy the **`WLS_NODE_IP`** for the WebLogic Server node from the **WebLogic Server Administration Console:** URL. For example in the below screen, IP is **10.0.2.170**. Also, copy the IP for Load Balancer as shown below. Please save this value as **`LOAD_BALANCER_IP`** in the text file, we need it in the next lab.
  ![loadbalencer compute ip](images/loadbalencer-compute-ip.png)
-    > Don't take the value from the screenshot, they are just for the reference. 
+    > *Don't take the value from the screenshot, they are just for the reference*. 
 
 4. Copy the public IP for the Bastion node as shown below. Please save the value as **`BASTION_IP`** in the text file, we need it in the next task.
  ![bastion ip](images/bastion-ip.png)
@@ -39,9 +39,9 @@ In this task, we verify the creation of the stack and save IP of Bastion, Load B
 
 ## Task 2: SSH Login to WebLogic Node from the CloudShell
 
-In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key, **`BASTION_IP`** and **`WLS_NODE_IP`**. Then, we download and deploy a sample application **RCMWeb** to the WebLogic Cluster. We use this application to increase the **CpuProcessLoad** on WebLogic Cluster.
+In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key, **`BASTION_IP`** and **`WLS_NODE_IP`**. Then, we download and deploy a sample application **rcmweb.war** to the WebLogic Cluster. We use this application to increase the **CpuProcessLoad** on WebLogic Cluster.
 
-1. Go back to CloudShell, copy and paste the following command in the text file and replace **`<BASTION_IP>`** and **`<WLS_NODE_IP>`** with the values, you copied in task 1 of this lab.
+1. Go back to CloudShell, copy and paste the following command in the text file and replace **`<BASTION_IP>`** and **`<WLS_NODE_IP>`** with their values, you copied in the previous task.
       ```bash
          <copy>ssh  -o ProxyCommand="ssh -W %h:%p opc@<BASTION_IP>" opc@<WLS_NODE_IP></copy>
       ```

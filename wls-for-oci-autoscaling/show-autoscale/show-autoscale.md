@@ -29,7 +29,7 @@ In this task, we observe the Alarms created by the stack. We will see the Alarm 
 2. You will notice two alarm definitions, one for the **scalein** operation and the other for the **scaleout** operations. Click the alarm for the **scaleout** as shown below.
  ![scaleout enable](images/scaleout-enable.png)
     
-3. Click on the alarm for the **scaleout** operation.
+3. To enable the alarm, check the box for **Alarm is enabled**.
  ![scaleout checkbox](images/scaleout-checkbox.png)
 
 
@@ -39,26 +39,17 @@ In this task, we observe the Alarms created by the stack. We will see the Alarm 
 
     > As there is no load on the WebLogic Cluster, you may see the values less than **.8** for the **ProcessCpuLoad**, that is why the **scaleout** alarm is in **Ok** state.
 
-5. To modify the alarm for scaleout, click **Actions** -> **Edit alarm**. 
-      ![edit alarm](images/edit-alarm.png)
-
-6. Click **Switch to Advanced Mode**.
-   ![advanced mode](images/advanced-mode.png)
-
-7. In the **Metrics details**, change the value from **5** to **2** in the **Trigger delay minutes**. Scroll down to click **Save alarm**.
-   ![delay time](images/delay-time.png)
-   ![save alarm](images/save-alarm.png)
 
 
 ## Task 2: Generate the CPU Load on the WebLogic Server
 
-In this task, we execute files downloaded in lab 2. This file enhances the ProcessCpuLoad and triggers the Scaleout Alarm. Which will increase the node count from 1 to 2. As soon as the load trigger the Scaleout alarm, we terminate the execution of the generating file.
+In this task, we execute files downloaded in lab 2. This file enhances the ProcessCpuLoad and triggers the Scaleout Alarm. Which will increase the node count from 1 to 2. As soon as the load trigger the Scaleout alarm, we terminate the execution of the load generating file.
 
 1. Copy and paste the following command in the text file and replace the **`LOAD_BALANCER_IP`** with the load balancer public IP.
       ```bash
          <copy>PATH=~/apache-jmeter-5.6.3/bin:$PATH
          cd ~/autoscale-workshop
-         python3 jmeterrunner.py -l <LOAD_BALANCER_IP> -n 2 -s CpuTime</copy>
+         python3 jmeterrunner.py -l <LOAD_BALANCER_IP> -n 4 -s CpuTime</copy>
       ```
 
 
@@ -68,18 +59,34 @@ In this task, we execute files downloaded in lab 2. This file enhances the Proce
 3. Go back to Alarm data for the **scaleout** alarm, you will see the rise in ProcessCpuLoad as shown below.
    ![load increases](images/increase-load.png)
     
-    > You need to wait till the ProcessCpuLoad is more than **.8** for a period of more than **two minutes**.
+    > You need to wait till the ProcessCpuLoad is more than **.8** for a period of more than **five minutes**.
    ![load two](images/load-five.png)
 
 4. As you see the **scaleout** alarm is in a **firing** state, go back to Cloud Shell to terminate the load generate process by entering **`Ctrl+C`** in the Cloud Shell as shown below.
    ![scaleout firing](images/scaleout-firing.png)
    ![stop load](images/stop-load.png)
 
-5. You will also receive the email about the scaleout operation in the email ID provided during stack creation as shown below.
-   ![scaleout email](images/scaleout-email.png)
 
-6. You will also receive the email about the **Scaling Job Completed** as shown below.
-   ![scaleout complete](images/scaleout-complete.png)
+5. In OCI Console, Click **Hamburger menu** -> **Networking** -> **Load balancer** under **Load balancers** section.
+   ![load balancers](images/menu-loadbalancer.png)
+
+6. Click on your load balancer name as shown below.
+   ![select loadbalancer](images/select-loadbalancer.png)
+
+7. Scroll down and click **Backend sets** under **Resources**.
+   ![select backend sets](images/select-backend-sets.png)
+
+8. click on your backend set name as shown below.
+   ![backendset name](images/backendset-name.png)
+
+9. Now you will see, one more compute instance has added to your cluster. 
+   ![new backend](images/new-backend.png)
+
+10. To see the new compute instance, Click **Hamburgar menu** -> **Compute** -> **Instances**.
+   ![compute menu](images/compute-menu.png)
+
+11. You can see the new node **userN-wls-1** has been created.
+   ![new node](images/new-node.png)
 
    You may now proceed to the next lab.
     

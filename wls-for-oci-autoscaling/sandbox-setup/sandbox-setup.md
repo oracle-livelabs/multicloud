@@ -47,6 +47,7 @@ In this task, we create an SSH key pair in the Cloud Shell. We will use this SSH
       ```bash
       <copy>ls -ltra ~/.ssh</copy>
       ```
+      > If there is already **`id_rsa.pub`** file exist, you can skip step 3 and proceed with step 4.
 
 3. Copy and paste the following command to generate the ssh key pair. Press **enter** to select the default values as shown below.
       ```bash
@@ -54,7 +55,7 @@ In this task, we create an SSH key pair in the Cloud Shell. We will use this SSH
       ```
       ![ssh key](images/generate-ssh.png)
 
-4. Copy and paste the following command to get the public key and save it in some text file. We will need it in lab 2 for creating the stack.
+4. Copy and paste the following command to get the public key and save it in some text file. We will need it in the next lab. Leave this browser tab open, we will use this tab to run commands in the Cloud shell.
       ```bash
          <copy>cat ~/.ssh/id_rsa.pub</copy>
       ```
@@ -62,7 +63,7 @@ In this task, we create an SSH key pair in the Cloud Shell. We will use this SSH
 
       > Don't close Cloud Shell, we will use this. You can minimise the **Cloud Shell** using **-** and restore Cloud Shell using the **restore icon** as shown.
       ![minimise cloudshell](images/minimise-cloudshell.png)
-      Leave this browser tab open.
+      
 
 
 You may now proceed to the next lab.
