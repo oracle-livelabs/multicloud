@@ -24,7 +24,7 @@ This lab assumes you have:
     Navigate to **Oracle Exadata Database Service** and select Exadata Infrastructure to create a VM cluster.
     Click on **+Create** which will open a page to provide inputs for creating a VM Cluster.
 
-      ![](./images/provision_vm_cluster_image1.png " ")
+      ![](./images/provision_vm_cluster_image1.png "Navigation ")
 
 2. On **Create Oracle Exadatada VM Cluster** page, provide inputs for each tab.
 
@@ -40,21 +40,21 @@ This lab assumes you have:
     * **License type** - You can choose licence type as **BYOL** or **Licence included** option
     * **Time zone** - Select time zone as applicable, default is UTC.
 
-      ![](./images/provision_vm_cluster_image2.png " ")
+      ![](./images/provision_vm_cluster_image2.png " Basic details")
 
     For ssh key, provide name to create a new key or you can provide existing key.
 
-      ![](./images/provision_vm_cluster_image3.png " ")
+      ![](./images/provision_vm_cluster_image3.png "ssh key ")
 
       
   3. Provide inputs for **Configuration** as shown in screenshot to configure the VM cluster instance.
 
       
-      ![](./images/provision_vm_cluster_image4.png " ")
+      ![](./images/provision_vm_cluster_image4.png " Configuration details")
 
       You can update the storage configuration details if want to setup sparse snapshots and local backups. Data, reco and sparce disk groups will be allocated accordingly. By default, Data diskgroup allocation is 80%, Reco - 20% and Sparse - 0% of total available disk group storage capacity.
 
-      ![](./images/provision_vm_cluster_image5.png " ")
+      ![](./images/provision_vm_cluster_image5.png "Storage details ")
   
   4. In **Networking** tab, provide inputs for below:
 
@@ -63,27 +63,27 @@ This lab assumes you have:
       * **Host name prefix** - Host name prefix for the VM cluster hosts
 
 
-     ![](./images/provision_vm_cluster_image6.png " ")
+     ![](./images/provision_vm_cluster_image6.png "Networking details ")
 
   5. Choose approapriate option to enable diagnostics and logs on the VM cluster resource. 
 
    
-       ![](./images/provision_vm_cluster_image7.png " ")
+       ![](./images/provision_vm_cluster_image7.png " Diagnostics options")
 
   6. Select the check-box to aggree on the terms of service.
     
-    ![](./images/provision_vm_cluster_image8.png " ")
+    ![](./images/provision_vm_cluster_image8.png " Terms of services")
 
   7. Provide inputs to organize your resource with tagging
       * **Name** – Created By
       * **Value** – Select your email or Name 
 
-    ![](./images/provision_vm_cluster_image9.png " ")
+    ![](./images/provision_vm_cluster_image9.png " Tags")
 
   8. On **Review + create** page, it will validate the inputs provided. Once Validation is passed, click on **Create** button. 
    It will create exadata VM cluster resource. 
 
-    ![](./images/provision_vm_cluster_image10.png " ")
+    ![](./images/provision_vm_cluster_image10.png " Review")
 
 
 You may now **proceed to the next lab**.
