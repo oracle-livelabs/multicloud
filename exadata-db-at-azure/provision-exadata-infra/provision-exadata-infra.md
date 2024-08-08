@@ -53,9 +53,9 @@ This lab assumes you have:
 
     * **Exadata Infrastructure Model** – Only X9M-2 model of Exadata Infrastructure is available for DB@Azure
     * **Database Servers** – Minimum two database servers are mandatory to provisioing exadata infrastructure which support Real Application Cluster (RAC) 
-    * **Storage Servers** - Be default threee storage servers will be created. Additional storage server can be added later.
-    * **OCPUs** - Select number of OCPUs to enable.
-    * **Storage** - Enter the required storage in terrabytes(TB). 
+    * **Storage Servers** - By default threee storage servers will be created. Additional storage server can be added later.
+    * **OCPUs** - Based on number of DB servers selected, number of OCPUs will change.
+    * **Storage** - Based on number of storage servers, storage capacity (in terabytes) will change. 
 
 
     ![](./images/provision_exadata_infra_image5.png " ")
