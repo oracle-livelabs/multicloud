@@ -50,8 +50,10 @@ This lab assumes you have:
     ![](./images/deploy_db_image6.png " Software image")
 
   You can select database version from the available database versions.
+
     
     ![](./images/deploy_db_image7.png "DB versions ")
+
 
 6. Provide administrator password for the database. 
 
