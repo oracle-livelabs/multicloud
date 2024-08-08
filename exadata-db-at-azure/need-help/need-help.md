@@ -5,7 +5,7 @@ This page is designed to help you solve some common problems users face in this 
 
 If you still find yourself stuck or would like to report an issue with the workshop, click the question mark icon in the upper left corner to contact the LiveLabs team directly via email.  
 
-![](images/help-button2.png)
+![](images/help-button2.png "help_button")
 
 For more about getting support using our email, click [here](#HowToFormatYourSupportEmailRequest).
 
@@ -15,12 +15,10 @@ This will construct an email in your default mail application that is auto popul
 1. Do not change the subject line.
 2. Include the description of your issue and any pertinent information in the contents on your email.
 
-    ![](images/e-mail.png)
+    ![](images/e-mail.png "Issue description")
 
 3. Include the **Lab Number**, **Step Number**, and **Sub-Step Number** where you've encounter the issue.
 4. Attach a **Screenshot** and **Any Troubleshooting Steps** you've tried so we can recreate the issue and provide a timely and accurate solution.
-
-    ![](images/problem-picture2.png)
 
 
 ## Acknowledgements

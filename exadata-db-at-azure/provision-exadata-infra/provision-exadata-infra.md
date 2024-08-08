@@ -24,16 +24,16 @@ This lab assumes you have:
 
 1. Login to Azure Portal (https://portal.azure.com) and navigate to All services. Then click on **Oracle Database@Azure**.
 
-    ![](./images/provision_exadata_infra_image1.png " ")
+    ![](./images/provision_exadata_infra_image1.png " Navigation")
 
 2. On Oracle Database Services @Azure overview page, please click on **Oracle Exadata Database Service**.
    It ill open a new page with an option to create Exadata Cloud Infrastructure instance.
 
-    ![](./images/provision_exadata_infra_image2.png " ")
+    ![](./images/provision_exadata_infra_image2.png "Exadata DB Service Page ")
 
 3. Click on the **+Create** button to start with provisioining exadata infrastructure.
 
-    ![](./images/provision_exadata_infra_image3.png " ")
+    ![](./images/provision_exadata_infra_image3.png " Create Button")
 
 4. On **Create Exadatada Infrastructure** page, provide inputs for each tab.
 
@@ -47,7 +47,7 @@ This lab assumes you have:
     * **Availability Zone** - Select availability zone
 
 
-    ![](./images/provision_exadata_infra_image4.png " ")
+    ![](./images/provision_exadata_infra_image4.png "Basic details ")
 
 5. Provide Exadata Infrastructure configuration details as below:
 
@@ -58,7 +58,7 @@ This lab assumes you have:
     * **Storage** - Based on number of storage servers, storage capacity (in terabytes) will change. 
 
 
-    ![](./images/provision_exadata_infra_image5.png " ")
+    ![](./images/provision_exadata_infra_image5.png " Configuration inputs")
 
 6. In **Maintenance** Tab input parameters as below:
 
@@ -67,22 +67,22 @@ This lab assumes you have:
       * **Maintenance contact** :  Provide contact person email address who will receive updated on maintenance on the exadata infrastructure.
   
 
-  ![](./images/provision_exadata_infra_image6.png " ")
+  ![](./images/provision_exadata_infra_image6.png "Maintenance details ")
 
 7. Provide consent to create an exadata infrastructure resource.
 
-    ![](./images/provision_exadata_infra_image7.png " ")
+    ![](./images/provision_exadata_infra_image7.png " Consent")
 
 8. Provide inputs to organize your resource with tagging
       * **Name** – Created By
       * **Value** – Select your email or Name   
 
-   ![](./images/provision_exadata_infra_image8.png " ")
+   ![](./images/provision_exadata_infra_image8.png "Tags ")
 
 9. On **Review + create** page, it will validate the inputs provided. Once Validation is passed, click on **Create** button. 
    It will create exadata infrastructure. 
 
-    ![](./images/provision_exadata_infra_image9.png " ")
+    ![](./images/provision_exadata_infra_image9.png " Review")
 
 
 You may now **proceed to the next lab**.
