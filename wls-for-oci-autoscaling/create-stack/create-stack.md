@@ -17,15 +17,15 @@ In this lab, you will:
 This lab assumes you have:
 
 * An Oracle Cloud account.
-* You have generated the pair of SSH keys.
+* This lab requires completion of all of the preceding labs.
 
 ## Task 1: Create Stack: Oracle WebLogic Server Enterprise Edition BYOL
 
-In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server Enterprise Edition UCM** image in the OCI Marketplace.
+In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server Enterprise Edition BYOL** image in the OCI Marketplace.
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wlsoci-resource-manager-ee-ucm-mp-14.1.1.0.240416-24.2.1-240418031026.zip](https://github.com/oracle-quickstart/oci-weblogic-server/releases/download/v24.2.1/wlsoci-resource-manager-ee-ucm-mp-14.1.1.0.240416-24.2.1-240418031026.zip)
+    - [wlsoci-resource-manager-ee-byol-mp-14.1.1.0.240416-24.2.1-240418031026.zip](https://github.com/oracle-quickstart/oci-weblogic-server/releases/download/v24.2.1/wlsoci-resource-manager-ee-byol-mp-14.1.1.0.240416-24.2.1-240418031026.zip)
 
 2.  Save in your downloads folder.
 
@@ -37,16 +37,16 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 4. Open up the hamburger menu in the top left corner. Click **Developer Services** -> **Stacks** as shown below. 
     ![menu stack](images/menu-stack.png)
     
-5. Select the **comparment** which has same name as your username. For example if your username is user1, then select user1 as your compartment. Click **Create Stack**.
+5. Select the **comparment** which has same name as **your username**. For example if your username is user1, then select user1 as your compartment. Click **Create Stack**.
     ![select compartment](images/select-compartment.png)
 
 6. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
     ![browse zip](images/browse-zip.png)
 
-7. Enter your username as **Resource Name Prefix**. For example if your username is user1, then select user1 as your Resource Name Prefix. and Click **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below. 
+7. Enter your username as **Resource Name Prefix**. For example, if your username is user1, then enter user1 as your Resource Name Prefix. Select **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below. 
     ![resource prefix](images/resource-prefix.png)
 
-8. *Check* the box for the  **Create a Virtual Cloud Network**, **Provision Load Balancer**,  **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below and ensure that box for **OCI Policies**, **Enable Authentication Using Identity Cloud Service**, **Enable Exporting Logs to OCI Logging Service** are *unchecked*.
+8. *Check* the box for the **Create a Virtual Cloud Network**, **Provision Load Balancer**, **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
     ![enable config](images/enable-config.png)
     
 
@@ -54,10 +54,10 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
     ![vcn name](images/vcn-name.png)
    
 
-10. In **WebLogic Domain Configuration** section, select the secret where we have stored the WebLogic Admin Server Password in **Validated Secret for WebLogic Server Admin Password** and leave other defaults as shown below. It will be same for every user.
+10. In **WebLogic Domain Configuration** section, select the secret already pre-created. Select **ocw24** in compartment and **wlspassword** in **Validated Secret for WebLogic Server Admin Password** and leave other defaults as shown below. It will be same for every user.
     ![domain config](images/domain-config.png)
 
-11. In **WebLogic Server Compute Instance** section, enter **2** as **OCPU Count** and select any availability domain in **WebLogic Administration Server Availability Domain** and leave other defaults as shown below.
+11. In **WebLogic Server Compute Instance** section, enter **2** as **OCPU Count** and leave other defaults as shown below.
     ![compute config](images/compute-config.png)
 
 12. In **Bastion Instance** section, check the box for **Assign Reserved Public IP to Bastion Instance** and leave other defaults as shown below.
@@ -66,15 +66,16 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 13. In **Load Balancer** section, change **Maximum Bandwidth for Flexible Load Balancer** to **100** and  keep other defaults as shown below.
     ![loadbalancer config](images/loadbalancer-config.png)
 
-14. In **Application Performance Monitoring** section, select **user2apm** as apm domain from the compartment **ocw24** and leave other defaults as shown below. 
+14. In **Application Performance Monitoring** section select **ocw24** compartment and **user2apm** as apm domain, leave other defaults as shown below 
     ![apm config](images/apm-config.png)
 
 15. In **Autoscaling** section,select the following values as shown below. </br>
     **WebLogic Monitoring Metrics**:    CPU Load</br>
     **Minimum Threshold Percent**:      10</br>
     **Maximum Threshold Percent**:      80</br>
-    **Registry User Name**:             OCW24/testuser. To access image in the OCI registry to deploy autoscaling function, we have created this shared user.</br>
-    **Validated Secret for OCIR Auth Token**: select secret **authtoken** from **ocw24** compartment</br>
+    **Registry User Name**:             OCW24/testuser [To access image in the OCI registry to deploy autoscaling function, we have created this shared user.]</br>
+    **OCIR Auth Token Secret Compartment**: ocw24</br>
+    **Validated Secret for OCIR Auth Token**:  authtoken </br>
     
     ![autoscale load](images/autoscale-load.png)
     ![autoscale registry](images/autoscale-registry.png)
@@ -106,7 +107,7 @@ In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud
 
 ## Task 3: Download Load generating files
 
-In this task, We download the files in the Cloud Shell. Thi
+In this task, We download the files in the Cloud Shell.
 
 1. Copy and paste the following command in the Cloud Shell to download the load generating files. The JMX file contains the test plan, defining the parameters and behavior of the load test, while the Python (py) file will be used to increase the ProcessCpuLoad.
 

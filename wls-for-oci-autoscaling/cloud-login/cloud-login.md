@@ -3,25 +3,18 @@
 ## Introduction
 Oracle Cloud is the industry's broadest and most integrated cloud provider, with deployment options ranging from the public cloud to your data center. Oracle Cloud offers best-in-class services across Software as a Service (SaaS), Platform as a Service (PaaS), and Infrastructure as a Service (IaaS).
 
-Estimated Time: 10 minutes
-
-### Types of Cloud Accounts
-
-We offer two types of Cloud Accounts:
-
-**Free Tier Accounts:** After you sign up for the free Oracle Cloud promotion or sign up for a paid account, you’ll get a welcome email. The email provides you with your cloud account details and sign in credentials.
-
-**Oracle Cloud Paid Accounts:** When your tenancy is provisioned, Oracle sends an email to the default administrator at your company with the sign-in credentials and URL. This administrator can then create a user for each person who needs access to the Oracle Cloud. Check your email or contact your administrator for your credentials and account name
+Estimated Time: 05 minutes
 
 ### Objectives
 * Learn how to log in to your Oracle Cloud Account
 
 
 ### Prerequisites
-This lab assumes you have the following:
-* **Cloud Account Name** - The name of your tenancy (supplied by the administrator or in your Oracle Cloud welcome email)
-* Username
-* Password
+The cloud environment & credential provided by lab instructor:
+* Cloud Account Name/Tenancy
+* Username: userX
+* Password: xxxx
+* WebLogic Password: xxxx
 
 
 ## Task 1: Log in to Oracle Cloud 

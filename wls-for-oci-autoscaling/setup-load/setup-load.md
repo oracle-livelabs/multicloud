@@ -17,7 +17,7 @@ In this lab, you will:
 This lab assumes you have the following:
 
 * An Oracle Cloud account
-* Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
+* This lab requires completion of all of the preceding labs.
 
 ## Task 1: Validate the stack and copy the IP of Bastion, Load balancer and WLS Node
 
@@ -29,7 +29,7 @@ In this task, we verify the creation of the stack and save IP of Bastion, Load B
 2. In the stack details page, click on the **Application information** tab as shown below.
  ![application information](images/application-information.png)
 
-3. From the **WebLogic** section, copy the **`WLS_NODE_IP`** for the WebLogic Server node from the **WebLogic Server Administration Console:** URL. For example in the below screen, IP is **10.0.2.170**. Also, copy the IP for Load Balancer as shown below. Please save this value as **`LOAD_BALANCER_IP`** in the text file, we need it in the next lab.
+3. From the **WebLogic** section, copy the **`WLS_NODE_IP`** for the WebLogic Server node from the **WebLogic Server Administration Console:** URL and save it in the text file. For example in the below screen, IP is **10.0.2.170**. Also, copy the IP for Load Balancer as shown below. Please save this value as **`LOAD_BALANCER_IP`** in the text file, we need it in the next lab.
  ![loadbalencer compute ip](images/loadbalencer-compute-ip.png)
     > *Don't take the value from the screenshot, they are just for the reference*. 
 
@@ -41,12 +41,13 @@ In this task, we verify the creation of the stack and save IP of Bastion, Load B
 
 In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key, **`BASTION_IP`** and **`WLS_NODE_IP`**. Then, we download and deploy a sample application **rcmweb.war** to the WebLogic Cluster. We use this application to increase the **CpuProcessLoad** on WebLogic Cluster.
 
-1. Go back to CloudShell, copy and paste the following command in the text file and replace **`<BASTION_IP>`** and **`<WLS_NODE_IP>`** with their values, you copied in the previous task.
+1. Go back to CloudShell, copy and paste the following command in the text file and replace **`<BASTION_IP>`** and **`<WLS_NODE_IP>`** with their values from the text file..
       ```bash
          <copy>ssh  -o ProxyCommand="ssh -W %h:%p opc@<BASTION_IP>" opc@<WLS_NODE_IP></copy>
       ```
+      > For example:  *ssh  -o ProxyCommand="ssh -W %h:%p opc@129.158.245.92 opc@10.0.2.75*.
 
-2. Paste the modified command in Cloud Shell and enter **yes** as shown below.
+2. Paste the modified command in Cloud Shell and enter **yes** as shown below. 
  ![ssh node](images/ssh-node.png)
 
 3. Copy and paste the following command to change the user from **opc** to **oracle** as shown below.
@@ -67,10 +68,11 @@ In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key
          <copy>. /u01/app/oracle/middleware/oracle_common/common/bin/setWlstEnv.sh</copy>
       ```
 
-6. Copy and paste the following command in the text file and replace the Value for **`USERNAME`**, **`WLS_PASSWORD`** and **`WLS_NODE_IP`**. Take the value of `WLS_PASSWORD` from the data sheet.
+6. Copy and paste the following command in the text file and replace the Value for **`<USERNAME>_cluster`**, **`WLS_PASSWORD`** and **`<WLS_NODE_IP>`** from the text file. You must have received the value for  **`WLS_PASSWORD`** from your lab instructor.
       ```bash
-         <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password `WLS_PASSWORD` -deploy -name RCMWeb -targets <USERNAME>_cluster ~/rcmweb.war</copy>
+         <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password 'WLS_PASSWORD' -deploy -name RCMWeb -targets '<USERNAME>_cluster' ~/rcmweb.war</copy>
       ```
+      > For example:  *java weblogic.Deployer -adminurl ‘t3://10.0.2.75:9071’ -username weblogic -password cloudworld24 -deploy -name RCMWeb -targets user1_cluster ~/rcmweb.war*.
 
 7. Paste the modified command to deploy the application in Cloud Shell as shown below.
    ![deploy app](images/deploy-app.png)

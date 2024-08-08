@@ -18,7 +18,7 @@ In this lab, you will:
 This lab assumes you have the following:
 
 * An Oracle Cloud account
-* Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
+* This lab requires completion of all of the preceding labs.
 
 
 ## Task 1: Delete Autoscaling Resources
@@ -65,9 +65,6 @@ Congratulation !!!
 This is the end of the workshop.
 
 We hope you have found this workshop useful.
-
-
-## Acknowledgements
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey

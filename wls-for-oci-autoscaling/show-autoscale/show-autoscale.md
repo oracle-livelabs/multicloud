@@ -17,7 +17,7 @@ In this lab, you will:
 This lab assumes you have the following:
 
 * An Oracle Cloud account
-* Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
+* This lab requires completion of all of the preceding labs.
 
 ## Task 1: Observe the Alarms created by WebLogic for the OCI stack
 
