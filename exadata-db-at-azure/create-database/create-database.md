@@ -54,7 +54,6 @@ This lab assumes you have:
     
     ![](./images/deploy_db_image7.png "DB versions ")
 
-
 6. Provide administrator password for the database. 
 
     You can use same password for the TDE wallet.
