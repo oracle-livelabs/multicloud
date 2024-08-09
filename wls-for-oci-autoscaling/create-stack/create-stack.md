@@ -46,7 +46,7 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 7. Enter your username as **Resource Name Prefix**. For example, if your username is user1, then enter user1 as your Resource Name Prefix. Select **Paste SSH key** and paste the content of **id_rsa.pub** file as shown below. 
     ![resource prefix](images/resource-prefix.png)
 
-8. *Check* the box for the **Create a Virtual Cloud Network**, **Provision Load Balancer**, **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
+8. *Uncheck* the box for **OCI Policies** and *Check* the box for the **Create a Virtual Cloud Network**, **Provision Load Balancer**, **Enable Application Performance Monitoring**, **Enable Autoscaling** as shown below.
     ![enable config](images/enable-config.png)
     
 

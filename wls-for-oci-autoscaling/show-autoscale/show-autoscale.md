@@ -33,11 +33,11 @@ In this task, we observe the Alarms created by the stack. We will see the Alarm 
  ![scaleout checkbox](images/scaleout-checkbox.png)
 
 
-4. Observe the Status of the Alarm that is in the **OK** state. As you see in the summary  **ProcessCpuLoad is greater than the threshold value of 0.8**. Scroll down to view the Alarm data.
+4. Observe the Status of the Alarm that is in the **OK** state. As you see in the summary  **ProcessCpuLoad is greater than the threshold value of 0.7**. Scroll down to view the Alarm data.
  ![scaleout initial](images/scaleout-alarm-initial.png)
  ![scaleout alarm data](images/scaleout-alarm-data.png)
 
-    > As there is no load on the WebLogic Cluster, you may see the values less than **.8** for the **ProcessCpuLoad**, that is why the **scaleout** alarm is in **Ok** state.
+    > As there is no load on the WebLogic Cluster, you may see the values less than **.7** for the **ProcessCpuLoad**, that is why the **scaleout** alarm is in **Ok** state.
 
 
 
@@ -59,10 +59,10 @@ In this task, we execute files downloaded in lab 2. This file enhances the Proce
 3. Go back to Alarm data for the **scaleout** alarm, you will see the rise in ProcessCpuLoad as shown below.
    ![load increases](images/increase-load.png)
     
-    > You need to wait till the ProcessCpuLoad is more than **.8** for a period of more than **five minutes**.
+    > You need to wait till the ProcessCpuLoad is more than **.7** for a period of more than **five minutes**.
    ![load two](images/load-five.png)
 
-4. As you see the **scaleout** alarm is in a **firing** state, go back to Cloud Shell to terminate the load generate process by entering **`Ctrl+C`** in the Cloud Shell as shown below.
+4. Once you notice, load is more than **.7** for more than 5 minutes, scroll up and you can see the **scaleout** alarm is in a **firing** state, go back to Cloud Shell to terminate the load generate process by entering **`Ctrl+C`** in the Cloud Shell as shown below.
    ![scaleout firing](images/scaleout-firing.png)
    ![stop load](images/stop-load.png)
 
@@ -79,10 +79,10 @@ In this task, we execute files downloaded in lab 2. This file enhances the Proce
 8. click on your backend set name as shown below.
    ![backendset name](images/backendset-name.png)
 
-9. Now you will see, one more compute instance has added to your cluster. 
+9. Click **Backends** under **Resources**, now you will see, one more compute instance has added to your cluster. 
    ![new backend](images/new-backend.png)
 
-10. To see the new compute instance, Click **Hamburgar menu** -> **Compute** -> **Instances**.
+10. To see the new compute instance, Click **Hamburger menu** -> **Compute** -> **Instances**.
    ![compute menu](images/compute-menu.png)
 
 11. You can see the new node **userN-wls-1** has been created.
