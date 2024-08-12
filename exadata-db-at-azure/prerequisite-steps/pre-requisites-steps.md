@@ -18,8 +18,9 @@ In this lab, you will learn about, how to :
 
 This lab assumes you have:
 - An existing Azure subscription
+- DB@Azure private offer signed and onboarding completed
 - Received and Accepted private offer for Oracle Database @Azure
-- Created identity federation using Azure's Identity service (Microsoft Entra ID)
+- Created identity federation using Azure's Identity service (Microsoft Entra ID) - (Optional)
 
 ##  Task 1: Create a Resource Group in Azure Cloud
 
