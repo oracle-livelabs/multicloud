@@ -30,6 +30,7 @@ The autoscaling resources, Functions, Event Rule, and Notification Subscriptions
       <copy>cd ~/autoscale-workshop
       python3 remove_resources.py pre-destroy RESOURCE_PREFIX -f autoscaling</copy>
       ```
+      > For example:  *python3 remove_resources.py pre-destroy user1 -f autoscaling*.
 
 2. Paste the modify command in the Cloud Shell as shown.
  ![delete autoscale](images/delete-autoscale.png)

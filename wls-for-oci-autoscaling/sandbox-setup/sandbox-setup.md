@@ -39,9 +39,11 @@ In this task, we create an SSH key pair in the Cloud Shell. We will use this SSH
       ```bash
          <copy>cat ~/.ssh/id_rsa.pub</copy>
       ```
+      > For example:  *ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKs0w+QsUsLT7q6Baqv0dIfKauL+8dgn0mj8L userXX@b39b7e1ae91e*.
+
       ![copy ssh](images/copy-ssh.png)
 
-      > Don't close Cloud Shell, we will use this. You can minimise the **Cloud Shell** using **-** and restore Cloud Shell using the **restore icon** as shown.
+      > You can minimise the **Cloud Shell** using **-** and restore Cloud Shell using the **restore icon** as shown.
       ![minimise cloudshell](images/minimise-cloudshell.png)
 
 

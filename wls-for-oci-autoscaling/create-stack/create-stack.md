@@ -37,7 +37,7 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 4. Open up the hamburger menu in the top left corner. Click **Developer Services** -> **Stacks** as shown below. 
     ![menu stack](images/menu-stack.png)
     
-5. Select the **comparment** which has same name as **your username**. For example if your username is user1, then select user1 as your compartment. Click **Create Stack**.
+5. Select the **comparment** which has format as *ocw24/username*. For example if your username is user15, then select ocw24/user15 as your compartment. Click **Create Stack**.
     ![select compartment](images/select-compartment.png)
 
 6. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
@@ -72,8 +72,8 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 15. In **Autoscaling** section,select the following values as shown below. </br>
     **WebLogic Monitoring Metrics**:    CPU Load</br>
     **Minimum Threshold Percent**:      10</br>
-    **Maximum Threshold Percent**:      80</br>
-    **Registry User Name**:             OCW24/testuser [To access image in the OCI registry to deploy autoscaling function, we have created this shared user.]</br>
+    **Maximum Threshold Percent**:      70</br>
+    **Registry User Name**:             *OCW24/testuser* [To access image in the OCI registry to deploy autoscaling function, we have created this shared user.]</br>
     **OCIR Auth Token Secret Compartment**: ocw24</br>
     **Validated Secret for OCIR Auth Token**:  authtoken </br>
     
@@ -99,11 +99,13 @@ In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server En
 In this task, We download Apache Jmeter and Configure PATH varibale in the Cloud Shell. We use Jmeter for simulating the CPU Load in the WebLogic Cluster.
 
 1. Go back to the browser tab where you have open the Cloud Shell, and than copy and paste the following command to download the Jmeter and unzip it as shown below.
+
     ```bash
     <copy>cd ~
     wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.zip
     unzip apache-jmeter-5.6.3.zip</copy>
     ```
+    > Press *enter* to ensure both commands are executed successfully.
 
 ## Task 3: Download Load generating files
 
@@ -115,6 +117,7 @@ In this task, We download the files in the Cloud Shell.
     <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/efQcFhIIGIGAUeiBmC2KWJnmDS8a34GQkLaln4lSEIghkkZ0jyvgNqwIjrnBuj4b/n/lrv4zdykjqrj/b/ankit-bucket/o/autoscale-workshop.zip   
     unzip autoscale-workshop.zip</copy>
     ```
+    > Press *enter* to ensure both commands are executed successfully.
 
     You may now proceed to the next lab.
 

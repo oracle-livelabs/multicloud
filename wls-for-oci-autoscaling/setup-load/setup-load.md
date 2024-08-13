@@ -70,7 +70,7 @@ In this task, we connect to WebLogic Node from the Cloud Shell using the SSH Key
 
 6. Copy and paste the following command in the text file and replace the Value for **`<USERNAME>_cluster`**, **`WLS_PASSWORD`** and **`<WLS_NODE_IP>`** from the text file. You must have received the value for  **`WLS_PASSWORD`** from your lab instructor.
       ```bash
-         <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password 'WLS_PASSWORD' -deploy -name RCMWeb -targets '<USERNAME>_cluster' ~/rcmweb.war</copy>
+         <copy>java weblogic.Deployer -adminurl 't3://<WLS_NODE_IP>:9071' -username weblogic -password WLS_PASSWORD -deploy -name RCMWeb -targets <USERNAME>_cluster ~/rcmweb.war</copy>
       ```
       > For example:  *java weblogic.Deployer -adminurl ‘t3://10.0.2.75:9071’ -username weblogic -password cloudworld24 -deploy -name RCMWeb -targets user1_cluster ~/rcmweb.war*.
 
