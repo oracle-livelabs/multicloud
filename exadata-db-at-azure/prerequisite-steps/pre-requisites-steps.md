@@ -18,19 +18,20 @@ In this lab, you will learn about, how to :
 
 This lab assumes you have:
 - An existing Azure subscription
+- DB@Azure private offer signed and onboarding completed
 - Received and Accepted private offer for Oracle Database @Azure
-- Created identity federation using Azure's Identity service (Microsoft Entra ID)
+- Created identity federation using Azure's Identity service (Microsoft Entra ID) - (Optional)
 
 ##  Task 1: Create a Resource Group in Azure Cloud
 
 1. Login to Azure Portal (https://portal.azure.com) and navigate to **All services**. Then click on **Resource groups** icon. 
 
 
-    ![](./images/resource_group_image1.png " ")
+    ![](./images/resource_group_image1.png "Resource group navigation ")
 
 2. On ‘Resource groups’ page, click on **+Create** button.
 
-   ![](./images/resource_group_image2.png " ")
+   ![](./images/resource_group_image2.png " Create button")
 
 3. On **'Create resource groups'** page provide details in each tab.
 
@@ -39,27 +40,27 @@ This lab assumes you have:
     * **Region** – Select region from the drop-down list
 
 
-    ![](./images/resource_group_image3.png " ")
+    ![](./images/resource_group_image3.png " Basic details")
 
   Provide inputs to organize your resource with tagging
   * **Name** – Created By
   * **Value** – Select your email or Name
 
-   ![](./images/resource_group_image4.png " ")
+   ![](./images/resource_group_image4.png "Tags ")
 
   On **Review + create** page, it will validate the inputs provided in previous steps. Once Validation is passed, it will create a resource group.
 
-    ![](./images/resource_group_image5.png " ")
+    ![](./images/resource_group_image5.png " Review")
 
   Navigate to **Resource groups** on **Home screen** and search for the Resource group created to validate the details.
 
-    ![](./images/resource_group_image6.png " ")
+    ![](./images/resource_group_image6.png "Search resource group ")
 
 ##  Task 2: Create a VNet in Azure Cloud
 
 1. Navigate to **Azure Services** and select **Virtual networks**. Then click on **Create** button
 
-   ![](./images/vnet_image1.png " ")
+   ![](./images/vnet_image1.png "Create button ")
 
 2. On **Create Virtual Network** page, provide all required details for each tab.
 
@@ -71,7 +72,7 @@ This lab assumes you have:
     * **Virtual network name** – Enter the name for VNet to be created
     * **Region** – Select region from the drop-down list
 
-      ![](./images/vnet_image2.png " ")
+      ![](./images/vnet_image2.png "Basic details about Vnet ")
 
     Security: 
     * **Virtual Network encryption** - Select Virtual Network Encryption checkbox to enable the encryption of the traffic traveling within the VNet
@@ -80,51 +81,51 @@ This lab assumes you have:
 
     * **Azure Firewall** - Similar to traffic encryption and Bastian service, you can enable the Azure Firewall if required.
 
-        ![](./images/vnet_image3.png " ")
+        ![](./images/vnet_image3.png "Security")
 
     * **IP Addresses** - There is an option to choose IPV4/IPV6 addresses for your network resources. 
 Select default IP Address range or provide new Ip range based on the requirement. Here we are using default IP range for IP addresses as shown in below screenshot.
 
-        ![](./images/vnet_image4.png " ")
+      ![](./images/vnet_image4.png "IP Address details")
 
   Provide inputs to organize your resource with tagging
   * **Name** – Created By
   * **Value** – Select your email or Name    
 
-      ![](./images/vnet_image5.png " ")
+      ![](./images/vnet_image5.png "Tags ")
 
  On **Review + create** page, it will validate the inputs provided. Once Validation is passed, it will create virtual network. 
-      ![](./images/vnet_image6.png " ")
+      ![](./images/vnet_image6.png "Review ")
 
 
   Once all required resources are created for virtual network, deployment status will get changed to **Complete**.
 
-      ![](./images/vnet_image7.png " ")
+      ![](./images/vnet_image7.png " Deployment complete")
 
   Navigate to Virtual Network and search for the name of the VNet created to see details about it.
 
-      ![](./images/vnet_image8.png " ")
+      ![](./images/vnet_image8.png "Search VNet ")
 
 ##  Task 3: Add Subnet and Delegate to Oracle Database @Azure Service
     
 1. Select VNet created in Task 2 and click on **‘Add a subnet'**. It will open a page to provide inputs. 
 
     
-      ![](./images/client_subnet1.png " ")
+      ![](./images/client_subnet1.png " Add subnet")
 
       Provide name for the subnet to be created and then select Ip address range based on the size of network required for the deployment.
 
-      ![](./images/client_subnet2.png " ")
+      ![](./images/client_subnet2.png "Ip Address ")
 
       You need to delegate this subnet to Oracle Database @Azure service. 
       Under Subnet Delegation option, select **Oracle.Database/networkAttachments** from the drop down list.
 
 
-      ![](./images/client_subnet3.png " ")
+      ![](./images/client_subnet3.png " Delegate subnet")
 
       Click on **Add** button to add this subnet to the VNet.
 
-      ![](./images/backup_subnet1.png " ")
+      ![](./images/backup_subnet1.png "Add subnet ")
 
 
 
