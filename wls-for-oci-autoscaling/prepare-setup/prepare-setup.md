@@ -109,5 +109,5 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Adrian Padilla Duarte , Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, July 2024

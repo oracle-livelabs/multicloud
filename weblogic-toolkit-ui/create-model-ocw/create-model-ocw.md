@@ -27,41 +27,42 @@ To run this lab, you must have:
 
 In this task, we navigate through the resources in on-premise **test-domain** using the WebLogic Administration console.
 
-1. On the left side, click **Arrow Icon**. 
+
+1. Click **Activities** and then Click the icon for **terminal** as shown below.
+ ![open terminal](images/open-terminal.png)
+
+2. Copy and paste the below command in the terminal to start the **on-premise WebLogic Admin Server**.
+      ```bash
+         <copy>cd ~/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain/bin/
+         ./startWebLogic.sh</copy>
+      ```
+      ![start server](images/start-server.png)
+
+3. On the left side, click **Arrow Icon**. 
  ![copy clipboard](images/copy-clipboard.png)
  > **Important**- You can see the **Clipboard**, for copy and paste between the host machine and remote desktop, we use the **Clipboard**. For example, if you want to copy from the host machine and want to paste it inside the remote desktop, you need to first paste in the clipboard, then you can paste it into the remote desktop. Again click on **Arrow Icon** to hide the **Settings** option.
 
-2. Click **Activities** and then Click the icon for **terminal** as shown below.
- ![open terminal](images/open-terminal.png)
-
-3. Copy and paste the below command in the terminal to start the **on-premise WebLogic Admin Server**.
- ```bash
-    <copy>cd ~/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain/bin/
-    ./startWebLogic.sh</copy>
- ```
- ![start server](images/start-server.png)
-
-3. Click **Activities** and then type **Firefox** in search box. Click the icon for **Firefox**.
+4. Click **Activities** and then type **Firefox** in search box. Click the icon for **Firefox**.
  ![open firefox](images/open-firefox.png)
 
-4. Copy and paste the below URL in the browser to open Admin Console and enter **weblogic/Welcome1%** as `Username/Password`, then click **Login**. 
- ```bash
-    <copy>http://localhost:7001/console</copy>
- ```
- ![Login Admin Console](images/login-admin-console.png)
+5. Copy and paste the below URL in the browser to open Admin Console and enter **weblogic/Welcome1%** as `Username/Password`, then click **Login**.
+      ```bash
+         <copy>http://localhost:7001/console</copy>
+      ```
+      ![Login Admin Console](images/login-admin-console.png)
 
-5. To view available servers, expand **Environment** and click **Servers**. You can see, that we have one dynamic cluster with 5 managed servers. 
+6. To view available servers, expand **Environment** and click **Servers**. You can see, that we have one dynamic cluster with 5 managed servers. 
  ![View Servers](images/view-servers.png)
 
-6. To view the datasources, expand **Services** and click **Data Sources**.
+7. To view the datasources, expand **Services** and click **Data Sources**.
  ![View Datasources](images/view-datasources.png)
 
-7. To view the deployed application, click **Deployment**. You can see, that we have **opdemo** as a deployed application.
+8. To view the deployed application, click **Deployment**. You can see, that we have **opdemo** as a deployed application.
  ![View Deployments](images/view-deployments.png)
 
 ## Task 2: Opening the base WKT UI Project
 
-For simplicity of lab, we created **`ocw_project.wktproj`**, which preset the location of docker, Java, Oracle Home, and Primary Image Tag. In this task, we open the **`ocw_project.wktproj`** project.
+To simplify the lab execution we have created an WKTUI Project **`ocw_project.wktproj`**. In this project we have pre-configured some of the required information such as location of docker, Java, Oracle Home, and Primary Image Tag. Now let’s open and explore the project and update it as required.
 
 1. Click **Activities** and then type **WebLogic** in search box. Click the icon for **WebLogic Kubernetes Toolkit UI**.
  ![Open WKTUI](images/open-wktui.png)
@@ -99,7 +100,7 @@ In this task, we perform introspection of an on-premise domain, which creates a 
 2. Click **File** -> **Add Model** -> **Discover Model(offline)**.
  ![Discover Model](images/discover-model.png)
 
-3. Click Open folder **icon** to open the **Domain Home**.
+3. Click Open folder **icon** to open the **Domain Home**. It opens the pop-up window in the back of WKTUI.
  ![Open Domain Hom](images/open-domain-home.png)
 
 4. In the Home folder, navigate to **`/home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/`** directory and select **test-domain** folder then  click **Select**. Click **OK**.

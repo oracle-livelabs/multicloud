@@ -18,18 +18,19 @@ In this lab, you will:
 This lab assumes you have the following:
 
 * An Oracle Cloud account
-* Created Stack: Oracle WebLogic Server Enterprise Edition BYOL
+* This lab requires completion of all of the preceding labs.
 
 
 ## Task 1: Delete Autoscaling Resources
 
-In this task, we destroy the Autoscaling resources within the Oracle Cloud Infrastructure.
+The autoscaling resources, Functions, Event Rule, and Notification Subscriptions are created using Oracle Cloud Infrastructure SDK APIs from WebLogic Administration instance during provisioning. So, you must destroy these autoscaling resources before destroying the stack. In this task, we destroy the Autoscaling resources within the Oracle Cloud Infrastructure.
 
-1. Copy and paste the following command in the text file and replace **`RESOURCE_PREFIX`** with your resource prefix. 
- ```bash
-    <copy>cd ~/autoscale-workshop
-    python3 remove_resources.py pre-destroy RESOURCE_PREFIX -f autoscaling</copy>
- ```
+1. Copy and paste the following command in the text file and replace **`RESOURCE_PREFIX`** with your resource prefix. Then, run the command in Cloud Shell to destroy autoscaling resources using remove_resources.py script.
+      ```bash
+      <copy>cd ~/autoscale-workshop
+      python3 remove_resources.py pre-destroy RESOURCE_PREFIX -f autoscaling</copy>
+      ```
+      > For example:  *python3 remove_resources.py pre-destroy user1 -f autoscaling*.
 
 2. Paste the modify command in the Cloud Shell as shown.
  ![delete autoscale](images/delete-autoscale.png)
@@ -66,9 +67,7 @@ This is the end of the workshop.
 
 We hope you have found this workshop useful.
 
-
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Contributors** - Adrian Padilla Duarte , Sid Joshi
 * **Last Updated By/Date** - Ankit Pandey, July 2024
