@@ -1,0 +1,42 @@
+{
+  "workshoptitle": "Get Started with Oracle Exadata Database Service @Azure",
+  "help": "livelabs-help-oci_us@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Introduction about the Workshop and Labs",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "Details about How to Register for Free Tier Account on OCI",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+    },
+
+    {
+      "title": "Lab 1: Create Resource Group, VNet and Subnet for Oracle Exadata Database Service @Azure",
+      "description": "Step by step instruction on creating a Secure Bucket",
+      "filename": "../../prerequisite-steps/pre-requisites-steps.md"
+    },
+    {
+      "title": "Lab 2: Create Oracle Exadata  Infrastructure resource",
+      "description": "Step by step instruction on creating a Secure Block Volume",
+      "filename": "../../provision-exadata-infra/provision-exadata-infra.md"
+    },
+    {
+      "title": "Lab 3: Create Oracle Exadata VM Cluster resource",
+      "description": "Step by step instruction on creating a Secure Virtual Machine Instance",
+      "filename": "../../provision-vm-cluster/provision-vm-cluster.md"
+    },
+    {
+      "title": "Lab 4: Create Oracle Database on Exadata Database Service@Azure",
+      "description": "Step by step instruction on creating a Secure Virtual Machine Instance",
+      "filename": "../../create-database/create-database.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "../../need-help/need-help.md"
+  }
+  ]
+}

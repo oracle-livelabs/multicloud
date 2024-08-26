@@ -146,7 +146,7 @@ Test by using curl and check that a new **hello.txt** object has been added to t
 2. Copy and paste the following command to place a **GET** request. You will have similar output as shown below.
     ```bash
     <copy>curl http://$PUBLIC_IP:8080/greet</copy>
-    {"message":"Hello World!","date":[2023,5,25]}
+    {"message":"Hello World!","date":[2024,6,5]}
     ```
 
 3. In **Cloud Console**, Click *Hamburger menu* -> *Storage* -> *Buckets* as shown.
@@ -164,7 +164,7 @@ Test by using curl and check that a new **hello.txt** object has been added to t
     ```bash
     <copy>curl -X PUT -H "Content-Type: application/json" -d '{"greeting" : "Hola"}' http://$PUBLIC_IP:8080/greet/greeting 
     curl http://$PUBLIC_IP:8080/greet</copy>
-    {"message":"Hola World!","date":[2023,5,25]}
+    {"message":"Hola World!","date":[2024,6,5]}
     ```
 
 7. Check that the bucket's **hello.txt** object now has a size of **4 bytes** because the greeting word is replaced with **Hola**. You can also download the object and verify that the content is changed to **Hola**.
@@ -205,6 +205,6 @@ Test by using curl and check that a new **hello.txt** object has been added to t
 
 ## Acknowledgements
 
-* **Author** -  Keith Lustria
-* **Contributors** - Ankit Pandey, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, August 2023
+* **Author** -  Ankit Pandey
+* **Contributors** - Sid Joshi, Maciej Gruszka
+* **Last Updated By/Date** - Ankit Pandey, June 2024
