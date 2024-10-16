@@ -48,4 +48,4 @@ Estimated Time: 120 minutes
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, November 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024
