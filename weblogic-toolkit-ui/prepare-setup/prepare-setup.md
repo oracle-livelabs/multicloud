@@ -31,10 +31,10 @@ This lab assumes you have:
 4. Choose the compartment in which you would like to install the stack. Click **Create Stack**.
     ![select compartment](images/select-compartment.png)
 
-3. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop from the file explorer. Click **Next**.
+5. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop from the file explorer. Click **Next**.
     ![browse zip](images/browse-zip.png)
 
-4. Enter or select the following and click **Next**.
+6. Enter or select the following and click **Next**.
 
     **Instance Count:** Accept the default, 1.
 

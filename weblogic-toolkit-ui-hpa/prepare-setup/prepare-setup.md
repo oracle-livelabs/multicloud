@@ -30,10 +30,10 @@ This lab assumes you have:
     ![select compartment](images/select-compartment.png)
 
 
-3. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
+4. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
     ![browse zip](images/browse-zip.png)
 
-4. Enter or select the following and click **Next**.
+5. Enter or select the following and click **Next**.
 
     **Instance Count:** Accept the default, 1.
 
@@ -52,7 +52,7 @@ This lab assumes you have:
     ![instance shape](images/instance-shape.png)
 
 
-7. Select **Run Apply** and click **Create**.
+6. Select **Run Apply** and click **Create**.
     ![run apply](images/run-apply.png)
 
     > You don't need to wait for the stack to be created. We will come later to this stack to get the URL for remote desktop.
