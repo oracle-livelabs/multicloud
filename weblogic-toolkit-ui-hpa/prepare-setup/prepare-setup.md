@@ -21,7 +21,7 @@ This lab assumes you have:
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5U-YjPCTNUQxm2QnMFFb28o7BTl1Ttoztpx6aDowWT0oc0nBmJpTuBNUQYC0OdFM/n/c4u02/b/hosted_workshops/o/stacks/wls-oke-toolkit-mkplc-freetier.zip)
+    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/fJs2GwhPaPt6maXQqc-ktySi6NmsuyRjY6V8DbpoUFf2d-dKDWDM0tgz97em1eLv/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-toolkit-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -30,10 +30,10 @@ This lab assumes you have:
     ![select compartment](images/select-compartment.png)
 
 
-3. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
+4. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
     ![browse zip](images/browse-zip.png)
 
-4. Enter or select the following and click **Next**.
+5. Enter or select the following and click **Next**.
 
     **Instance Count:** Accept the default, 1.
 
@@ -52,7 +52,7 @@ This lab assumes you have:
     ![instance shape](images/instance-shape.png)
 
 
-7. Select **Run Apply** and click **Create**.
+6. Select **Run Apply** and click **Create**.
     ![run apply](images/run-apply.png)
 
     > You don't need to wait for the stack to be created. We will come later to this stack to get the URL for remote desktop.
@@ -114,4 +114,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, November 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024
