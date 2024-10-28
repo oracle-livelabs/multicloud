@@ -21,7 +21,7 @@ This lab assumes you have:
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/fJs2GwhPaPt6maXQqc-ktySi6NmsuyRjY6V8DbpoUFf2d-dKDWDM0tgz97em1eLv/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-toolkit-mkplc-freetier.zip)
+    - [wls-oke-toolkit-hpa-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/tQgoc8a4vpX1P_YtnV6mEac_6Jrd3WytIkA_OTwigYVUEiSrrJeQ_idGLjjwycjR/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-toolkit-hpa-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -82,12 +82,12 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     * **Name**: The name of the cluster. Leave the default value.
     * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
-    * **Kubernetes version**: The version of Kubernetes. Select *1.26.2* as Kubernetes version.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.30.1* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
     * **Node type**: Select *Managed* as node type. 
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Public workers* value.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
-    * **Image**: Select the default image with Kubernetes version *1.26.2*.
+    * **Image**: Select the default image with Kubernetes version *1.30.1*.
     * **Number of nodes**: The number of worker nodes to create.Select *1* as value.
 
 
@@ -97,7 +97,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
 4. Click *Next* to review the details you entered for the new cluster.
 
-5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
+5. On the *Review* page, click *Create Cluster* to create the new network resources and the new cluster.
 
     ![Review Cluster](images/review-cluster.png " ")
 
