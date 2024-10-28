@@ -41,15 +41,6 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
     ![Edit Ingress](images/edit-ingress.png)
 
 3. Enter the following details and click on *OK*.<br>
-        Name: console<br> 
-        Path Expression: /console<br>
-        Target Service Namespace: test-domain-ns<br>
-        Target Service: test-domain-admin-server<br>
-        Target Port: 7001<br>
-
-    ![Console Ingress](images/console-ingress.png)
-
-4. In the similar way, add the following *opdemo* Ingress Routes as well:<br>
         Name: opdemo<br>
         Path Expression: /opdemo<br>
         Target Service Namespace: test-domain-ns<br>
@@ -57,7 +48,7 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
         Target Port: 8001<br>
     ![Opdemo Ingress](images/opdemo-ingress.png)
 
-5. In the similar way, add the following *remote-console* Ingress Routes as well:<br>
+4. In the similar way, add the following *remote-console* Ingress Routes as well:<br>
         Name: remote-console<br>
         Path Expression: / <br>
         Target Service Namespace: test-domain-ns<br>
@@ -65,12 +56,12 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
         Target Port: 7001<br>
         ![Remote Console Ingress](images/remote-console-ingress.png)
 
-6. To update the Inress Routes, click *Update Ingress Routes*.
+5. To update the Inress Routes, click *Update Ingress Routes*.
     ![Update Ingress Routes](images/update-ingress-routes.png)
 
-7. In the *Update Existing Ingress Routes*, Click *Yes*.
+6. In the *Update Existing Ingress Routes*, Click *Yes*.
 
-8. Once you see *Ingress Routes Update Complete* window, Click *Ok*.
+7. Once you see *Ingress Routes Update Complete* window, Click *Ok*.
     ![Update Ingress Complete](images/update-ingress-complete.png)
     
     > You need to notedown this load balancer public IP and save it in text file.
