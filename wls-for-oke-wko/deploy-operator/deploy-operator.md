@@ -22,7 +22,7 @@ In this Task, we creats the configuration file *.oci/config* and *.kube/config* 
 1. In Firefox, open the cloud console, select the **Hamburger Menu** -> **Developer Services** -> **Kubernetes Clusters (OKE)** as shown.
     ![OKE Icon](images/oke-icon.png)
 
-2. Click on the cluster name which your created in lab 3. and then click **Access Cluster**. 
+2. Click on the cluster name which your created in lab 2. and then click **Access Cluster**. 
     ![Access Cluster](images/access-cluster.png)
 
 
@@ -136,4 +136,4 @@ This section provides support for installing the WebLogic Kubernetes Operator (t
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024
