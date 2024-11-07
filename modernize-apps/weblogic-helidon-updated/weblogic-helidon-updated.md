@@ -1,5 +1,5 @@
 
-# Using WebLogic and Helidon Microservices
+# Modernise Enterprise Java Apps deployed on WebLogic with Helidon and Coherence CE
 
 ## Introduction
 

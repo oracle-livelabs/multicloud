@@ -4,7 +4,7 @@
   "tutorials": [
     {
       "title": "Introduction",
-      "description": "Introduction to Weblogic and Helidon",
+      "description": "Introduction to Weblogic, Helidon and Coherence CE",
       "filename": "../../intro/intro-weblogic-helidon.md"
     },
     {
@@ -25,7 +25,7 @@
       "filename": "../../initialize-environment/initialize-environment.md"
     },
     {
-      "title": "Lab 3: Modernize with Weblogic and Helidon",
+      "title": "Lab 3: Modernise Enterprise Java Apps deployed on WebLogic with Helidon and Coherence CE",
       "description": "Weblogic and Helidon Lab",
       "publisheddate": "02/22/2024",
       "filename": "../../weblogic-helidon-updated/weblogic-helidon-updated.md"

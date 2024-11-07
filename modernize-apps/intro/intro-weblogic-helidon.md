@@ -1,9 +1,9 @@
 # Introduction
 
 ## About this Workshop
-This workshop delves into the seamless integration of Helidon Microservice, a lightweight Java microservices framework, with Oracle WebLogic Server, a robust Java EE application server.
+This workshop delves into the seamless integration of Helidon Microservice, a lightweight Java microservices framework and Coherence CE, with Oracle WebLogic Server, a robust Java EE application server.
 
-Throughout this workshop, we’ll focus on the practical demonstration of integrating the BestBank application, developed using Java EE, with Helidon MP.
+Throughout this workshop, we’ll focus on the practical demonstration of integrating the BestBank application, developed using Java EE, with Helidon MP and Coherence CE.
 
 By developing a new service for the BestBank application using Helidon MP, we’ll showcase the smooth interoperability between Java EE and Helidon MP, highlighting the potential for leveraging modern microservices architecture within traditional enterprise environments.
 
