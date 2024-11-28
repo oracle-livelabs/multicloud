@@ -1,0 +1,52 @@
+{
+    "workshoptitle": "Migrate a WebLogic domain to Oracle Cloud Infrastructure",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "publisheddate": "11/25/2024",
+            "filename": "../../intro-oci/intro-oci.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Login to Oracle Cloud",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
+            "title": "Lab 1: Set up an On-Premises Environment with the Workshop Marketplace Stack",
+            "publisheddate": "11/25/2024",
+            "filename": "../../prepare-setup/prepare-setup.md"
+        },
+        {
+            "title": "Lab 2: Prepare the OCI Account",
+            "publisheddate": "11/25/2024",
+            "filename": "../../prepare/prepare.md"
+        },
+        {
+            "title": "Lab 3: Provision the WebLogic Infrastructure",
+            "publisheddate": "11/25/2024",
+            "filename": "../../provision-wls/provision-wls.md"
+        },
+        {
+            "title": "Lab 4: Migrate the WebLogic Domain",
+            "publisheddate": "11/25/2024",
+            "filename": "../../migrate-wls-wdt/migrate-wls-wdt.md"
+        },
+        {
+            "title": "Lab 5: Scale the WebLogic Domain",
+            "publisheddate": "11/25/2024",
+            "filename": "../../scale-wls/scale-wls.md"
+        },
+        {
+            "title": "Lab 6: Tear down the Environment",
+            "publisheddate": "11/25/2024",
+            "filename": "../../tear-down/tear-down.md",
+            "type": "cleanenvironemnt"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+        }
+     ]
+}
