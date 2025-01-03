@@ -1,0 +1,56 @@
+{
+    "workshoptitle": "Coherence Demonstration Application",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type": "freetier",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+        },
+        {
+            "title": "Lab 1: Create Remote Desktop",
+            "type": "freetier",
+            "filename": "../../prepare-setup/prepare-setup.md"
+        },
+        {
+            "title": "Lab 2: Explore the Demonstration Application",
+            "type": "freetier",
+            "filename": "../../explore/explore.md"
+        },
+        {
+            "title": "Lab 3: Federate Data Between Clusters",
+            "type": "freetier",
+            "filename": "../../federate/federate.md"
+        },
+        {
+            "title": "Lab 4: Explore Python, JavaScript and Go Clients",
+            "type": "freetier",
+            "filename": "../../explore-clients/explore-clients.md"
+        },
+        {
+            "title": "Lab 5: Gain Insight using Open Tracing",
+            "type": "freetier",
+            "filename": "../../open-tracing/open-tracing.md"
+        },
+		{
+            "title": "Lab 6: Work with Persistence",
+            "type": "freetier",
+            "filename": "../../persistence/persistence.md"
+        },
+		{
+            "title": "Lab 7: Explore the Application Code",
+            "type": "freetier",
+            "filename": "../../explore-code/explore-code.md"
+        },
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      }
+   ]
+}
