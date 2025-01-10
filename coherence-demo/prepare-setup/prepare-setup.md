@@ -1,0 +1,82 @@
+# Prepare Setup
+
+## Introduction
+This lab will show you how to download the Oracle Resource Manager (ORM) stack zip file needed to setup the resource needed to run this workshop. Then you creates a compute instance and a Virtual Cloud Network (VCN) which provides you access to a remote desktop.
+
+Estimated Time: 10 minutes
+
+### Objectives
+* Download ORM stack
+* Create Compute + Networking using Resource Manager Stack
+
+### Prerequisites
+This lab assumes you have:
+- An Oracle Free Tier or Paid Cloud account
+
+## Task 1: Download Oracle Resource Manager (ORM) stack zip file
+
+1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
+
+    *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
+
+    - [coherence-orm-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/3kNOQ7B-nbiaEiOMy6_9FekAR4AJXXwQhr6id2s5_JpJAtKm1yT6EhPj2KOZI-ZL/n/lrv4zdykjqrj/b/ankit-bucket/o/coherence-orm-mkplc-freetier.zip)
+
+2.  Save in your downloads folder.
+
+## Task 2: Create Stack: Compute + Networking
+
+1. Identify the ORM stack zip file downloaded in **Task 1: Download Oracle Resource Manager (ORM) stack zip file**.
+
+2. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager** > **Stacks**. Choose the compartment in which you would like to install the stack. Click **Create Stack**.
+    ![menu stack](images/menu-stack.png)
+    ![select compartment](images/select-compartment.png)
+
+
+3. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
+    ![browse zip](images/browse-zip.png)
+
+4. Enter or select the following and click **Next**.
+
+    **Instance Count:** Accept the default, 1.
+
+    **Select Availability Domain:** Select an availability domain from the dropdown list.
+
+    **Need Remote Access via SSH?** Keep Unchecked for Remote Desktop only Access - The Default.
+
+    **Use Flexible Instance Shape with Adjustable OCPU Count?:** Keep the default as checked (unless you plan on using a fixed shape).
+
+    **Instance Shape:** Keep the default or select from the list of Flex shapes in the dropdown menu (e.g VM.Standard.E4.Flex).
+
+    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory. 
+
+    **Use Existing VCN?:** Accept the default by leaving this unchecked. This will create a new VCN.
+    ![main config](images/main-config.png)
+    ![instance shape](images/instance-shape.png)
+
+
+7. Select **Run Apply** and click **Create**.
+    ![run apply](images/run-apply.png)
+
+
+
+## Task 3: Access the Graphical Remote Desktop
+
+For ease of execution of this workshop, your VM instance has been pre-configured with a remote graphical desktop accessible using any modern browser on your laptop or workstation. Proceed as detailed below to log in.
+
+1. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager** > **Stacks**.
+
+2. Click on the stack name which you have createed in Task 2.
+    ![click stack](images/click-stack.png)
+
+3. Navigate to **Application Information** tab, and copy **Remote Desktop URL** and paste it in new browser tab.
+    ![desktop url](images/desktop-url.png)
+    
+    > Now you need to follow all the instruction inside this remote desktop.
+
+
+You may now proceed to the next lab.
+
+## Acknowledgements
+* **Author** -  Ankit Pandey
+* **Contributors** - Maciej Gruszka, Sid Joshi
+* **Last Updated By/Date** - Ankit Pandey, January 2025
