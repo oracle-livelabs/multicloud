@@ -1,4 +1,4 @@
-# Gain Insight using OpenTelemetry or OpenTracing APIs
+# Gain Insight through OpenTelemetry or OpenTracing APIs
 
 ## Introduction
       

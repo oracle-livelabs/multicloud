@@ -33,7 +33,6 @@ This lab assumes you have:
 * An Oracle Free Tier(Trial), Paid or LiveLabs Cloud Account
 * You have completed:
   * Lab: Prepare Setup (Free-tier and Paid Tenants only)
-  * Lab: Initialize Environment
      
 The following has already been setup in this VM:
 

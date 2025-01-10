@@ -19,7 +19,7 @@ This lab assumes you have:
 
     *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
 
-    - [wls-oke-stack-toolkit-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/VaB6UBJxoA7UZ6nVXEYnorwQTepG0EerarP0p4NcO1z0Rb_Y9kyYZEBl38TtH4_4/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-stack-toolkit-mkplc-freetier.zip)
+    - [coherence-orm-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/3kNOQ7B-nbiaEiOMy6_9FekAR4AJXXwQhr6id2s5_JpJAtKm1yT6EhPj2KOZI-ZL/n/lrv4zdykjqrj/b/ankit-bucket/o/coherence-orm-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -47,7 +47,7 @@ This lab assumes you have:
 
     **Instance Shape:** Keep the default or select from the list of Flex shapes in the dropdown menu (e.g VM.Standard.E4.Flex).
 
-    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (1) will provision 1 OCPUs and 16GB of memory. 
+    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory. 
 
     **Use Existing VCN?:** Accept the default by leaving this unchecked. This will create a new VCN.
     ![main config](images/main-config.png)
@@ -65,7 +65,7 @@ For ease of execution of this workshop, your VM instance has been pre-configured
 
 1. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager** > **Stacks**.
 
-2. Click on the stack name which you have createed in lab 1.
+2. Click on the stack name which you have createed in Task 2.
     ![click stack](images/click-stack.png)
 
 3. Navigate to **Application Information** tab, and copy **Remote Desktop URL** and paste it in new browser tab.
@@ -73,11 +73,10 @@ For ease of execution of this workshop, your VM instance has been pre-configured
     
     > Now you need to follow all the instruction inside this remote desktop.
 
-You may now proceed to the next lab.
 
 You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2024
+* **Last Updated By/Date** - Ankit Pandey, January 2025
