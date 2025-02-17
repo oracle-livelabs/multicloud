@@ -32,24 +32,24 @@ The bootstrap project contains the following key files:
 
 4. **`application.yaml`** - Contains application configuration settings. We will extend this file as we enhance the application.
 
+      ![project structure](images/project-structure.png)
+
 ## Task 3: Build and Run the Project
 
-1. Open a new terminal, Click **Terminal** -> **New Terminal**.
-
-
-2. Run the following command to **clean** and **build** the project:
+1. In the terminal, where you have set the JDK and Maven, run the following command to **clean** and **build** the project:
       ```bash
-      <copy>mvn clean package</copy>
+      <copy>cd code/bootstrap
+      mvn clean package</copy>
       ```
 
-3. Start the application using:
+2. Start the application using:
       ```bash
       <copy>java -jar target/helidon-ai-hol.jar</copy>
       ```
 
 ## Task 4: Verify the Application is Running
 
-1. Run the following command to test the application.
+1. One a new terminal, and run the following command to test the application.
       ```bash
       <copy>curl -X GET http://localhost:8080/chat</copy>
       ```
@@ -59,6 +59,8 @@ The bootstrap project contains the following key files:
       ```bash
       Hello
       ```
+
+      > To stop the application, press **Ctrl+C** in the terminal where application is running.
 
 ## Acknowledgements
 

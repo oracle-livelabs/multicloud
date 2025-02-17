@@ -48,7 +48,7 @@ To enable Helidon and LangChain4J integration, we need to add several **Maven de
     </dependency></copy>
     ```
 
-2. Since **Helidon Inject** works at build time, we already added annotation processors in the **`<build><plugins>**` section of **`pom.xml`**:
+2. Since **Helidon Inject** works at build time, we already added annotation processors in the **`<build><plugins>`** section of **`pom.xml`**:
     ```bash
     <copy><plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -82,12 +82,13 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 1. Add the following configuration to `src/main/resources/application.yaml`:
     ```bash
     <copy>langchain4j:
-    open-ai:
-        chat-model:
-        enabled: true
-        api-key: "demo"
-        model-name: "gpt-4o-mini"</copy>
+        open-ai:
+            chat-model:
+                enabled: true
+                api-key: "demo"
+                model-name: "gpt-4o-mini"</copy>
     ```
+    ![enable chat](images/enable-chat.png)
 
     >  After adding the configuration, the chat model will be **available for injection** into Helidon components.
 
@@ -128,12 +129,23 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 
 ## Task 3: Testing the AI Chat Assistant
 
-1. To test the assistant, run the following command in the terminal:
+1. In the terminal, where you have set the JDK and maven, run the following command to build the application.
+    ```bash
+    <copy>mvn clean package
+    java -jar target/helidon-ai-hol.jar</copy>
+    ```
+
+2. To test the assistant, run the following command in the terminal:
     ```bash
     <copy>curl -X GET "http://localhost:8080/chat?question=Hello"</copy>
     ```
 
     You should receive an AI-generated response.
+    ```bash
+    $ curl -X GET "http://localhost:8080/chat?question=Hello"
+    Hello! How can I assist you today?
+    $
+    ```
 
 ## Acknowledgements
 

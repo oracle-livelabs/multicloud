@@ -98,10 +98,9 @@ We create an **embedding store** that will store and retrieve embeddings efficie
 
 To connect our embedding store to the **AI Service**, we need a **Content Retriever**. Instead of writing Java code, Helidon allows configuring it directly via **YAML**.
 
-1. Modify **`application.yaml`** and add the following:
+1. Modify **`application.yaml`** and add the following inside **langchain4j** while keeping proper indentation:
     ```yaml
-    <copy>langchain4j:
-    rag:
+    <copy>rag:
         embedding-store-content-retriever:
         enabled: true
         max-results: 10
@@ -109,6 +108,7 @@ To connect our embedding store to the **AI Service**, we need a **Content Retrie
         embedding-model: "@default"
         embedding-store: "@default"</copy>
     ```
+    ![app yaml](images/app-yaml.png)
 
     > **What This Does:**
     - Enables **RAG** by configuring `EmbeddingStoreContentRetriever`.
@@ -139,9 +139,30 @@ After recompiling, our AI Service will now support RAG, allowing it to query dat
     <copy>curl -X GET "http://localhost:8080/chat?question=What%20drinks%20do%20you%20have?"</copy>
     ```
 
-    > **Expected Behavior:**
-    - Initially, **no data** is in the embedding store, so results may be empty.
-    - In the **next step**, we will ingest menu data into the embedding store!
+    You should have output similar to the following:
+    ```bash
+    $ curl -X GET "http://localhost:8080/chat?question=What%20drinks%20do%20you%20have?"
+    I dont have physical drinks, but I can suggest a variety of beverages! Here are some options:
+
+    ### Non-Alcoholic Drinks:
+    1. **Water** - Still or sparkling.
+    2. **Juices** - Orange, apple, cranberry, or mixed fruit.
+    3. **Soda** - Cola, lemon-lime, root beer, etc.
+    4. **Tea** - Black, green, herbal, or iced tea.
+    5. **Coffee** - Espresso, Americano, latte, or cold brew.
+    6. **Smoothies** - Made with fruits, vegetables, and yogurt or milk.
+    7. **Lemonade** - Classic or flavored (strawberry, mint, etc.).
+    8. **Milkshakes** - Chocolate, vanilla, or strawberry.
+
+    ### Alcoholic Drinks:
+    1. **Beer** - Lager, ale, stout, or craft beer.
+    2. **Wine** - Red, white, rosé, or sparkling.
+    3. **Cocktails** - Margarita, mojito, martini, or cosmopolitan.
+    4. **Spirits** - Whiskey, vodka, rum, gin, or tequila.
+
+    If you have a specific occasion or preference in mind, let me know, and I can give tailored suggestions!
+    $
+    ```
 
 
 ## Acknowledgements

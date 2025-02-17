@@ -45,14 +45,15 @@ In this application, **menu data** consists of a list of **menu items** along wi
 > **prefilled menu dataset** is provided in the repository under: `data/menu.json`
 
 1.  Open **`data/menu.json`** and  you can **add a new menu item of your choice** or leave it.
+    ![menu json](images/menu-json.png)
 
 ## Task 2: Creating an Internal Data Model
 
 To represent a **menu item** in Java, we will define a **Java Bean** that mirrors the JSON structure.
 
-1. We will keep all AI-related classes in `io.helidon.hol.lc4j.data` package. Right click on `io.helidon.hol.lc4j` and select **New Folder** and Enter name **data**.
+1. We will keep all AI-related classes in `io.helidon.hol.lc4j.data` package. Right click on **`io.helidon.hol.lc4j`** and select **New Folder** and Enter name **data**.
 
-2. Right click on `io.helidon.hol.lc4j.data`, and select **New File** and Enter **`MenuItem.java` as name.
+2. Right click on `io.helidon.hol.lc4j.data`, and select **New File** and Enter **`MenuItem.java`** as name.
     ```bash
     <copy>MenuItem.java</copy>
     ```
@@ -99,8 +100,9 @@ To represent a **menu item** in Java, we will define a **Java Bean** that mirror
 1. Modify the **`application.yaml`** file to specify the path to `menu.json`:
     ```yaml
     <copy>app:
-    menu-items: "../../data/menu.json"</copy>
+        menu-items: "../../data/menu.json"</copy>
     ```
+    ![app data](images/app-data.png)
 
 ## Task 4: Create a Service to Load Menu Data
 
@@ -117,12 +119,12 @@ At this step, we will create a **service** responsible for:
 - The `getMenuItems()` method **parses the JSON file** using **Jackson** and converts it into a `List<MenuItem>`.
 - If the file is missing or unreadable, an **error is logged**, and a `RuntimeException` is thrown to prevent the application from running with missing data.
 
-1. Right click on `io.helidon.hol.lc4j.data`, and select **New File** and Enter **`MenuItemsService.java` as name.
+1. Right click on `io.helidon.hol.lc4j.data`, and select **New File** and Enter **`MenuItemsService.java`** as name.
     ```bash
     <copy>MenuItemsService.java</copy>
     ```
 
-2. Copy and paste the following content in `MenuItemsService.jav`
+2. Copy and paste the following content in `MenuItemsService.java`
     ```java
     <copy>package io.helidon.hol.lc4j.data;
 
@@ -208,6 +210,7 @@ public class ApplicationMain {
     Loaded menu item: Espresso
     Loaded menu item: Cappuccino
     ```
+    ![console log](images/console-log.png)
     
     > **If you added a new menu item to `menu.json`, it should also appear in the output.**
 

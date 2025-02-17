@@ -44,14 +44,49 @@ Estimated time: 05 minutes
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/mtb2d7fzfQKf9XEuSimkOBQnmR5yfbjUwcnPaMpAN5fcd8ENKwtzzlGeOrdpkZPt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/Ke2PNzmGVcAOHj-UZqvtADLlRFodC3Ino_wMhzBxzIQQWS3MyEiT9KyDOfpcQwtT/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
     ```
     
-
-2. Copy and paste the following command to unzip the *helidon-virtual-thread.zip*.
+2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
     ```bash
-    <copy>unzip ~/helidon-virtual-thread.zip</copy>
+    <copy>unzip ~/helidon-ai-hol.zip</copy>
     ```
+
+3. Click *File* -> *Open* in Code Editor.
+    ![Open Project](images/open-project.png)
+
+4. Select *helidon-ai-hol* folder and click *Open*.
+    ![Helidon Project](images/helidon-project.png)
+
+    > Click **Explorer** icon as shown and expand the folders.
+        ![open explorer](images/open-explorer.png)
+
+
+5. Open a new terminal, and then copy and paste the following command to set the PATH and JAVA_HOME variable.
+    ```bash
+    <copy>PATH=~/jdk-23.0.2/bin:~/apache-maven-3.8.8/bin:$PATH
+    JAVA_HOME=~/jdk-23.0.2/</copy>
+    ```
+
+6. Copy the following command and run in the terminal to verify that required JDK and Maven version are configured properly.
+
+    ```bash
+    <copy>mvn -v</copy>
+    ```
+
+    you will have the output similar to the following:
+    ```bash
+    $ mvn -v
+    Apache Maven 3.8.8 (4c87b05d9aedce574290d1acc98575ed5eb6cd39)
+    Maven home: /home/ankit_x_pa/apache-maven-3.8.8
+    Java version: 23.0.2, vendor: Oracle Corporation, runtime: /home/ankit_x_pa/jdk-23.0.2
+    Default locale: en_US, platform encoding: UTF-8
+    OS name: "linux", version: "4.14.35-2047.542.2.el7uek.x86_64", arch: "amd64", family: "unix"
+    $ 
+    ```
+
+    > *You will use only this terminal for building and running the application as it has the required JDK and Maven version.* You can use any terminal for testing the helidon application.
+
 
 You may now *proceed to the next lab*.
 

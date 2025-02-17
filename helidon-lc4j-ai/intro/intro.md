@@ -28,7 +28,7 @@ This lab assumes you have:
 
 [Helidon](https://helidon.io/) is a collection of Java libraries for writing microservices.
 
-Helidon is open source under the Apache license. Sources are available on [GitHub](https://github.com/oracle/helidon/tree/4.1.6).
+Helidon is open source under the Apache license. Sources are available on [GitHub](https://github.com/helidon-io/helidon/tree/main).
 
 Helidon is cloud-native ready. It provides fast start-up time and has low memory consumption and a small disk footprint. It also comes with a full observability stack out of the box including health checks, metrics, tracing and logging.
 
