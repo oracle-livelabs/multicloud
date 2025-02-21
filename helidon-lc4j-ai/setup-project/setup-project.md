@@ -36,6 +36,29 @@ The bootstrap project contains the following key files:
 
 ## Task 3: Build and Run the Project
 
+1. Add the following **maven-compiler-plugin** in the **`<build><plugins>`** section of **`pom.xml`**:
+
+      ```bash
+      <copy><plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                  <annotationProcessorPaths>
+                  <path>
+                        <groupId>io.helidon.codegen</groupId>
+                        <artifactId>helidon-codegen-apt</artifactId>
+                        <version>${helidon.version}</version>
+                  </path>
+                  <path>
+                        <groupId>io.helidon.service</groupId>
+                        <artifactId>helidon-service-codegen</artifactId>
+                        <version>${helidon.version}</version>
+                  </path>
+                  </annotationProcessorPaths>
+            </configuration>
+      </plugin></copy>
+      ```
+
 1. In the terminal, where you have set the JDK and Maven, run the following command to **clean** and **build** the project:
       ```bash
       <copy>cd code/bootstrap
