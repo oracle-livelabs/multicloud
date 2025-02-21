@@ -101,12 +101,12 @@ To connect our embedding store to the **AI Service**, we need a **Content Retrie
 1. Modify **`application.yaml`** and add the following inside **langchain4j** while keeping proper indentation:
     ```yaml
     <copy>rag:
-        embedding-store-content-retriever:
-        enabled: true
-        max-results: 10
-        min-score: 0.6
-        embedding-model: "@default"
-        embedding-store: "@default"</copy>
+            embedding-store-content-retriever:
+            enabled: true
+            max-results: 10
+            min-score: 0.6
+            embedding-model: "@default"
+            embedding-store: "@default"</copy>
     ```
     ![app yaml](images/app-yaml.png)
 
@@ -136,12 +136,12 @@ After recompiling, our AI Service will now support RAG, allowing it to query dat
 
 2. Try asking a **menu-related question** via the chatbot API:
     ```bash
-    <copy>curl -X GET "http://localhost:8080/chat?question=What%20drinks%20do%20you%20have?"</copy>
+    <copy>curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What drinks do you have?"</copy>
     ```
 
     You should have output similar to the following:
     ```bash
-    $ curl -X GET "http://localhost:8080/chat?question=What%20drinks%20do%20you%20have?"
+    $ curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What drinks do you have?"
     I dont have physical drinks, but I can suggest a variety of beverages! Here are some options:
 
     ### Non-Alcoholic Drinks:

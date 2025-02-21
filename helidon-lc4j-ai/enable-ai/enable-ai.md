@@ -29,9 +29,9 @@ In This Section, we will:
 
 ## Task 1: Add dependencies and annotation processors
 
-To enable Helidon and LangChain4J integration, we need to add several **Maven dependencies** and **annotation processors**.
+To enable Helidon and LangChain4J integration, You need to add several **Maven dependencies** and **annotation processors**.
 
-1. We have already added the following dependencies inside the **`<dependencies>`** section of **`pom.xml`**:
+1. You need to add the following dependencies inside the **`<dependencies>`** section of **`pom.xml`**:
     ```bash
     <copy><dependency>
         <groupId>io.helidon.integrations.langchain4j</groupId>
@@ -48,7 +48,7 @@ To enable Helidon and LangChain4J integration, we need to add several **Maven de
     </dependency></copy>
     ```
 
-2. Since **Helidon Inject** works at build time, we already added annotation processors in the **`<build><plugins>`** section of **`pom.xml`**:
+2. Since **Helidon Inject** works at build time, You need to add annotation processors in the **`<build><plugins>`** section of **`pom.xml`**:
     ```bash
     <copy><plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -146,6 +146,8 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
     Hello! How can I assist you today?
     $
     ```
+    > You can switch between two tabs as shown in the screenshot. Press *Ctrl+C* to stop the application after testing.
+    ![switch tab](images/switch-tab.png)
 
 ## Acknowledgements
 

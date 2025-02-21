@@ -177,7 +177,7 @@ Now that our application has menu data in the embedding store, we can ask the AI
 
 2. Try querying the assistant:
     ```bash
-    <copy>curl -X GET http://localhost:8080/chat?question="What%20can%20you%20offer%20today?"
+    <copy>curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What drinks do you have?"</copy>
     ```
 
     > Sample Test Questions

@@ -8,7 +8,7 @@ Estimated time: 05 minutes
 
 ### Objectives
 
-* Setup the Code Editor
+* Setup the Visual Studio Code
 * Download the required Maven and JDK version
 * Download the Helidon source code
 
@@ -19,11 +19,10 @@ Estimated time: 05 minutes
 
 
 
-## Task 1: Setup the Code Editor
+## Task 1: Setup the Visual Studio Code
 
-1. In Cloud Console, click **Developer tools** icon -> **Code Editor** icon.
     
-2. In Code Editor, click **Terminal** -> **New Terminal**.
+1. In **VSCode**, click **Terminal** -> **New Terminal**.
     ![Open Terminal](images/open-terminal.png)
 
 ## Task 2: Download the required Maven and JDK version
@@ -39,12 +38,12 @@ Estimated time: 05 minutes
     cd ~</copy>
     ```
 
-## Task 3: Open Helidon Application in the Code Editor
+## Task 3: Open Helidon Application in the Visual Studio Code
 
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/Ke2PNzmGVcAOHj-UZqvtADLlRFodC3Ino_wMhzBxzIQQWS3MyEiT9KyDOfpcQwtT/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/_-3JwanlfvytfH_3EdYdQYZf9kYPSbL3nfiGkJXythKvgXMDl5Bikyv0a1uM776U/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
     ```
     
 2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
@@ -52,7 +51,7 @@ Estimated time: 05 minutes
     <copy>unzip ~/helidon-ai-hol.zip</copy>
     ```
 
-3. Click *File* -> *Open* in Code Editor.
+3. Click *File* -> *Open Folder* in **VSCode**.
     ![Open Project](images/open-project.png)
 
 4. Select *helidon-ai-hol* folder and click *Open*.
@@ -76,12 +75,12 @@ Estimated time: 05 minutes
 
     you will have the output similar to the following:
     ```bash
-    $ mvn -v
+    $ mvn -v 
     Apache Maven 3.8.8 (4c87b05d9aedce574290d1acc98575ed5eb6cd39)
-    Maven home: /home/ankit_x_pa/apache-maven-3.8.8
-    Java version: 23.0.2, vendor: Oracle Corporation, runtime: /home/ankit_x_pa/jdk-23.0.2
+    Maven home: /home/opc/apache-maven-3.8.8
+    Java version: 23.0.2, vendor: Oracle Corporation, runtime: /home/opc/jdk-23.0.2
     Default locale: en_US, platform encoding: UTF-8
-    OS name: "linux", version: "4.14.35-2047.542.2.el7uek.x86_64", arch: "amd64", family: "unix"
+    OS name: "linux", version: "5.15.0-104.119.4.2.el8uek.x86_64", arch: "amd64", family: "unix"
     $ 
     ```
 
@@ -90,13 +89,6 @@ Estimated time: 05 minutes
 
 You may now *proceed to the next lab*.
 
-## Learn More
-
-### About Code Editor
-
-The Code Editor enables you to edit and deploy code for various OCI services directly from the OCI Console. You can now update service workflows and scripts without having to switch between the Console and your local development environments. This makes it easy to rapidly prototype cloud solutions, explore new services, and accomplish quick coding tasks.
-
-Code Editor's direct integration with Cloud Shell allows you access to the GraalVM Enterprise Native Image and JDK 17 (Java Development Kit) pre-installed in Cloud Shell.
 
 ## Acknowledgements
 
