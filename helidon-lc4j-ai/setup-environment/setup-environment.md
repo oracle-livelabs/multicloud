@@ -28,10 +28,12 @@ Estimated time: 05 minutes
 
 1. In the terminal, copy and paste the below command to install the **VSCode** in the remote Desktop.
     ```bash
-    <copy>./install-vscode.sh</copy>
+    <copy>cd ~
+    ./install-vscode.sh</copy>
     ```
 
 2. Click **Activities** and type **Visual**, you will see the icon for **Visual Studio code**. Click **Visual Studio Code** icon.
+    > While opening application, if it asks for the password, enter **welcome1**.
 
     
 3. In **VSCode**, click **Terminal** -> **New Terminal**.
