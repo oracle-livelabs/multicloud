@@ -2,34 +2,26 @@
 
 ## Introduction
 
-This lab walks you through the steps to access the remote desktop and install **Visual Studio Code** in it. You will use this Remote Console for this HOL.
+This lab provides you with two options that you may follow to complete the lab.
 
-Estimated time: 05 minutes
+Estimated time: 02 minutes
 
 ### Objectives
 
-* Access the Remote Desktop URL
-
-### Prerequisites
-
-* You must have Chrome/Firefox as a browser to open Remote Console URL.
+* Select your environment
 
 
+## Task 1: Select your environment
 
-## Task 1: Access the Remote console URL
+We provide you with two options for completing the workshop, allowing you to choose the method that best suits your needs.
 
-1. You must have received the **bitly** link from the instructor. Open the URL in the browser.
+**Run the Workshop in Your Own Environment:** If you prefer, you can set up the workshop in your personal environment. This allows you to work in a familiar setup, using your own tools and configurations. In this case, you need to start with **Lab 1A** and skip **Lab 1B**.
 
-## Task 2: Install Visual Studio Code in the Remote Desktop
+**Run the Workshop in a Remote Desktop:** Alternatively, we have a prepared remote desktop environment for you. This option offers a ready-to-use workspace, designed specifically for the workshop. In this case, you need to start with **Lab 1B** and skip **Lab 1A**. 
 
-1. In the Remote Desktop, You will get **Firefox** browser and **Terminal** open. Click **Download VSCode** bookmark, It will download the binaries in the **Downloads** folder.
+Please note that the remote desktop will be destroyed after this session, so any work or data saved will not persist beyond the session.
 
-2. In the terminal, copy and paste the below command to install the **VSCode** in the remote Desktop.
-    ```bash
-    <copy>./install-vscode.sh</copy>
-    ```
-
-3. Click **Activities** and type **Visual**, you will see the icon for **Visual Studio code**. Click **Visual Studio Code** icon.
+Choose the option that works best for you, and get started with the workshop!
 
 You may now *proceed to the next lab*.
 

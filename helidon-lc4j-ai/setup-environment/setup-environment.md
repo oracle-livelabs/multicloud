@@ -19,13 +19,26 @@ Estimated time: 05 minutes
 
 
 
-## Task 1: Setup the Visual Studio Code
+## Task 1: Access the Remote console URL
+
+1. You must have received the **bitly** link from the instructor. Open the URL in the browser.
+
+## Task 2: Install Visual Studio Code in the Remote Desktop
+
+
+1. In the terminal, copy and paste the below command to install the **VSCode** in the remote Desktop.
+    ```bash
+    <copy>./install-vscode.sh</copy>
+    ```
+
+2. Click **Activities** and type **Visual**, you will see the icon for **Visual Studio code**. Click **Visual Studio Code** icon.
 
     
-1. In **VSCode**, click **Terminal** -> **New Terminal**.
+3. In **VSCode**, click **Terminal** -> **New Terminal**.
     ![Open Terminal](images/open-terminal.png)
 
-## Task 2: Download the required Maven and JDK version
+
+## Task 3: Download the required Maven and JDK version
 
 1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
 
@@ -38,12 +51,12 @@ Estimated time: 05 minutes
     cd ~</copy>
     ```
 
-## Task 3: Open Helidon Application in the Visual Studio Code
+## Task 4: Open Helidon Application in the Visual Studio Code
 
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/_-3JwanlfvytfH_3EdYdQYZf9kYPSbL3nfiGkJXythKvgXMDl5Bikyv0a1uM776U/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/eVD6cUQpRms3iic_ZM4_si54wtIsFTNQUns-_U_HR7ofwQRj4m7qR76IMXDEEFqt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
     ```
     
 2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
@@ -59,33 +72,6 @@ Estimated time: 05 minutes
 
     > Click **Explorer** icon as shown and expand the folders.
         ![open explorer](images/open-explorer.png)
-
-
-5. Open a new terminal, and then copy and paste the following command to set the PATH and JAVA_HOME variable.
-    ```bash
-    <copy>PATH=~/jdk-23.0.2/bin:~/apache-maven-3.8.8/bin:$PATH
-    JAVA_HOME=~/jdk-23.0.2/</copy>
-    ```
-
-6. Copy the following command and run in the terminal to verify that required JDK and Maven version are configured properly.
-
-    ```bash
-    <copy>mvn -v</copy>
-    ```
-
-    you will have the output similar to the following:
-    ```bash
-    $ mvn -v 
-    Apache Maven 3.8.8 (4c87b05d9aedce574290d1acc98575ed5eb6cd39)
-    Maven home: /home/opc/apache-maven-3.8.8
-    Java version: 23.0.2, vendor: Oracle Corporation, runtime: /home/opc/jdk-23.0.2
-    Default locale: en_US, platform encoding: UTF-8
-    OS name: "linux", version: "5.15.0-104.119.4.2.el8uek.x86_64", arch: "amd64", family: "unix"
-    $ 
-    ```
-
-    > *You will use only this terminal for building and running the application as it has the required JDK and Maven version.* You can use any terminal for testing the helidon application.
-
 
 You may now *proceed to the next lab*.
 

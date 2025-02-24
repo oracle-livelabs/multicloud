@@ -48,13 +48,31 @@ To enable Helidon and LangChain4J integration, You need to add several **Maven d
     </dependency></copy>
     ```
 
-2. Since **Helidon Inject** works at build time, You need to add annotation processors in the **maven-compiler-plugin** **`<build><plugins><configuration><annotationProcessorPaths>`** section of **`pom.xml`**:
+2. Since Helidon Inject works at build time, we need to add annotation processor helidon-integrations-langchain4j-codegen to the maven-compiler-plugin in pom.xml, result should look like the following:**`<build><plugins><configuration><annotationProcessorPaths>`** section of **`pom.xml`**:
     ```bash
-    <copy><path>
-        <groupId>io.helidon.integrations.langchain4j</groupId>
-        <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
-        <version>${helidon.version}</version>
-    </path></copy>
+    <copy><plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <annotationProcessorPaths>
+                <path>
+                    <groupId>io.helidon.codegen</groupId>
+                    <artifactId>helidon-codegen-apt</artifactId>
+                    <version>${helidon.version}</version>
+                </path>
+                <path>
+                    <groupId>io.helidon.service</groupId>
+                    <artifactId>helidon-service-codegen</artifactId>
+                    <version>${helidon.version}</version>
+                </path>
+                <path>
+                <groupId>io.helidon.integrations.langchain4j</groupId>
+                <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
+                <version>${helidon.version}</version>
+                </path>
+            </annotationProcessorPaths>
+        </configuration>
+    </plugin></copy>
     ```
 
 ## Task 2: Adding a Chat Model
