@@ -67,17 +67,17 @@ We will use the `@SystemMessage` annotation to provide instructions to our AI as
     java -jar target/helidon-ai-hol.jar</copy>
     ```
 
-2. Try asking an unrelated question:**
+2. Try asking an unrelated question:
     ```bash
-    <copy>curl -X GET http://localhost:8080/chat?question="What%20is%20the%20weather%20today?"</copy>
+    <copy>curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What is the weather today?"</copy>
     ```
 
     > **Expected response:**
     "I'm here to help with the menu and taking orders! Would you like to know about our coffee options or maybe our pastries?"
 
-3. Now ask a relevant question:**
+3. Now ask a relevant question:
     ```bash
-    <copy>http://localhost:8080/chat?question="What%20coffee%20do%20you%20have?"</copy>
+    <copy>curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What do you offer today?"</copy>
     ```
 
     > **Expected response:**

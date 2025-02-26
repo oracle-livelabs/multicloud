@@ -29,9 +29,9 @@ In This Section, we will:
 
 ## Task 1: Add dependencies and annotation processors
 
-To enable Helidon and LangChain4J integration, we need to add several **Maven dependencies** and **annotation processors**.
+To enable Helidon and LangChain4J integration, You need to add several **Maven dependencies** and **annotation processors**.
 
-1. We have already added the following dependencies inside the **`<dependencies>`** section of **`pom.xml`**:
+1. You need to add the following dependencies inside the **`<dependencies>`** section of **`pom.xml`**:
     ```bash
     <copy><dependency>
         <groupId>io.helidon.integrations.langchain4j</groupId>
@@ -48,7 +48,7 @@ To enable Helidon and LangChain4J integration, we need to add several **Maven de
     </dependency></copy>
     ```
 
-2. Since **Helidon Inject** works at build time, we already added annotation processors in the **`<build><plugins>**` section of **`pom.xml`**:
+2. Since Helidon Inject works at build time, we need to add annotation processor helidon-integrations-langchain4j-codegen to the maven-compiler-plugin in pom.xml, result should look like the following:**`<build><plugins><configuration><annotationProcessorPaths>`** section of **`pom.xml`**:
     ```bash
     <copy><plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -61,14 +61,14 @@ To enable Helidon and LangChain4J integration, we need to add several **Maven de
                     <version>${helidon.version}</version>
                 </path>
                 <path>
-                    <groupId>io.helidon.integrations.langchain4j</groupId>
-                    <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
-                    <version>${helidon.version}</version>
-                </path>
-                <path>
                     <groupId>io.helidon.service</groupId>
                     <artifactId>helidon-service-codegen</artifactId>
                     <version>${helidon.version}</version>
+                </path>
+                <path>
+                <groupId>io.helidon.integrations.langchain4j</groupId>
+                <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
+                <version>${helidon.version}</version>
                 </path>
             </annotationProcessorPaths>
         </configuration>
@@ -82,12 +82,13 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 1. Add the following configuration to `src/main/resources/application.yaml`:
     ```bash
     <copy>langchain4j:
-    open-ai:
-        chat-model:
-        enabled: true
-        api-key: "demo"
-        model-name: "gpt-4o-mini"</copy>
+        open-ai:
+            chat-model:
+                enabled: true
+                api-key: "demo"
+                model-name: "gpt-4o-mini"</copy>
     ```
+    ![enable chat](images/enable-chat.png)
 
     >  After adding the configuration, the chat model will be **available for injection** into Helidon components.
 
@@ -128,12 +129,25 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 
 ## Task 3: Testing the AI Chat Assistant
 
-1. To test the assistant, run the following command in the terminal:
+1. In the terminal, where you have set the JDK and maven, run the following command to build the application.
+    ```bash
+    <copy>mvn clean package
+    java -jar target/helidon-ai-hol.jar</copy>
+    ```
+
+2. To test the assistant, run the following command in the terminal:
     ```bash
     <copy>curl -X GET "http://localhost:8080/chat?question=Hello"</copy>
     ```
 
     You should receive an AI-generated response.
+    ```bash
+    $ curl -X GET "http://localhost:8080/chat?question=Hello"
+    Hello! How can I assist you today?
+    $
+    ```
+    > You can switch between two tabs as shown in the screenshot. Press *Ctrl+C* to stop the application after testing.
+    ![switch tab](images/switch-tab.png)
 
 ## Acknowledgements
 

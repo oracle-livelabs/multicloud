@@ -31,13 +31,18 @@ An **AI Service** is a user-defined interface annotated with `@Ai.Service`. By d
 
 At this stage, only the **`ChatLanguageModel`** has been configured, so it will be **automatically injected** into the service. Later, we will extend the AI Service by adding **embedding storage, chat memory**, and other components to enhance its capabilities.
 
-1. We will keep all AI-related classes in `io.helidon.hol.lc4j.ai` package. Right click on `io.helidon.hol.lc4j` and select **New Folder** and Enter name **ai**.
+1. We will keep all AI-related classes in `io.helidon.hol.lc4j.ai` package. Right click on **`io.helidon.hol.lc4j`** and select **New Folder** and Enter name **ai**.
+    ![create folder](images/create-folder.png)
+    ![ai folder](images/ai-folder.png)
 
-2. Right click on `io.helidon.hol.lc4j.ai`, and select **New File** and Enter **`ChatAiService.java` as name.
+2. Right click on **`io.helidon.hol.lc4j.ai`**, and select **New File** and Enter **`ChatAiService.java`** as name.
     ```bash
     <copy>ChatAiService.java</copy>
     ```
-3. Copy and paste the following content in `MenuItem.java`
+    ![new file](images/new-file.png)
+    ![chat ai file](images/chat-ai-file.png)
+
+3. Copy and paste the following content in **`ChatAiService.java`**.
     ```bash
     <copy>package io.helidon.hol.lc4j.ai;
 
@@ -74,7 +79,7 @@ var answer = chatAiService.chat(question);
 
 1. Replace the existing content of `ChatBotService.java` with the below one:
     ```bash
-    <copy>
+    <copy>import io.helidon.hol.lc4j.ai.ChatAiService;
     @Service.Singleton
     public class ChatBotService implements HttpService {
 

@@ -25,7 +25,7 @@ We will use LangChain4J’s `EmbeddingStoreIngestor`, which simplifies the inges
 
 We will implement the ingestor as a **service** and inject all required components using **constructor injection**.
 
-1. Right click on `io.helidon.hol.lc4j.ai`, and select **New File** and Enter **`MenuItemsIngestor.java` as name.
+1. Right click on `io.helidon.hol.lc4j.ai`, and select **New File** and Enter **`MenuItemsIngestor.java`** as name.
     ```bash
     <copy>MenuItemsIngestor.java</copy>
     ```
@@ -77,7 +77,7 @@ The **formatted text** should look like this:
 
 > Latte: A rich espresso drink with steamed milk. Category: Drink. Price: $4.50. Tags: Hot, Customizable, Classic. Add-ons: Oat milk, Soy milk, Extra shot, Caramel syrup.
 
-1. Add the following method to `MenuItemsIngestor.java`:**
+1. Add the following method to **`MenuItemsIngestor.java`**:
     ```java
     <copy>private Document generateDocument(MenuItem item) {
         var str = String.format(
@@ -103,7 +103,7 @@ The **formatted text** should look like this:
 
 Now, we are ready to ingest menu items into the embedding store.
 
-1. Add the following `ingest()` method to `MenuItemsIngestor.java`:**
+1. Add the following `ingest()` method to **`MenuItemsIngestor.java`**:
     ```java
     <copy>public void ingest() {
         // Create an ingestor with the given embedding model and embedding store
@@ -135,7 +135,7 @@ Now, we are ready to ingest menu items into the embedding store.
 
 We need to trigger ingestion when the application starts.
 
-1. Modify the `main()` method in `ApplicationMain.java` as shown below:**
+1. Modify the **`ApplicationMain.java`** as shown below:
     ```java
     <copy>import io.helidon.hol.lc4j.ai.MenuItemsIngestor;
 
@@ -177,7 +177,7 @@ Now that our application has menu data in the embedding store, we can ask the AI
 
 2. Try querying the assistant:
     ```bash
-    <copy>curl -X GET http://localhost:8080/chat?question="What%20can%20you%20offer%20today?"
+    <copy>curl -G -X GET "http://localhost:8080/chat" --data-urlencode "question=What drinks do you have?"</copy>
     ```
 
     > Sample Test Questions

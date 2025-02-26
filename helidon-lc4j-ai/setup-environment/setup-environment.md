@@ -8,7 +8,7 @@ Estimated time: 05 minutes
 
 ### Objectives
 
-* Setup the Code Editor
+* Setup the Visual Studio Code
 * Download the required Maven and JDK version
 * Download the Helidon source code
 
@@ -19,14 +19,28 @@ Estimated time: 05 minutes
 
 
 
-## Task 1: Setup the Code Editor
+## Task 1: Access the Remote console URL
 
-1. In Cloud Console, click **Developer tools** icon -> **Code Editor** icon.
+1. You must have received the **bitly** link from the instructor. Open the URL in the browser.
+
+## Task 2: Install Visual Studio Code in the Remote Desktop
+
+
+1. In the terminal, copy and paste the below command to install the **VSCode** in the remote Desktop.
+    ```bash
+    <copy>cd ~
+    ./install-vscode.sh</copy>
+    ```
+
+2. Click **Activities** and type **Visual**, you will see the icon for **Visual Studio code**. Click **Visual Studio Code** icon.
+    > While opening application, if it asks for the password, enter **welcome1**.
+
     
-2. In Code Editor, click **Terminal** -> **New Terminal**.
+3. In **VSCode**, click **Terminal** -> **New Terminal**.
     ![Open Terminal](images/open-terminal.png)
 
-## Task 2: Download the required Maven and JDK version
+
+## Task 3: Download the required Maven and JDK version
 
 1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
 
@@ -39,29 +53,30 @@ Estimated time: 05 minutes
     cd ~</copy>
     ```
 
-## Task 3: Open Helidon Application in the Code Editor
+## Task 4: Open Helidon Application in the Visual Studio Code
 
 1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/mtb2d7fzfQKf9XEuSimkOBQnmR5yfbjUwcnPaMpAN5fcd8ENKwtzzlGeOrdpkZPt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-virtual-thread.zip</copy>
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/eVD6cUQpRms3iic_ZM4_si54wtIsFTNQUns-_U_HR7ofwQRj4m7qR76IMXDEEFqt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
     ```
     
-
-2. Copy and paste the following command to unzip the *helidon-virtual-thread.zip*.
+2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
     ```bash
-    <copy>unzip ~/helidon-virtual-thread.zip</copy>
+    <copy>unzip ~/helidon-ai-hol.zip</copy>
     ```
+
+3. Click *File* -> *Open Folder* in **VSCode**.
+    ![Open Project](images/open-project.png)
+
+4. Select *helidon-ai-hol* folder and click *Open*.
+    ![Helidon Project](images/helidon-project.png)
+
+    > Click **Explorer** icon as shown and expand the folders.
+        ![open explorer](images/open-explorer.png)
 
 You may now *proceed to the next lab*.
 
-## Learn More
-
-### About Code Editor
-
-The Code Editor enables you to edit and deploy code for various OCI services directly from the OCI Console. You can now update service workflows and scripts without having to switch between the Console and your local development environments. This makes it easy to rapidly prototype cloud solutions, explore new services, and accomplish quick coding tasks.
-
-Code Editor's direct integration with Cloud Shell allows you access to the GraalVM Enterprise Native Image and JDK 17 (Java Development Kit) pre-installed in Cloud Shell.
 
 ## Acknowledgements
 

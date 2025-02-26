@@ -10,10 +10,14 @@
         {
             "title": "Get Started",
             "description": "Prerequisites",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/pre-register-free-tier-account.md"
+            "filename": "../../get-started/get-started.md"
         },
         {
-            "title": "Lab 1: Setup the Environment",
+            "title": "Lab 1A: Setup the environment in your laptop",
+            "filename": "../../laptop-setup/laptop-setup.md"
+        },
+        {
+            "title": "Lab 1B: Setup the Environment in OCI",
             "type": "freetier",
             "filename": "../../setup-environment/setup-environment.md"
         },
