@@ -70,7 +70,7 @@ In this lab, you will:
 
       The cache configuration file (cache-config.xml in our case) defines caches and other services, for the cluster. A few areas of particular interest are:
 
-      1. An interceptor shown below, or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L46), 
+      * An interceptor shown below, or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L46), 
          which is run on startup of the Coherence cluster: 
          ```xml  
          <interceptors>
@@ -82,7 +82,7 @@ In this lab, you will:
          </interceptors>
          ```
          In this context, interceptors allow us to write code to react to various lifecycle events such as when the cache configuration is activated or disposed. In this case we are running the `BootstrapInterceptor` class, explained below, to boostrap the application. Other interceptors can be created to respond to other events such as member left, partition events and cache mutation events.
-      2. Cache Scheme Mapping, shown below or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L51)
+      * Cache Scheme Mapping, shown below or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L51)
          defines the mapping from the cache name to a caching scheme and shows the domain classes for each cache, which are explained further below.
          ```xml
          <caching-scheme-mapping>
@@ -100,7 +100,7 @@ In this lab, you will:
            </cache-mapping>
          </caching-scheme-mapping>
          ```
-      3. Federated Service Definitions, shown in part below or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L71)
+      * Federated Service Definitions, shown in part below or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/b632f832fe9860e9eb6fb454f13a4158367d0f23/src/main/resources/cache-config-grid-edition.xml#L71)
          which defines the actual federated scheme with its read-write backing map to write through to a database (in memory database for convenience in our case). We can also see the topology is defined as `Active`, which is a reference to the topology in the override file below. 
          ```xml
            <federated-scheme>
@@ -136,7 +136,7 @@ In this lab, you will:
             </topologies>
          </federated-scheme>
          ```
-      4. A Http Proxy server which has the JAX-RS resources [ApplicationResourceConfig](https://github.com/coherence-community/coherence-demo/blob/1412/src/main/java/com/oracle/coherence/demo/application/ApplicationResourceConfig.java) 
+      * A Http Proxy server which has the JAX-RS resources [ApplicationResourceConfig](https://github.com/coherence-community/coherence-demo/blob/1412/src/main/java/com/oracle/coherence/demo/application/ApplicationResourceConfig.java) 
          which serves the static application and [ServiceResourceConfig](https://github.com/coherence-community/coherence-demo/blob/1412/src/main/java/com/oracle/coherence/demo/application/ServiceResourceConfig.java) which serves various REST endpoints through which the HTML/JavaScript application interacts.
 
    **Operational Override**
@@ -179,9 +179,9 @@ In this lab, you will:
       </federation-config>
       ```
 
-## Task 2: Explore the Java Code
+## Task 3: Explore the Java Code
 
-1. Domain Classes
+**Domain Classes**
 
    There are two classes that hold the main data for the application:
         
@@ -253,9 +253,9 @@ In this lab, you will:
       }
       ```     
 
-2. Bootstrap Interceptor and Utilities classes
+**Bootstrap Interceptor and Utilities classes**
 
-   Available at `src/main/java/com/oracle/coherence/demo/application/BootstrapInterceptor.java` or on [GitHub](src/main/java/com/oracle/coherence/demo/application/BootstrapInterceptor.java).
+   Available at `src/main/java/com/oracle/coherence/demo/application/BootstrapInterceptor.java` or on [GitHub](https://github.com/coherence-community/coherence-demo/blob/1412/src/main/java/com/oracle/coherence/demo/application/BootstrapInterceptor.java).
    This class contains code run at startup of the cluster member to determine if it should load the initial data, and then opens the main dashboard. The main part of this code runs the following:
            
       ```java
@@ -354,7 +354,7 @@ In this lab, you will:
         The above code creates positions for a single symbol, or if `symbol` is null for random symbols.
         It utilizes a more efficient `putAll` of a `Map` to quickly add the number of positions required.
 
-3. Other Classes
+**Other Classes**
 
     There are various other components to the Java based JAX-RS application. You can explore the various classes and packages below via the explorer or via the direct GitHub links.
 
@@ -431,7 +431,7 @@ In this lab, you will:
      }
      ``` 
 
-## Task 3: Explore the Application HTML and JavaScript
+## Task 4: Explore the Application HTML and JavaScript
 
 Since the focus of this lab is Coherence, we have not included detailed information about the HTML and Angular components.
 
@@ -444,9 +444,9 @@ The main components are highlight below:
    | src/main/resources/web/javscripts/controller.js | Angular Controller                     | [Link](https://github.com/coherence-community/coherence-demo/blob/1412/src/main/resources/web/javascripts/controllers.js) |
 
   
-## Task 4: Explore the Python Code
+## Task 5: Explore the Python Code
                
-1. Code and Serialization
+**Code and Serialization**
 
    The **Python** code is available in the following location:
   
@@ -465,7 +465,7 @@ The main components are highlight below:
 
    A few of the main areas of code have been included below:
 
-   **Define the domain classes**
+**Define the domain classes**
 
    The `@serialization.proxy("Price")` defines the Java class that this object will serialize to.
 
@@ -489,7 +489,7 @@ The main components are highlight below:
       trades: NamedCache[str, Trade]
       ``` 
    
-   **Connect to the Coherence cluster and setup caches**
+**Connect to the Coherence cluster and setup caches**
    
       ```python
       async def init_coherence() -> None:
@@ -507,7 +507,7 @@ The main components are highlight below:
          prices = await session.get_cache("Price")
          trades = await session.get_cache("Trade")
       ```
-   **Display the cache size**
+**Display the cache size**
     
       ```python
       async def display_cache_size() -> None:
@@ -526,7 +526,7 @@ The main components are highlight below:
          print(f"Price cache size: {pricesize}")
       ```
 
-   **Monitor prices**
+**Monitor prices**
 
       ```python
       async def monitor_prices() -> None:
@@ -559,7 +559,7 @@ The main components are highlight below:
                f"Price changed for {symbol}, new=${new_price:.2f}, old=${old_price:.2f}, change=${change:.2f}")
       ```
     
-   **Add trades**
+**Add trades**
 
       ```python 
       async def add_trades(symbol: str, count: int) -> None:
@@ -606,7 +606,7 @@ The main components are highlight below:
          print(f"Unable to find {symbol}, valid symbols are {symbols}")
       ```
 
-   **Stock split**
+**Stock split**
 
       ```python 
       async def stock_split(symbol: str, factor: int) -> None:
@@ -654,14 +654,14 @@ The main components are highlight below:
          print(f"Unable to find {symbol}, valid symbols are {symbols}")
       ```
 
-## Task 5: Explore the Javascript Code
+## Task 6: Explore the Javascript Code
 
 The **JavaScript** code is available in the following location:
   
    **clients/js/main.js**</br>
    **[main.js](https://github.com/coherence-community/coherence-demo/blob/1412/clients/js/main.js)**       
     
-1. Define the domain classes
+**Define the domain classes**
       ```javascript
       // create a Trade
       function createTrade(symbol, qty, price) {
@@ -679,7 +679,7 @@ The **JavaScript** code is available in the following location:
 
    No actual classes / objects are required in JavaScript, as you can work directly with JSON.   
 
-2. Connect to the Coherence cluster and setup caches
+**Connect to the Coherence cluster and setup caches**
 
       ```javascript
       // setup session to Coherence
@@ -688,7 +688,7 @@ The **JavaScript** code is available in the following location:
       const trades = session.getCache('Trade')
       ```
 
-3. Display the cache size
+**Display the cache size**
 
       ```javascript
       if (command === "size") {
@@ -697,7 +697,7 @@ The **JavaScript** code is available in the following location:
       }
       ```
  
-4. Monitor prices
+**Monitor prices**
 
       ```javascript
       // monitor any price changes
@@ -718,7 +718,7 @@ The **JavaScript** code is available in the following location:
       }
    ```
 
-5. Add trades
+**Add trades**
 
       ```javascript
       // add a number of trades for a symbol
@@ -761,7 +761,7 @@ The **JavaScript** code is available in the following location:
       }
       ```
 
-6. Stock split
+**Stock split**
 
       ```javascript
       // split a stock using a given factor
@@ -803,14 +803,14 @@ The **JavaScript** code is available in the following location:
       }
       ```
 
-## Task 6: Explore the Go Code
+## Task 7: Explore the Go Code
 
 The **Go code** is available in the following location:
   
    **clients/go/main.go**</br>
    **[main.go](https://github.com/coherence-community/coherence-demo/blob/1412/clients/go/main.go)**
 
-1. Define the domain classes
+**Define the domain classes**
 
       ```go
       type Trade struct {
@@ -828,7 +828,7 @@ The **Go code** is available in the following location:
       }
       ```
 
-2. Connect to the Coherence cluster and setup caches
+**Connect to the Coherence cluster and setup caches**
 
       ```go
       // create a new Session
@@ -849,7 +849,7 @@ The **Go code** is available in the following location:
       }
       ```   
 
-3. Display the cache size
+**Display the cache size**
     
       ```go
       func displaySize(trades coherence.NamedCache[string, Trade], prices coherence.NamedCache[string, Price]) error {
@@ -868,7 +868,7 @@ The **Go code** is available in the following location:
       }
       ```
 
-4. Monitor prices
+**Monitor prices**
  
       ```go
       func listenPrices(prices coherence.NamedCache[string, Price]) error {
@@ -903,7 +903,7 @@ The **Go code** is available in the following location:
       select {}
       ```
 
-5. Add trades
+**Add trades**
  
       ```go
       func addTrades(trades coherence.NamedCache[string, Trade], prices coherence.NamedCache[string, Price], options ...string) error {
@@ -971,7 +971,7 @@ The **Go code** is available in the following location:
       }
       ```
 
-6. Stock split
+**Stock split**
 
       ```go
       func stockSplit(trades coherence.NamedCache[string, Trade], prices coherence.NamedCache[string, Price], options ...string) error {

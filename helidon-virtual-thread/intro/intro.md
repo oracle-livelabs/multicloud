@@ -47,7 +47,6 @@ This lab assumes you have:
 * [https://helidon.io](https://helidon.io)
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, March 2024
+* **Last Updated By/Date** - Ankit Pandey, March 2025
