@@ -50,9 +50,7 @@ In this lab, you will:
 
    Confirm that the secondary cluster data has also been updated.            
 
-## Learn More
 
-* [Coherence Persistence Documentation](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.2.0/administer/persisting-caches.html)
 
 ## Acknowledgements
 

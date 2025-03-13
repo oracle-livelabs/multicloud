@@ -119,8 +119,7 @@ For this task there is a number, e.g.`[1]` in a square bracket on the image belo
 ## Learn More
 
 * [Peek into Coherence using OpenTracing - Blog](https://blogs.oracle.com/oraclecoherence/post/peek-inside-coherence-with-opentracing)
-* [Coherence and OpenTracing - Documentation](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.2.0/develop-applications/debugging-coherence.html)
-* [Caching Data Sources](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.2.0/develop-applications/caching-data-sources.htm)   
+  
 
 ## Acknowledgements
 

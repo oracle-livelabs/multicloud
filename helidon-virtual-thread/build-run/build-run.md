@@ -257,7 +257,6 @@ Let’s compare the implementations between Virtual thread and Helidon SE (react
 You may now *proceed to the next lab*.
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, March 2024
+* **Last Updated By/Date** - Ankit Pandey, March 2025
