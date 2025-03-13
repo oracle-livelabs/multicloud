@@ -79,7 +79,8 @@ var answer = chatAiService.chat(question);
 
 1. Replace the existing content of `ChatBotService.java` with the below one:
     ```bash
-    <copy>import io.helidon.hol.lc4j.ai.ChatAiService;
+    <copy>// import ChatAiService class created in task 1
+    import io.helidon.hol.lc4j.ai.ChatAiService;
     @Service.Singleton
     public class ChatBotService implements HttpService {
 
@@ -100,7 +101,7 @@ var answer = chatAiService.chat(question);
             // Reading the `question` query parameter from the request. 
             var question = req.query().get("question");
 
-            // Calling the AI service to get the answer
+            // Calling the AI service to get the answer by replacing chatModel with Chat AI service
             var answer = chatAiService.chat(question);
 
             // Return the answer
@@ -128,4 +129,4 @@ var answer = chatAiService.chat(question);
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025

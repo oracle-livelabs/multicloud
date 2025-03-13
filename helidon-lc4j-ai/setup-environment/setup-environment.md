@@ -9,8 +9,8 @@ Estimated time: 05 minutes
 ### Objectives
 
 * Setup the Visual Studio Code
-* Download the required Maven and JDK version
-* Download the Helidon source code
+* Check the required Maven and JDK version
+* Open Helidon source code in VS Code
 
 ### Prerequisites
 
@@ -40,39 +40,23 @@ Estimated time: 05 minutes
     ![Open Terminal](images/open-terminal.png)
 
 
-## Task 3: Download the required Maven and JDK version
+## Task 3: Check the required Maven and JDK versions are installed properly
 
-1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
-
-    ```bash
-    <copy>cd ~
-    wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
-    tar -xvf apache-maven-3.8.8-bin.tar.gz
-    wget https://download.oracle.com/java/23/latest/jdk-23_linux-x64_bin.tar.gz
-    tar -xzvf jdk-23_linux-x64_bin.tar.gz
-    cd ~</copy>
-    ```
-
-## Task 4: Open Helidon Application in the Visual Studio Code
-
-1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
+1. Execute following commands in the terminal to verify that required JDK and Maven version are installed and configured properly.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/eVD6cUQpRms3iic_ZM4_si54wtIsFTNQUns-_U_HR7ofwQRj4m7qR76IMXDEEFqt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
+    <copy>java -version</copy>
     ```
-    
-2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
+
     ```bash
-    <copy>unzip ~/helidon-ai-hol.zip</copy>
+    <copy>mvn -v</copy>
     ```
 
-3. Click *File* -> *Open Folder* in **VSCode**.
-    ![Open Project](images/open-project.png)
+    > Do not get alarmed if you encounter `WARNING: java.lang.System::load`, it's a harmless warning caused by Maven compatibility issue [MNG-8248](https://issues.apache.org/jira/browse/MNG-8248)
 
-4. Select *helidon-ai-hol* folder and click *Open*.
-    ![Helidon Project](images/helidon-project.png)
+## Task 4: Open Helidon source code in VS Code
 
-    > Click **Explorer** icon as shown and expand the folders.
+1. Click **Explorer** icon as shown and expand the folders.
         ![open explorer](images/open-explorer.png)
 
 You may now *proceed to the next lab*.
@@ -82,4 +66,4 @@ You may now *proceed to the next lab*.
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025
