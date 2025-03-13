@@ -58,6 +58,9 @@ Estimated time: 05 minutes
 1. Click **Explorer** icon as shown and expand the folders.
         ![open explorer](images/open-explorer.png)
 
+2. You can resize the **VSCode** and place it on the right side and on the left you may have workshop document as shown in the below screenshot.
+    ![resize vs](images/resize-vs.png)
+
 You may now *proceed to the next lab*.
 
 
