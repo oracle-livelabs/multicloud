@@ -14,7 +14,6 @@ Estimated time: 05 minutes
 
 ### Prerequisites
 
-* You must have an [Oracle Cloud Infrastructure](https://cloud.oracle.com/en_US/cloud-infrastructure) enabled account.
 * You must have Chrome as a browser to open Code Editor.
 
 
