@@ -1,10 +1,10 @@
-# Build Helidon MP Application native image
+# Setup the Environment on Local Machine 
 
 ## Introduction
 
 In this lab, you will learn how to setup the environment on your local machine.
 
-Estimated Time: 10 minutes
+Estimated Time: 5 minutes
 
 
 ### Objectives
@@ -13,55 +13,58 @@ Estimated Time: 10 minutes
 * Download the application source code.
 
 ### Prerequisites
+The Helidon AI HOL works smoothly on Linux, macOS, or Windows, as long as you have a reasonably up-to-date operating system.
 
-* You must have an IDE, to modify, build and run the project.
+The most important requirement is having the latest JDK! You will also need Maven 3.8+ and a Java IDE of your choice. While our screenshots feature VS Code, you are free to use any IDE you're comfortable with.
 
+To summarize the prerequisites, you need:
 
-## Task 1: Download the required Maven and JDK version
+* JDK 21+ (newer versions are encouraged!)
+* Maven 3.8+
+* For Linux: glibc 2.27+ (e.g., OL8+, Ubuntu 18+)
+* curl
+* A Java IDE of your choice
 
-1. In your IDE, open a terminal/console.
+> If you are Windows user using PowerShell please be aware of the [curl alias issue](https://curl.se/windows/microsoft.html).
 
-2. Copy the following commands and paste in the terminal. It downloads the required Maven.
+## Task 1: Check required Maven and JDK versions are installed properly
 
-    ```bash
-    <copy>cd ~
-    wget https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz
-    tar -xvf apache-maven-3.8.8-bin.tar.gz
-    cd ~</copy>
-    ```
+Execute following commands in the terminal to verify that required JDK and Maven version are installed and configured properly.
 
-3. Copy and paste the following URL in browser and download the **correct JDK 24** for your **Operating system** in your home directory.
-    ```bash
-    <copy>https://www.oracle.com/in/java/technologies/downloads/</copy>
-    ```
+```bash
+<copy>java -version</copy>
+```
 
-4. Extract the JDK 24 in your home folder.
+```bash
+<copy>mvn -v</copy>
+```
 
-    > For example you are downloading JDK 24 for Linux environment. Run the command similar to below in your environment.   
-    ```bash
-        cd ~
-        tar -xvf jdk-24_linux-x64_bin.tar.gz
-    ```
-
+> Do not get alarmed if you encounter `WARNING: java.lang.System::load`, it's a harmless warning caused by Maven compatibility issue [MNG-8248](https://issues.apache.org/jira/browse/MNG-8248)
 
 ## Task 2: Download the Helidon source code
 
-1.  Copy the following commands and paste in the terminal to download the source code of helidon application.
+There are 2 options available to access the HOL project.
+If you have git available you can clone whole [Helidon Labs](https://github.com/helidon-io/helidon-labs/tree/main/hols/langchain4j) repository:
 
-    ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/eVD6cUQpRms3iic_ZM4_si54wtIsFTNQUns-_U_HR7ofwQRj4m7qR76IMXDEEFqt/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip</copy>
-    ```
-    
+Git option:
 
-2. Copy and paste the following command to unzip the *helidon-ai-hol.zip*.
-    ```bash
-    <copy>unzip ~/helidon-ai-hol.zip</copy>
-    ```
+```bash
+git clone https://github.com/helidon-io/helidon-labs.git
+cd helidon-labs/hols/langchain4j
+```
 
-You may now *proceed to the next lab*.
+Alternative sourcecode download:
+
+```bash
+curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/Z7KkflaFYAGMVpWL5n0nGBMF58iAp5_suMxnCymjgNizS0r72GkDOqSctkPAQjsM/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip
+unzip helidon-ai-hol.zip
+cd helidon-ai-hol
+```
+
+You may now *proceed to the lab 2*.
 
 ## Acknowledgements
 
 * **Author** -  Dmitry Kornilov
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Contributors** - Ankit Pandey, Sid Joshi, Daniel Kec
+* **Last Updated By/Date** - Daniel Kec, March 2025

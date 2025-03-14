@@ -103,7 +103,7 @@ The **formatted text** should look like this:
 
 Now, we are ready to ingest menu items into the embedding store.
 
-1. Add the following `ingest()` method to **`MenuItemsIngestor.java`**:
+1. Use the following code to add a new method, `ingest()` to the MenuItemsIngestor class in the file **`MenuItemsIngestor.java`**:
     ```java
     <copy>public void ingest() {
         // Create an ingestor with the given embedding model and embedding store
@@ -135,7 +135,7 @@ Now, we are ready to ingest menu items into the embedding store.
 
 We need to trigger ingestion when the application starts.
 
-1. Modify the **`ApplicationMain.java`** as shown below:
+1. Replace the content of the ApplicationMain class in the file **`ApplicationMain.java`** with the following code (and add the import the new class MenuItemsIngestor that you just created):
     ```java
     <copy>import io.helidon.hol.lc4j.ai.MenuItemsIngestor;
 
@@ -198,4 +198,4 @@ Now that our application has menu data in the embedding store, we can ask the AI
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025
