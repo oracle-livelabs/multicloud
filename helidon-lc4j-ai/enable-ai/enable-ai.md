@@ -48,9 +48,19 @@ To enable Helidon and LangChain4J integration, You need to add several **Maven d
     </dependency></copy>
     ```
 
-2. Since Helidon Inject works at build time, we need to add annotation processor helidon-integrations-langchain4j-codegen to the maven-compiler-plugin in pom.xml, result should look like the following:**`<build><plugins><configuration><annotationProcessorPaths>`** section of **`pom.xml`**:
+2. Since Helidon Inject works at build time, we need to add annotation processor **helidon-integrations-langchain4j-codegen** to the maven-compiler-plugin in **`<build><plugins><configuration><annotationProcessorPaths>`** section of **`pom.xml`**:
     ```bash
-    <copy><plugin>
+    <copy><path>
+        <groupId>io.helidon.integrations.langchain4j</groupId>
+        <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
+        <version>${helidon.version}</version>
+    </path></copy>
+    ```
+
+    Your final result should look like this:
+
+    ```bash
+    <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
@@ -66,9 +76,9 @@ To enable Helidon and LangChain4J integration, You need to add several **Maven d
                     <version>${helidon.version}</version>
                 </path>
                 <path>
-                <groupId>io.helidon.integrations.langchain4j</groupId>
-                <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
-                <version>${helidon.version}</version>
+                    <groupId>io.helidon.integrations.langchain4j</groupId>
+                    <artifactId>helidon-integrations-langchain4j-codegen</artifactId>
+                    <version>${helidon.version}</version>
                 </path>
             </annotationProcessorPaths>
         </configuration>
@@ -90,7 +100,7 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
     ```
     ![enable chat](images/enable-chat.png)
 
-    >  After adding the configuration, the chat model will be **available for injection** into Helidon components.
+    >  After adding the configuration, the chat model will be **available for injection** into Helidon components. *Make sure to keep proper indentation as shown in above screenshot*.
 
 
 2. To inject the chat model into our services, update **`ChatBotService.java`** as follows:
@@ -137,12 +147,12 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 
 2. To test the assistant, run the following command in the terminal:
     ```bash
-    <copy>curl -X GET "http://localhost:8080/chat?question=Hello"</copy>
+    <copy>curl "http://localhost:8080/chat?question=Hello"</copy>
     ```
 
     You should receive an AI-generated response.
     ```bash
-    $ curl -X GET "http://localhost:8080/chat?question=Hello"
+    $ curl "http://localhost:8080/chat?question=Hello"
     Hello! How can I assist you today?
     $
     ```
@@ -153,4 +163,4 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025

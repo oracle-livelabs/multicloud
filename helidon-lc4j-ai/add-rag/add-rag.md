@@ -100,13 +100,13 @@ To connect our embedding store to the **AI Service**, we need a **Content Retrie
 
 1. Modify **`application.yaml`** and add the following inside **langchain4j** while keeping proper indentation:
     ```yaml
-    <copy>rag:
-            embedding-store-content-retriever:
-            enabled: true
-            max-results: 10
-            min-score: 0.6
-            embedding-model: "@default"
-            embedding-store: "@default"</copy>
+   <copy>rag:
+     embedding-store-content-retriever:
+       enabled: true
+       max-results: 10
+       min-score: 0.6
+       embedding-model: "@default"
+       embedding-store: "@default"</copy>
     ```
     ![app yaml](images/app-yaml.png)
 
@@ -169,4 +169,4 @@ After recompiling, our AI Service will now support RAG, allowing it to query dat
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025

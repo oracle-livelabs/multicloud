@@ -172,28 +172,29 @@ Now, we need to **modify the main class** to read menu items **during applicatio
 
 1. **Update `ApplicationMain.java`:**
 
-```java
-<copy>import io.helidon.hol.lc4j.data.MenuItemsService;
-public class ApplicationMain {
-    public static void main(String[] args) {
-        // Initialize logging
-        LogConfig.configureRuntime();
+    ```java
+    <copy>//Add import for MenuItemService class
+    import io.helidon.hol.lc4j.data.MenuItemsService;
+    public class ApplicationMain {
+        public static void main(String[] args) {
+            // Initialize logging
+            LogConfig.configureRuntime();
 
-        var config = Services.get(Config.class);
+            var config = Services.get(Config.class);
 
-        // Read and print menu items
-        var menuItems = Services.get(MenuItemsService.class).getMenuItems();
-        menuItems.forEach(item -> System.out.println("Loaded menu item: " + item.getName()));
+            // Read and print menu items
+            var menuItems = Services.get(MenuItemsService.class).getMenuItems();
+            menuItems.forEach(item -> System.out.println("Loaded menu item: " + item.getName()));
 
-        // Start Helidon Web Server
-        WebServer.builder()
-                .config(config.get("server"))
-                .routing(routing -> routing.register("/", Services.get(ChatBotService.class)))
-                .build()
-                .start();
-    }
-}</copy>
-```
+            // Start Helidon Web Server
+            WebServer.builder()
+                    .config(config.get("server"))
+                    .routing(routing -> routing.register("/", Services.get(ChatBotService.class)))
+                    .build()
+                    .start();
+        }
+    }</copy>
+    ```
 
 ## Task 6: Testing the Application Data Integration
 
@@ -218,4 +219,4 @@ public class ApplicationMain {
 
 * **Author** - Dmitry Kornilov
 * **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, February 2025
+* **Last Updated By/Date** - Ankit Pandey, March 2025

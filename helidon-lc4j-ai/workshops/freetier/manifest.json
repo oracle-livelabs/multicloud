@@ -17,7 +17,7 @@
             "filename": "../../laptop-setup/laptop-setup.md"
         },
         {
-            "title": "Lab 1B: Setup the Environment in OCI",
+            "title": "Lab 1B: Setup the Environment in remote VM",
             "type": "freetier",
             "filename": "../../setup-environment/setup-environment.md"
         },

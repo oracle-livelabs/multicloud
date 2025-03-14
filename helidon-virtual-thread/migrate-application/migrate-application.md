@@ -65,11 +65,11 @@ Estimated Time: 20 minutes
     You will see output similar to the following:
     ```bash
     $ java -jar target/myproject.jar
-    2024.02.21 11:19:09 INFO io.helidon.common.LogConfig Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
-    2024.02.21 11:19:11 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
-    2024.02.21 11:19:11 INFO io.helidon.webserver.NettyWebServer Thread[#30,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x49f247d4, L:/0.0.0.0:8080]
-    2024.02.21 11:19:11 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 2426 milliseconds (since JVM startup).
-    2024.02.21 11:19:11 INFO io.helidon.common.HelidonFeatures Thread[#31,features-thread,5,main]: Helidon MP 3.2.8 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
+    2025.02.27 11:56:39 INFO io.helidon.common.LogConfig Thread[#1,main,5,main]: Logging at initialization configured using classpath: /logging.properties
+    2025.02.27 11:56:40 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Registering JAX-RS Application: HelidonMP
+    2025.02.27 11:56:41 INFO io.helidon.webserver.NettyWebServer Thread[#30,nioEventLoopGroup-2-1,10,main]: Channel '@default' started: [id: 0x4217c6e3, L:/0.0.0.0:8080]
+    2025.02.27 11:56:41 INFO io.helidon.microprofile.server.ServerCdiExtension Thread[#1,main,5,main]: Server started on http://localhost:8080 (and all other host addresses) in 2495 milliseconds (since JVM startup).
+    2025.02.27 11:56:41 INFO io.helidon.common.HelidonFeatures Thread[#31,features-thread,5,main]: Helidon MP 3.2.11 features: [CDI, Config, Health, JAX-RS, Metrics, Open API, Server]
     ```
 
 13. Go back to the terminal,from where you run the curl commands and run the following commands to check the application:
@@ -232,7 +232,6 @@ Estimated Time: 20 minutes
 Congratulations, you have completed the Helidon virtual thread workshop.
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, March 2024
+* **Last Updated By/Date** - Ankit Pandey, March 2025

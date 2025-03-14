@@ -135,7 +135,7 @@ In this lab, you will:
 
 ## Learn More
                                                                         
-* [Developing Remote Clients using gRPC](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.2.0/develop-remote-clients/getting-started-grpc.html)
+* [Developing Remote Clients using gRPC](https://docs.oracle.com/en/middleware/fusion-middleware/coherence/14.1.2/develop-remote-clients/getting-started-grpc.html)
 * [Coherence Python Client](https://github.com/oracle/coherence-py-client)
 * [Coherence JavaScript Client](https://github.com/oracle/coherence-js-client)
 * [Coherence Go Client](https://github.com/oracle/coherence-go-client)
