@@ -10,14 +10,14 @@
         {
             "title": "Get Started",
             "description": "Prerequisites",
-            "filename": "../../get-started/get-started.md"
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
         },
         {
             "title": "Lab 1A: Setup the environment in your laptop",
             "filename": "../../laptop-setup/laptop-setup.md"
         },
         {
-            "title": "Lab 1B: Setup the Environment in remote VM",
+            "title": "Lab 1B: Setup the Environment in OCI Code Editor",
             "type": "freetier",
             "filename": "../../setup-environment/setup-environment.md"
         },
