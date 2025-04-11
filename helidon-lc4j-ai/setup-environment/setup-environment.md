@@ -23,6 +23,7 @@ Estimated time: 05 minutes
 
 1. In Cloud Console, click the **Code Editor** icon as shown.
     ![Code Editor](images/code-editor.png)
+    > If you are *running this workshop in Livelabs tenancy*, then you need to be in your compartment before opening the **Code Editor**. To do so, you can click **Compute** -> **Instances** and then select the compartment allocated to you by Livelabs. Then click **Code Editor** icon.
 
 2. In Code Editor, click **Terminal** -> **New Terminal**.
      ![Open Terminal](images/open-terminal.png)
@@ -38,7 +39,7 @@ Estimated time: 05 minutes
 
 1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/SzOixpY46Q1gWa8ztYllTNV7-FTKtT_MK09hoRit_wz3taBApsbr_7PXSWFf16D7/n/lrv4zdykjqrj/b/ankit-bucket/o/setup-jdk24-x86-64.sh
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/9opYCG9nPW_Ch9f1wrCtnL361EEY1OPQ3WO4FxaMfQfTOurFHCqkgoWEFc5a6EDK/n/lrv4zdykjqrj/b/ankit-bucket/o/setup-jdk24-x86-64.sh
     chmod +x setup-jdk24-x86-64.sh
     ./setup-jdk24-x86-64.sh</copy>
     ```
