@@ -38,7 +38,7 @@ Estimated time: 05 minutes
 
 1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/SzOixpY46Q1gWa8ztYllTNV7-FTKtT_MK09hoRit_wz3taBApsbr_7PXSWFf16D7/n/lrv4zdykjqrj/b/ankit-bucket/o/setup-jdk24-x86-64.sh
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/9opYCG9nPW_Ch9f1wrCtnL361EEY1OPQ3WO4FxaMfQfTOurFHCqkgoWEFc5a6EDK/n/lrv4zdykjqrj/b/ankit-bucket/o/setup-jdk24-x86-64.sh
     chmod +x setup-jdk24-x86-64.sh
     ./setup-jdk24-x86-64.sh</copy>
     ```

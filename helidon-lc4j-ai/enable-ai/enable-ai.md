@@ -156,8 +156,6 @@ Now, let’s add a **chat model** to our project. We will use OpenAI’s **gpt-4
     Hello! How can I assist you today?
     $
     ```
-    > You can switch between two tabs as shown in the screenshot. Press *Ctrl+C* to stop the application after testing.
-    ![switch tab](images/switch-tab.png)
 
 ## Acknowledgements
 
