@@ -23,6 +23,7 @@ Estimated time: 05 minutes
 
 1. In Cloud Console, click the **Code Editor** icon as shown.
     ![Code Editor](images/code-editor.png)
+    > If you are *running this workshop in Livelabs tenancy*, then you need to be in your compartment before opening the **Code Editor**. To do so, you can click **Compute** -> **Instances** and then select the compartment allocated to you by Livelabs. Then click **Code Editor** icon.
 
 2. In Code Editor, click **Terminal** -> **New Terminal**.
      ![Open Terminal](images/open-terminal.png)
