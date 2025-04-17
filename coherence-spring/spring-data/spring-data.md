@@ -48,7 +48,7 @@ In this lab, you will:
 
     > Note: The Coherence **NamedMap** that will be used by the Repository implementation will be what is specified within the **@CoherenceMap** annotation.
 
-## Task 3: Configure the Repository
+## Task 2: Configure the Repository
 
 As Coherence is, at its core, a key-value store, mapping Entities for use with a Coherence Repository is relatively simple as only the id needs to be annotated. It is possible to use either **`org.springframework.data.annotation.Id`** or **`jakarta.persistence.Id`** to denote the entity’s id.
 
@@ -159,10 +159,10 @@ As Coherence is, at its core, a key-value store, mapping Entities for use with a
      <copy>curl http://localhost:8080/api/customers/1</copy>
     ```   
 
-    You should see an output similar to the following indicating that the customer has been retrieved and the name is in fact uppercase.
+    You should see an output similar to the following.
 
     ```json 
-     {"id":1,"name":"TIM","balance":1000.0}
+     {"id":1,"name":"Tim","balance":1000.0}
     ```
 
 ## Learn More

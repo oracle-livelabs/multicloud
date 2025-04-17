@@ -88,6 +88,8 @@ You should have completed the previous labs.
       * `setType()` - specify the type of connection, either `SessionType.SERVER` - Join as Coherence cluster member (the default), or `SessionType.CLIENT` - connect to Coherence as a Coherence*Extend or gRPC client
       * `setScope()` - allows setting of the scope for service to separate caches and services based upon this scope
 
+      > Note: There are a number of ways to specify a cache config in Coherence Spring.
+
 2. In a terminal, issue the following command to re-build the application:
 
     ```bash

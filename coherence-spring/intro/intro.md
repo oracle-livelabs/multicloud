@@ -43,7 +43,7 @@ low-latency data storage, polyglot grid computing, and asynchronous event stream
 ## Learn More
 
 * [Coherence Spring Documentation](https://docs.coherence.community/coherence-spring/docs/latest/)
-* [Coherence Documentation](https://docs.oracle.com/en/middleware/standalone/coherence/14.1.2.0/index.html)
+* [Coherence Documentation](https://docs.oracle.com/en/middleware/fusion-middleware/coherence/14.1.2/index.html)
 * [Coherence Community](https://coherence.community/)
 
 ## Acknowledgements
