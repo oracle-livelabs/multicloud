@@ -284,14 +284,14 @@ In order to activate AutoConfiguration for Coherence Spring you need to add the 
 
       ```xml
             <dependency>
-            <groupId>com.oracle.coherence.spring</groupId>
-            <artifactId>coherence-spring-boot-starter</artifactId> 
-            <version>4.1.3</version>
+                  <groupId>com.oracle.coherence.spring</groupId>
+                  <artifactId>coherence-spring-boot-starter</artifactId> 
+                  <version>4.1.3</version>
             </dependency>
             <dependency>
-            <groupId>com.oracle.coherence.ce</groupId>
-            <artifactId>coherence</artifactId>                     
-            <version>25.03</version>
+                  <groupId>com.oracle.coherence.ce</groupId>
+                  <artifactId>coherence</artifactId>                     
+                  <version>25.03</version>
             </dependency>
       ```   
    

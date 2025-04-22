@@ -87,6 +87,8 @@ In this task, we download the required softwares and application source code for
     curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/2XfYETeWU9wsyxHXqkEr3Tx_YUh-70R1spaEhqbH_g6Rr2J4msOX11V_KC5lqhGH/n/lrv4zdykjqrj/b/ankit-bucket/o/spring-workshop.zip
     unzip ~/spring-workshop.zip
     git clone https://github.com/coherence-community/coherence-spring.git
+    cd ~/coherence-spring
+    git checkout coh-spring-lab
     wget https://github.com/oracle/visualvm/releases/download/2.1.10/visualvm_2110.zip
     unzip ~/visualvm_2110.zip
     ./visualvm_2110/bin/visualvm > visual_log.txt 2>&1 &

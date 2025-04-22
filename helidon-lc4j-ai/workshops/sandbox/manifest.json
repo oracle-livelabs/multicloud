@@ -10,7 +10,7 @@
         {
             "title": "Get Started",
             "description": "Prerequisites",
-            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs.md"
+            "filename": "https://github.com/oracle-livelabs/common/blob/main/labs/cloud-login/cloud-login-livelabs2.md"
         },
         {
             "title": "Lab 1: Setup the Environment",

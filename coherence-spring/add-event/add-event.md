@@ -91,15 +91,16 @@ for updates and the old value for deletes. You can also filter events based on a
     Note: You will also have to add the following imports:
    
     ```java
-     <copy>import com.oracle.coherence.common.base.Logger;
-      import com.oracle.coherence.spring.annotation.event.CacheName; 
-      import com.oracle.coherence.spring.annotation.event.Deleted; 
-      import com.oracle.coherence.spring.annotation.event.Inserted;
-      import com.oracle.coherence.spring.annotation.event.Updated;
-      import com.oracle.coherence.spring.event.CoherenceEventListener;
-      import com.tangosol.util.MapEvent;
-      import com.oracle.coherence.spring.annotation.WhereFilter;</copy>
+    <copy>import com.oracle.coherence.common.base.Logger;
+    import com.oracle.coherence.spring.annotation.event.CacheName; 
+    import com.oracle.coherence.spring.annotation.event.Deleted; 
+    import com.oracle.coherence.spring.annotation.event.Inserted;
+    import com.oracle.coherence.spring.annotation.event.Updated;
+    import com.oracle.coherence.spring.event.CoherenceEventListener;
+    import com.tangosol.util.MapEvent;
+    import com.oracle.coherence.spring.annotation.WhereFilter;</copy>
     ```
+    > *In the **VS Code**, Click **File** -> **Auto Save** to save this file*.
 
 2. In a terminal, issue the following command to build the application:
 
@@ -165,10 +166,11 @@ for updates and the old value for deletes. You can also filter events based on a
      Deleted customer key=1, old value=Customer{id=1, name='Tim', balance=500.0}
     ```
 
-8. Start a second application server, without the HTTP server, using the following command in a new terminal:
+8. To start a second application server without the HTTP server, Open a **new tab** in the terminal and run the following command:
 
     ```bash
-     <copy>java -Dserver.port=-1 -Dloader.main=com.tangosol.net.Coherence -Dcoherence.management.http=none -jar target/springboot-1.0-SNAPSHOT.jar </copy>
+    <copy>cd ~/spring-workshop-01-base/
+    java -Dserver.port=-1 -Dloader.main=com.tangosol.net.Coherence -Dcoherence.management.http=none -jar target/springboot-1.0-SNAPSHOT.jar </copy>
     ```   
  
     Once the second server starts up you should see the following message on the first server console. This indicates that the cluster has partitioned the data between the two members for high availability.
@@ -253,11 +255,11 @@ public void onEvent(@Inserted @Removed EntryEvent event) {
     Note: You will also have to add the following imports:
 
     ```java
-     <copy>import com.oracle.coherence.spring.annotation.event.Inserting;
-      import com.oracle.coherence.spring.annotation.event.Updating;
-      import com.oracle.coherence.spring.annotation.event.Synchronous;
-      import com.tangosol.net.events.partition.cache.EntryEvent;
-      import com.tangosol.util.BinaryEvent;</copy>
+    <copy>import com.oracle.coherence.spring.annotation.event.Inserting;
+    import com.oracle.coherence.spring.annotation.event.Updating;
+    import com.oracle.coherence.spring.annotation.event.Synchronous;
+    import com.tangosol.net.events.partition.cache.EntryEvent;
+    import com.tangosol.util.BinaryEntry;</copy>
     ```
 
     > Note: It is important that the amount of work you do within a synchronous event listener is minimized as you are holding an implicit exclusive lock on the entry while this code runs. You should not be doing any operations that do external calls to other systems as this will affect the performance and throughput of the cluster.
@@ -297,6 +299,7 @@ public void onEvent(@Inserted @Removed EntryEvent event) {
     ```json 
      {"id":1,"name":"TIM","balance":1000.0}
     ```  
+    > *Press **Ctrl + C** in both the tab, to stop the running server.*
 
 ## Learn More
   
