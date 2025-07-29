@@ -51,7 +51,7 @@ This lab assumes you have:
 
 5. Provide Exadata Infrastructure configuration details as below:
 
-    * **Exadata Infrastructure Model** – Only X9M-2 model of Exadata Infrastructure is available for DB@Azure
+    * **Exadata Infrastructure Model** – Exadata X9M and X11M model of Exadata Infrastructure are available for DB@Azure
     * **Database Servers** – Minimum two database servers are mandatory to provisioing exadata infrastructure which support Real Application Cluster (RAC) 
     * **Storage Servers** - By default threee storage servers will be created. Additional storage server can be added later.
     * **OCPUs** - Based on number of DB servers selected, number of OCPUs will change.
@@ -95,4 +95,4 @@ You may now **proceed to the next lab**.
 ## Acknowledgements
 * **Author** - Sanjay Rahane, Principal Cloud Architect, North America Cloud Engineering
 * **Contributors** -  Bhaskar Sudarshan, Director, North America Cloud Engineering
-* **Last Updated By/Date** - Sanjay Rahane, August 2024
+* **Last Updated By/Date** - Sanjay Rahane, July 2025
