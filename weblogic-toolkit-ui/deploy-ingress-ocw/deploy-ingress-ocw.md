@@ -40,40 +40,29 @@ In this task, we add the Ingress routes for Accessing the Admin Console, Applica
 2. Click on the Edit icon as shown to modify the values.
  ![Edit Ingress](images/edit-ingress.png)
 
-3. Enter the following details and click on **OK**.<br>
- Name: console<br> 
- Path Expression: /console<br>
- Target Service Namespace: test-domain-ns<br>
- Target Service: test-domain-admin-server<br>
- Target Port: 7001<br>
+3. Enter the following details to add **opdemo** Ingress route and click on **OK**.     <br>
+        **Name**: opdemo<br>
+        **Path Expression**: /opdemo<br>
+        **Target Service Namespace**: test-domain-ns<br>
+        **Target Service**: test-domain-cluster-cluster-1 <br>
+        **Target Port**: 8001<br>
+        ![opdemo ingress](images/opdemo-ingress.png)
 
- ![Console Ingress](images/console-ingress.png)
+4. In the similar way, add the following **remote-console** Ingress Routes as well:<br>
+        **Name**: remote-console<br>
+        **Path Expression**: / <br>
+        **Target Service Namespace**: test-domain-ns<br>
+        **Target Service**: test-domain-admin-server<br>
+        **Target Port**: 7001<br>
+        ![Remote Console Ingress](images/remote-console-ingress.png)
 
-4. In the similar way, add the following **opdemo** Ingress Routes as well:<br>
- Name: opdemo<br>
- Path Expression: /opdemo<br>
- Target Service Namespace: test-domain-ns<br>
- Target Service: test-domain-cluster-cluster-1 <br>
- Target Port: 8001<br>
- ![Opdemo Ingress](images/opdemo-ingress.png)
+5. To update the Ingress Routes, click **Update Ingress Routes**.
+        ![Update Ingress Routes](images/update-ingress-routes.png)
 
-5. In the similar way, add the following **remote-console** Ingress Routes as well:<br>
- Name: remote-console<br>
- Path Expression: / <br>
- Target Service Namespace: test-domain-ns<br>
- Target Service: test-domain-admin-server<br>
- Target Port: 7001<br>
- ![Remote Console Ingress](images/remote-console-ingress.png)
+6. In the **Update Existing Ingress Routes**, Click **Yes**.
 
-6. To update the Ingress Routes, click **Update Ingress Routes**.
- ![Update Ingress Routes](images/update-ingress-routes.png)
-
-7. In the **Update Existing Ingress Routes**, Click **Yes**.
-
-8. Once you see **Ingress Routes Update Complete** window, Click **Ok**.
- ![Update Ingress Complete](images/update-ingress-complete.png)
-
-    > Note down the IP and save it in a text file.
+7. Once you see **Ingress Routes Update Complete** window, Click **Ok**.
+        ![Update Ingress Complete](images/update-ingress-complete.png)
 
 
 ## Acknowledgements

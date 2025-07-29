@@ -8,7 +8,7 @@ The WebLogic Remote Console is a lightweight, open source console that you can u
 
 You can install and run the WebLogic Remote Console anywhere, and connect to your domain using WebLogic REST APIs. You simply launch the desktop application and connect to the Administration Server of your domain. Or, you can start the console server, launch the console in a browser and then connect to the Administration Server.
 
-The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.3, 12.2.1.4, and 14.1.1.0.
+The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.4, and 14.1.1.0.
 
 **Key Features of the WebLogic Remote Console**
 
@@ -19,9 +19,12 @@ The WebLogic Remote Console is fully supported with WebLogic Server 12.2.1.3, 12
 * Start and stop servers and applications
 * Monitor server and application performance
 
-In this lab, we access the application *opdemo* and verify the successful migration of an offline on-premise domain. we also verify the loadbalancing between managed server pods. Later, we use WebLogic Remote Console, to verify the successful deployment of resources of test-domain in kubernetes environment.
+In this lab, we access the application **opdemo** and verify the successful migration of an offline on-premise domain. we also verify the loadbalancing between managed server pods. Later, we use WebLogic Remote Console, to verify the successful deployment of resources of test-domain in kubernetes environment.
 
 Estimated Time: 10 minutes
+
+Watch the video below for a quick walk-through of the lab.
+[Testing Application Deployment](videohub:1_1khcsrbq)
 
 ### Objectives
 
@@ -33,9 +36,9 @@ In this lab, you will:
 
 ## Task 1: Access the Application through the Browser
 
-In this task, we access the *opdemo* application. We click on refresh icon to make multiple request to application, to verify loadbalancing between two managed server pods.
+In this task, we access the **opdemo** application. We click on refresh icon to make multiple request to application, to verify loadbalancing between two managed server pods.
 
-1. Copy the below URL and replace *XX.XX.XX.XX* with your IP, which you noted down in last lab. You can see the below output.
+1. Copy the below URL and replace **XX.XX.XX.XX** with your IP, which you noted down in last lab. You can see the below output.
     ```bash
     <copy>http://XX.XX.XX.XX/opdemo/?dsname=testDatasource</copy>
     ```
@@ -46,29 +49,30 @@ In this task, we access the *opdemo* application. We click on refresh icon to ma
     ![Show Loadbalancing](images/show-load-balancing.png)
 
 
-## Task 2: Explore WebLogic Domain on WebLogic for OKE Stack [WLS for OKE] using WebLogic Remote Console
+## Task 2: Explore WebLogic Domain on Kubernetes Cluster using WebLogic Remote Console
 
-In this task, we explore the WebLogic Remote Console. We create connection to *Admin Server* in Remote Console and verify the resources in WebLogic Domain. This verifies the successful migration of an on-premise domain into the Oracle Kubernetes Cluster. 
+In this task, we explore the WebLogic Remote Console. We create connection to **Admin Server** in Remote Console and verify the resources in WebLogic Domain. This verifies the successful migration of an on-premise domain into the Oracle Kubernetes Cluster. 
 
-1. To open WebLogic Remote Console, Click on *Activities*, type *WebLogic* in search box and click on the *WebLogic Remote Console* Icon.
+1. To open WebLogic Remote Console, Click on **Activities**, click on the **WebLogic Remote Console** Icon.
 
-2. Click on `Three dots` under *Kiosk* and Select *Add Admin Server Connection Provider* and click *Choose*.
+2. Click on `Three dots` under **Kiosk** and Select **Add Admin Server Connection Provider** and click **Choose**.
     ![Admin Server Connection](images/adminserver-connection.png)
 
-3. Enter the following data and click *OK*.<br>
+3. Enter the following data and click **OK**.<br>
     Connection Provider Name: AdminServer<br>
     Username: weblogic<br>
-    Password: welcome1<br>
+    Password: Take the password from the WKTUI tool, from WebLogic Domain tab.<br>
     URL:  `Copy_IP_From_TextFile`</br>
+    ![wls passwd](images/wls-passwd.png)
     ![Connection Details](images/connection-details.png)
 
-4. Click on *Edit Tree* icon, then Select *Services* -> *Data Sources*. You can observe the same Datasouce, which we had seen in on-premise domain.
+4. Click on **Edit Tree** icon, then Select **Services** -> **Data Sources**. You can observe the same Datasouce, which we had seen in on-premise domain.
     ![Verify Datasources](images/verify-datasources.png)
 
 5. To display what servers are running in your domain. Click on **Monitoring Tree** Icon as shown then select **Environment** -> **Servers**. You can see we have **Admin Server** and 2 Managed Server pods are running. 
     ![Running Servers](images/running-server-status.png)
 
-6. Click on **admin-server**, you can see WebLogic Version is **12.2.1.3.0**. 
+6. Click on **admin-server**, you can see WebLogic Version is **12.2.1.4**. 
     ![Server Status](images/wls-version.png)
     
 
@@ -77,4 +81,4 @@ In this task, we explore the WebLogic Remote Console. We create connection to *A
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024

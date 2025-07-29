@@ -63,7 +63,6 @@ The Code Editor enables you to edit and deploy code for various OCI services dir
 Code Editor's direct integration with Cloud Shell allows you access to the GraalVM Enterprise Native Image and JDK 17 (Java Development Kit) pre-installed in Cloud Shell. 
 
 ## Acknowledgements
-
 * **Author** -  Ankit Pandey
 * **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, March 2024
+* **Last Updated By/Date** - Ankit Pandey, March 2025

@@ -26,7 +26,7 @@ This lab assumes you have:
 
 In this task, we will generate an *Authentication Token*. In lab 5, we will use this authentication token to push auxiliary image into the Oracle Cloud Container Registry Repository. Also, we use this authentication token to pull WebLogic docker images to Oracle Cloud Infrastructure Registry (also known as Container Registry). 
 
-1. Select the User Icon in the top right corner and then select *MyProfile*.
+1. Select the User Icon in the top right corner and then select *User settings*.
 
     ![My Profile](images/my-profile.png)
 
@@ -69,7 +69,7 @@ Secrets are credentials such as passwords, certificates, SSH keys, or **authenti
 
 8. Click **Create Secret**.
 
-9. Enter the name for Secret and choose the new Encryption key and enter the authentication token as **Secret Contents** as shown below. Click **Create Secret**.
+9. Enter the name for Secret and choose the new Encryption key and then select **Manual secret generation** and enter the authentication token as **Secret Contents** as shown below. Click **Create Secret**.
     ![create secret](images/create-secret.png)
 
 
@@ -92,15 +92,13 @@ Secrets are credentials such as passwords, certificates, SSH keys, or **authenti
 
     > Make sure you use **wko** as prefix, as we will use this in further labs.
 
-6. In Verrazzano Integration, leave default unchecked box for **Enable Verrazzano**.
-    ![uncheck verrazzano](images/uncheck-verrazzano.png)
- 
-7. In Network, Select **Create a New VCN** as Virtual Cloud Network Strategy and leave everything default.
+
+6. In Network, Select **Create a New VCN** as Virtual Cloud Network Strategy and leave everything default.
     ![network](images/network.png)
 
-8. In Container Cluster (OKE) Configuration, Select the following.
+7. In Container Cluster (OKE) Configuration, Select the following.
 
-    **Kubernetes version:** - Leave the default **v1.26.2**.
+    **Kubernetes version:** - Leave the default **v1.28.2**.
 
     **Non-WebLogic Node Pool Shape (Required)** - Select **VM.Standard.E4.Flex** as shape and chooke **1** as Number of OCPU and **16** as Amount of Memory.
 
@@ -116,7 +114,7 @@ Secrets are credentials such as passwords, certificates, SSH keys, or **authenti
 
     ![weblogic](images/weblogic-pool.png)
 
-9. In Administration Instances, Enter or select the following as shown.
+8. In Administration Instances, Enter or select the following as shown.
     **Availability Domain for compute instances** - Select the availability domain from the drop down.
 
     **Administration Instance Compute Shape (Required)**- Select **VM.Standard.E4.Flex** as shape and chooke **1** as Number of OCPU and **16** as Amount of Memory.
@@ -128,12 +126,12 @@ Secrets are credentials such as passwords, certificates, SSH keys, or **authenti
     ![bastion](images/bastion.png)
 
 
-10. In File System section, Select the following as shown.
+9. In File System section, Select the following as shown.
     **Availability Domain for File system** - Select the availability domain from the drop down.
     ![file avd](images/file-avd.png)
 
 
-11. In Registry (OCIR) section, enter the following as shown.
+10. In Registry (OCIR) section, enter the following as shown.
 
     **Registry User Name** - The user name that Kubernetes uses to access the container image registry, which has the format {identity domain name}/{username}. If your tenancy is using Oracle Identity Cloud Service, use the format oracleidentitycloudservice/{username}.
 
@@ -144,10 +142,11 @@ Secrets are credentials such as passwords, certificates, SSH keys, or **authenti
     ![ocir secret](images/ocir-secret.png)
 
 
-12. In OCI Policies, check the box for **OCI Policies**. It Create policies to read Secrets from Vault and manage Autonomous Transaction Processing Database (if applicable). Click **Next**.
+11. In OCI Policies, check the box for **OCI Policies**. It Create policies to read Secrets from Vault and manage Autonomous Transaction Processing Database (if applicable). Click **Next**.
 
-13. In Review section, Check the box for **Run apply** and then click **Create**.
+12. In Review section, Check the box for **Run apply** and then click **Create**.
     ![run apply](images/run-apply.png)
+
     > This will create a Job, which will create the required resources in the stack. You dont need to wait, please proceed to next task,
 
 ## Task 4: Access the Graphical Remote Desktop
@@ -170,4 +169,4 @@ You may now proceed to the next lab.
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024
