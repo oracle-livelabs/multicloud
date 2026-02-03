@@ -192,7 +192,7 @@ You may now **proceed to the next lab** to provision Autonomous Database.
 * [Add, change, or delete a virtual network subnet](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-subnet?tabs=azure-portal)
 
 ## Acknowledgements
-- **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database - Multicloud
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 - **Contributors:**
     * Sanjay Rahane, Principal Cloud Architect, North America Cloud Engineering Services (CES)
     * Devinder Singh, SR Principal Solutions Architect - Multicloud

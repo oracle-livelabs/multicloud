@@ -147,7 +147,7 @@ You may now **proceed to the next lab**.
 * [Create an Autonomous AI Database using the Azure portal](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/azucr-create-autonomous-ai-database.html#GUID-F48CC33E-E53F-44AD-BB36-BE4FC183368E)
 
 ## Acknowledgements
-- **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database - Multicloud
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 - **Contributors:**
     * Devinder Singh, SR Principal Solutions Architect - Multicloud
     * Tejus Subrahmanya, Principal Product Manager

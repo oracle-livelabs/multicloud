@@ -38,7 +38,7 @@ Please proceed to the next lab.
 * [Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaa.htm)
 
 ## Acknowledgements
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database - Multicloud
+* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 * **Contributors:**
     * Devinder Singh, SR Principal Solutions Architect - Multicloud
     * Tejus Subrahmanya, Principal Product Manager
