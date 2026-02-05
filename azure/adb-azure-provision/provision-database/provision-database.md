@@ -116,7 +116,7 @@ In this lab, you will:
 
     ![New Autonomous AI Database is displayed](./images/adb-displayed.png " ")
 
-## Task 2: Review your Oracle Autonomous AI Database Deployment in OCI
+## Task 2: Review your Provisioned Oracle Autonomous AI Database in OCI
 
 In this task, you will learn how to view your newly provisioned Oracle Autonomous AI Database in OCI. 
 
@@ -130,9 +130,13 @@ In this task, you will learn how to view your newly provisioned Oracle Autonomou
 
 4. Click the Autonomous AI Database name link to display the **Overview** page. 
 
-5. In the **Essentials** section, click the **Go to OCI** link.
+5. Go to the **Essentials** section **> OCI Database URL** field, click the **Go to OCI** link.
 
     ![Click Go to OCI link](./images/click-go-oci.png " ")
+
+    To click the **Go to OCI** link in the Azure portal and successfully display your provisioned Oracle Autonomous AI Database, you must meet specific identity and configuration requirements such as:
+    - **Linked OCI Tenancy:** Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
+    - **OCI Permissions:** You must have a valid OCI user account with permissions to view and manage Autonomous Database resources within the OCI console.
 
 6. The **Autonomous AI Database** details page is displayed. 
 
