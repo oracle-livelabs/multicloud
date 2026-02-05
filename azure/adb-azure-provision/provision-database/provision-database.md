@@ -138,7 +138,7 @@ In this task, you will learn how to view your newly provisioned Oracle Autonomou
     - **Linked OCI Tenancy:** Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
     - **OCI Permissions:** You must have a valid OCI user account with permissions to view and manage Autonomous Database resources within the OCI console.
 
-6. The **Autonomous AI Database** details page is displayed. 
+6. On the OCI Login page, enter your credentials to sign in to OCI. Once you are  authenticated, the **Autonomous AI Database** details page within the OCI Consol is displayed.  
 
     ![The ADB details page](./images/adb-details-page.png " ")
     
