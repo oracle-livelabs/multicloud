@@ -25,6 +25,12 @@
             "filename": "../../provision-database/provision-database.md"
         },
         {
+            "title": "Lab 3: (Optional) Deploy a Virtual Machine to Access Database Actions",
+            "description": "Deploy a virtual machine",
+            "type": "tenancy",
+            "filename": "../../deploy-vm/deploy-vm.md"
+        },
+        {
             "title": "Need Help?",
             "description": "Solutions to Common Problems and Directions for Receiving Live Help",
             "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
