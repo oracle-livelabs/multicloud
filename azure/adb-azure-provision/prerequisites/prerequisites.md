@@ -1,5 +1,3 @@
-eibccdcbhredhffredtdbilebtrkhkuhtdkbckjiicdb
-
 # Create the Required Resources to Provision an Oracle Autonomous AI Database
 
 ## Introduction

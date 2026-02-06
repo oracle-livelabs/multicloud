@@ -20,6 +20,7 @@ In this workshop, you will:
 * Add a subnet to the virtual network and delegate the subnet to `Oracle Database@Azure Service`
 * Provision an Oracle Autonomous AI Database in `Oracle Database@Azure`
 * Review the provisioned Oracle Autonomous AI Database in OCI
+* Deploy a Virtual Machine (VM) to access the Database actions
 
 ### Prerequisites
 - An existing Azure subscription

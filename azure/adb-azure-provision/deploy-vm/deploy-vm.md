@@ -1,5 +1,4 @@
-
-# Provision an Oracle Autonomous AI Database
+# (Optional) Deploy a VM and Access Database Actions from the VM
 
 ## Introduction
 
@@ -118,17 +117,12 @@ Since your VM is now inside the private network, it can resolve the database's p
     
     ![Run the query](./images/run-query.png " ")
 
-**All Done! You have successfully deployed your Oracle Autonomous AI Database instance and accessed the database in OCI.**
+**All Done! You have successfully deployed a VM and accessed the Database actions in your Oracle Autonomous Database using the VM.**
 
 You may now **proceed to the next lab**.
-
-## Learn More
-* [Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaa.htm)
-* [Create an Autonomous AI Database using the Azure portal](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/azucr-create-autonomous-ai-database.html#GUID-F48CC33E-E53F-44AD-BB36-BE4FC183368E)
 
 ## Acknowledgements
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 - **Contributors:**
     * Devinder Singh, SR Principal Solutions Architect - Multicloud
-    * Tejus Subrahmanya, Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+- **Last Updated By/Date:** Lauran K. Serhal, February 2026

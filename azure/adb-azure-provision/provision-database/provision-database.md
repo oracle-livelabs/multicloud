@@ -1,4 +1,3 @@
-
 # Provision an Oracle Autonomous AI Database
 
 ## Introduction
