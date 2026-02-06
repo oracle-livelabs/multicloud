@@ -75,13 +75,17 @@ Deploy a Virtual Machine (VM) that can "see" your private Oracle Autonomous AI D
 
 Once the VM is **Running**, connect to it from your local computer as follows:
 
-1. Double-click the downloaded `training-oracle-azure-vm.rdp` file to start the remote connection. If prompted with a security warning about the remote computer's identity, click **Connect** to continue.
+1. Double-click the downloaded `training-oracle-azure-vm.rdp` file to start the remote connection. 
+    
+    >**Note:** If prompted with a security warning about the remote computer's identity, click **Connect** to continue. If also prompted about the identity of the remote computer cannot be verified, click **Yes** to continue.
 
 2. On the **Enter your credentials** dialog box, enter your VM's credentials, and then click **OK**.
 
     ![Enter your VM's credentials](./images/enter-vm-credentials.png " ")
 
 3. The VM is displayed. 
+
+    ![The VM is displayed](./images/vm-displayed.png " ")
 
 ## Task 3: Access Database Actions from the VM
 
@@ -91,9 +95,13 @@ Since your VM is now inside the private network, it can resolve the database's p
 
     ![The VM is displayed](./images/vm-displayed.png " ")
 
-2. Paste the Database actions URL from OCI that you copied in Task 2 into the browser.
+2. Paste the Database actions URL from OCI that you saved in **Task 2** into the browser.
 
-3. Sign in as the `ADMIN` user with the password you set during database provisioning. The **Database Actions Launchpad** is displayed. You can now access SQL Worksheet, Data Modeler, and other tools. 
+3. Sign in as the `ADMIN` user with the password you used when you provisioned your database. 
+
+    ![Sign in as the admin user](./images/sign-in-admin.png " ")
+    
+    The **Database Actions Launchpad** is displayed. You can now access SQL Worksheet, Data Modeler, and other tools in Data Studio.
 
 4. To access the SQL Worksheet, click the **Development** tab, and then click the **SQL** tab.
 

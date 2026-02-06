@@ -144,7 +144,7 @@ In this task, you will learn how to view your newly provisioned Oracle Autonomou
 
     ![The ADB details page](./images/adb-details-page.png " ")
 
-7. Click **Database actions**. The **Database actions** message box is displayed with important information, and the URL to access Database actions. Click **Copy** to copy the URL that you will need later, and then click **Close**.
+7. Click **Database actions**. The **Database actions** message box is displayed with important information, and the URL to access Database actions. Click **Copy** to copy the URL to a text editor of your choice. You will need this URL later. Next, click **Close**.
 
     ![Database actions message box and URL](./images/db-actions-url.png " ")
 
