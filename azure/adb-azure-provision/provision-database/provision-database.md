@@ -241,7 +241,7 @@ Since your VM is now inside the private network, it can resolve the database's p
     
     ![Run the query](./images/run-query.png " ")-->
 
-**All Done! You have successfully deployed your Oracle Autonomous AI Database instance and accessed the database in OCI.**
+**All Done! You have successfully deployed your Oracle Autonomous AI Database instance and reviewed the database in OCI.**
 
 You may now proceed to the next lab.
 
