@@ -180,7 +180,7 @@ In this task, you will create a new subnet and delegate it to the `Oracle Databa
 
 **You are all done! You have successfully created a Resource Group, a Virtual Network, a subnet, and delegated the subnet to the Oracle `Database@Azure Service`**.
 
-You may now **proceed to the next lab** to provision Autonomous Database.
+You may now proceed to the next lab.
 
 ## Learn More
 * [Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaa.htm)
@@ -192,7 +192,7 @@ You may now **proceed to the next lab** to provision Autonomous Database.
 ## Acknowledgements
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
 - **Contributors:**
-    * Sanjay Rahane, Principal Cloud Architect, North America Cloud Engineering Services (CES)
     * Devinder Singh, SR Principal Solutions Architect - Multicloud
+    * Sanjay Rahane, Principal Cloud Architect, North America Cloud Engineering Services (CES)
     * Tejus Subrahmanya, Principal Product Manager
 * **Last Updated By/Date:** Lauran K. Serhal, February 2026

@@ -25,13 +25,13 @@
             "filename": "../../provision-database/provision-database.md"
         },
         {
-            "title": "Lab 3: (Optional) Deploy a Virtual Machine to Access Database Actions",
+            "title": "Lab 3: Deploy a Virtual Machine to Access Database Actions",
             "description": "Deploy a virtual machine",
             "type": "tenancy",
             "filename": "../../deploy-vm/deploy-vm.md"
         },
         {
-            "title": "Lab 4: (Optional) Clean up Resources",
+            "title": "Lab 4: Clean Up Resources",
             "description": "Clean up resources",
             "type": "tenancy",
             "filename": "../../cleanup-resources/cleanup-resources.md"

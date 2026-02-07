@@ -17,7 +17,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires the completion of **Lab 1: Create the Required Resources** in the **Contents** menu on the left.
+- All previous labs successfully completed
 - Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
 - You must have a valid OCI user account with permissions to view and manage Autonomous AI Database resources within the OCI console.
 
@@ -243,7 +243,7 @@ Since your VM is now inside the private network, it can resolve the database's p
 
 **All Done! You have successfully deployed your Oracle Autonomous AI Database instance and accessed the database in OCI.**
 
-You may now **proceed to the next lab**.
+You may now proceed to the next lab.
 
 ## Learn More
 * [Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaa.htm)

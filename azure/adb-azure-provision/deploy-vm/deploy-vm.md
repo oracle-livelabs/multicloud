@@ -1,4 +1,4 @@
-# (Optional) Deploy a VM and Access Database Actions from the VM
+# Deploy a VM and Access Database Actions from the VM
 
 ## Introduction
 
@@ -17,7 +17,7 @@ In this lab, you will:
 
 ### Prerequisites
 
-- This lab requires the completion of all of the previous labs in the **Contents** menu on the left.
+- All previous labs successfully completed
 
 ## Task 1: Create a Virtual Machine in Azure Portal
 
@@ -94,13 +94,15 @@ Since your VM is now inside the private network, it can resolve the database's p
 
     ![The VM is displayed](./images/vm-displayed.png " ")
 
-2. Paste the Database actions URL from OCI that you saved in **Task 2** into the browser.
+2. Paste the Database actions URL that you saved in a text editor in **Lab 2 > Task 2 > Step 7** into the browser.
+
+    ![Database actions message box and URL](./images/db-actions-url.png " ")
 
 3. Sign in as the `ADMIN` user with the password you used when you provisioned your database. 
 
     ![Sign in as the admin user](./images/sign-in-admin.png " ")
     
-    The **Database Actions Launchpad** is displayed. You can now access SQL Worksheet, Data Modeler, and other tools in Data Studio.
+    The **Database Actions Launchpad** is displayed. You can now access the SQL Worksheet and other tools in Data Studio.
 
 4. To access the SQL Worksheet, click the **Development** tab, and then click the **SQL** tab.
 
@@ -117,9 +119,9 @@ Since your VM is now inside the private network, it can resolve the database's p
     
     ![Run the query](./images/run-query.png " ")
 
-**All Done! You have successfully deployed a VM and accessed the Database actions in your Oracle Autonomous Database using the VM.**
+**All Done! You have successfully deployed a VM and accessed Database actions in your provisioned Oracle Autonomous AI Database using the VM.**
 
-You may now **proceed to the next lab**.
+You may now proceed to the next lab.
 
 ## Acknowledgements
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud

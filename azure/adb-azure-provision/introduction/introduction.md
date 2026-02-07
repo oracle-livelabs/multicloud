@@ -23,24 +23,21 @@ In this workshop, you will:
 * Deploy a Virtual Machine (VM) to access the Database actions
 
 ### Prerequisites
-- An existing Azure subscription
-- An Oracle Cloud Infrastructure (OCI) account
+- Access to Microsoft Azure cloud, OCI tenancy, and `Oracle Database@Azure`.
+- An existing Azure subscription. Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
+- An Oracle Cloud Infrastructure (OCI) account with permissions to view and manage Autonomous AI Database resources within the OCI console.
+
     >**Note:** If you do not have an Oracle Cloud Infrastructure (OCI) account, you can create one during your service deployment. If you do have an OCI account, you can use it with `Oracle Database@Azure`.
 
-- Access to Microsoft Azure cloud, OCI tenancy, and `Oracle Database@Azure`.
+For detailed information about the prerequisites required to begin onboarding with `Oracle Database@Azure`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaaprerequisites.htm).
 
-    For detailed information about the prerequisites required to begin onboarding with `Oracle Database@Azure`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaaprerequisites.htm).
-
-Find more details on getting started [Onboarding with Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/multicloud/oaaonboard.htm)
-
-Please proceed to the next lab.
+You may now proceed to the next lab.
 
 ## Learn More
 * [Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaa.htm)
+* [Onboarding with Oracle Database@Azure](https://docs.oracle.com/en-us/iaas/Content/multicloud/oaaonboard.htm)
 
 ## Acknowledgements
-* **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
-* **Contributors:**
-    * Devinder Singh, SR Principal Solutions Architect - Multicloud
-    * Tejus Subrahmanya, Principal Product Manager
-* **Last Updated By/Date:** Lauran K. Serhal, February 2026
+- **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
+- **Contributor:** Devinder Singh, SR Principal Solutions Architect - Multicloud
+- **Last Updated By/Date:** Lauran K. Serhal, February 2026

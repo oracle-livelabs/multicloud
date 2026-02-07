@@ -1,19 +1,18 @@
-# (Optional) Clean up Resources
+# Clean Up Resources
 
 ## Introduction
 
-In this lab, you will learn how to delete resources and auto shutdown a VM.
+In this lab, you will learn how to delete the resource group and its resources. When you finish the workshop, it is recommended to delete the entire resource group to ensure all associated services and plans are removed simultaneously to stop billing.
 
 Estimated Time: 5 minutes
 
 ### Objectives
 
 - Delete resources
-- Configure VM auto shutdown
 
 ## Task 1: Delete Resources
 
-When no longer needed, you can delete your resource group and all the resources in the resource group such as virtual machine, virtual network, Oracle Autonomous AI Database and all related resources.
+When no longer needed, you can delete your resource group and all the resources it contains that you created in this workshop such as the virtual network, Oracle Autonomous AI Database, virtual machine and all related resources.
 
 1. On the Azure **Home** page, in the **Azure services** section, click **Resource groups**.
 
@@ -34,16 +33,6 @@ When no longer needed, you can delete your resource group and all the resources 
 5. The **Delete a resource group** page is displayed. In the **Enter resource group name to confirm deletion**, enter `training-adb-rg`, and then click **Delete**.
 
     ![Delete the resource group](./images/delete-rg.png " ")
-
-## Task 2: VM Auto-shutdown
-
-If you still need your VM, Azure provides an Auto-shutdown feature for virtual machines to help manage costs and ensure you are not billed for unused resources.
-
-1. On the **Operations** section for the VM, select the **Auto-shutdown** option.
-
-2. A page will open where you can configure the auto-shutdown time. Select the **On** option to enable and then set a time that works for you.
-
-3. Once you have set the time, select **Save** at the top to enable your Auto-shutdown configuration.
 
 **Congratulations! You have completed the workshop!**
 
