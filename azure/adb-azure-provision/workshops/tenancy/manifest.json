@@ -9,10 +9,6 @@
         "filename": "../../introduction/introduction.md"
         },
         {
-          "title": "Log in to Oracle Cloud",
-          "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
-        },
-        {
             "title": "Lab 1: Create the Required Resources",
             "description": "Pre-requisites to provision Autonomous AI Databases",
             "type": "tenancy",

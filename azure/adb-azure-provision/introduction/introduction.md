@@ -1,5 +1,6 @@
 # Introduction
-`Oracle Database@Azure` is a cloud database service that enables you to access OCI managed Oracle Exadata infrastructure inside Azure data centers.
+
+`Oracle Database@Azure` is a managed Oracle Database service that runs Oracle Cloud Infrastructure (OCI)–managed Oracle databases colocated inside Microsoft Azure data centers, giving Azure applications low-latency access to Oracle Database services while billing and management are integrated through Azure.
 
 Oracle Autonomous AI Database available under `Oracle Database@Azure` is a fully automated database service that makes it easy for all organizations to develop and deploy application workloads, regardless of complexity, scale, or criticality. It is the only database cloud service that meets the needs ranging from self-service analytics to sophisticated, large-scale data management applications. Autonomous AI Database supports multiple workloads, including: AI Lakehouse, AI Transaction Processing, JSON-centric Applications, and Oracle APEX Low Code Development. Some of the key benefits include the following features:
 - Low Latency: By running Oracle databases in the same data centers as Azure applications, the service provides high performance and low-latency connectivity, crucial for mission-critical workloads.
@@ -8,7 +9,7 @@ Oracle Autonomous AI Database available under `Oracle Database@Azure` is a fully
 - Integrated Monitoring: Database metrics, audit logs, and events are natively available within Azure Monitor for a unified monitoring experience.
 
 # About this Workshop
-In this workshop, you learn how to create a resource principal, a virtual network, add a subnet to the virtual network, and and delegate the subnet to the `Oracle Database@Azure Service`. Next, you provision an Oracle Autonomous AI Database using those resources in `Oracle Database@Azure`.
+In this workshop, you learn how to create a resource group, a virtual network, add a private subnet to the virtual network and delegate the subnet to the `Oracle Database@Azure Service`. Next, you provision an Oracle Autonomous AI Database using those resources in `Oracle Database@Azure`. You will then access Database actions in the provisioned database to run a simple SQL query.
 
 Estimated Time: 45 minutes
 
@@ -23,7 +24,7 @@ In this workshop, you will:
 * Deploy a Virtual Machine (VM) to access the Database actions
 
 ### Prerequisites
-- Access to Microsoft Azure cloud, OCI tenancy, and `Oracle Database@Azure`.
+- Access to Microsoft Azure portal, OCI tenancy, OCI console, and `Oracle Database@Azure`.
 - An existing Azure subscription. Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
 - An Oracle Cloud Infrastructure (OCI) account with permissions to view and manage Autonomous AI Database resources within the OCI console.
 

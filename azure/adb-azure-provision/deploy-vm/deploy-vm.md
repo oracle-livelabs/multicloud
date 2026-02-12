@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access Database actions in your provisioned Autonomous AI Database.
+This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access Database actions for your provisioned Autonomous AI Database.
 
 Estimated Time: 10 minutes
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 To access your Oracle Autonomous AI Database actions, you must use a "Jump Box" (Virtual Machine or VM) located within the same private network (VNet), as private endpoints are not accessible from the public internet. If you don't have a VM, use the following steps to deploy one.
     
-Deploy a Virtual Machine (VM) that can "see" your private Oracle Autonomous AI Database as follows:
+Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous AI Database and query it.
 
 1.	On the Azure Portal Home page, search for **Virtual machines**, and then select **+ Create > Virtual machine**.
 
@@ -74,11 +74,9 @@ Deploy a Virtual Machine (VM) that can "see" your private Oracle Autonomous AI D
 
 Once the VM is **Running**, connect to it from your local computer as follows:
 
-1. Double-click the downloaded `training-oracle-azure-vm.rdp` file to start the remote connection. 
-    
-    >**Note:** If prompted with a security warning about the remote computer's identity, click **Connect** to continue. If also prompted about the identity of the remote computer cannot be verified, click **Yes** to continue.
+1. Double-click the downloaded `training-oracle-azure-vm.rdp` file to start the remote connection. If "`The publisher of this remote connection can't be identified`" security warning is displayed, click **Connect**.
 
-2. On the **Enter your credentials** dialog box, enter your VM's credentials, and then click **OK**.
+2. On the **Enter your credentials** dialog box, enter your VM's credentials, and then click **OK**. If "`The identity of the remote computer cannot be verified`" security warning is displayed, click **Yes**.
 
     ![Enter your VM's credentials](./images/enter-vm-credentials.png " ")
 
