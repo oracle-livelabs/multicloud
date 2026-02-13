@@ -29,16 +29,20 @@ Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous 
 
 2.	On the **Basics** tab, specify the following: 
     - **Resource Group:** Select the resource group that contains your database, `training-adb-rg` in our example.
+        ![The VM Basics tab > Project details](./images/basics-project-details.png " ")
+
     - **Security type:** `Standard`.
     - **Image:** In our example, we will choose `Windows 11 Pro, version 25H2 - x64 Gen2` (select the option that is appropriate for you).
     - **Size:** Select at least 2 vCPUs and 8 GB RAM for stability. In our example, we chose `Standard_B2as_v2 – vcpus, 8 GiB memory`.
+        ![The VM Basics tab > instance details](./images/basics-instance-details.png " ")
+
     - **Administrator Account:** Enter a username and a strong password that you can remember.
     - **Public inbound ports:** `Allow selected ports`.
     - **Select inbound ports:** `RDP (3389)`.
     - **Delete public IP and NIC when VM is deleted:** `Checked`.
     - **Licensing:** `Checked`.
 
-        ![The VM Basics tab](./images/vm-basics-tab.png " ")
+        ![The VM Basics tab](./images/basics-rest.png " ")
 
 3.	On the **Networking** tab (Critical), specify the following:
     - **Virtual Network:** Select the same VNet where your Oracle Autonomous AI Database is provisioned, `training-oracle-vm` in our example.

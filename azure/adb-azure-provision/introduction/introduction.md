@@ -18,10 +18,11 @@ In this workshop, you will:
 
 * Create a resource group in Azure Portal
 * Create a virtual network (VNet) in Azure Portal
-* Add a subnet to the virtual network and delegate the subnet to `Oracle Database@Azure Service`
+* Add a subnet to the VNet and delegate the subnet to `Oracle Database@Azure Service`
+* Add a public subnet to the VNet to access the database from the virtual machine
 * Provision an Oracle Autonomous AI Database in `Oracle Database@Azure`
 * Review the provisioned Oracle Autonomous AI Database in OCI
-* Deploy a Virtual Machine (VM) to access the Database actions
+* Deploy a virtual machine (VM) to access the Database actions
 
 ### Prerequisites
 - Access to Microsoft Azure portal, OCI tenancy, OCI console, and `Oracle Database@Azure`.
