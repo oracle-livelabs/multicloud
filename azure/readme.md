@@ -1,1 +1,0 @@
-This is the parent folder for all new Azure LiveLabs workshops

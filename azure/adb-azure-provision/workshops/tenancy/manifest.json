@@ -1,0 +1,41 @@
+{
+    "workshoptitle": "Provision an Oracle Autonomous AI Database Using Microsoft Azure Portal",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+        "title": "Introduction",
+        "description": "Introduction of the workshop",
+        "type": "tenancy",
+        "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Create the Required Resources",
+            "description": "Pre-requisites to provision Autonomous AI Databases",
+            "type": "tenancy",
+            "filename": "../../prerequisites/prerequisites.md"
+        },
+        {
+            "title": "Lab 2: Provision an Oracle Autonomous AI Database",
+            "description": "Provision an Oracle Autonomous AI Database",
+            "type": "tenancy",
+            "filename": "../../provision-database/provision-database.md"
+        },
+        {
+            "title": "Lab 3: Deploy a Virtual Machine to Access Database Actions",
+            "description": "Deploy a virtual machine",
+            "type": "tenancy",
+            "filename": "../../deploy-vm/deploy-vm.md"
+        },
+        {
+            "title": "Lab 4: Clean Up Resources",
+            "description": "Clean up resources",
+            "type": "tenancy",
+            "filename": "../../cleanup-resources/cleanup-resources.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
