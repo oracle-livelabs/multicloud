@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Provision an Oracle Autonomous AI Database Using Microsoft Azure Portal",
+    "workshoptitle": "Create an Oracle Autonomous AI Database on Oracle Database@Azure",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
                 {
@@ -15,8 +15,8 @@
             "filename": "../../prerequisites/prerequisites.md"
         },
         {
-            "title": "Lab 2: Provision an Oracle Autonomous AI Database",
-            "description": "Provision an Oracle Autonomous AI Database",
+            "title": "Lab 2: Create an Oracle Autonomous AI Database",
+            "description": "Create an Oracle Autonomous AI Database",
             "type": "tenancy",
             "filename": "../../provision-database/provision-database.md"
         },

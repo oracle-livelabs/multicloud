@@ -1,8 +1,8 @@
-# Provision an Oracle Autonomous AI Database
+# Create an Oracle Autonomous AI Database
 
 ## Introduction
 
-This lab walks you through the steps to provision an Oracle Autonomous AI Database using the Azure portal.  
+This lab walks you through the steps to create an Oracle Autonomous AI Database using the Azure portal.  
 
 Estimated Time: 10 minutes
 
@@ -10,7 +10,7 @@ Estimated Time: 10 minutes
 
 In this lab, you will:
 
-- Provision an Oracle Autonomous AI Database in `Oracle Database@Azure`
+- Create an Oracle Autonomous AI Database in `Oracle Database@Azure`
 - Place the database in your resource group and Microsoft Azure region
 - Configure the database according to your requirements
 - Review your Oracle Autonomous AI Database in OCI
@@ -37,7 +37,7 @@ In this lab, you will:
 
     ![click Create an Autonomous AI Database](./images/click-create-adb.png " ")
 
-    >**Note:** Alternatively, you can click **Oracle Autonomous Database Service** from the navigation menu on the left, and then click **+ Create**.
+    >**Note:** Alternatively, you can click **Oracle Autonomous AI Database** node from the navigation menu on the left, and then click **+ Create**.
 
     The **Create Oracle Autonomous AI Database** page is displayed. This is where you'll specify the configuration for your database instance.
 
@@ -120,19 +120,19 @@ In this lab, you will:
 
     ![Deployment is complete](./images/deployment-complete.png " ")
 
-13. Click **Go to Resources**. The **Resource group** page is displayed. In the **Filter for any field** text box, enter `training`. The newly provisioned Autonomous AI Database is displayed.
+13. Click **Go to Resources**. The **Resource group** page is displayed. In the **Filter for any field** text box, enter `training`. The newly created Autonomous AI Database is displayed.
 
     ![New Autonomous AI Database is displayed](./images/adb-displayed.png " ")
 
-## Task 2: Review your Provisioned Oracle Autonomous AI Database in OCI
+## Task 2: Review your Oracle Autonomous AI Database in OCI
 
-In this task, you will learn how to view your newly provisioned Oracle Autonomous AI Database in OCI. 
+In this task, you will learn how to view your newly created Oracle Autonomous AI Database in OCI. 
 
 1. Click the **Home** link in the breadcrumbs. 
 
 2. In the **Azure services** section, click the `Oracle Database@Azure` icon. Alternatively, you can search for `Oracle Database@Azure` in the **Search resources, services, and docs** search field. 
 
-3. On the **Oracle Database@Azure | Overview** page, click the **Oracle Autonomous AI Database** node in the navigation menu on the left. In the **Filter for any field** text box, enter `training`. The newly provisioned Autonomous AI Database is displayed.
+3. On the **Oracle Database@Azure | Overview** page, click the **Oracle Autonomous AI Database** node in the navigation menu on the left. In the **Filter for any field** text box, enter `training`. The newly created Autonomous AI Database is displayed.
 
     ![The new Autonomous AI Database is displayed](./images/new-adb-displayed.png " ")
 
@@ -142,7 +142,7 @@ In this task, you will learn how to view your newly provisioned Oracle Autonomou
 
     ![Click Go to OCI link](./images/click-go-oci.png " ")
 
-    **Note:** To click the **Go to OCI** link in the Azure portal and successfully display your provisioned Oracle Autonomous AI Database, you must meet specific identity and configuration requirements such as:
+    **Note:** To click the **Go to OCI** link in the Azure portal and successfully display your created Oracle Autonomous AI Database, you must meet specific identity and configuration requirements such as:
     - **Linked OCI Tenancy:** Your Azure subscription must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
     - **OCI Permissions:** You must have a valid OCI user account with permissions to view and manage Autonomous Database resources within the OCI console.
 
