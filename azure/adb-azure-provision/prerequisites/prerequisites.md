@@ -1,8 +1,8 @@
-# Create the Required Resources to Provision an Oracle Autonomous AI Database
+# Create the Required Resources to Create an Oracle Autonomous AI Database
 
 ## Introduction
 
-This lab walks you through creating the prerequisite resources to provision an Autonomous AI Database using `Oracle Database@Azure`. You will create a resource group, a virtual network (VNet), and a subnet that needs to be delegated to `Oracle.Database/networkAttachement`.
+This lab walks you through creating the prerequisite resources to create an Autonomous AI Database using `Oracle Database@Azure`. You will create a resource group, a virtual network (VNet), and a subnet that needs to be delegated to `Oracle.Database/networkAttachement`. You also create a public subnet that you will use when you deploy the virtual machine. 
 
 Estimated Time: 15 minutes
 
@@ -185,7 +185,7 @@ In this task, you will create a new subnet and delegate it to the `Oracle Databa
 
 ## Task 4: Add a Public Subnet
 
-When you provision your Oracle Autonomous AI Database in Lab 2, you will use the **Managed private virtual network IP only** access type. This means your database is only reachable via your private Azure Virtual Network (VNet)—not publicly over the internet. This makes things secure, but it also means you (or your browser) must be inside that private network to reach tools like Database Actions. The easiest way to correct this issue is to create a simple Virtual Machine (VM) in Azure on the same VNet as your database. You will do that in Lab 3; however, when you create the VM, you’ll need a public subnet. A public subnet is a section of your Azure network that has an "Internet Gateway". This allows the resources inside it to communicate with the outside world. Let’s create a public subnet that you will use when you create your VM.
+When you create your Oracle Autonomous AI Database in Lab 2, you will use the **Managed private virtual network IP only** access type. This means your database is only reachable via your private Azure Virtual Network (VNet)—not publicly over the internet. This makes things secure, but it also means you (or your browser) must be inside that private network to reach tools like Database Actions. The easiest way to correct this issue is to create a simple Virtual Machine (VM) in Azure on the same VNet as your database. You will do that in Lab 3; however, when you create the VM, you’ll need a public subnet. A public subnet is a section of your Azure network that has an "Internet Gateway". This allows the resources inside it to communicate with the outside world. Let’s create a public subnet that you will use when you create your VM.
 
 1. You should be already on your virtual network **Subnets** page from **Task 3**. 
 

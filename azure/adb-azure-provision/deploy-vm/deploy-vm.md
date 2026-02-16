@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access Database actions for your provisioned Autonomous AI Database.
+This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access Database actions for your newly created Autonomous AI Database.
 
 Estimated Time: 10 minutes
 
@@ -45,7 +45,7 @@ Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous 
         ![The VM Basics tab](./images/basics-rest.png " ")
 
 3.	On the **Networking** tab (Critical), specify the following:
-    - **Virtual Network:** Select the same VNet where your Oracle Autonomous AI Database is provisioned, `training-oracle-vm` in our example.
+    - **Virtual Network:** Select the same VNet where your Oracle Autonomous AI Database is created, `training-oracle-vm` in our example.
     - **Subnet:** Choose a subnet that has routing access to the database's private subnet.
 
         ![The VM Networking tab](./images/vm-networking-tab.png " ")
@@ -100,7 +100,7 @@ Since your VM is now inside the private network, it can resolve the database's p
 
     ![Database actions message box and URL](./images/db-actions-url.png " ")
 
-3. Sign in as the `ADMIN` user with the password you used when you provisioned your database. 
+3. Sign in as the `ADMIN` user with the password you used when you created your database. 
 
     ![Sign in as the admin user](./images/sign-in-admin.png " ")
     
@@ -121,7 +121,7 @@ Since your VM is now inside the private network, it can resolve the database's p
     
     ![Run the query](./images/run-query.png " ")
 
-**All Done! You have successfully deployed a VM and accessed Database actions in your provisioned Oracle Autonomous AI Database using the VM.**
+**All Done! You have successfully deployed a VM and accessed Database actions in your newly created Oracle Autonomous AI Database using the VM.**
 
 You may now proceed to the next lab.
 

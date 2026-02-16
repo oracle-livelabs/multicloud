@@ -4,12 +4,12 @@
 
 Oracle Autonomous AI Database available under `Oracle Database@Azure` is a fully automated database service that makes it easy for all organizations to develop and deploy application workloads, regardless of complexity, scale, or criticality. It is the only database cloud service that meets the needs ranging from self-service analytics to sophisticated, large-scale data management applications. Autonomous AI Database supports multiple workloads, including: AI Lakehouse, AI Transaction Processing, JSON-centric Applications, and Oracle APEX Low Code Development. Some of the key benefits include the following features:
 - Low Latency: By running Oracle databases in the same data centers as Azure applications, the service provides high performance and low-latency connectivity, crucial for mission-critical workloads.
-- Unified Management: Customers can provision, manage, and monitor the Oracle Autonomous Database directly from the Azure portal using familiar Azure APIs, CLIs, and SDKs.
-- Automatic Management: As an "Autonomous" service, Oracle handles routine administrative tasks such as provisioning, tuning, patching, backups, and scaling automatically, reducing operational overhead.
+- Unified Management: Customers can create, manage, and monitor the Oracle Autonomous AI Database directly from the Azure portal using familiar Azure APIs, CLIs, and SDKs.
+- Automatic Management: As an "Autonomous" service, Oracle handles routine administrative tasks such as creating, tuning, patching, backups, and scaling automatically, reducing operational overhead.
 - Integrated Monitoring: Database metrics, audit logs, and events are natively available within Azure Monitor for a unified monitoring experience.
 
 # About this Workshop
-In this workshop, you learn how to create a resource group, a virtual network, add a private subnet to the virtual network and delegate the subnet to the `Oracle Database@Azure Service`. Next, you provision an Oracle Autonomous AI Database using those resources in `Oracle Database@Azure`. You will then access Database actions in the provisioned database to run a simple SQL query.
+In this workshop, you learn how to create a resource group, a virtual network, add a private subnet to the virtual network and delegate the subnet to the `Oracle Database@Azure Service`. You will also add a public subnet. Next, you create an Oracle Autonomous AI Database using those resources in `Oracle Database@Azure`. Finally, you deploy a virtual machine using the public subnet and in order to access Database actions in the created database and then run a simple SQL query.
 
 Estimated Time: 45 minutes
 
@@ -20,8 +20,8 @@ In this workshop, you will:
 * Create a virtual network (VNet) in Azure Portal
 * Add a subnet to the VNet and delegate the subnet to `Oracle Database@Azure Service`
 * Add a public subnet to the VNet to access the database from the virtual machine
-* Provision an Oracle Autonomous AI Database in `Oracle Database@Azure`
-* Review the provisioned Oracle Autonomous AI Database in OCI
+* Create an Oracle Autonomous AI Database in `Oracle Database@Azure`
+* Review the created Oracle Autonomous AI Database in OCI
 * Deploy a virtual machine (VM) to access the Database actions
 
 ### Prerequisites
