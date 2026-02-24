@@ -1,0 +1,76 @@
+rm: cannot remove 'source.*': No such file or directory
+clean startup
+Discovering the source domain...
+JDK version is 1.8.0_321-b07
+JAVA_HOME = /usr/java/jdk1.8.0_321-amd64
+WLST_EXT_CLASSPATH = /home/opc/weblogic-migration/weblogic-deploy/lib/weblogic-deploy-core.jar
+CLASSPATH = /home/opc/weblogic-migration/weblogic-deploy/lib/weblogic-deploy-core.jar
+WLST_PROPERTIES = -Dcom.oracle.cie.script.throwException=true -Djava.util.logging.config.class=oracle.weblogic.deploy.logging.WLSDeployLoggingConfig 
+/home/opc/Oracle/Middleware/Oracle_Home/wlserver/../oracle_common/common/bin/wlst.sh /home/opc/weblogic-migration/weblogic-deploy/lib/python/discover.py -oracle_home /home/opc/Oracle/Middleware/Oracle_Home/wlserver/.. -domain_home /home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain -archive_file source.zip -model_file source.yaml -variable_file source.properties -domain_type JRF
+
+Initializing WebLogic Scripting Tool (WLST) ...
+
+Jython scans all the jar files it can find at first startup. Depending on the system, this process may take a few minutes to complete, and WLST may not return a prompt right away.
+
+Welcome to WebLogic Server Administration Scripting Shell
+
+Type help() for help on available commands
+
+####<Nov 28, 2024 9:39:02 AM> <INFO> <WebLogicDeployToolingVersion> <logVersionInfo> <WLSDPLY-01750> <The WebLogic Deploy Tooling discoverDomain version is 4.2.0:.f2e5967:Jun 18, 2024 20:42 UTC>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <WLSDeployLoggingConfig> <logLoggingDirectory> <WLSDPLY-01755> <The discoverDomain program will write its log to directory /home/opc/weblogic-migration/weblogic-deploy/logs>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <discover> <main> <WLSDPLY-20043> </home/opc/weblogic-migration/weblogic-deploy/lib/python/discover.py running with Java version 1.8.0_321 on operating system Linux 5.15.0-104.119.4.2.el8uek.x86_64 (amd64)>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <discover> <main> <WLSDPLY-20044> </home/opc/weblogic-migration/weblogic-deploy/lib/python/discover.py is running on a Java version that supports the encryption algorithms used by WDT encryption>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <PathHelper> <__init__> <WLSDPLY-02100> <Setting local file system to use Posix-style paths>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <ModelContext> <__copy_from_args> <WLSDPLY-01050> <Local WebLogic version is 12.2.1.4.0>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <DomainTypedef> <__finish_initialization> <WLSDPLY-12328> <Domain type JRF type definition file /home/opc/weblogic-migration/weblogic-deploy/lib/typedefs/JRF.json version JRF_12CR2_LAST does not contain a postCreateRcuSchemasScript section>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <DomainTypedef> <__finish_initialization> <WLSDPLY-12321> <Domain type JRF type definition file /home/opc/weblogic-migration/weblogic-deploy/lib/typedefs/JRF.json version JRF_12CR2_LAST does not contain a postCreateDomainScript section>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <DomainTypedef> <__finish_initialization> <WLSDPLY-12331> <Domain type JRF type definition file /home/opc/weblogic-migration/weblogic-deploy/lib/typedefs/JRF.json version JRF_12CR2_LAST does not contains any discoverExcludedLocationsBinariesToArchive entries>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <Aliases> <__init__> <WLSDPLY-19052> <Aliases loaded using WebLogic version 12.2.1.4.0 and WLST OFFLINE mode>
+####<Nov 28, 2024 9:39:02 AM> <INFO> <discover> <main> <WLSDPLY-06025> <Variable file was provided. Model password attributes will be replaced with tokens and their corresponding values put into the variable file will be empty.>
+####<Nov 28, 2024 9:39:05 AM> <INFO> <discover> <_get_domain_name> <WLSDPLY-06022> <Discover domain test_domain>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <PyReflectedFunction> <__call__> <WLSDPLY-06431> <Starting discovery of the WebLogic Remote Console domain extension in domain home /home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <TopologyDiscoverer> <discover> <WLSDPLY-06600> <Discovering domain model topology>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <Discoverer> <discover_domain_mbean> <WLSDPLY-06644> <Adding Domain CdiContainer>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <Discoverer> <discover_domain_mbean> <WLSDPLY-06644> <Adding Domain JMX>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <TopologyDiscoverer> <_get_nm_properties> <WLSDPLY-06627> <Discovering NM Properties>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <TopologyDiscoverer> <get_clusters> <WLSDPLY-06601> <Discovering 1 clusters>
+####<Nov 28, 2024 9:39:06 AM> <INFO> <TopologyDiscoverer> <get_clusters> <WLSDPLY-06602> <Adding Cluster cluster_1>
+####<Nov 28, 2024 9:39:07 AM> <INFO> <TopologyDiscoverer> <get_servers> <WLSDPLY-06603> <Discovering 1 servers>
+####<Nov 28, 2024 9:39:07 AM> <INFO> <TopologyDiscoverer> <get_servers> <WLSDPLY-06604> <Adding Server admin-server>
+####<Nov 28, 2024 9:39:09 AM> <INFO> <TopologyDiscoverer> <get_server_templates> <WLSDPLY-06605> <Discovering 1 server templates>
+####<Nov 28, 2024 9:39:09 AM> <INFO> <TopologyDiscoverer> <get_server_templates> <WLSDPLY-06606> <Adding server-template_1 Server Template>
+####<Nov 28, 2024 9:39:11 AM> <INFO> <TopologyDiscoverer> <get_machines> <WLSDPLY-06611> <Discovering 1 machines>
+####<Nov 28, 2024 9:39:11 AM> <INFO> <TopologyDiscoverer> <get_machines> <WLSDPLY-06612> <Adding Machine machine_1>
+####<Nov 28, 2024 9:39:11 AM> <INFO> <TopologyDiscoverer> <discover_security_configuration> <WLSDPLY-06622> <Adding Security Configuration>
+####<Nov 28, 2024 9:39:12 AM> <INFO> <TopologyDiscoverer> <get_embedded_ldap_configuration> <WLSDPLY-06639> <Skipping Embedded LDAP Server Configuration>
+####<Nov 28, 2024 9:39:12 AM> <INFO> <ResourcesDiscoverer> <discover> <WLSDPLY-06300> <Discovering domain model resources>
+####<Nov 28, 2024 9:39:12 AM> <INFO> <CommonResourcesDiscoverer> <get_datasources> <WLSDPLY-06340> <Discovering 2 JDBC System Resources>
+####<Nov 28, 2024 9:39:12 AM> <INFO> <CommonResourcesDiscoverer> <get_datasources> <WLSDPLY-06341> <Adding JDBC System Resource testDatasource>
+####<Nov 28, 2024 9:39:12 AM> <INFO> <CommonResourcesDiscoverer> <get_datasources> <WLSDPLY-06341> <Adding JDBC System Resource TAC-Datasource>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <discover> <WLSDPLY-06380> <Discovering domain model deployments>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <get_applications> <WLSDPLY-06391> <Discovering 2 Applications>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <get_applications> <WLSDPLY-06392> <Adding Application wls-exporter>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <add_application_to_archive> <WLSDPLY-06394> <Add application wls-exporter binary /home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain/servers/admin-server/upload/wls-exporter.war/app/wls-exporter.war to archive>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <get_applications> <WLSDPLY-06392> <Adding Application opdemo>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <DeploymentsDiscoverer> <add_application_to_archive> <WLSDPLY-06394> <Add application opdemo binary /home/opc/Oracle/Middleware/Oracle_Home/user_projects/domains/test_domain/servers/admin-server/upload/opdemo.war/app/opdemo.war to archive>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <MultiTenantDiscoverer> <discover> <WLSDPLY-06700> <Discover Multi-tenant>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <MultiTenantTopologyDiscoverer> <discover> <WLSDPLY-06709> <Discover Multi-tenant Topology>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <MultiTenantResourcesDiscoverer> <discover> <WLSDPLY-06707> <Discover Multi-tenant Resources>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <filter_helper> <apply_filters> <WLSDPLY-20017> <No filter configuration file /home/opc/weblogic-migration/weblogic-deploy/lib/model_filters.json>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <filter_helper> <apply_filters> <WLSDPLY-20016> <No filters of type discover found in filter configuration file /home/opc/weblogic-migration/weblogic-deploy/lib/model_filters.json>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <variable_injector> <inject_variables_from_configuration> <WLSDPLY-19602> <Use variable file source.properties from command line arguments>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <variable_injector> <inject_variables_from_configuration> <WLSDPLY-19518> <Variables were inserted into the model and written to the variables file source.properties>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <Validator> <load_variables> <WLSDPLY-05004> <Performing variable validation on the source.properties variable file>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <Validator> <__validate_model_file> <WLSDPLY-05002> <Performing validation in TOOL mode for WebLogic Server version 12.2.1.4.0 and WLST OFFLINE mode>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <Validator> <__validate_model_file> <WLSDPLY-05003> <Performing model validation on the /home/opc/source.yaml model file>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <Validator> <__validate_model_file> <WLSDPLY-05005> <Performing archive validation on the /home/opc/source.zip archive file>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <ModelValidator> <validate_model_section> <WLSDPLY-05008> <Validating the domainInfo section of the model file>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <ModelValidator> <validate_model_section> <WLSDPLY-05008> <Validating the topology section of the model file>
+####<Nov 28, 2024 9:39:13 AM> <INFO> <ModelValidator> <validate_model_section> <WLSDPLY-05008> <Validating the resources section of the model file>
+####<Nov 28, 2024 9:39:14 AM> <INFO> <ModelValidator> <validate_model_section> <WLSDPLY-05008> <Validating the appDeployments section of the model file>
+
+Issue Log for discoverDomain version 4.2.0 running WebLogic version 12.2.1.4.0 in offline mode:
+
+Total:   SEVERE :    0  WARNING :    0
+
+discoverDomain.sh completed successfully (exit code = 0)

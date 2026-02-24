@@ -21,7 +21,7 @@ This lab assumes you have:
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wls-oke-toolkit-mkplc-freetier.zip](https://objectstorage.us-ashburn-1.oraclecloud.com/p/5U-YjPCTNUQxm2QnMFFb28o7BTl1Ttoztpx6aDowWT0oc0nBmJpTuBNUQYC0OdFM/n/c4u02/b/hosted_workshops/o/stacks/wls-oke-toolkit-mkplc-freetier.zip)
+    - [wls-oke-toolkit-hpa-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/tQgoc8a4vpX1P_YtnV6mEac_6Jrd3WytIkA_OTwigYVUEiSrrJeQ_idGLjjwycjR/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-toolkit-hpa-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -30,10 +30,10 @@ This lab assumes you have:
     ![select compartment](images/select-compartment.png)
 
 
-3. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
+4. Select **My Configuration**, choose the **.Zip** file button, click the **Browse** link, and select the zip file that you downloaded or drag-n-drop for the file explorer. Click **Next**.
     ![browse zip](images/browse-zip.png)
 
-4. Enter or select the following and click **Next**.
+5. Enter or select the following and click **Next**.
 
     **Instance Count:** Accept the default, 1.
 
@@ -52,7 +52,7 @@ This lab assumes you have:
     ![instance shape](images/instance-shape.png)
 
 
-7. Select **Run Apply** and click **Create**.
+6. Select **Run Apply** and click **Create**.
     ![run apply](images/run-apply.png)
 
     > You don't need to wait for the stack to be created. We will come later to this stack to get the URL for remote desktop.
@@ -82,12 +82,12 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
     * **Name**: The name of the cluster. Leave the default value.
     * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
-    * **Kubernetes version**: The version of Kubernetes. Select *1.26.2* as Kubernetes version.
+    * **Kubernetes version**: The version of Kubernetes. Select *1.30.1* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
     * **Node type**: Select *Managed* as node type. 
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Public workers* value.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
-    * **Image**: Select the default image with Kubernetes version *1.26.2*.
+    * **Image**: Select the default image with Kubernetes version *1.30.1*.
     * **Number of nodes**: The number of worker nodes to create.Select *1* as value.
 
 
@@ -97,7 +97,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
 
 4. Click *Next* to review the details you entered for the new cluster.
 
-5. On the *Review* page, select the check box for *Create a Basic cluster* and then click *Create Cluster* to create the new network resources and the new cluster.
+5. On the *Review* page, click *Create Cluster* to create the new network resources and the new cluster.
 
     ![Review Cluster](images/review-cluster.png " ")
 
@@ -114,4 +114,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, November 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024

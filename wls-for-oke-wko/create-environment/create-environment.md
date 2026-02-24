@@ -24,7 +24,7 @@ In this lab, you will:
 
 In this task, you creates a public repository. In lab 5, we will push Auxiliary Image into this repository.
 
-1. In Remote Desktop, To open Firefox, click **Activities**, Type **Fire** in search box and then click **Firefox** as shown.
+1. In Remote Desktop, To open Firefox, click **Activities** and then click **Firefox** icon as shown.
     ![open firefox](images/open-firefox.png)
 
 2. Login to the [Oracle Cloud Console](https://cloud.oracle.com) using your credentials.
@@ -67,4 +67,4 @@ In this task, we accept the license agreement for WebLogic Server images resides
 
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024

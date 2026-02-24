@@ -20,9 +20,11 @@ In this lab, you will:
 
 
 
-1. In the terminal, copy and paste the following command to view the files we have downloaded for this workshop.
+1. In the terminal, copy and paste the following command to download the files we need for this workshop.
     ```bash
-    <copy>cd ~/hpa-demo/
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/-0WCMgxMeZ2w53UvRuto62ejubzxr3mP6yxU36CDk7-uYr7m1jKh4RtH7az-Jwe6/n/lrv4zdykjqrj/b/ankit-bucket/o/hpa-demo.zip
+    unzip hpa-demo.zip
+    cd ~/hpa-demo/
     ls -ltra</copy>
     ```
 
@@ -89,6 +91,7 @@ In this task, we add the prometheus datasource in the Grafana and later we impor
     ![add datasource](images/add-datasource.png)
 
 4. Click **Prometheus** as datasource.
+    ![click prometheus](images/click-prometheus.png)
 
 5. Enter **http://prometheus-server:80** as URL and click **Save & test** as shown below.
     ![prometheus url](images/prometheus-url.png)
@@ -96,7 +99,7 @@ In this task, we add the prometheus datasource in the Grafana and later we impor
 6. In Grafana, click **dashboard icon** -> **Import** as shown below.
     ![click dashboard](images/click-dashboard.png)
 
-7. Click **Upload JSON file** and then select the **weblogic-server-dashboard.json** file from **~/hpa-demo** folder as shown below. Click **Open**.
+7. Click **Upload JSON file** and then select the **weblogic_dashboard.json** file from **~/hpa-demo** folder as shown below. Click **Open**.
     ![upload json](images/upload-json.png)
 
 8. Click **Import** to import the WebLogic Server Dashboard.
@@ -105,9 +108,18 @@ In this task, we add the prometheus datasource in the Grafana and later we impor
 9. You will be able to view the WebLogic Server data in WebLogic Server Dashboard as shown below. 
     ![weblogic dashboard](images/weblogic-dashboard.png)
 
+10. Click drop down near to **Heap Usage** and click **Edit**.
+    ![heap usage](images/heap-usage.png)
+
+11. Go to **Field** variable and change its value to **Numeric Fields**. Click **Apply**.
+    ![change number](images/change-number.png)
+
+12. Do the same for **Running Time** and **Open Sockets** and you will have the output similar to below.
+    ![final dashboard](images/final-dashboard.png)
+
 You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, November 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024

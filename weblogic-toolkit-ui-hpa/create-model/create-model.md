@@ -26,11 +26,11 @@ To run this lab, you must have:
 
 In this task, we navigate through the resources in on-premise *test-domain* using WebLogic Administration console.
 
-1. On left side, click *Arrow Icon*. 
-    ![Clipboard](images/clipboard-setup.png)
- > **Important**- You can see the *Clipboard*, for copy and paste between the host machine and remote desktop, we use the *Clipboard*. For example, if you want to copy from the host machine and want to paste it inside the remote desktop, you need to first paste in the clipboard first, then you can paste it in remote desktop. Again click on *Arrow Icon* to hide the *Settings* option.
 
-2. Click on  *Oracle WebLogic Server* tab and enter *weblogic/Welcome1%* as `Username/Password`, then click *Login*. You can see, we have WebLogic Server version *12.2.1.3.0*.   
+1. Click **Activities** and select the **Mozila Firefox**  as shown below.
+    ![click admin](images/click-admin.png)
+
+2. Click on  **Local WLS** bookmark and we have saved the password for you, so click *Login*. You can see, we have WebLogic Server version *12.2.1.4.0*.   
     ![Login Admin Console](images/login-admin-console.png)
 
 3. To view available servers, expand *Environment* and click *Servers*. You can see, we have one dynamic clusters with 5 managed servers. 
@@ -46,13 +46,13 @@ In this task, we navigate through the resources in on-premise *test-domain* usin
 
 For simplicity of lab, we created *`base_project.wktproj`*, which preset the location of docker, Java, Oracle Home, Primary Image Tag. In this task, we open  *`base_project.wktproj`* project.
 
-1. Click *Activities* and then type **WebLogic** in search box. Click the icon for *WebLogic Kubernetes Toolkit UI*.
+1. Click *Activities* and click the icon for *WebLogic Kubernetes Toolkit UI*.
     ![Open WKTUI](images/open-wktui.png)
 
 2. To open *base_project.wktproj* project, click *File* -> *Open Project*. 
     ![Open Project](images/open-project.png)
 
-3. Click *Downloads* in left side, then choose *base_project.wktproj* and click *Open Project*.
+3. Click *Home* in left side, then choose *base_project.wktproj* and click *Open Project*.
     ![Project Location](images/project-location.png)
 
     > **For your information only:**<br>
@@ -92,49 +92,7 @@ In this task, we perform introspection of an on-premise domain, which creates a 
     > The result of this WDT introspection are model(a metadata representation of your domain configuration), placeholder, where you can specify the values (like password for datasource) and application in the application archive.
 
 
-## Task 5: Modify the model file to add wls-exporter
-
-In this task, we are going to download the source code for this workshop. This source code consist **wls-exporter.war** and updated **opdemo.war**. 
-
-1. To open terminal, click on **Activities** and select the **Terminal**.
-    ![open terminal](images/open-terminal.png)
-
-2. Copy and paste the following command to the terminal to download the source code. This source code contains the configuration file which setup the required resources for this workshop.
-    ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/2pF_MrYsfO9OtWWoLyKJReXNLn-U07FbuB-saUQJFb9AFE-bDgaXwIhnkKNSAl0C/n/lrv4zdykjqrj/b/ankit-bucket/o/hpa-demo.zip
-    unzip ~/hpa-demo.zip
-    cd ~/hpa-demo/</copy>
-    ```
-
-    ![download source](images/download-source.png)
-
-3. In WKTUI, copy and paste the following configuration below the opdemo as shown in the screenshot.
-    ```bash
-    <copy>wls-exporter:
-            SourcePath: wlsdeploy/applications/wls-exporter.war
-            ModuleType: war
-            Target: cluster_1,admin-server</copy>
-    ```
-
-    ![add wls-exporter](images/add-wlsexporter.png)
-
-4. In WKTUI, in the **archive.zip** section, select the **opdemo.war** and click **-** to remove the **opdemo.war** file.
-    ![remove opdemo](images/remove-opdemo.png)
-
-5. In WKTUI, in the **archive.zip** section, click **+** icon to add the **wls-exporter.war** by select the following options and click **OK**.
-
-    **Archive Entry Type:**         select **Application**.</br>
-    **File system type to add:**    select **File**.</br>
-    **Application Archive File:**   select the **wls-exporter.war** file from **~/hpa-demo** folder.
-
-    ![add wls](images/add-wls.png)
-
-6. Similarly, add the updated **opdemo.war** file from **~/hpa-demo/** folder as shown in screenshot.
-    ![update opdemo](images/update-opdemo.png)
-
-    > Updated **opdemo.war** have session limit of 2 minutes, which is requied to demonstrate the cluster scaling.
-
-## Task 5: Validate and Prepare Model 
+## Task 4: Validate and Prepare Model 
 
 In this task, we validate the model and prepare the model to be deployed on Oracle Kubernetes Cluster (OKE).
 
@@ -165,4 +123,4 @@ You may now proceed to the next lab.
 ## Acknowledgements
 * **Author** -  Ankit Pandey
 * **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, November 2023
+* **Last Updated By/Date** - Ankit Pandey, October 2024

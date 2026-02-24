@@ -1,0 +1,65 @@
+{
+    "workshoptitle": "Build an AI-Powered Applications with Helidon and LangChain4J",
+    "help": "livelabs-help-weblogic_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "type": "freetier",
+            "filename": "../../intro/intro.md"
+        },
+        {
+            "title": "Get Started",
+            "description": "Prerequisites",
+            "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+        },
+        {
+            "title": "Lab 1A: Setup the environment in your laptop",
+            "filename": "../../laptop-setup/laptop-setup.md"
+        },
+        {
+            "title": "Lab 1B: Setup the Environment in OCI Code Editor",
+            "type": "freetier",
+            "filename": "../../setup-environment/setup-environment.md"
+        },
+        {
+            "title": "Lab 2: Setup the Project",
+            "type": "freetier",
+            "filename": "../../setup-project/setup-project.md"
+        },
+        {
+            "title": "Lab 3: Enable AI Capabilities in the Project",
+            "type": "freetier",
+            "filename": "../../enable-ai/enable-ai.md"
+        },
+        {
+            "title": "Lab 4: Build an AI Service",
+            "type": "freetier",
+            "filename": "../../build-ai/build-ai.md"
+        },
+        {
+            "title": "Lab 5: Add Retrieval-Augmented Generation (RAG)",
+            "type": "freetier",
+            "filename": "../../add-rag/add-rag.md"
+        },
+		{
+            "title": "Lab 6: Prepare Application Data",
+            "type": "freetier",
+            "filename": "../../prepare-data/prepare-data.md"
+        },
+		{
+            "title": "Lab 7: Fill the EmbeddingStore",
+            "type": "freetier",
+            "filename": "../../embedding-store/embedding-store.md"
+        },
+        {
+            "title": "Lab 8: Fine-Tune the Responses",
+            "type": "freetier",
+            "filename": "../../ai-response/ai-response.md"
+        },
+      {
+        "title": "Need Help?",
+        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-freetier.md"
+      }
+   ]
+}
