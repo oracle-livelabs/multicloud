@@ -11,7 +11,7 @@ Oracle Autonomous AI Database available under `Oracle Database@Azure` is a fully
 ## About this Workshop
 In this workshop, you learn how to create a resource group, a virtual network, add a private subnet to the virtual network and delegate the subnet to the `Oracle Database@Azure Service`. You will also add a public subnet. Next, you create an Oracle Autonomous AI Database using those resources in `Oracle Database@Azure`. Finally, you deploy a virtual machine using the public subnet and in order to access Database actions in the created database and then run a simple SQL query.
 
-Estimated Time: 45 minutes
+Estimated Workshop Time: 45 minutes
 
 ### Objectives
 In this workshop, you will:
