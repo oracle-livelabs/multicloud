@@ -21,13 +21,13 @@ A resource group in Azure Portal is a logical container that holds related Azure
 
 In this task, you will create a resource group.
 
-1.  Login to [Azure Portal](portal.azure.com). In the **Azure services** section, click the **Resource groups** icon. If the **Resource groups** icon is not displayed, you can search for it using the **Search resources, services, and docs** search field.
+1. Login to [Azure Portal](portal.azure.com). In the **Azure services** section, click the **Resource groups** icon. If the **Resource groups** icon is not displayed, you can search for it using the **Search resources, services, and docs** search field.
 
     ![Navigate to the Azure portal and click the Resource groups icon](./images/navigate-azure-portal.png " ")
 
     >**Security Notice:** To ensure data privacy and security, certain fields on screen captures in this workshop have been redacted. Sensitive fields—such as IP addresses, subscription IDs, and personal identifiers—are obscured using solid gray rectangular boxes.
 
-2.	On the **Resource groups** page, click **+ Create**.
+2. On the **Resource groups** page, click **+ Create**.
 
     ![Create a new resource group](./images/click-create-resource-group.png " ")
 
@@ -35,7 +35,7 @@ In this task, you will create a resource group.
 
     ![The Create a resource group page is displayed](./images/create-resource-group-page.png " ")
 
-3.	 On the **Basics** tab, specify the following details:
+3. On the **Basics** tab, specify the following details:
     - **Subscription:** Select your billing subscription from the drop-down list.
     - **Resource group name:** `training-adb-rg`.
     - **Region:** Select your region from the drop-down list.
@@ -44,7 +44,7 @@ In this task, you will create a resource group.
 
         Click **Next**.
 
-4.  On the **Tags** tab, create the following two tags. Tags are key-value pairs used to organize and manage your resources. 
+4. On the **Tags** tab, create the following two tags. Tags are key-value pairs used to organize and manage your resources. 
 
     - **Tag 1**: Enter or select `Environment` for the name and `Training` for the value.
     - **Tag 2:** Enter or select `Created by` for the name and enter your name for the value.
@@ -59,7 +59,7 @@ In this task, you will create a resource group.
 
     A **Resource group created** message box is displayed. 
 
-6.	Enter `training` in the **Filter for any field** field to search for the newly created resource group, and then press [Enter].
+6. Enter `training` in the **Filter for any field** field to search for the newly created resource group, and then press [Enter].
     The new `training-adb-rg` is displayed. 
 
     ![Search for new resource group](./images/search-resource-group.png " ")
@@ -80,7 +80,7 @@ An Azure Virtual Network (VNet) is the fundamental building block for your priva
 
     The **Create virtual network** page is displayed.
 
-3.	In the **Project details** section of the **Basics** tab, specify the following:
+3. In the **Project details** section of the **Basics** tab, specify the following:
     - **Subscription:** Select your billing subscription.
     - **Resource group:** `training-adb-rg`.
     - **Region:** Select your region.
@@ -93,7 +93,7 @@ An Azure Virtual Network (VNet) is the fundamental building block for your priva
 
         Click **Next**.
 
-5.  On the **Security** tab. Specify the following:
+5. On the **Security** tab. Specify the following:
     - **Virtual network encryption:** Select this checkbox to enable the encryption of the traffic traveling within the VNet.
     - **Azure Bastian:** Unchecked (default). You can select this checkbox if Bastian Server is required to connect to a specific resource later.
     - **Azure Firewall:**  Unchecked (default). Similar to traffic encryption and Bastian service, you can enable the Azure Firewall if required.
@@ -129,24 +129,6 @@ An Azure Virtual Network (VNet) is the fundamental building block for your priva
 10. Your new virtual network **Overview** page is displayed.
 
     ![Virtual network Overview page is displayed](./images/virtual-network-overview-page.png " ")
-
-<!-- This is a single-line comment
-
-11. Navigate to **Virtual networks**. Click the **Home** link in the breadcrumbs. In the **Azure services** section, click **Virtual networks**.
-
-    ![Click the Virtual network icon](./images/click-virtual-network-2.png " ")
-
-    >**Note:** In the **Resources** section, you can see the two new resources that you created. You can click the links to display the details pages for either resource.
-
- 12. On the **Virtual networks** page, enter `training` in the **Filter for any field** text box. The newly created virtual network is displayed. 
-
-    ![Search for the new virtual network](./images/search-for-network.png " ")
-
-13. Click the network's name link to display its details.
-
-    ![Virtual network Overview page is displayed](./images/virtual-network-overview.png " ")
-    
-    -->
 
 ## Task 3: Add a Subnet and Delegate to Oracle Database@Azure Service
 
