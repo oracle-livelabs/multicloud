@@ -1,8 +1,8 @@
-# Deploy a VM and Access Database Actions from the VM
+# Create a VM and Access the Database Using SQL Developer
 
 ## Introduction
 
-This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access Database actions for your newly created Autonomous AI Database.
+This lab walks you through the steps to deploy a Virtual Machine (VM) using the Azure portal so that you can access your newly created Oracle Base Database Service using Oracle SQL Developer. You will also download and install Oracle SQL Developer on the VM.
 
 Estimated Time: 10 minutes
 
@@ -12,45 +12,53 @@ In this lab, you will:
 
 - Deploy a Virtual Machine (VM) in Azure
 - Connect to the VM via Remote Desktop Protocol (RDP)
-- Access Database Actions from the VM
-- Navigate to the SQL Worksheet and run a simple SQL Query
+- Download and install Oracle SQL developer
+- Start SQL Developer and run a simple SQL Query
 
 ### Prerequisites
-
-- All previous labs successfully completed
+- This lab assumes you have successfully completed all previous labs.
 
 ## Task 1: Create a Virtual Machine in Azure Portal
 
-To access your Oracle Autonomous AI Database actions, you must use a "Jump Box" (Virtual Machine or VM) located within the same private network (VNet), as private endpoints are not accessible from the public internet. If you don't have a VM, use the following steps to deploy one.
-    
-Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous AI Database and query it.
+To access your Oracle Base Database Service using SQL Developer, you must use a "Jump Box" (Virtual Machine or VM) located within the same private network (VNet), as private endpoints are not accessible from the public internet. If you don't have a VM, use the following steps to deploy one.
 
-1.	On the Azure Portal Home page, search for **Virtual machines**, and then select **+ Create > Virtual machine**.
+1.	On the Azure Portal Home page, search for **Virtual machines**, click the **+ Create** drop-down list, and then select **Virtual machine**.
 
-2.	On the **Basics** tab, specify the following: 
-    - **Resource Group:** Select the resource group that contains your database, `training-adb-rg` in our example.
-        ![The VM Basics tab > Project details](./images/basics-project-details.png " ")
+    ![Create a new VM](./images/create-vm.png " ")
 
+    The **Create a virtual machine** page is displayed.
+
+2.	In the **Project and instance details** sections on the **Basics** tab, specify the following: 
+    - **Subscription:** Select your subscription.
+    - **Resource group:** `training-adb-rg`.
+    - **Virtual machine name:** `training-oracle-base-db-vm`.
+    - **Region:** Select your region.        
+    - **Availability options:** `Availability zone`.    
+    - **Zone options:** Accept the default, `Zone 1` in our example.
     - **Security type:** `Standard`.
-    - **Image:** In our example, we will choose `Windows 11 Pro, version 25H2 - x64 Gen2` (select the option that is appropriate for you).
+    - **Image:** Select the option that is appropriate for you. In our example, we chose `Windows 11 Pro, version 25H2 - x64 Gen2`.
     - **Size:** Select at least 2 vCPUs and 8 GB RAM for stability. In our example, we chose `Standard_B2as_v2 – vcpus, 8 GiB memory`.
-        ![The VM Basics tab > instance details](./images/basics-instance-details.png " ")
+    
+        ![The VM Basics tab, part 1](./images/basics-tab-1.png " ")
 
-    - **Administrator Account:** Enter a username and a strong password that you can remember.
+        In the **Administrator account**, **Inbound port rules**, and **Licensing** sections, specify the following:
+    - **Administrator Account:** Enter a username and a strong password that you can remember and save them in a text editor of your choice as you'll need them later.
     - **Public inbound ports:** `Allow selected ports`.
     - **Select inbound ports:** `RDP (3389)`.
-    - **Delete public IP and NIC when VM is deleted:** `Checked`.
     - **Licensing:** `Checked`.
 
-        ![The VM Basics tab](./images/basics-rest.png " ")
+        ![The VM Basics tab, part 2](./images/basics-tab-2.png " ")
 
-3.	On the **Networking** tab (Critical), specify the following:
-    - **Virtual Network:** Select the same VNet where your Oracle Autonomous AI Database is created, `training-oracle-vm` in our example.
+3.	Click the **Networking** tab (critical) and specify the following:
+    - **Virtual Network:** Select the same VNet where your Oracle Base Database Service is created, `training-adb-vnet-2`.
     - **Subnet:** Choose a subnet that has routing access to the database's private subnet.
+    - **Delete public IP and NIC when VM is deleted:** Checked.
+
+        For the rest of the fields, accept the default selections. 
 
         ![The VM Networking tab](./images/vm-networking-tab.png " ")
 
-4.	Click the **Review + create** tab. If the `Validation passed` message is displayed, click **Create**. 
+4.	Click **Review + create**. If the `Validation passed` message is displayed, click **Create**. 
 
      ![The Validation passed message is deployed](./images/validation-passed.png " ")
 
@@ -58,7 +66,7 @@ Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous 
 
     ![The VM is deployed](./images/vm-deployed.png " ")
 
-6. Click **Go to resource**. Your VM **Overview** page is displayed. Expand the **Connect** node in the navigation tree, and then click **Connect**.
+6. Click **Go to resource**. Your VM **Overview** page is displayed. Expand the **Connect** node in the navigation tree, and then click **Connect**. Alteratively, you click the **Connect** drop-down list, and then select **Connect**.
 
     ![Go to resource](./images/go-to-resource.png " ")
 
@@ -70,7 +78,9 @@ Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous 
 
     ![Port 3389 is accessible](./images/port-accessible.png " ")
 
-9. In the **Connect using RDP file** section, click **Download RDP file** to obtain the connection details for remote access to your Azure Windows VM; an RDP (.rdp) file or Remote Desktop Protocol, is a pre-configured configuration file that allows you to connect to a Windows Virtual Machine (VM) using the Remote Desktop Protocol. The file will be saved in your default `Downloads` folder as the VM's name such as `training-oracle-azure-vm.rdp` (or with your VM's name, if different).
+9. In the **Connect using RDP file** section, click **Download RDP file** to obtain the connection details for remote access to your Azure Windows VM; an RDP (.rdp) file or Remote Desktop Protocol, is a pre-configured configuration file that allows you to connect to a Windows Virtual Machine (VM) using the Remote Desktop Protocol. The file will be saved in your default `Downloads` folder as the VM's name such as `training-oracle-base-db-vm.rdp` (or with your VM's name, if different).
+
+    ![The downloaded file](./images/downloaded-rdp-file.png " ")
 
 ## Task 2: Connect to the VM via Remote Desktop Protocol (RDP)
 
@@ -78,55 +88,109 @@ Deploy a Virtual Machine (VM) so that you can connect to your Oracle Autonomous 
 
 Once the VM is **Running**, connect to it from your local computer as follows:
 
-1. Double-click the downloaded `training-oracle-azure-vm.rdp` file to start the remote connection. If "`The publisher of this remote connection can't be identified`" security warning is displayed, click **Connect**.
+1. Double-click the downloaded `training-oracle-base-db-vm.rdp` file to start the remote connection. If "`The publisher of this remote connection can't be identified`" security warning is displayed, click **Connect**.
 
-2. On the **Enter your credentials** dialog box, enter your VM's credentials, and then click **OK**. If "`The identity of the remote computer cannot be verified`" security warning is displayed, click **Yes**.
+    ![Click Connect](./images/click-connect.png " ")
+
+2. On the **Enter your credentials** dialog box, enter your VM's password, and then click **OK**. 
 
     ![Enter your VM's credentials](./images/enter-vm-credentials.png " ")
+
+    If "`The identity of the remote computer cannot be verified. Do you want to connect anyway?`" security warning is displayed, click **Yes**.
+
+      ![Click Yes](./images/click-yes.png " ")
 
 3. The VM is displayed. 
 
     ![The VM is displayed](./images/vm-displayed.png " ")
 
-## Task 3: Access Database Actions from the VM
+## Task 3: Install Oracle SQL Developer on the VM to Access the Database
+
+Oracle SQL Developer is a graphical version of SQL*Plus that gives database developers a convenient way to perform basic tasks. You can connect to any target Oracle database schema using standard Oracle database authentication. You can then browse, create, edit, and delete (drop) database objects; run SQL statements and scripts; edit and debug PL/SQL code; manipulate and export data; and view and create reports.
+
+In this lab, you will download, extract, and start SQL Developer on your VM.
+
+1. Inside the Remote Desktop session (on the Windows 11 VM), open Microsoft Edge. Download the latest version of Oracle SQL Developer for your own platform from the [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/) page to a directory of your choice on your VM. In our example, we are using the MS-Windows platform; therefore, we clicked the **Download** link in the row for the **Windows 64-bit with JDK 17 included**  to download the installation `zip` file.
+
+  ![The sql developer downloads page is displayed.](./images/sql-developer-downloads.png =65%x*)
+
+    >**Note:** Make sure you click and read the **Installation Notes** for your own platform. 
+
+    The `.zip` file is downloaded to the **Downloads** directory by default.
+
+    ![The downloaded .zip file is displayed in the Downloads directory.](./images/downloaded-zip.png " ")
+
+2. Open File Manager and navigate to the **Downloads** folder. Right-click the downloaded file's name, and then select **Extract All** from the context menu. 
+
+    ![The downloaded .zip file is selected and extract all is clicked.](./images/extract-all.png " ")  
+
+3. In the **Select a Destination and Extract Files** dialog box, accept the default folder, and then click **Extract**.
+   
+    Unzipping the SQL Developer kit creates a folder named **sqldeveloper** under our selected folder. 
+
+    ![Select the folder where to extract the file.](./images/extract.png " ")  
+
+4. The extracted file contents are displayed in the folder that you chose. In the top **sqldeveloper** folder, you can double-click the **`sqldeveloper.exe`** file to start SQL Developer.
+
+    ![The file is extracted to the selected folder.](./images/file-extracted.png " ")  
+
+    If the **Confirm Import Preferences** dialog box is displayed, click **No**. When the **Oracle Usage Tracking** dialog box is displayed, click **OK**.
+
+5. Oracle SQL Developer is displayed.
+
+    ![The SQL Developer welcome page is displayed.](./images/sqldeveloper-welcome.png =65%x*)
+
+## Task 4: Access the Database from the VM Using SQL Developer
 
 Since your VM is now inside the private network, it can resolve the database's private URL.
 
-1. Inside the Remote Desktop session (on the Windows 11 VM), open Microsoft Edge. 
+  >**Note:** If you are connected to VPN, disconnect from it.
 
-    ![The VM is displayed](./images/vm-displayed.png " ")
+1. Create a new database connection. In the **Connections** pane, click the **New Connection** icon (green plus sign) on the toolbar, and then click **New Database Connection**.
 
-2. Paste the Database actions URL that you saved in a text editor in **Lab 2 > Task 2 > Step 7** into the browser.
+  ![Click the new connection icon on the toolbar.](./images/new-connection.png " ")
 
-    ![Database actions message box and URL](./images/db-actions-url.png " ")
+2. In the **New/Select Database Connection** dialog box, specify the following:
 
-3. Sign in as the `ADMIN` user with the password you used when you created your database. 
+    * **Name:** `trainingbasedb-connection`.
+    * **Database Type:** `Oracle`.
+    * **Authentication Type:** `Default`.
+    * **Username:** `sys`.
+    * **Role:** `SYSDBA`.
+    * **Password:** Enter your database password.
+    * **Save Password:** Unchecked.
+    * **Connection Type:** `Basic`.
+    * **Hostname:** Paste the _hostname_ portion of the **Easy Connect** string that you copied to a text editor file in **Lab 4 > Task 2 > Step 4**.
+    * **Service name:** Paste the _Service name_ portion of the **Easy Connect** string that you copied to a text editor file in **Lab 4 > Task 2 > Step 4**.
 
-    ![Sign in as the admin user](./images/sign-in-admin.png " ")
-    
-    The **Database Actions Launchpad** is displayed. You can now access the SQL Worksheet and other tools in Data Studio.
+        ![Easy Connect string example](images/easy-connect-string-example.png " ")
 
-4. To access the SQL Worksheet, click the **Development** tab, and then click the **SQL** tab.
+3. Click **Test** to test your connection. If the test is successful, the **Status: Success** message is displayed in the dialog box.
 
-    ![Navigate to the SQL Worksheet](./images/navigate-sql-2.png " ")
+  ![The completed New/Select Database Connection dialog box.](./images/test-success.png " ")
+
+4. Click **Connect**. The **trainingbasedb-connection** schema is displayed in the **Oracle Connections** tree.
+
+    ![The new schema connection is displayed.](./images/connected-schema.png " ")
 
 5. Copy the following query, paste it into the SQL Worksheet, and then click the **Run Statement** icon on the toolbar. The results are displayed in the **Query Result** tab.
 
     ```
     <copy>
-    SELECT *
-    FROM sh.countries;
+    SELECT sysdate
+    FROM dual;
     </copy>
     ```
     
     ![Run the query](./images/run-query.png " ")
 
-**All Done! You have successfully deployed a VM and accessed Database actions in your newly created Oracle Autonomous AI Database using the VM.**
-
 You may now proceed to the next lab.
+
+## Learn More
+
+* [SQL Developer Documentation](https://docs.oracle.com/en/database/oracle/sql-developer/)
 
 ## Acknowledgements
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
-- **Contributors:**
-    * Devinder Singh, SR Principal Solutions Architect - Multicloud
-- **Last Updated By/Date:** Lauran K. Serhal, February 2026
+- **Contributors:** Devinder Singh, Senior Principal Solutions Architect - Multicloud
+- **Last Updated By/Date:** Lauran K. Serhal, March 2026

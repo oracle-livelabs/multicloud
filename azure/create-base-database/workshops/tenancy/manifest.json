@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Create an Oracle Autonomous AI Database on Oracle Database@Azure",
+    "workshoptitle": "Create an Oracle Base Database Service on Oracle Database@Azure",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
                 {
@@ -9,25 +9,37 @@
         "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Lab 1: Create the Required Resources",
-            "description": "Pre-requisites to provision Autonomous AI Databases",
+            "title": "Lab 1: Create a Resource Group, VNet, and a Private and Public Subnets",
+            "description": "Pre-requisites to create Oracle Base Databases",
             "type": "tenancy",
             "filename": "../../prerequisites/prerequisites.md"
         },
         {
-            "title": "Lab 2: Create an Oracle Autonomous AI Database",
-            "description": "Create an Oracle Autonomous AI Database",
+            "title": "Lab 2: Create a Resource Anchor",
+            "description": "Create a Resource Anchor",
             "type": "tenancy",
-            "filename": "../../provision-database/provision-database.md"
+            "filename": "../../create-resource-anchor/create-resource-anchor.md"
         },
         {
-            "title": "Lab 3: Deploy a Virtual Machine to Access Database Actions",
+            "title": "Lab 3: Create a Network Anchor",
+            "description": "Create a Network Anchor",
+            "type": "tenancy",
+            "filename": "../../create-network-anchor/create-network-anchor.md"
+        },
+        {
+            "title": "Lab 4: Create an Oracle Base Database Service",
+            "description": "Create an Oracle Base Database Service",
+            "type": "tenancy",
+            "filename": "../../create-base-db/create-base-db.md"
+        },
+        {
+            "title": "Lab 5: Create a Virtual Machine to Access the Database",
             "description": "Deploy a virtual machine",
             "type": "tenancy",
             "filename": "../../deploy-vm/deploy-vm.md"
         },
         {
-            "title": "Lab 4: Clean Up Resources",
+            "title": "Lab 6: Clean Up Resources",
             "description": "Clean up resources",
             "type": "tenancy",
             "filename": "../../cleanup-resources/cleanup-resources.md"

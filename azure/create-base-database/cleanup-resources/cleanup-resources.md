@@ -10,6 +10,10 @@ Estimated Time: 5 minutes
 
 - Delete resources
 
+### Prerequisites
+
+This lab assumes you have successfully completed all previous labs.
+
 ## Task 1: Delete Resources
 
 When no longer needed, you can delete your resource group and all the resources it contains that you created in this workshop such as the virtual network, Oracle Autonomous AI Database, virtual machine and all related resources.
@@ -24,9 +28,9 @@ When no longer needed, you can delete your resource group and all the resources 
 
     ![Click resource group name: page 1](./images/click-rg-name-1.png " ")
 
-    Page 2 displays the Oracle Autonomous AI Database.
+    Page 3 displays the Oracle Base Database.
 
-    ![Click resource group name: page 2](./images/click-rg-name-2.png " ")
+    ![Click resource group name: page 3](./images/click-rg-name-pg-3.png " ")
 
 4. At the top of the resource group page, click **Delete resource group**.
 
@@ -38,4 +42,4 @@ When no longer needed, you can delete your resource group and all the resources 
 
 ## Acknowledgements
 - **Author:** Lauran K. Serhal, Consulting User Assistance Developer, Oracle Autonomous AI Database and Multicloud
-- **Last Updated By/Date:** Lauran K. Serhal, February 2026
+- **Last Updated By/Date:** Lauran K. Serhal, March 2026
