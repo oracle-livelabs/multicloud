@@ -7,7 +7,7 @@ Oracle Base Database Service is a fully managed cloud solution that enables orga
 ## About this Workshop
 In this workshop, you learn how to create a resource group, a virtual network, a private subnet to the virtual network and delegate the subnet to the Oracle Database@Azure Service. You will also create a public subnet that you will use when you create the virtual machine. Before you can create the Oracle Base Database Service, you need to create a Resource Anchor and a Network Anchor. Next, you'll create the Oracle Base Database Service. Finally, you will create a Windows virtual machine in order to connect to SQL Developer and then run a simple SQL query.
 
-Estimated Workshop Time: 50 minutes
+Estimated Workshop Time: 1 hour 55 minutes
 
 ### Objectives
 In this workshop, you will create the following in Azure Portal:
