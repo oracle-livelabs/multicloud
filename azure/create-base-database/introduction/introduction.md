@@ -29,7 +29,7 @@ In this workshop, you will create the following in Azure Portal:
 
     >**Note:** If you do not have an Oracle Cloud Infrastructure (OCI) account, you can create one during your service deployment. If you do have an OCI account, you can use it with Oracle Database@Azure.
 
-For detailed information about the prerequisites required to begin onboarding with `Oracle Database@Azure`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaaprerequisites.htm).
+For detailed information about the prerequisites required to begin onboarding with `Oracle Database@Azure` and to create Base Database on `Oracle Database@Azure`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-azure/oaaprerequisites.htm).
 
 You may now proceed to the next lab.
 

@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you will provision an **Oracle Base Database Service** using Oracle Database@Azure. This service enables you to run Oracle databases natively within Azure, leveraging the integration between Azure and Oracle Cloud Infrastructure (OCI).
+In this lab, you will create an **Oracle Base Database Service** using Oracle Database@Azure. This service enables you to run Oracle databases natively within Azure, leveraging the integration between Azure and Oracle Cloud Infrastructure (OCI).
 
-Estimated Time: 30 minutes
+Estimated Time: 60 minutes
 
 ### Objectives
 
@@ -55,7 +55,7 @@ This lab assumes you have successfully completed all previous labs.
 
       Click **Next**.
 
-5. On the **Networking** tab, specify the following (most are automatically selected): 
+5. On the **Networking** tab, specify the following: 
       - **Resource Anchor:** `training-resource-anchor`.
       - **Network Anchor:** `training-network-anchor`.
       - **Delegated subnet:** `training-snet-oracle-delegated`.

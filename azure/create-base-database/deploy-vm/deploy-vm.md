@@ -51,7 +51,7 @@ To access your Oracle Base Database Service using SQL Developer, you must use a 
 
 3.	Click the **Networking** tab (critical) and specify the following:
     - **Virtual Network:** Select the same VNet where your Oracle Base Database Service is created, `training-adb-vnet-2`.
-    - **Subnet:** Choose a subnet that has routing access to the database's private subnet.
+    - **Subnet:** Choose the public subnet that was created in Lab 1 > Task 4.
     - **Delete public IP and NIC when VM is deleted:** Checked.
 
         For the rest of the fields, accept the default selections. 
@@ -74,7 +74,7 @@ To access your Oracle Base Database Service using SQL Developer, you must use a 
 
     ![Check access](./images/check-access.png " ")
 
-8. A `Port 3389 is accessible from source IP(s)` message is displayed.
+8. The following message is displayed: `Port 3389 is accessible from source IP(s)`.
 
     ![Port 3389 is accessible](./images/port-accessible.png " ")
 

@@ -9,8 +9,7 @@ Estimated Time: 5 minutes
 ### Objectives
 
 In this lab, you will:
-* Create a Resource Anchor in your Azure subscription
-* Associate the Resource Anchor with your Azure resource group
+* Create a Resource Anchor under your Azure subscription in the resource group created in Lab 1
 * Verify the successful creation of the Resource Anchor
 
 ### Prerequisites
@@ -37,7 +36,7 @@ This lab assumes you have successfully completed all previous labs.
       - **Subscription:** Select your Azure subscription.
       - **Resource Group:** Select the resource group you created in **Lab 1**, `training-adb-rg`.
       - **Name:** Enter a unique name for the Resource Anchor such as `training-resource-anchor`.
-      - **Region:** Select the appropriate region. Note that Resource Anchors are global constructs but require a region selection for organizational purposes.
+      - **Region:** Resource Anchors are global constructs.
 
       ![Complete the Basics tab](images/ra-basics-tab.png " ")
 

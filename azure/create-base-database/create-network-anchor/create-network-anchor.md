@@ -38,7 +38,7 @@ This lab assumes you have successfully completed all previous labs.
       - **Delegated Subnet:** Select the subnet delegated to `Oracle.Database/networkAttachments`, `training-snet-oracle-delegated`.
       - **Create DNS Listening Endpoint:** Accept the default, unchecked. Enable this option to allow Azure applications to resolve OCI database instance FQDNs.
       - **Replicate DNS Private Zones during DB Creation:** Checked. Enable this option to copy your database’s private DNS zones from OCI to Azure.
-      - **Create DNS Forwarding Endpoint:** Accept the default, unchecked. Enable this option to allow OCI database instances to resolve Azure private FQDNs.
+      - **Create DNS Forwarding Endpoint:** Accept the default, unchecked. Enable this option to allow OCI services to resolve Azure private FQDNs.
 
       ![Basics tab](images/basics-tab.png " ")
 
