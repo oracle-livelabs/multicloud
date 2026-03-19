@@ -44,7 +44,7 @@ This lab assumes you have successfully completed all previous labs.
 
       Click **Next**.
 
-5.  On the **Consent** tab, review the Oracle terms of use and privacy policy. Make sure the **I agree to the terms of service** checkbox is checked, and then click **Next**.
+5. On the **Consent** tab, review the Oracle terms of use and privacy policy. Make sure the **I agree to the terms of service** checkbox is checked, and then click **Next**.
 
       ![Consent tab](images/consent-tab.png =67%x*)
 

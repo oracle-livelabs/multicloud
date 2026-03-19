@@ -74,7 +74,7 @@ This lab assumes you have successfully completed all previous labs.
 
       ![The Consent tab](images/consent-tab.png " ")
 
-8.  On the **Tags** tab, create the following two tags, and then click **Next**.
+8. On the **Tags** tab, create the following two tags, and then click **Next**.
 
       - **Tag 1:** Enter or select **Environment** for the name and **Training** for the value.
       - **Tag 2:** Enter or select **Created by** for the name and enter your name for the value.

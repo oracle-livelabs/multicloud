@@ -112,7 +112,7 @@ In this lab, you will download, extract, and start SQL Developer on your VM.
 
 1. Inside the Remote Desktop session (on the Windows 11 VM), open Microsoft Edge. Download the latest version of Oracle SQL Developer for your own platform from the [Oracle SQL Developer](https://www.oracle.com/database/sqldeveloper/technologies/download/) page to a directory of your choice on your VM. In our example, we are using the MS-Windows platform; therefore, we clicked the **Download** link in the row for the **Windows 64-bit with JDK 17 included**  to download the installation `zip` file.
 
-  ![The sql developer downloads page is displayed.](./images/sql-developer-downloads.png =65%x*)
+    ![The sql developer downloads page is displayed.](./images/sql-developer-downloads.png =65%x*)
 
     >**Note:** Make sure you click and read the **Installation Notes** for your own platform. 
 
@@ -148,7 +148,7 @@ Since your VM is now inside the private network, it can resolve the database's p
 
 1. Create a new database connection. In the **Connections** pane, click the **New Connection** icon (green plus sign) on the toolbar, and then click **New Database Connection**.
 
-  ![Click the new connection icon on the toolbar.](./images/new-connection.png " ")
+    ![Click the new connection icon on the toolbar.](./images/new-connection.png " ")
 
 2. In the **New/Select Database Connection** dialog box, specify the following:
 
@@ -167,7 +167,7 @@ Since your VM is now inside the private network, it can resolve the database's p
 
 3. Click **Test** to test your connection. If the test is successful, the **Status: Success** message is displayed in the dialog box.
 
-  ![The completed New/Select Database Connection dialog box.](./images/test-success.png " ")
+    ![The completed New/Select Database Connection dialog box.](./images/test-success.png " ")
 
 4. Click **Connect**. The **trainingbasedb-connection** schema is displayed in the **Oracle Connections** tree.
 
