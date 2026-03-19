@@ -60,7 +60,7 @@ To access your Oracle Base Database Service using SQL Developer, you must use a 
 
 4.	Click **Review + create**. If the `Validation passed` message is displayed, click **Create**. 
 
-     ![The Validation passed message is deployed](./images/validation-passed.png " ")
+    ![The Validation passed message is deployed](./images/validation-passed.png " ")
 
 5. When the VM is deployed, a `Your deployment is complete` message is displayed.
 

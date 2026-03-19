@@ -30,7 +30,7 @@ This lab assumes you have successfully completed all previous labs.
 
     ![Click the Resource Anchor tab](images/click-resource-anchor-tab.png " ")
 
-      The **Create Resource Anchor** page is displayed. 
+    The **Create Resource Anchor** page is displayed. 
  
 5. On the **Basics** tab, configure the Resource Anchor as follows: 
       - **Subscription:** Select your Azure subscription.

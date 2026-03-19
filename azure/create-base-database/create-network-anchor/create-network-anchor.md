@@ -23,7 +23,7 @@ This lab assumes you have successfully completed all previous labs.
 
 2. In the left-hand navigation pane, click on **Multicloud Resources**, and then select the **Network Anchors** tab.
 
-      ![Network Anchor](images/network-anchor.png " ")
+    ![Network Anchor](images/network-anchor.png " ")
 
 3. On the **Network Anchors** page, click **+ Create**.
 
@@ -40,25 +40,25 @@ This lab assumes you have successfully completed all previous labs.
       - **Replicate DNS Private Zones during DB Creation:** Checked. Enable this option to copy your database’s private DNS zones from OCI to Azure.
       - **Create DNS Forwarding Endpoint:** Accept the default, unchecked. Enable this option to allow OCI services to resolve Azure private FQDNs.
 
-      ![Basics tab](images/basics-tab.png " ")
+        ![Basics tab](images/basics-tab.png " ")
 
-      Click **Next**.
+        Click **Next**.
 
 5. On the **Consent** tab, review the Oracle terms of use and privacy policy. Make sure the **I agree to the terms of service** checkbox is checked, and then click **Next**.
 
-      ![Consent tab](images/consent-tab.png =67%x*)
+    ![Consent tab](images/consent-tab.png =67%x*)
 
 6. On the **Tags** tab, create the following two tags. 
       - **Tag 1:** Enter or select **Environment** for the name and **Training** for the value.
       - **Tag 2:** Enter or select **Created by** for the name and enter your name for the value.
 
-      ![Consent tab](images/tags-tab.png =67%x*)
+        ![Consent tab](images/tags-tab.png =67%x*)
 
-      Click **Next**. 
+        Click **Next**. 
       
 7. The **Review + create** page will validate the input provided in the previous steps. Once validation is successful, click **Create** to deploy the Network Anchor.
 
-      ![Review and Create tab](images/review-create-tab.png " ")
+    ![Review and Create tab](images/review-create-tab.png " ")
 
 8. The `"Deployment is in progress"` message is displayed. When the deployment is complete, a `"Your deployment is complete`" message is displayed. You can click **Go to resource** to navigate to your resource group and search for the newly created Resource Anchor.
 
