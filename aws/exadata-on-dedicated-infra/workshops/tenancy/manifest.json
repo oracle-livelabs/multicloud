@@ -1,0 +1,53 @@
+{
+    "workshoptitle": "Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+        "title": "Introduction",
+        "description": "Introduction of the workshop",
+        "type": "tenancy",
+        "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Create an ODB Network",
+            "description": "Pre-requisites to create Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS",
+            "type": "tenancy",
+            "filename": "../../prerequisites/create-odb-network.md"
+        },
+        {
+            "title": "Lab 2: Create an Exadata Infrastructure",
+            "description": "Create an Exadata Infrastructure",
+            "type": "tenancy",
+            "filename": "../../create-exa-infra/create-exa-infra.md"
+        },
+        {
+            "title": "Lab 3: Create a private and public ssh key pair",
+            "description": "Create a private and public ssh key pair",
+            "type": "tenancy",
+            "filename": "../../create-ssh-key-pair/create-ssh-key-pair.md"
+        },
+        {
+            "title": "Lab 4: Create an Exadata VM cluster",
+            "description": "Create an Exadata VM cluster",
+            "type": "tenancy",
+            "filename": "../../create-exa-vm-cluster/create-exa-vm-cluster.md"
+        },
+        {
+            "title": "Lab 5: Create an Exadata Database",
+            "description": "Create an Exadata Database",
+            "type": "tenancy",
+            "filename": "../../create-exadata-db/create-exadata-db.md"
+        },
+        {
+            "title": "Lab 6: Clean Up Resources",
+            "description": "Clean up resources",
+            "type": "tenancy",
+            "filename": "../../cleanup-resources/cleanup-resources.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
