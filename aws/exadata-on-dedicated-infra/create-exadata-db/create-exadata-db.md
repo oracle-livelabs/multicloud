@@ -26,7 +26,7 @@ Before starting, ensure the following are in place:
 
 ---
 
-## Task 1 — Navigate to the OCI Console
+## Task 1: Navigate to the OCI Console
 
 1. From the **Oracle AI Database@AWS dashboard** or the **Exadata VM Cluster list**
  ![Image](./images/exa-db-01.png " ")
@@ -41,7 +41,7 @@ Before starting, ensure the following are in place:
  ![Image](./images/exa-db-03.png " ")
 
 
-## Task 2 — Create the Database
+## Task 2: Create the Database
 
 1. select the **Databases** tab and Click the **Create database**
     ![Image](./images/exa-db-04.png " ")
