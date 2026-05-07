@@ -1,10 +1,10 @@
 # Introduction
 
-Oracle Database@AWS is a managed Oracle Database service that runs Oracle Cloud Infrastructure (OCI)–managed Oracle databases colocated inside AWS  data centers, giving AWS  applications low-latency access to Oracle Database services while billing and management are integrated through AWS.
+Oracle AI Database@AWS is a managed Oracle Database service that runs Oracle Cloud Infrastructure (OCI)–managed Oracle databases colocated inside AWS  data centers, giving AWS  applications low-latency access to Oracle Database services while billing and management are integrated through AWS.
 
-Oracle Exadata on Oracle Database@AWS is Oracle’s high-performance database platform delivered natively inside AWS data centers as part of its multicloud offering. It brings the full power of Exadata—Oracle’s engineered system optimized for database workloads—closer to applications running on AWS.
+Oracle Exadata on Oracle AI Database@AWS is Oracle’s high-performance database platform delivered natively inside AWS data centers as part of its multicloud offering. It brings the full power of Exadata—Oracle’s engineered system optimized for database workloads—closer to applications running on AWS.
 
-Exadata on Oracle Database@AWS lets you run Oracle databases on dedicated Exadata infrastructure physically located in AWS, but managed using Oracle Cloud Infrastructure (OCI) services.
+Exadata on Oracle AI Database@AWS lets you run Oracle databases on dedicated Exadata infrastructure physically located in AWS, but managed using Oracle Cloud Infrastructure (OCI) services.
 
 **Key points:**
 
@@ -39,19 +39,19 @@ In this workshop, you will create the following in OCI  Console:
 
 
 ### Prerequisites
-- Access to AWS Console, OCI tenancy, OCI console, and Oracle Database@AWS.
+- Access to AWS Console, OCI tenancy, OCI console, and Oracle AI Database@AWS.
 - An existing AWS Account. Your AWS account  must be onboarded and linked to an Oracle Cloud Infrastructure (OCI) tenancy.
 - An Oracle Cloud Infrastructure (OCI) account with permissions to view and manage resources through the OCI console.
 
-    >**Note:** If you do not have an Oracle Cloud Infrastructure (OCI) account, you can create one during your service deployment. If you do have an OCI account, you can use it with Oracle Database@AWS.
+    >**Note:** If you do not have an Oracle Cloud Infrastructure (OCI) account, you can create one during your service deployment. If you do have an OCI account, you can use it with Oracle AI Database@AWS.
 
-For detailed information about the prerequisites required to begin onboarding with `Oracle Database@AWS` and to create Base Database on `Oracle Database@AWS`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws-prerequisites.htm).
+For detailed information about the prerequisites required to begin onboarding with `Oracle AI Database@AWS` and to create Base Database on `Oracle AI Database@AWS`, see [Prerequisites](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws-prerequisites.htm).
 
 You may now proceed to the next lab.
 
 ## Learn More
-* [Oracle Database@AWS](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws.htm)
-* [Onboarding with Oracle Database@AWS](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws-onboard.htm)
+* [Oracle AI Database@AWS](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws.htm)
+* [Onboarding with Oracle AI Database@AWS](https://docs.oracle.com/en-us/iaas/Content/database-at-aws/oaaws-onboard.htm)
 * [Oracle Exadata Database on Dedicated Infrastructure](https://docs.oracle.com/en/engineered-systems/exadata-cloud-service/ecscm/exadata-cloud-infrastructure-overview.html)
 
 ## Acknowledgements

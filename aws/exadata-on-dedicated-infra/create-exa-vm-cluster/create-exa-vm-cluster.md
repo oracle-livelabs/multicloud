@@ -6,16 +6,13 @@ This lab walks you through creating Exadata VM Cluster which is required for cre
 
 An **Exadata VM Cluster** is a managed group of virtual machines running on Oracle Exadata infrastructure that hosts Oracle databases in a highly available, scalable, and performance-optimized environment. A VM Cluster allows organizations to consolidate multiple databases on an Exadata infrastructure while maintaining isolation, flexibility, and cloud-native operations. Administrators can independently scale CPU resources, storage, and database workloads, apply rolling patches with minimal downtime, and use Oracle RAC for high availability. Features such as automated backups, Data Guard integration, and fine-grained resource management make Exadata VM Clusters ideal for mission-critical OLTP, analytics, and mixed database workloads that require extreme performance, resilience, and operational efficiency.
 
-
-
+ Estimated time: 4-5 hours.
 
 ### Objectives
 
 You will login to AWS Console and perform the following task
 
 - Create an Exadata VM Cluster
-
-> **Estimated time:** 4-5 hours.
 
 ## Prerequisites
 

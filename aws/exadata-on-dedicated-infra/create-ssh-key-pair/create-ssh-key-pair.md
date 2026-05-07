@@ -3,21 +3,20 @@
 
 ## Introduction
 
-Estimated Time: TODO - x minutes
-
-
 This lab walks you through creating an ssh key pair which is required for creating an Exadata VM cluster.
 
 
 > **What is an SSH key pair?**  
 
 > An SSH key pair consists of two cryptographically linked files — a **private key** (kept secret on your machine) and a **public key** (shared with remote servers). Together they let you authenticate securely without a password.
-
+ 
+ Estimated Time: About 5 min.
 
 ### Objectives
 
-
 * In this lab you will create an ssh key pair.
+
+
 
 ## Creating an SSH Key Pair on macOS
 
@@ -82,28 +81,12 @@ Click the **Home** link in the breadcrumbs to return to the **Home** page in pre
 
 ## Creating an SSH Key Pair on Windows
 
-1. Verify OpenSSH is Installed
-
-Open **PowerShell** (search "PowerShell" in the Start menu) and run:
-
-```powershell
-Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
-```
-
-If `OpenSSH.Client` shows `State: NotPresent`, install it:
-
-```powershell
-Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-```
-
-
-
-2. Open PowerShell 
+1. Open PowerShell 
 
 - **PowerShell**: Press `Win + X` → "Windows PowerShell"
 
 
-3. Generate the Key Pair
+2. Generate the Key Pair
 
 ```powershell
 ssh-keygen -t ed25519 
@@ -115,7 +98,7 @@ For older systems that don't support ed25519:
 ssh-keygen -t rsa -b 4096 
 ```
 
-4. Choose a Save Location
+3. Choose a Save Location
 
 You will be prompted:
 
@@ -125,7 +108,7 @@ Enter file in which to save the key (C:\Users\yourname/.ssh/id_ed25519):
 
 - Press **Enter** to accept the default, or enter a custom path.
 
-5. Set a Passphrase (Recommended)
+4. Set a Passphrase (Recommended)
 
 ```
 Enter passphrase (empty for no passphrase):
@@ -134,7 +117,7 @@ Enter same passphrase again:
 
 Enter a strong passphrase or press **Enter** twice to skip.
 
-6. Confirm the Key Was Created
+5. Confirm the Key Was Created
 
 ```powershell
 dir $env:USERPROFILE\.ssh\
@@ -147,14 +130,14 @@ You should see:
 | `id_ed25519` | **Private key** — never share this file |
 | `id_ed25519.pub` | **Public key** — safe to share with servers |
 
-7. View Your Public Key
+6. View Your Public Key
 
 ```powershell
 type $env:USERPROFILE\.ssh\id_ed25519.pub
 ```
 Copy the entire output — you will need this when creating Exadata VM cluster.
 
-Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
+8. Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
 
 **Congratulations! You have successfully created Exadata Infrastructure!**.
 

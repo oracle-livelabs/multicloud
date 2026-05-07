@@ -2,9 +2,9 @@
 
 ## Introduction
 
-In this lab, you will learn how to delete the resource group and its resources. When you finish the workshop, it is recommended to delete the entire resource group to ensure all associated services and plans are removed simultaneously to stop billing.
+In this lab, you will delete the resources created in the previous labs. 
 
-Estimated Time: 5 minutes
+Estimated Time: About an 1-2 hours. 
 
 ### Objectives
 

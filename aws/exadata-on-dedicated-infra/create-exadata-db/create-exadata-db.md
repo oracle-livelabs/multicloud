@@ -2,13 +2,11 @@
 
 ## Introduction
 
-Estimated Time: TODO - x minutes
-
-
 This lab walks you through creating Exadata Database through OCI Console.
 
 An Exadata Database is an Oracle Database deployed on Oracle Exadata systems, purpose-built to deliver extreme performance, scalability, availability, and efficiency for enterprise workloads. It combines the advanced capabilities of Oracle Database with the intelligent infrastructure of Exadata, enabling organizations to run mission-critical OLTP, analytics, AI, and mixed workloads with significantly improved speed and reliability. Exadata Databases leverage unique optimizations such as Smart Scan, SQL offloading, high-speed RDMA networking, persistent memory, and automated storage management to accelerate query processing and reduce latency.
 
+ Estimated Time: About 30 minutes. 
 ### Objectives
 
 Create an Exadata Database and its components — **Database Home**,
@@ -30,10 +28,10 @@ Before starting, ensure the following are in place:
 
 1. From the **Oracle AI Database@AWS dashboard** or the **Exadata VM Cluster list**
  ![Image](./images/exa-db-01.png " ")
-  
+
 
  select the Exadata VM Cluster you created in the previous lab and Click the **Manage in OCI** button.
-   
+
  ![Image](./images/exa-db-02.png " ")
 
 > This opens the OCI Console where you can manage your Exadata VM Cluster and create Exadata databases.
