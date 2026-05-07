@@ -16,8 +16,8 @@ This lab walks you through creating an ssh key pair which is required for creati
 
 ### Objectives
 
-In this lab, you will:
-* TODO: Add objectives
+
+* In this lab you will create an ssh key pair.
 
 ## Creating an SSH Key Pair on macOS
 
