@@ -7,6 +7,7 @@ This lab walks you through creating Exadata Database through OCI Console.
 An Exadata Database is an Oracle Database deployed on Oracle Exadata systems, purpose-built to deliver extreme performance, scalability, availability, and efficiency for enterprise workloads. It combines the advanced capabilities of Oracle Database with the intelligent infrastructure of Exadata, enabling organizations to run mission-critical OLTP, analytics, AI, and mixed workloads with significantly improved speed and reliability. Exadata Databases leverage unique optimizations such as Smart Scan, SQL offloading, high-speed RDMA networking, persistent memory, and automated storage management to accelerate query processing and reduce latency.
 
  Estimated Time: About 30 minutes. 
+ 
 ### Objectives
 
 Create an Exadata Database and its components — **Database Home**,
