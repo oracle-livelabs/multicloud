@@ -12,7 +12,7 @@ You will login to AWS Console and perform the following task
 - Create an ODB Network
 
 ## Task 1: Create an ODB network
-An ODB network (Oracle Database network) is a core building block in Oracle’s multicloud offerings like Oracle Database@AWS.
+An ODB network (Oracle Database network) is a core building block in Oracle’s multicloud offerings like Oracle AI Database@AWS.
 An ODB network is a private, isolated network environment that hosts Oracle database infrastructure (like Exadata) inside another cloud provider’s data center, and acts as the bridge between that cloud and Oracle Cloud Infrastructure (OCI).
 It’s essentially a dedicated network space (with its own CIDR/IP range) where Oracle-managed database resources run.
 It maps directly to Oracle’s internal cloud networking (OCI), even though it physically resides in another cloud (e.g., AWS AZ).
@@ -21,10 +21,10 @@ In this task, you will create an ODB Network.
 
 1. Login to [AWS Management Console](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1) and search for Oracle Database@AWS
 
-    ![In AWS Management Console, search for Oracle Database@AWS and then click on it](./images/odb-network-01.png " ")
+    ![In AWS Management Console, search for Oracle AI Database@AWS and then click on it](./images/odb-network-01.png " ")
 
     >**Security Notice:** To ensure data privacy and security, certain fields on screen captures in this workshop have been redacted. Sensitive fields—such as IP addresses, subscription IDs, and personal identifiers—are obscured using solid gray rectangular boxes.
-2. Click on the dashboard to go to Oralce Database@AWS resources dashboard
+2. Make sure you are in the correct region where you want to create your ODB network. Click on the dashboard to go to Oralce Database@AWS resources dashboard and 
     ![Image](./images/odb-network-02.png " ")
 
 3. Select ODB networks from the left hand menu and then click on Create ODB Network

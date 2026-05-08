@@ -2,9 +2,11 @@
 
 ## Introduction
 
-This lab walks you through creating Exadata Infrastructure which is required for creating an Exadata VM cluster. 
+This lab walks you through creating Exadata Infrastructure which is required for creating an Exadata VM cluster.
+
 **Exadata Infrastructure** is Oracle’s engineered database platform that combines high-performance compute, intelligent storage, ultra-low-latency networking, and integrated database software into a single optimized system for running Oracle databases at scale.
-Estimated Time: About an hour.
+
+ Estimated Time: About an hour.
 
 ### Objectives
 
@@ -36,8 +38,8 @@ You will login to AWS Console and perform the following task
 
     ![Image](./images/exa-infra-03.png " ")
 
-     Click **Next** 
-     
+     Click **Next**
+
 5. On Step 2 **Configure Exadata Infrastructure** specify the following details
 
     - **Exadata system model:** `Exadata.X9M`
@@ -62,11 +64,11 @@ You will login to AWS Console and perform the following task
 
  Review all the settings and **click** on  **Create Exadata Infrastructure**
 
- This step can take upto 30 minutes. 
+ This step can take upto one hour.
 
  ![Image](./images/exa-infra-create-06.png " ")
 
-8. Once the Exadata Infrastructure is created, you can view your Exadata Infrastructure from the Exadata infrastructure list on the Oracle AI Database@AWS dashboard.
+8. Once the Exadata Infrastructure is created, you can view your Exadata Infrastructure from the Exadata infrastructure list on the Oracle Database@AWS dashboard.
  ![Image](./images/exa-infra-final-01.png " ")
 
 9. Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
