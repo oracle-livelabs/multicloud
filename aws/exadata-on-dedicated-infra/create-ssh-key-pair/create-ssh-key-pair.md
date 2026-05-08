@@ -74,7 +74,7 @@ Copy the output (beginning with `ssh-ed25519 ...`) — you will need this when c
 
 Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
 
-**Congratulations! You have successfully created Exadata Infrastructure!**.
+**Congratulations! You have successfully created ssh key pair!**.
 
 **You may now proceed to the next lab.**.
 
@@ -139,7 +139,7 @@ Copy the entire output — you will need this when creating Exadata VM cluster.
 
 8. Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
 
-**Congratulations! You have successfully created Exadata Infrastructure!**.
+**Congratulations! You have successfully created ssh key pair!**.
 
 **You may now proceed to the next lab.**
 

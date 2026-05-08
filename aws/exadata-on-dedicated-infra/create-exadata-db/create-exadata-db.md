@@ -82,7 +82,7 @@ Before starting, ensure the following are in place:
 
 9. Click the **Home** link in the breadcrumbs to return to the **Home** page in preparation for the next lab.
 
- **Congratulations! You have successfully created Exadata VM Cluster!**.
+ **Congratulations! You have successfully created Exadata Database!**.
 
  **You may now proceed to the next lab.**
 

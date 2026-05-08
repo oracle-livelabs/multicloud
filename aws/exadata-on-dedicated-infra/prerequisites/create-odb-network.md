@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab walks you through creating the ODB Network to create an Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS.
+This lab walks you through creating the ODB Network to create an Oracle Exadata Database on Dedicated Infrastructure on Oracle AI Database@AWS.
 
 Estimated Time: 15 minutes
 
