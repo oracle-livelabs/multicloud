@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS",
+    "workshoptitle": "Create Oracle Exadata Database on Dedicated Infrastructure on Oracle AI Database@AWS",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
                 {
@@ -10,7 +10,7 @@
         },
         {
             "title": "Lab 1: Create an ODB Network",
-            "description": "Pre-requisites to create Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS",
+            "description": "Pre-requisites to create Oracle Exadata Database on Dedicated Infrastructure on Oracle AI Database@AWS",
             "type": "tenancy",
             "filename": "../../prerequisites/create-odb-network.md"
         },
