@@ -13,7 +13,6 @@ This lab walks you through creating Exadata Infrastructure which is required for
 You will login to AWS Console and perform the following task
 - Create an Exadata Infrastructure
 
-
 ## Create an Exadata Infrastructure
 
 1. Login to [AWS Management Console](https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1) and search for Oracle Database@AWS
