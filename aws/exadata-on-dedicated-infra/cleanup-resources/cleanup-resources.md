@@ -39,7 +39,7 @@ select your Exadata VM Cluster from the Oracle Database@AWS dashboard and click 
 
 ## Task 3: Delete Exadata Infrastructure
 
->Exadata Infrastructure can be deleted only from the AWS Console or by using AWS CLI. Deleting Exadata VM Cluster is a prerequisites for deleting an Exadata Infrastructure.
+>Exadata Infrastructure can be deleted only from the AWS Console or by using AWS CLI. Deleting Autonomous VM Cluster is a prerequisites for deleting an Exadata Infrastructure.
 
 select your Exadata Infrastructure from the Oracle Database@AWS dashboard  and click on **delete**
  ![Image](./images/delete-exa-infra-01.png " ")
@@ -49,7 +49,7 @@ A warning screen pops up, warning that the deletion is permanent. To confirm del
 
 ## Task 4: Delete ODB Network
 
- >ODB Network deletion is only available through the AWS Console and AWS CLI. Deleting Exadata VM Cluster is a prerequisites for deleting an ODB Network.
+ >ODB Network deletion is only available through the AWS Console and AWS CLI. Deleting Autonomous VM Cluster is a prerequisites for deleting an ODB Network.
 
  select your ODB Network from the Oracle Database@AWS dashboard and click on **delete**
  ![Image](./images/delete-odb-network-01.png " ")

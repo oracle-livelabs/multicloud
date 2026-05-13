@@ -1,0 +1,53 @@
+{
+    "workshoptitle": "Create Oracle Autonomous AI Database on Dedicated Exadata Infrastructure on Oracle AI Database@AWS",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+        "title": "Introduction",
+        "description": "Introduction of the workshop",
+        "type": "tenancy",
+        "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Create an ODB Network",
+            "description": "Pre-requisites to create Oracle Exadata Database Service on Dedicated Infrastructure on Oracle AI Database@AWS",
+            "type": "tenancy",
+            "filename": "../../prerequisites/create-odb-network.md"
+        },
+        {
+            "title": "Lab 2: Create an Exadata Infrastructure",
+            "description": "Create an Exadata Infrastructure",
+            "type": "tenancy",
+            "filename": "../../create-exa-infra/create-exa-infra.md"
+        },
+        {
+            "title": "Lab 3: Create an Autonomous VM cluster",
+            "description": "Create an Autonomous VM cluster",
+            "type": "tenancy",
+            "filename": "../../create-autonomous-vm-cluster/create-autonomous-vm-cluster.md"
+        },
+        {
+            "title": "Lab 4: Create an Autonomous Container Database",
+            "description": "Create an Autonomous Container Database",
+            "type": "tenancy",
+            "filename": "../../create-container-db/create-container-db.md"
+        },
+        {
+            "title": "Lab 5: Create an Autonomous AI Database on Dedicated Exadata Infrastructure",
+            "description": "Create an Autonomous AI Database on Dedicated Exadata Infrastructure",
+            "type": "tenancy",
+            "filename": "../../create-autonomous-ai-db/create-autonomous-ai-db.md"
+        },
+        {
+            "title": "Lab 5: Clean Up Resources",
+            "description": "Clean up resources",
+            "type": "tenancy",
+            "filename": "../../cleanup-resources/cleanup-resources.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
