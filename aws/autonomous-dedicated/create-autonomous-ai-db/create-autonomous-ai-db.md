@@ -1,3 +1,5 @@
+# Create Autonomous AI Database on Dedicated Exadata Infrastructure
+
 ## Introduction
 
 This lab walks you through creating an **Autonomous AI Database on Dedicated Exadata Infrastructure.**

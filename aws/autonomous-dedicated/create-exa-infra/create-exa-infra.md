@@ -1,4 +1,4 @@
-# Create the Required Resources to Create an Oracle Autonomous AI Database on Dedicated Exadata Infrastructure on Oracle AI Database@AWS
+# Create Exadata Infrastructure
 
 ## Introduction
 
