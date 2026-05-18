@@ -1,0 +1,29 @@
+{
+    "workshoptitle": "Create Oracle Autonomous AI Database Serverless on Oracle AI Database@Google Cloud",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+                {
+        "title": "Introduction",
+        "description": "Introduction of the workshop",
+        "type": "tenancy",
+        "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Lab 1: Create an Oracle Autonomous AI Database Serverless on Oracle AI Database@Google Cloud",
+            "description": "create Create an Oracle Autonomous AI Database Serverless on Oracle AI Database@Google Cloud",
+            "type": "tenancy",
+            "filename": "../../create-autonomous-serverless/create-autonomous-serverless.md"
+           },
+       {
+            "title": "Lab 2: Clean Up Resources",
+            "description": "Clean up resources",
+            "type": "tenancy",
+            "filename": "../../cleanup-resources/cleanup-resources.md"
+        },
+        {
+            "title": "Need Help?",
+            "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+            "filename":"https://livelabs.oracle.com/cdn/common/labs/need-help/need-help-freetier.md"
+        }
+    ]
+}
