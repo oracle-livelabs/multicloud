@@ -33,7 +33,7 @@ In this lab, you will:
 3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop. 
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/toASyWGqXKfORRi0qxQZJ7TBBOn5TYwf1PxGQR2JZxVtS-RATjO1PqrVzZtsR9en/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
+    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/KwHPO7w7lpOFn9XSkQs1W3C_2UpxmG6gBpBesZ7ke7Qze-0ZEKjGDMO_A0tgO_6E/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
     unzip ~/devops_helidon_to_instance_ocw_hol.zip</copy>
     ```
 ![download source code](images/download-sourcecode.png)
@@ -120,11 +120,11 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
         * **OCI DevOps Project** that will contain all the DevOps components needed for this project.
         * **OCI Code Repository** that will host the Application source code project.
         * **DevOps Build Pipeline** with the following stages:
-            * **Manage Build** - executes steps to download JDK20, maven and building the Helidon application
+            * **Manage Build** - executes steps to download JDK 21, Maven, and build the Helidon application
             * **Deliver Artifacts** - Uploads the built Helidon app and the Deployment to the Artifact Repository
             * **Trigger Deployment** - Triggers the Deployment Pipeline
         * **DevOps Deployment Pipeline** that will perform the following on the target environment:
-            * Download JDK20
+            * Download JDK 21
             * Install OCI CLI and use it to download the Application Deliverable
             * Run the Application
         * **DevOps Instance Group environment** that will be used by the Deployment Pipeline to identify the created OCI Compute Instance as the deployment target.
@@ -147,5 +147,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026
