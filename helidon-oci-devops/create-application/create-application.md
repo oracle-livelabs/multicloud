@@ -116,7 +116,7 @@ In this lab, you will:
      * Update in *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* config file to set up *oci.bucket.name* property to contain the Object Storage bucket name that was provisioned by the terraform scripts that will be used in a later exercise to demonstrate Object Storage support from a Helidon application.
 
 6. Open the file *~/oci-mp/server/src/main/resources/application.yaml* in Code editor to verify that the value of **compartmentId** and **namespace** are updated.
-![application yaml](images/application-yaml.png)
+    ![application yaml](images/application-yaml.png)
 
 7. Open the file *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* in Code editor to verify that the value of **oci.monitoring.compartmentId**, **oci.monitoring.namespace**, **oci.logging.id** and **oci.bucket.name** are updated. *oci.bucket.name* will be used later in Lab 5.
 

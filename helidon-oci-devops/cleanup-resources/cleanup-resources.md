@@ -27,7 +27,7 @@ In this lab, you will:
     ![open file](images/open-file.png)
 
 2. Click the *Up Arrow* to navigate to parent folder and then select **`devops_helidon_to_instance_ocw_hol`** folder and click *Open*.
-![open devops](images/open-devops.png)
+    ![open devops](images/open-devops.png)
 
 3. Open a new terminal, Copy and paste the following command to navigate to the  **`devops_helidon_to_instance_ocw_hol`** folder. 
     ```bash
