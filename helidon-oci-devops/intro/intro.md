@@ -16,7 +16,7 @@ In this workshop, you will:
 * Show OCI Monitoring SDK integration
 * Validate OCI Logging SDK integration to push messages to Logging service
 * Simulate a patching scenario
-* Add Object storage access from the Helidon MP application
+* Add Object Storage access from the Helidon MP application
 
 ### Prerequisites
 
@@ -50,7 +50,7 @@ You may now **proceed to the next lab.**
 
 * [Reference Architecture: Understand modern app deployment strategies with Oracle Cloud Infrastructure DevOps](https://docs.oracle.com/en/solutions/mod-app-deploy-strategies-oci/index.html)
 * [https://helidon.io/](https://helidon.io/)
-* [https://medium.com/helidon](https://medium.com/helidon)
+* [https://helidon.io/docs/v4/](https://helidon.io/docs/v4/)
 * [https://github.com/helidon-io/helidon](https://github.com/helidon-io/helidon)
 * [https://www.youtube.com/Helidon_Project](https://www.youtube.com/Helidon_Project)
 * [https://helidon.slack.com](https://helidon.slack.com)
@@ -58,5 +58,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

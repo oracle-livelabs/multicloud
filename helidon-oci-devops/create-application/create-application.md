@@ -37,10 +37,10 @@ In this lab, you will:
     ```
 
 
-## Task 2: Generate a Helidon Microprofile application using Helidon CLI
+## Task 2: Generate a Helidon MicroProfile application using Helidon CLI
 
 
-1. Execute the CLI to **generate a Helidon Microprofile application** project.
+1. Execute the CLI to **generate a Helidon MicroProfile application** project.
      ```bash
     <copy>./helidon init</copy>
     ```
@@ -116,7 +116,7 @@ In this lab, you will:
      * Update in *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* config file to set up *oci.bucket.name* property to contain the Object Storage bucket name that was provisioned by the terraform scripts that will be used in a later exercise to demonstrate Object Storage support from a Helidon application.
 
 6. Open the file *~/oci-mp/server/src/main/resources/application.yaml* in Code editor to verify that the value of **compartmentId** and **namespace** are updated.
-![application yaml](images/application-yaml.png)
+    ![application yaml](images/application-yaml.png)
 
 7. Open the file *~/oci-mp/server/src/main/resources/META-INF/microprofile-config.properties* in Code editor to verify that the value of **oci.monitoring.compartmentId**, **oci.monitoring.namespace**, **oci.logging.id** and **oci.bucket.name** are updated. *oci.bucket.name* will be used later in Lab 5.
 
@@ -169,9 +169,11 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 5. Configure git to use the **credential helper** store so that OCI repository's username and password will be entered only once on git commands that require them. Also, set **user.name** and **user.email** which is required by git commit.
     ```bash
     <copy>git config credential.helper store
-    git config --global user.email "my.name@example.com"
+    git config --global user.email "YOUR_EMAIL_ADDRESS"
     git config --global user.name "FIRST_NAME LAST_NAME"</copy>
     ```
+
+    > **Note:** The credential helper stores the OCI auth token in this lab environment after the first successful git command. Use this only for the workshop environment. When the workshop is complete, delete the lab auth token from OCI Identity or remove the stored Git credential from `~/.git-credentials` if the environment will be reused.
 
 6. Synchronize the oci repository's git log with the local repository by using **git pull**.
     ```bash
@@ -233,22 +235,22 @@ In this step, we are going to generate an *Authentication Token*, that we will u
 10. To view the logs of the deployment pipeline, click on **Three dots** near to deployment stage and click **View details** as shown below.
     ![view logs](images/view-logs.png)
 
-11. Scroll down the logs and verify that the JDK flavor is **Open JDK**. Also note from the logs that the Helidon application leverages the new **Virtual Threads** feature in Java as shown below.
+11. Scroll down the logs and verify that the JDK flavor is **OpenJDK**. Also note from the logs that the Helidon application leverages the new **Virtual Threads** feature in Java as shown below.
     ![open jdk](images/open-jdk.png)
 
-    > As part of **Lab 4**, we will replace **Open JDK** with **Oracle JDK**. 
+    > As part of **Lab 4**, we will replace **OpenJDK** with **Oracle JDK**.
 
 You may now **proceed to the next lab.**
 
 ## Learn More
 
-* [Helidon CLI](https://helidon.io/docs/v3/#/about/cli)
-* [Helidon MP Quick Start Guide](https://helidon.io/docs/v3/#/mp/guides/quickstart)
-* [Helidon MP Config Sources](https://helidon.io/docs/v3/#/mp/config/advanced-configuration)
-* [Helidon MP Config Sources](https://helidon.io/docs/v3/#/mp/guides/config)
+* [Helidon CLI](https://helidon.io/docs/v4/about/cli.html)
+* [Helidon MP Quick Start Guide](https://helidon.io/docs/v4/mp/guides/quickstart.html)
+* [Helidon MP Config Sources](https://helidon.io/docs/v4/mp/config/advanced-configuration.html)
+* [Helidon MP Config Guide](https://helidon.io/docs/v4/mp/guides/config.html)
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

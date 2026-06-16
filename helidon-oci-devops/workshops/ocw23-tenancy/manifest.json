@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "The Lifecycle of Helidon Microservice Application Development with OCI DevOps service",
+    "workshoptitle": "Lifecycle of Helidon Microservice Application Development with OCI DevOps service",
     "help": "livelabs-help-weblogic_us@oracle.com",
     "tutorials": [
         {
@@ -38,7 +38,7 @@
             "filename": "../../os-support/os-support.md"
         },
 		{
-            "title": "Lab 6: Clean Up the OCI Resources(Optional)",
+            "title": "Lab 6: Clean Up the OCI Resources (Optional)",
             "type": "freetier",
             "filename": "../../cleanup-resources/cleanup-resources.md"
         },

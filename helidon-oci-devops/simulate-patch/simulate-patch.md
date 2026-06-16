@@ -1,8 +1,8 @@
 # Simulate a Patch Scenario
 
-## Introductions
+## Introduction
 
-This lab will attempt to simulate a patching scenario. Take a case where the initial environment uses *Open JDK* for testing and eventually moves to use *Oracle JDK* when it is ready for production. The previous build and deployment pipeline already sets *Open JDK 21* as the Java flavour to use. In this lab, it will be replaced with *Oracle JDK 21*.
+This lab will attempt to simulate a patching scenario. Take a case where the initial environment uses *OpenJDK* for testing and eventually moves to use *Oracle JDK* when it is ready for production. The previous build and deployment pipeline already sets *OpenJDK 21* as the Java flavor to use. In this lab, it will be replaced with *Oracle JDK 21*.
 
 Estimated time: 10 minutes
 
@@ -13,8 +13,8 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 
-* Modify the JDK flavour
-* Verify the JDK new flavour in the deployment pipeline
+* Modify the JDK flavor
+* Verify the new JDK flavor in the deployment pipeline
 
 ### Prerequisites
 
@@ -22,10 +22,10 @@ In this lab, you will:
 
 ## Task 1: Change the JDK Installer
 
-1. As we have seen in **Lab 2**, In the previously completed **deployment pipeline log** and observed that near the bottom of the log it was using **Open JDK**.
+1. As shown in **Lab 2**, the previously completed **deployment pipeline log** shows that the application was using **OpenJDK**.
     ![open jdk](images/open-jdk.png)
 
-2. In the **Code Editor**, click the file name **`build_spec.yaml`** to open it. Comment out the environment variable **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **Open JDK** installer at line number #15 and uncomment **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **Oracle JDK** installer at line number #16 as shown below. 
+2. In the **Code Editor**, click the file name **`build_spec.yaml`** to open it. Comment out the environment variable **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **OpenJDK** installer at line number #15 and uncomment **`JDK21_TAR_GZ_INSTALLER`** that sets the URL path to an **Oracle JDK** installer at line number #16 as shown below.
     ![modify jdk](images/modify-jdk.png)
     
 ## Task 2: Push the change and trigger the DevOps pipeline
@@ -34,13 +34,13 @@ In this lab, you will:
     ```bash
     <copy>git add .
     git status
-    git commit -m "Replace OpenJDK 21 with OracleJDK 21"
+    git commit -m "Replace OpenJDK 21 with Oracle JDK 21"
     git push</copy>
     ```
 
     > The pipeline will get triggered by this git push.
 
-## Task 3: Verify the JDK new flavor in the Deployment pipeline
+## Task 3: Verify the new JDK flavor in the deployment pipeline
 
 1. Open the [Cloud Console](https://cloud.oracle.com/) in new tab, Click *Hamburger menu* -> *Developer Services* -> *Projects* under **DevOps**.
     ![devops project](images/devops-project.png)
@@ -65,7 +65,7 @@ In this lab, you will:
 7. To view the logs of the deployment pipeline, click on **Three dots** near to deployment stage and click **View details** as shown below.
     ![view logs](images/view-logs.png)
 
-8. Scroll down the logs and verify the JDK flavour, It should be **Oracle JDK** as shown below.
+8. Scroll down the logs and verify the JDK flavor. It should be **Oracle JDK** as shown below.
     ![oracle jdk](images/oracle-jdk.png)
 
 You may now **proceed to the next lab.**
@@ -73,5 +73,5 @@ You may now **proceed to the next lab.**
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

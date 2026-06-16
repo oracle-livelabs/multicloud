@@ -13,10 +13,10 @@ Watch the video below for a quick walk-through of the lab.
 
 In this lab, you will:
 
-* Modify the Helidon application to show its integration with OCI services like Object storage
-* Verify the successful Object storage integration
+* Modify the Helidon application to show its integration with OCI services like Object Storage
+* Verify the successful Object Storage integration
 
-### Prerequisite
+### Prerequisites
 
 * An Oracle Free Tier(Trial), Paid or LiveLabs Cloud Account
 
@@ -55,7 +55,7 @@ In this lab, you will:
                 objectStorageClient.getNamespace(GetNamespaceRequest.builder().build());
         this.objectStorageClient = objectStorageClient;
         this.namespaceName = namespaceResponse.getValue();
-        LOGGER.info("Object storage namespace: " + namespaceName);
+        LOGGER.info("Object Storage namespace: " + namespaceName);
         setMessage(message);
     } catch (Exception e) {
         LOGGER.warning("Error invoking getNamespace from Object Storage: " + e);
@@ -173,13 +173,13 @@ Test by using curl and check that a new **hello.txt** object has been added to t
 8. Restart the application using **restart.sh** tool to demonstrate that the value of the greeting word will survive as it is persisted in the **Object Storage**.
     ```bash
     <copy>~/devops_helidon_to_instance_ocw_hol/utils/restart.sh</copy>
-    Created private.key and can be used to ssh to the deployment instance by running this command: "ssh -i private.key opc@xx.xx.xx.xx"
+    Created private.key and can be used to ssh to the deployment instance by running this command: "ssh -i private.key opc@<public-ip-address>"
     FIPS mode initialized
-    The authenticity of host 'xx.xx.xx.xx (xx.xx.xx.xx)' can't be established.
+    The authenticity of host '<public-ip-address> (<public-ip-address>)' can't be established.
     ECDSA key fingerprint is SHA256:hJl8axCNhFcILDo+AwxMkodxhY+UxRD40d1ans83GTg.
     ECDSA key fingerprint is SHA1:IBUhyn05DaIs60GAQsruVXajhym.
     Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added 'xx.xx.xx.xx' (ECDSA) to the list of known hosts.
+    Warning: Permanently added '<public-ip-address>' (ECDSA) to the list of known hosts.
     Starting oci-mp-server.jar
     Helidon app is now running with pid 264792!
     Cleaning up ssh private.key
@@ -201,10 +201,10 @@ Test by using curl and check that a new **hello.txt** object has been added to t
 
 ## Learn More
 
-* [Helidon OCI integration](https://helidon.io/docs/v3/#/mp/integrations/oci)
+* [Helidon OCI integration](https://helidon.io/docs/v4/mp/integrations/oci.html)
 
 ## Acknowledgements
 
 * **Author** -  Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, June 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026
