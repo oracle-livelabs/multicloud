@@ -1,5 +1,7 @@
 # Migrating the WebLogic Domain
 
+
+Estimated Time: 10 minutes
 ## Introduction
 
 Migrating a WebLogic domain is equivalent to re-deploying the applications and resources to a new domain and infrastructure.
@@ -37,7 +39,7 @@ Migration with WebLogic Deploy Tooling (WDT) consists of 3 steps:
 
 1. Copy and paste the following command in the terminal to download the source code required for this workshop.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/DhsOVeXUC25tU06Lg3BUYtNfOMUnuVI8jpfzxHehkXdBfqKlFa1i-mKxiglaB-7U/n/lrv4zdykjqrj/b/ankit-bucket/o/weblogic-migration.zip
+    <copy>curl -O https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/2Uh2ZqeAeVJaAscIUCl8rUaPfLQagUQfmycXiCtl3X6FzgLm8sii0bZYuu2-F1qW/n/ocloud200/b/ecnj_livelabs/o/weblogic-migration.zip
     unzip weblogic-migration.zip</copy>
     ```
 
@@ -89,9 +91,9 @@ Applications found under `ORACLE_HOME` will have a path that includes `@@ORACLE_
 The extracted `source.yaml` file looks like the following:
 
 ```yaml
-# This model was created using the WebLogic Deploy Tooling 4.2.0 discoverDomain tool
-# running in OFFLINE mode against a domain using WebLogic Server 12.2.1.4.0.
-# 
+## This model was created using the WebLogic Deploy Tooling 4.2.0 discoverDomain tool
+## running in OFFLINE mode against a domain using WebLogic Server 12.2.1.4.0.
+##
 domainInfo:
     AdminUserName: '@@PROP:AdminUserName@@'
     AdminPassword: '@@PROP:AdminPassword@@'
@@ -212,7 +214,7 @@ appDeployments:
 
     The `topology` section includes the definition of the managed servers, admin server, machines and clusters. The domain is already provisioned on OCI so this will not change.
 
-2.  Remove the entire **`domainInfo`**, **`topology`** section and also **TAC-Datasource**. As one dummy datasource is sufficient to show migration of JDBC resources. 
+2.  Remove the entire **`domainInfo`**, **`topology`** section and also **TAC-Datasource**. As one dummy datasource is sufficient to show migration of JDBC resources.
 
     The content now looks like:
 
@@ -220,7 +222,7 @@ appDeployments:
     <copy>
     # This model was created using the WebLogic Deploy Tooling 4.2.0 discoverDomain tool
     # running in OFFLINE mode against a domain using WebLogic Server 12.2.1.4.0.
-    # 
+    #
     resources:
         JDBCSystemResource:
             testDatasource:
@@ -286,7 +288,7 @@ appDeployments:
     <copy>
     # This model was created using the WebLogic Deploy Tooling 4.2.0 discoverDomain tool
     # running in OFFLINE mode against a domain using WebLogic Server 12.2.1.4.0.
-    # 
+    #
     resources:
         JDBCSystemResource:
             testDatasource:
@@ -459,17 +461,17 @@ The `update_domain_as_oracle_user.sh` script runs the **WebLogic Deploy Tooling*
 
 4. Go to `deployments`: you should see the 2 applications deployed, and in the **active** state.
 
-  ![deployments](./images/oci-deployments.png " ")
+      ![deployments](./images/oci-deployments.png " ")
 
 5. Go to the **opdemo** application URL, which is the Load Balancer IP gathered previously in the **Outputs** of the WebLogic provisioning, with the route `/opdemo/?dsname=testDatasource` like:
 https://`LOAD_BALANCER_IP`/opdemo/?dsname=testDatasource
 
     Making sure you use `https` as scheme and the proper case for `/SimpleDB`.
 
-  ![app output](./images/oci-simpledb-app.png " ")
+      ![app output](./images/oci-simpledb-app.png " ")
 
 ## Acknowledgements
 
 * **Author** - Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, November 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

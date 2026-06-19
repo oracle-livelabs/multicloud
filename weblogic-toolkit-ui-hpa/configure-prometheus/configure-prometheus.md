@@ -1,4 +1,4 @@
-# Configure Prometheus and Grafana 
+# Configure Prometheus and Grafana
 
 ## Introduction
 
@@ -22,7 +22,7 @@ In this lab, you will:
 
 1. In the terminal, copy and paste the following command to download the files we need for this workshop.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/-0WCMgxMeZ2w53UvRuto62ejubzxr3mP6yxU36CDk7-uYr7m1jKh4RtH7az-Jwe6/n/lrv4zdykjqrj/b/ankit-bucket/o/hpa-demo.zip
+    <copy>curl -O https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Y2z_QqbqoLiFi3eKzK9kVp9ZGj97v0ze61IG4PyGZdT6CZJGo_C4RBRoJcjGlYJc/n/ocloud200/b/ecnj_livelabs/o/hpa-demo.zip
     unzip hpa-demo.zip
     cd ~/hpa-demo/
     ls -ltra</copy>
@@ -52,7 +52,7 @@ As we have install the Grafana and Prometheus in the Oracle Kubernetes Cluster(O
 
 4. Click **pool1** in the node pool.
 
-5. In the Nodes, you will notice one node. click the down arrow as shown and note down the worker node public and private IP in the text file. 
+5. In the Nodes, you will notice one node. click the down arrow as shown and note down the worker node public and private IP in the text file.
     ![expand node](images/expand-node.png)
     ![node details](images/node-details.png)
 
@@ -74,7 +74,7 @@ As we have install the Grafana and Prometheus in the Oracle Kubernetes Cluster(O
 
 In this task, we add the prometheus datasource in the Grafana and later we import WebLogic Server Dashboard in the Grafana.
 
-1. Copy and paste the following URL in the Browser and replace **`PUBLIC_IP_OF_WORKERNODE`** with the worker node public ip. 
+1. Copy and paste the following URL in the Browser and replace **`PUBLIC_IP_OF_WORKERNODE`** with the worker node public ip.
 
     ```bash
     <copy>http://PUBLIC_IP_OF_WORKERNODE:31000/</copy>
@@ -105,7 +105,7 @@ In this task, we add the prometheus datasource in the Grafana and later we impor
 8. Click **Import** to import the WebLogic Server Dashboard.
     ![import dashboard](images/import-dashboard.png)
 
-9. You will be able to view the WebLogic Server data in WebLogic Server Dashboard as shown below. 
+9. You will be able to view the WebLogic Server data in WebLogic Server Dashboard as shown below.
     ![weblogic dashboard](images/weblogic-dashboard.png)
 
 10. Click drop down near to **Heap Usage** and click **Edit**.
@@ -121,5 +121,5 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2024
+* **Contributors** - Maciej Gruszka, Sid Joshi, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

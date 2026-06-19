@@ -1,5 +1,7 @@
 # Prepare Setup
 
+
+Estimated Time: 10 minutes
 ## Introduction
 This lab will show you how to download the Oracle Resource Manager (ORM) stack zip file needed to setup the resource needed to run this workshop. This workshop requires a compute instance and a Virtual Cloud Network (VCN).
 
@@ -18,7 +20,7 @@ This lab assumes you have:
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wls-to-oci-mkplc-freetier](https://objectstorage.uk-london-1.oraclecloud.com/p/aw2y55KNqgvNR9kB0J-Sspf2F_Sfty_LrxEiSqLnqUlXyxupgPbOtHEXc3dfXURx/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-to-oci-mkplc-freetier.zip )
+    - [wls-to-oci-mkplc-freetier](https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/8h1j1VgIT0JBBOJ0fPj8D_j9jJuSSubXVnGQDXCeQsX7v1py4X14IcEfL-V4lJRI/n/ocloud200/b/ecnj_livelabs/o/wls-to-oci-mkplc-freetier.zip )
 
 2.  Save in your downloads folder.
 
@@ -42,7 +44,7 @@ This lab assumes you have:
 
     **Instance Shape:** Keep the default or select from the list of Flex shapes in the dropdown menu (e.g VM.Standard.E4.Flex).
 
-    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory. 
+    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory.
 
     **Use Existing VCN?:** Accept the default by leaving this unchecked. This will create a new VCN.
     ![main config](images/main-config.png)
@@ -61,46 +63,46 @@ This lab assumes you have:
 
 1. Go to **Identity & Security -> Vault**.
 
-   ![vault menu](./images/prereq-vault1.png " ")
+       ![vault menu](./images/prereq-vault1.png " ")
 
 2. Make sure you are in the compartment where you want to deploy WebLogic.
 
 3. Click **Create Vault**.
 
-   ![create vault](./images/prereq-vault2.png " ")
+       ![create vault](./images/prereq-vault2.png " ")
 
 4. Name the vault **`ap-vault`** or a name of your choosing. Make sure the **`private`** option is **not checked** and click **Create Vault**.
 
-   ![create](./images/prereq-vault3.png " ")
+       ![create](./images/prereq-vault3.png " ")
 
 ## Task 3: Create a Key in the Vault
 
 1. Once the vault is provisioned, select the vault.
 
-   ![select vault](./images/prereq-vault4.png " ")
+       ![select vault](./images/prereq-vault4.png " ")
 
 2. Click **Create Key**.
 
-   ![create key](./images/prereq-key1.png " ")
+       ![create key](./images/prereq-key1.png " ")
 
 3. Name the key **`ap-key`** or a name of your choosing and click **Create Key**.
 
-   ![settings for key](./images/prereq-key2.png " ")
+       ![settings for key](./images/prereq-key2.png " ")
 
 ## Task 4: Create a Secret for the WebLogic Admin Password
 
 1. Once the key is provisioned, click **Secrets** then **Create Secret**.
 
-   ![create secret](./images/prereq-secret1.png " ")
+       ![create secret](./images/prereq-secret1.png " ")
 
 3. Name the **Secret** as **`wlspasswd`**, select the **`ap-key`** created at the previous step as the **Encryption Key**, select **Manual secret generation** `plaintext` option and type `oraclewls1` or any WebLogic compliant password (at least 8 chars and 1 uppercase or number) in the **Secret Content** text field, and click **Create Secret**.
 
-  ![create secret](./images/prereq-secret3.png " ")
+      ![create secret](./images/prereq-secret3.png " ")
 
 You may now [proceed to the next lab](#next).
 
 ## Acknowledgements
 
 * **Author** - Ankit Pandey
-* **Contributors** - Sid Joshi, Maciej Gruszka
-* **Last Updated By/Date** - Ankit Pandey, November 2024
+* **Contributors** - Sid Joshi, Maciej Gruszka, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

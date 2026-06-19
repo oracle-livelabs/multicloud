@@ -19,7 +19,7 @@ This lab assumes you have:
 
     *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
 
-    - [wls-oke-stack-toolkit-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/VaB6UBJxoA7UZ6nVXEYnorwQTepG0EerarP0p4NcO1z0Rb_Y9kyYZEBl38TtH4_4/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-stack-toolkit-mkplc-freetier.zip)
+    - [wls-oke-stack-toolkit-mkplc-freetier.zip](https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/iW92C3kGyIM7LjgsdWWnPxvK_EUnP_v8kCUba4hTYvdxqByERaNzsMcJ1AA6x-rU/n/ocloud200/b/ecnj_livelabs/o/wls-oke-stack-toolkit-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -47,7 +47,7 @@ This lab assumes you have:
 
     **Instance Shape:** Keep the default or select from the list of Flex shapes in the dropdown menu (e.g VM.Standard.E4.Flex).
 
-    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (1) will provision 1 OCPUs and 16GB of memory. 
+    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (1) will provision 1 OCPUs and 16GB of memory.
 
     **Use Existing VCN?:** Accept the default by leaving this unchecked. This will create a new VCN.
     ![main config](images/main-config.png)
@@ -62,5 +62,5 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2024
+* **Contributors** - Maciej Gruszka, Sid Joshi, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026

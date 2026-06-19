@@ -21,7 +21,7 @@ This lab assumes you have:
 
 1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
 
-    - [wls-oke-toolkit-hpa-mkplc-freetier.zip](https://objectstorage.uk-london-1.oraclecloud.com/p/tQgoc8a4vpX1P_YtnV6mEac_6Jrd3WytIkA_OTwigYVUEiSrrJeQ_idGLjjwycjR/n/lrv4zdykjqrj/b/ankit-bucket/o/wls-oke-toolkit-hpa-mkplc-freetier.zip)
+    - [wls-oke-toolkit-hpa-mkplc-freetier.zip](https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/RxcXuxn6Xf0lvFFFWPN4SYCR-ECopGANFKqNz3E6pAvYJ5pB8lTrfsqiJeGZuSrf/n/ocloud200/b/ecnj_livelabs/o/wls-oke-toolkit-hpa-mkplc-freetier.zip)
 
 2.  Save in your downloads folder.
 
@@ -45,7 +45,7 @@ This lab assumes you have:
 
     **Instance Shape:** Keep the default or select from the list of Flex shapes in the dropdown menu (e.g VM.Standard.E4.Flex).
 
-    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory. 
+    **Select OCPUs Count per Instance:** Accept the default shown. e.g. (2) will provision 2 OCPUs and 32GB of memory.
 
     **Use Existing VCN?:** Accept the default by leaving this unchecked. This will create a new VCN.
     ![main config](images/main-config.png)
@@ -84,7 +84,7 @@ The *Quick Create* feature uses the default settings to create a *quick cluster*
     * **Compartment**: The name of the compartment. Select the compartment in which you are allowed to create resources.
     * **Kubernetes version**: The version of Kubernetes. Select *1.30.1* as Kubernetes version.
     * **Kubernetes API Endpoint**: Are the cluster master nodes going to be routable or not. Select the *Public Endpoint* value.
-    * **Node type**: Select *Managed* as node type. 
+    * **Node type**: Select *Managed* as node type.
     * **Kubernetes Worker Nodes**: Are the cluster worker nodes going to be routable or not. Leave the default *Public workers* value.
     * **Shape**: The shape to use for each node in the node pool. The shape determines the number of CPUs and the amount of memory allocated to each node. The list shows only those shapes available in your tenancy that are supported by OKE. Select *VM.Standard.E4.Flex* (which is typically available in Oracle Free Tier Account). Select the 2 OCPUs and 32 GB as Amount of Memory.
     * **Image**: Select the default image with Kubernetes version *1.30.1*.
@@ -113,5 +113,5 @@ You may now proceed to the next lab.
 
 ## Acknowledgements
 * **Author** -  Ankit Pandey
-* **Contributors** - Maciej Gruszka, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, October 2024
+* **Contributors** - Maciej Gruszka, Sid Joshi, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026
