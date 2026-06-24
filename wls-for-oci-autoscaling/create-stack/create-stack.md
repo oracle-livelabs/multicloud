@@ -23,11 +23,11 @@ This lab assumes you have:
 
 In this task, we create WebLogic for OCI stack using **Oracle WebLogic Server Enterprise Edition BYOL** image in the OCI Marketplace.
 
-1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
+1. Click on the link below to download the Resource Manager zip file you need to build your environment.
 
     - [wlsoci-resource-manager-ee-byol-mp-14.1.1.0.240416-24.2.1-240418031026.zip](https://github.com/oracle-quickstart/oci-weblogic-server/releases/download/v24.2.1/wlsoci-resource-manager-ee-byol-mp-14.1.1.0.240416-24.2.1-240418031026.zip)
 
-2.  Save in your downloads folder.
+2. Save in your downloads folder.
 
 3. Open a new tab in the browser, and then copy and paste the below URL in the URL bar. You will use this tab for navigating the OCI console.
     ```bash

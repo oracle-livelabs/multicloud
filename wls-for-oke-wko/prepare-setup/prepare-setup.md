@@ -15,13 +15,13 @@ This lab assumes you have:
 
 ## Task 1: Download Oracle Resource Manager (ORM) stack zip file
 
-1.  Click on the link below to download the Resource Manager zip file you need to build your environment:
+1. Click on the link below to download the Resource Manager zip file you need to build your environment:
 
     *Note 1:* If providing a single Stack download for the workshop, use this simple expression.
 
     - [wls-oke-stack-toolkit-mkplc-freetier.zip](https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/iW92C3kGyIM7LjgsdWWnPxvK_EUnP_v8kCUba4hTYvdxqByERaNzsMcJ1AA6x-rU/n/ocloud200/b/ecnj_livelabs/o/wls-oke-stack-toolkit-mkplc-freetier.zip)
 
-2.  Save in your downloads folder.
+2. Save in your downloads folder.
 
 ## Task 2: Create Stack: Compute + Networking
 

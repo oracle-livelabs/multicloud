@@ -18,11 +18,11 @@ This lab assumes you have:
 
 ## Task 1: Create Stack: Compute + Networking
 
-1.  Click on the link below to download the Resource Manager zip file you need to build your environment.
+1. Click on the link below to download the Resource Manager zip file you need to build your environment.
 
     - [wls-to-oci-mkplc-freetier](https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/8h1j1VgIT0JBBOJ0fPj8D_j9jJuSSubXVnGQDXCeQsX7v1py4X14IcEfL-V4lJRI/n/ocloud200/b/ecnj_livelabs/o/wls-to-oci-mkplc-freetier.zip )
 
-2.  Save in your downloads folder.
+2. Save in your downloads folder.
 
 3. Open up the hamburger menu in the top left corner. Click **Developer Services**, and choose **Resource Manager** > **Stacks**. Choose the compartment in which you would like to install the stack. Click **Create Stack**.
     ![menu stack](images/menu-stack.png)

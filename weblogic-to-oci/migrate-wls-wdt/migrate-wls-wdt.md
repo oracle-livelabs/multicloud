@@ -214,7 +214,7 @@ appDeployments:
 
     The `topology` section includes the definition of the managed servers, admin server, machines and clusters. The domain is already provisioned on OCI so this will not change.
 
-2.  Remove the entire **`domainInfo`**, **`topology`** section and also **TAC-Datasource**. As one dummy datasource is sufficient to show migration of JDBC resources.
+2. Remove the entire **`domainInfo`**, **`topology`** section and also **TAC-Datasource**. As one dummy datasource is sufficient to show migration of JDBC resources.
 
     The content now looks like:
 
@@ -369,9 +369,9 @@ appDeployments:
 
 2. Enter the JDBC Connection password for the `scott` user as tiger.
 
-   Although the name is `PasswordEncrypted`, enter the plaintext password and WebLogic will encrypt it when updating the domain.
+    Although the name is `PasswordEncrypted`, enter the plaintext password and WebLogic will encrypt it when updating the domain.
 
-   The resulting file should look like:
+    The resulting file should look like:
 
     ```bash
     <copy>
