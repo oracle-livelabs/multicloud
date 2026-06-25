@@ -30,10 +30,10 @@ In this lab, you will:
 2. Click *Terminal*-> *New Terminal* to open the terminal. During the workshop, you will be asked to open a new terminal. In this way, you can open a new terminal in Code Editor.
     ![open terminal](images/open-terminal.png)
 
-3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop. 
+3. Copy and paste the following command to the terminal to download the source code. This source code contains the terraform scripts which create the OCI resources required for this workshop.
 
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/KwHPO7w7lpOFn9XSkQs1W3C_2UpxmG6gBpBesZ7ke7Qze-0ZEKjGDMO_A0tgO_6E/n/lrv4zdykjqrj/b/ankit-bucket/o/devops_helidon_to_instance_ocw_hol.zip
+    <copy>curl -O https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/Gl61R_NEEOs2M_zI2i63n5I3v1yIKrOTaERkO9Z1zTFnL7TSVhsjmEgLMbIhrMVy/n/ocloud200/b/ecnj_livelabs/o/devops_helidon_to_instance_ocw_hol.zip
     unzip ~/devops_helidon_to_instance_ocw_hol.zip</copy>
     ```
     ![download source code](images/download-sourcecode.png)
@@ -44,7 +44,7 @@ In this lab, you will:
 5. Select the *`devops_helidon_to_instance_ocw_hol`* in your home directory and click *Open*.
     ![open devops](images/open-devops.png)
 
-6. Click the file name *terraform.tfvars* inside the *`devops_helidon_to_instance_ocw_hol`* folder as shown. You can see we have variables **`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** which we will customize for your trial cloud account. 
+6. Click the file name *terraform.tfvars* inside the *`devops_helidon_to_instance_ocw_hol`* folder as shown. You can see we have variables **`tenancy_ocid`**, **region**, **`compartment_ocid`**, **`user_ocid`** which we will customize for your trial cloud account.
     ![open tfvars](images/open-tfvars.png)
 
     > If you don't see the project. You may need to click the *Explorer* icon in Code Editor.
@@ -84,7 +84,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
 2. In Code Editor, you can view various files in the *init* folder. These are the terraform scripts which create the compartment, dynamic groups, user group and policies.
     ![init files](images/init-files.png)
 
-3. Copy and paste the following commands to provision the compartment, dynamic groups, user group and policies. 
+3. Copy and paste the following commands to provision the compartment, dynamic groups, user group and policies.
     ```bash
     <copy>terraform init
     terraform plan
@@ -102,7 +102,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
     <copy>cd ~/devops_helidon_to_instance_ocw_hol/main/</copy>
     ```
 
-2. Copy and paste the following command to update the **compartment_ocid** of a newly created compartment in  *terraform.tfvars* inside *`devops_helidon_to_instance_ocw_hol`* folder. 
+2. Copy and paste the following command to update the **compartment_ocid** of a newly created compartment in  *terraform.tfvars* inside *`devops_helidon_to_instance_ocw_hol`* folder.
     ```bash
     <copy>../utils/update_compartment.sh</copy>
     ```
@@ -116,7 +116,7 @@ The goal of this task is to prepare the environment for the DevOps setup by crea
 
     > **Please Read:-**
     This will provide the following resources required for DevOps:
-    * **OCI DevOps Service** 
+    * **OCI DevOps Service**
         * **OCI DevOps Project** that will contain all the DevOps components needed for this project.
         * **OCI Code Repository** that will host the Application source code project.
         * **DevOps Build Pipeline** with the following stages:

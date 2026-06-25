@@ -41,7 +41,7 @@ Estimated time: 05 minutes
 
 1. Copy the following commands and paste in the terminal. It downloads the required version of JDK and Maven.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/9opYCG9nPW_Ch9f1wrCtnL361EEY1OPQ3WO4FxaMfQfTOurFHCqkgoWEFc5a6EDK/n/lrv4zdykjqrj/b/ankit-bucket/o/setup-jdk24-x86-64.sh
+    <copy>curl -O https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/wz4a4H6XwSxshMbXONihymhL0C0va-r1WCq88PQn_QQl4Z5MgpXTv9IR4aAmPNGJ/n/ocloud200/b/ecnj_livelabs/o/setup-jdk24-x86-64.sh
     chmod +x setup-jdk24-x86-64.sh
     ./setup-jdk24-x86-64.sh</copy>
     ```
@@ -51,11 +51,11 @@ Estimated time: 05 minutes
 
 1. Copy the following commands and paste in the terminal to download the source code of helidon application.
     ```bash
-    <copy>curl -O https://objectstorage.uk-london-1.oraclecloud.com/p/Z7KkflaFYAGMVpWL5n0nGBMF58iAp5_suMxnCymjgNizS0r72GkDOqSctkPAQjsM/n/lrv4zdykjqrj/b/ankit-bucket/o/helidon-ai-hol.zip
+    <copy>curl -O https://ocloud200.objectstorage.us-ashburn-1.oci.customer-oci.com/p/vy1Ekt5YRk6QBx64EhIQiqMbDvohOGuvnegH_UVA7HfC_rszeyWvCiPMBYuAcTOq/n/ocloud200/b/ecnj_livelabs/o/helidon-ai-hol.zip
     unzip helidon-ai-hol.zip
     cd helidon-ai-hol</copy>
     ```
-    
+
 
 ## Task 4: Open Helidon source code in VS Code
 
@@ -79,5 +79,5 @@ You may now *proceed to the next lab*.
 ## Acknowledgements
 
 * **Author** - Dmitry Kornilov
-* **Contributors** - Ankit Pandey, Sid Joshi
-* **Last Updated By/Date** - Ankit Pandey, March 2025
+* **Contributors** - Ankit Pandey, Sid Joshi, Adrian Padilla
+* **Last Updated By/Date** - Adrian Padilla, June 2026
