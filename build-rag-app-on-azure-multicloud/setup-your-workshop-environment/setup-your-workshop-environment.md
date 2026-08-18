@@ -46,7 +46,7 @@ For Azure Event Account users, we created your Oracle Autonomous AI Database wit
 
     ![Azure Cloud Shell and Autonomous AI Database CLI screen 4](images/oracle-adb-cli-04.png)
 
-5. Copy the following code block in a **Notepad** and update the **ADB_NAME** and **DISPLAY_NAME** to values of your choice. Update the **CUSTOMER_CONTACTS** with your personal email address. After the Oracle Autonomous AI Database is successfully provisioned, you will receive an email. Copy the updated code block into the **Azure Cloud Shell** window and press **Enter**.
+5. Copy the following code block into a text editor. Update `ADB_NAME` and `DISPLAY_NAME` with values of your choice, `CUSTOMER_CONTACTS` with your personal email address, and `ADMIN_PASSWORD` with a strong password of your choice. After the Oracle Autonomous AI Database is successfully provisioned, you will receive an email. Copy the updated code block into the **Azure Cloud Shell** window and press **Enter**.
 
     ```bash
     # Define variables for the Autonomous Database
@@ -62,7 +62,7 @@ For Azure Event Account users, we created your Oracle Autonomous AI Database wit
     COMPUTE_MODEL="ECPU"
     DATA_STORAGE_SIZE_IN_GB=20
     BACKUP_RETENTION_PERIOD_IN_DAYS=7
-    ADMIN_PASSWORD="YourStrongPassword123!"
+    ADMIN_PASSWORD="<YOUR_OWN_PASSWORD>"
     LICENSE_MODEL="BringYourOwnLicense"
     DATABASE_EDITION="EnterpriseEdition"
     CHARACTER_SET="AL32UTF8"
@@ -221,9 +221,9 @@ Follow the steps to create your Oracle Autonomous AI Database.
 
     * **Username**: This is **ADMIN** by default.
 
-    * **Password**: Enter `YourStrongPassword123!`.
+    * **Password**: Enter the password you selected for `ADMIN_PASSWORD` (for example, `<YOUR_OWN_PASSWORD>`).
 
-    * **Confirm password**: Enter `YourStrongPassword123!`.
+    * **Confirm password**: Re-enter the password you selected for `ADMIN_PASSWORD`.
 
     * **License type**: Select **Bring your own license (BYOL)** from the dropdown menu.
 
@@ -397,7 +397,7 @@ If you are using the Azure Event Account, we pre-loaded the database with sample
 
 1. Login to **Microsoft Foundry** | **Azure Machine Learning** studio and select **Notebooks**. Navigate to your folder and open the **`01_load_product_sample_data.ipynb`** notebook.
 
-2. Update the **ADB_NAME** by replacing **<xxx>** with last 3 digit of your user name, select save. Select the **Authenticate** button. Run each cell in the order they are on the file.
+2. Update `ADB_NAME` by replacing `<xxx>` with the last three digits of your username. Save the notebook, select **Authenticate**, and then run the cells in order.
 
     ![Sample product data notebook screen 1 in Azure Machine Learning Studio](images/sample-data-01.png)
 
