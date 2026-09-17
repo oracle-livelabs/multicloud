@@ -22,7 +22,7 @@ Estimated Time: 15 minutes
 
 ## Task 2: Sign in with an Azure Event Account
 
-1. If you are **NOT** running this workshop in an OCI-sponsored or OCI-staffed event, go to [Azure Regular Account](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/azure-regular-account.html).
+1. If you are **NOT** running this workshop in an OCI-sponsored or OCI-staffed event, use the Azure Regular Account path.
 
 2. If you are running this workshop in an OCI-sponsored or OCI-staffed event, a temporary Azure subscription account is provided. This temporary account enables you to run the workshop without incurring usage fees. It also provides a clean environment with prerequisite resources pre-provisioned.
 
@@ -80,7 +80,7 @@ Estimated Time: 15 minutes
 
     ![Azure event account sign-in and multifactor authentication screen 13](images/azure-event-account-13.png)
 
-16. Skip the [Azure Regular Account](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/azure-regular-account.html) module and proceed to **[Verify Lab Environment](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/verify-lab-environment.html)**.
+16. Continue to the **Verify Lab Environment** task.
 
 ## Task 3: Prepare an Azure Regular Account
 

@@ -1,0 +1,51 @@
+{
+    "workshoptitle": "Access Amazon S3 Privately from OCI",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "About this workshop",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Getting Started",
+            "description": "Prepare your AWS and OCI environments",
+            "filename": "../../getting-started/getting_started.md"
+        },
+        {
+            "title": "Lab 1: Deploy the AWS Foundation",
+            "description": "Create the private S3 endpoint and restricted AWS access",
+            "filename": "../../deploy-aws-foundation/deploy-aws-foundation.md"
+        },
+        {
+            "title": "Lab 2: Deploy the OCI Network Foundation",
+            "description": "Create the OCI private network and DRG",
+            "filename": "../../deploy-oci-network/deploy-oci-network.md"
+        },
+        {
+            "title": "Lab 3: Establish Oracle--AWS Interconnect",
+            "description": "Authorize the managed cross-cloud connection",
+            "filename": "../../establish-interconnect/establish-interconnect.md"
+        },
+        {
+            "title": "Lab 4: Deploy the Private OCI Test Runner",
+            "description": "Launch the private instance and first-boot validation",
+            "filename": "../../deploy-private-runner/deploy-private-runner.md"
+        },
+        {
+            "title": "Lab 5: Validate the Private S3 Path",
+            "description": "Verify and repeat the endpoint-restricted S3 test",
+            "filename": "../../validate-private-s3/validate-private-s3.md"
+        },
+        {
+            "title": "Lab 6: Troubleshoot the Workshop",
+            "description": "Diagnose deployment, connectivity, and runner issues",
+            "filename": "../../troubleshoot/troubleshoot.md"
+        },
+        {
+            "title": "Lab 7: Clean Up the Workshop",
+            "description": "Remove the OCI and AWS resources safely",
+            "filename": "../../cleanup/cleanup.md"
+        }
+    ]
+}

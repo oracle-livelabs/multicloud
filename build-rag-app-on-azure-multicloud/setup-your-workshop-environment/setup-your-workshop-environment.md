@@ -26,7 +26,7 @@ You will be using an Oracle Autonomous AI Database as a repository for your ente
 
 ### Azure Event Account
 
-For Azure Event Account users, we created your Oracle Autonomous AI Database with a sample dataset. Skip to the [Azure Machine Learning Studio](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/azure-machine-learning-studio.html) step.
+For Azure Event Account users, we created your Oracle Autonomous AI Database with a sample dataset. No database provisioning is required in this task.
 
 ### Azure Regular Account
 
