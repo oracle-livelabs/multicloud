@@ -26,7 +26,7 @@ The product table is pre-populated with `826,108` records and vector embeddings 
 
     ![Vector embedding generation notebook screen 2](images/generate-vector-embedding-02.png)
 
-3. To verify record count with Vector embedding, return to the **01_load_product_sample_data.ipynb** Notebook file. Run the **Check record count in the Product table** cell.
+3. To verify the record count with vector embeddings, return to the `01_load_product_sample_data.ipynb` notebook. Run the **Check record count in the Product table** cell.
 
     ![Vector embedding generation notebook screen 3](images/generate-vector-embedding-03.png)
 
@@ -34,7 +34,7 @@ The product table is pre-populated with `826,108` records and vector embeddings 
 
 ## Acknowledgements
 
-* **Authors** - Rajib Sadhu and Bill Sawyer
+* **Authors** - Rajib Sadhu
 * **Source** - [Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/overview.html).
 * **External assets** - Microsoft Azure interface screenshots and the referenced McAuley-Lab/Amazon-Reviews-2023 dataset material. Built with permission from the author(s).
 * **Last Updated By/Date** - Rajib Sadhu, June 12, 2026

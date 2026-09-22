@@ -14,17 +14,17 @@ By the end of the lab, your app answers product questions such as *“Show me fl
 
 ### Objectives
 
-* Connect to Oracle Autonomous AI Database through Oracle AI Database@Azure.
-* Prepare the Azure Machine Learning notebook environment and load the retail catalog.
-* Generate product-title embeddings with Azure OpenAI.
+* Access the Azure event account and verify the pre-created workshop resources.
+* Prepare the Azure Machine Learning notebook environment and verify the retail catalog.
+* Generate product-title embeddings with Azure OpenAI and store them in Oracle Autonomous AI Database.
 * Search the catalog with Oracle AI Vector Search.
-* Run and test a retail RAG application.
+* Deploy and test a retail RAG application.
 
 Estimated Workshop Time: 90 minutes
 
 ## Acknowledgements
 
-* **Authors** - Rajib Sadhu and Bill Sawyer
+* **Authors** - Rajib Sadhu
 * **Source** - [Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/overview.html).
 * **External assets** - Microsoft Azure interface screenshots and the referenced McAuley-Lab/Amazon-Reviews-2023 dataset material. Built with permission from the author(s).
 * **Last Updated By/Date** - Rajib Sadhu, June 12, 2026

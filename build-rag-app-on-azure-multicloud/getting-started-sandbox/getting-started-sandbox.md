@@ -16,17 +16,17 @@ Estimated Time: 10 minutes
 
 1. If you are running this workshop in an OCI-sponsored or OCI-staffed event, a temporary Azure subscription account is provided. This temporary account enables you to run the workshop without incurring usage fees. It also provides a clean environment with prerequisite resources pre-provisioned.
 
-2. At the beginning of the workshop, you are provided **Workshop Credentials** (Email and Password). The credentials grant you permission to use an Azure subscription for this lab. Your lab instructor or lead presenter will share the Azure Region in which the workshop steps need to be performed.
+2. In the LiveLabs workshop, select **View Login Info**. Copy the **Username** and **Password** shown in the **Workshop Credentials** panel. These credentials grant you access to the Azure subscription for this lab. Your lab instructor or lead presenter will share the Azure region in which to perform the workshop steps.
 
 3. Go to [Azure Portal Login](https://portal.azure.com/). You are prompted to sign in with **Email, phone, or Skype**.
 
     ![Azure event account sign-in and multifactor authentication screen 1](images/azure-event-account-01.png)
 
-4. Enter the Lab User email address ([labuserxxx@oraclemulticloudlabs.onmicrosoft.com](mailto:labuser001@oraclemulticloudlabs.onmicrosoft.com)) you received and select **Next**. Replace `xxx` with the 3 digit numbers associated with your lab users.
+4. Paste the **Username** from **View Login Info** into the sign-in field and select **Next**.
 
     ![Azure event account sign-in and multifactor authentication screen 2](images/azure-event-account-02.png)
 
-5. Enter the password you have received and select **Sign in**.
+5. Paste the **Password** from **View Login Info** and select **Sign in**.
 
     ![Azure event account sign-in and multifactor authentication screen 3](images/azure-event-account-03.png)
 
@@ -72,7 +72,7 @@ Estimated Time: 10 minutes
 
 ## Acknowledgements
 
-* **Authors** - Rajib Sadhu and Bill Sawyer
+* **Authors** - Rajib Sadhu
 * **Source** - [Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/overview.html).
 * **External assets** - Microsoft Azure interface screenshots and the referenced McAuley-Lab/Amazon-Reviews-2023 dataset material. Built with permission from the author(s).
 * **Last Updated By/Date** - Rajib Sadhu, June 12, 2026

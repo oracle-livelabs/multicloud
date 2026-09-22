@@ -27,13 +27,7 @@
             "filename": "../../verify-lab-environment-tenancy/verify-lab-environment-tenancy.md"
         },
         {
-            "title": "Oracle Autonomous AI Database - CLI",
-            "description": "Use the Azure CLI path",
-            "type": "livelabs",
-            "filename": "../../oracle-autonomous-ai-database-cli-tenancy/oracle-autonomous-ai-database-cli-tenancy.md"
-        },
-        {
-            "title": "Oracle Autonomous AI Database - Console",
+            "title": "Oracle Autonomous AI Database",
             "description": "Use the Azure portal path",
             "type": "livelabs",
             "filename": "../../oracle-autonomous-ai-database-console-tenancy/oracle-autonomous-ai-database-console-tenancy.md"

@@ -27,13 +27,7 @@
             "filename": "../../verify-lab-environment-sandbox/verify-lab-environment-sandbox.md"
         },
         {
-            "title": "Oracle Autonomous AI Database - CLI",
-            "description": "Use the Azure CLI path",
-            "type": "livelabs",
-            "filename": "../../oracle-autonomous-ai-database-cli-sandbox/oracle-autonomous-ai-database-cli-sandbox.md"
-        },
-        {
-            "title": "Oracle Autonomous AI Database - Console",
+            "title": "Oracle Autonomous AI Database",
             "description": "Use the Azure portal path",
             "type": "livelabs",
             "filename": "../../oracle-autonomous-ai-database-console-sandbox/oracle-autonomous-ai-database-console-sandbox.md"

@@ -142,7 +142,7 @@ The required workshop resources are pre-created. Verify each resource before you
 
 ## Acknowledgements
 
-* **Authors** - Rajib Sadhu and Bill Sawyer
+* **Authors** - Rajib Sadhu
 * **Source** - [Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/overview.html).
 * **External assets** - Microsoft Azure interface screenshots and the referenced McAuley-Lab/Amazon-Reviews-2023 dataset material. Built with permission from the author(s).
 * **Last Updated By/Date** - Rajib Sadhu, June 12, 2026
