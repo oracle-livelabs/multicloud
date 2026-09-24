@@ -1,18 +1,6 @@
-# Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM
+# Introduction
 
 ## Introduction
-
-**Turn your retail product catalog into an intelligent shopping assistant.**
-
-In this 90-minute hands-on lab, you build a working RAG application using **Oracle Autonomous AI Database**, **Oracle AI Vector Search**, and **Azure OpenAI**. You use sample fashion catalog data as your knowledge base, generate vector embeddings, run semantic search, and connect everything to a natural language Q&A experience.
-
-By the end of the lab, your app answers product questions such as *“Show me floral summer dresses”* using trusted enterprise data stored securely in Oracle Autonomous AI Database.
-
-**Build it. Search it. Ask it. Take the code back to your business.**
-
-![Retail catalog RAG application workshop overview](images/build-a-rag-app-in-90-minutes-01.png)
-
-### Architecture
 
 **In this lab, you build an end-to-end retrieval-augmented generation (RAG) application that turns a retail fashion product catalog into a natural-language shopping assistant.** The product catalog, including products, categories, brands, styles, materials, sizes, colors, pricing, and inventory, is stored in **Oracle Autonomous AI Database** running in Azure through **Oracle AI Database@Azure**, giving you Oracle database capabilities directly inside the Azure ecosystem. Oracle AI Database@Azure is designed to bring Oracle database services into Azure and lets teams create and manage Autonomous AI Database resources from the Azure portal.
 
@@ -30,17 +18,15 @@ Together, these components implement a **RAG pattern**: retrieve trusted enterpr
 
 ### Objectives
 
-* Create and connect to Oracle Autonomous AI Database through Oracle AI Database@Azure.
-* Prepare the Azure Machine Learning notebook environment and load the retail catalog.
-* Generate product-title embeddings with Azure OpenAI.
-* Search the catalog with Oracle AI Vector Search.
-* Run and test a retail RAG application.
+* Explain how the workshop components implement retrieval-augmented generation.
+* Identify the roles of Oracle Autonomous AI Database, Oracle AI Vector Search, Azure OpenAI, and Azure Machine Learning Studio.
+* Describe how semantic search grounds responses in enterprise data.
 
 Estimated Workshop Time: 90 minutes
 
 ## Acknowledgements
 
-* **Authors** - Rajib Sadhu and Bill Sawyer
+* **Authors** - Rajib Sadhu
 * **Source** - [Build a RAG App in 90 Minutes - Oracle AI Vector Search Meets Your Favorite LLM](https://docs.oracle.com/en/cloud/paas/multicloud/database-at-azure/latest/azlab/overview.html).
 * **External assets** - Microsoft Azure interface screenshots and the referenced McAuley-Lab/Amazon-Reviews-2023 dataset material. Built with permission from the author(s).
 * **Last Updated By/Date** - Rajib Sadhu, June 12, 2026
