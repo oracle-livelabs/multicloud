@@ -22,7 +22,7 @@ Together, these components implement a **RAG pattern**: retrieve trusted enterpr
 * Identify the roles of Oracle Autonomous AI Database, Oracle AI Vector Search, Azure OpenAI, and Azure Machine Learning Studio.
 * Describe how semantic search grounds responses in enterprise data.
 
-Estimated Time: 5 minutes
+Estimated Workshop Time: 90 minutes
 
 ## Acknowledgements
 
