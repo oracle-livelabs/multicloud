@@ -20,6 +20,11 @@ source /etc/profile.d/zdm26.sh
 source /data/oracle/lab/config/lab-env.sh
 export ZDMCLI="$ZDM_HOME/bin/zdmcli"
 export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
+```
+
+Submit the migration once:
+
+```bash
 "$ZDMCLI" migrate database \
   -sourcesid "$ORACLE_SID" \
   -sourcenode "$(hostname -f)" \
@@ -31,16 +36,29 @@ export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
   -pauseafter ZDM_MONITOR_GG_LAG
 ```
 
+![Migration command requests pause after ZDM_MONITOR_GG_LAG](./images/migration-command.png)
+
 Supply prompted credentials and record the new migration ID:
 
+![Migration password prompts followed by scheduled job ID 2](./images/migration-submitted.png)
+
+Query the returned migration job ID. The commands in this page use **2**, matching the Lab 101 example. If your migration ID differs, replace `2` in every job query, resume command, and job-specific filename below. Do not use the evaluation job ID.
+
 ```bash
-read -rp "Migration job ID: " MIGRATION_JOB_ID
-"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+"$ZDMCLI" query job -jobid 2
 ```
 
 ## Task 2: Monitor Initial Load and Replication
 
-Repeat the query periodically, not the migration submission. Expect these milestones in order:
+Example submission from Lab 101: `-pauseafter ZDM_MONITOR_GG_LAG` requests a later pause. Receiving job ID `2` confirms scheduling, not completion or arrival at the pause. Use your own returned migration job ID.
+
+Repeat this query periodically from the **`oracle` EC2 shell**, not the migration submission:
+
+```bash
+"$ZDMCLI" query job -jobid 2
+```
+
+Expect these milestones in order:
 
 1. Source, target, GoldenGate hub, and Data Pump validation.
 2. GoldenGate source preparation and Extract creation.
@@ -54,134 +72,212 @@ Use the result-log path printed by the job query:
 
 ```bash
 read -rp "Exact result log path from query output: " JOB_LOG
-tail -80 "$JOB_LOG"
-find "$EFS_MOUNT_POINT" -maxdepth 1 -type f -name "ZDM_${MIGRATION_JOB_ID}_*" -ls
 ```
 
-If import remains STARTED, inspect the current log and Data Pump evidence before concluding it is stuck. Persistent dump-file I/O waits together with a stalled target NFS probe warrant instructor investigation; they are not proof of a ZDM product bug. Do not detach EFS, delete dumps/trails, kill sessions, or recreate GoldenGate.
+Read the latest log entries:
 
-For a FAILED job, have the instructor correct the recorded cause before resuming that job. Do not restart the entire migration.
+```bash
+tail -80 "$JOB_LOG"
+```
+
+List this job’s dump files:
+
+```bash
+find "$EFS_MOUNT_POINT" -maxdepth 1 -type f -name "ZDM_2_*" -ls
+```
+
+If import remains STARTED, inspect the current log and Data Pump evidence before concluding it is stuck.
+
+For a FAILED job, stop and retain the error and result log. Do not skip a failed phase or restart the entire migration.
 
 ## Task 3: Demonstrate INSERT, UPDATE, and DELETE Replication
 
-Only do this while paused after lag monitoring, before cutover. Use an otherwise idle lab source. Never write directly to the target during this demonstration.
+Run only while the migration is paused after lag monitoring, before cutover. Use the three test rows below. Never run this DML on the target.
 
-Open a source SQL*Plus session as FINANCE:
+Load the source environment in the **oracle EC2 shell**:
 
 ```bash
-sqlplus -L finance@"$SOURCE_ALIAS"
+source "$HOME/env/source19c.env"
 ```
 
-Check `DESC accounts` first. The supplied schema has ACCOUNT_ID, ACCOUNT_NUMBER, ACCOUNT_TYPE, BALANCE, OPENED_DATE, and STATUS. Stop if yours differs. Use the same test ID in both sessions. The block refuses to overwrite an existing row.
+Open the source database:
+
+```bash
+sqlplus / as sysdba
+```
+
+At **source SQL>**, inspect the table structure:
 
 ```sql
-SET SERVEROUTPUT ON
-DEFINE demo_id = 900000001
-SELECT COUNT(*) AS baseline_count FROM accounts;
-DECLARE
-  n NUMBER;
-BEGIN
-  SELECT COUNT(*) INTO n FROM accounts WHERE account_id=&demo_id;
-  IF n <> 0 THEN
-    RAISE_APPLICATION_ERROR(-20001, 'Test ID already exists; choose another unused ID');
-  END IF;
-  INSERT INTO accounts
-    (account_id, account_number, account_type, balance, opened_date, status)
-  VALUES
-    (&demo_id, 'ACC-ZDM-DEMO', 'SAVINGS', 100, TRUNC(SYSDATE), 'ACTIVE');
-  COMMIT;
-END;
-/
-SELECT account_id, balance, status FROM accounts WHERE account_id=&demo_id;
-SELECT COUNT(*) AS after_insert FROM accounts;
+DESC finance.accounts
 ```
 
-In a **second shell**, load the target environment and connect; enter the password at the prompt:
+Check that the demonstration IDs are unused:
+
+```sql
+SELECT account_id, account_number, balance, status
+FROM finance.accounts
+WHERE account_id IN (99000101,99000102,99000103)
+ORDER BY account_id;
+```
+
+Continue only if this returns `no rows selected`. If any ID exists, stop.
+
+Insert the three demonstration rows:
+
+```sql
+INSERT INTO finance.accounts
+  (account_id, account_number, account_type, balance, opened_date, status)
+VALUES
+  (99000101, 'ZDM-ONLINE-101', 'CHECKING', 1001.01, SYSDATE, 'ACTIVE');
+
+INSERT INTO finance.accounts
+  (account_id, account_number, account_type, balance, opened_date, status)
+VALUES
+  (99000102, 'ZDM-ONLINE-102', 'SAVINGS', 1002.02, SYSDATE, 'ACTIVE');
+
+INSERT INTO finance.accounts
+  (account_id, account_number, account_type, balance, opened_date, status)
+VALUES
+  (99000103, 'ZDM-ONLINE-103', 'CREDIT', 1003.03, SYSDATE, 'ACTIVE');
+```
+
+Require three successful inserts. If any statement fails, run `ROLLBACK;` and stop. Update the first row:
+
+```sql
+UPDATE finance.accounts
+SET balance = 7777.77, status = 'ZDM_UPDATED'
+WHERE account_id = 99000101;
+```
+
+Expect one row updated. Delete the second demonstration row:
+
+```sql
+DELETE FROM finance.accounts WHERE account_id = 99000102;
+```
+
+Expect one row deleted. Commit the changes:
+
+```sql
+COMMIT;
+```
+
+Record the committed source results:
+
+```sql
+SELECT account_id, account_number, balance, status
+FROM finance.accounts
+WHERE account_id IN (99000101,99000102,99000103)
+ORDER BY account_id;
+```
+
+Expect ID `99000101` with balance `7777.77` and status `ZDM_UPDATED`, and ID `99000103` with balance `1003.03` and status `ACTIVE`. ID `99000102` must be absent.
+
+Return to the **oracle shell**:
+
+```sql
+EXIT
+```
+
+Load the target environment:
 
 ```bash
 source "$HOME/env/adbs.env"
-sqlplus -L finance@"$TARGET_ALIAS"
 ```
 
-At the target SQL prompt, define the same ID and repeat these queries until the row arrives:
-
-```sql
-DEFINE demo_id = 900000001
-SELECT account_id, balance, status FROM accounts WHERE account_id=&demo_id;
-SELECT COUNT(*) AS target_count FROM accounts;
-```
-
-Expected: balance 100 and baseline + 1 rows, assuming no other writes. GoldenGate is asynchronous; do not expect an instantaneous result.
-
-Back in the **source SQL session**, update only the demonstration row:
-
-```sql
-UPDATE accounts SET balance=125
-WHERE account_id=&demo_id AND account_number='ACC-ZDM-DEMO';
-COMMIT;
-```
-
-Expect one row updated. On target, repeat the row query until balance is 125. Then delete only that test row on the source:
-
-```sql
-DELETE FROM accounts
-WHERE account_id=&demo_id AND account_number='ACC-ZDM-DEMO';
-COMMIT;
-SELECT COUNT(*) AS restored_count FROM accounts;
-```
-
-Expect one row deleted. On target, verify the row disappears and the count returns to baseline. Keep evidence of all three stages. Counts alone do not establish full data equality.
-
-## Task 4: Controlled Cutover
-
-Obtain instructor approval. Stop all source application writes and finish or roll back outstanding transactions. Do not stop the database/listener or GoldenGate manually. In this table-only lab, stop the DML demonstration and any workload generator.
-
-From the `oracle` shell, drain replication with a second pause:
+Connect to the target as ADMIN; enter the password at the prompt:
 
 ```bash
-"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
-  -pauseafter ZDM_PREPARE_SWITCHOVER_APP
-"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+sqlplus -L ADMIN@"$TARGET_ALIAS"
 ```
 
-Wait for PAUSED at the requested phase. Then advance to the switchover checkpoint:
-
-```bash
-"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
-  -pauseafter ZDM_SWITCHOVER_APP
-"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
-```
-
-Wait for that pause and compare source/target results while source writes remain stopped:
+At **target SQL>**, query the same rows:
 
 ```sql
-SELECT COUNT(*) AS row_count, SUM(balance) AS total_balance,
-       MIN(account_id) AS min_id, MAX(account_id) AS max_id
-FROM accounts;
+SET LINESIZE 220
+SELECT account_id, account_number, balance, status
+FROM finance.accounts
+WHERE account_id IN (99000101,99000102,99000103)
+ORDER BY account_id;
 ```
 
-Also check the demonstration row is absent and have the instructor confirm object validity and any application sequence requirements. Aggregate agreement is a lab check, not a substitute for a full production reconciliation.
+Repeat this SELECT until it matches the committed source results. Replication is asynchronous. Do not write to the target or rerun the source inserts. Stop if the results do not converge.
 
-Continue to the post-switchover checkpoint:
+Return to the **oracle shell**:
+
+```sql
+EXIT
+```
+
+## Task 4: Resume the Same Job for Cutover
+
+Stop all source application writes and finish or roll back outstanding transactions **before** resuming. In this lab, stop the DML test and any workload generator. Do not stop the database, listener, or GoldenGate manually.
+
+Load ZDM in the **oracle shell**:
 
 ```bash
-"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
-  -pauseafter ZDM_POST_SWITCHOVER_TGT
-"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+source /etc/profile.d/zdm26.sh
+export ZDMCLI="$ZDM_HOME/bin/zdmcli"
 ```
 
-After this checkpoint succeeds, the instructor may redirect and enable the application on the target. ZDM does not invent or change your application's connection configuration. Keep source writes disabled; cleanup is not a rollback mechanism.
-
-Finally allow remaining cleanup:
+Confirm the same migration job is paused at the expected phase:
 
 ```bash
-"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID"
-"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+"$ZDMCLI" query job -jobid 2
 ```
 
-Wait for SUCCEEDED. Do not assume completion from one successful phase. The pause sequence follows the [ZDM 26.1 application switchover procedure](https://docs.oracle.com/en/database/oracle/zero-downtime-migration/26.1/zdmug/migrating-with-zero-downtime-migration.html); consult the guide for excluded objects or application-specific requirements.
+After the replication test passes, resume the job once:
+
+```bash
+"$ZDMCLI" resume job -jobid 2
+```
+
+Repeat this query until the job reports `SUCCEEDED`:
+
+```bash
+"$ZDMCLI" query job -jobid 2
+```
+
+Do not run `migrate database` again. A resumed job retains its job ID. If disconnected, reconnect, load the environment from Task 1, enter the existing job ID, and query it. Keep source writes stopped after cutover.
 
 ## Task 5: Retain Evidence
+
+After the migration reports `SUCCEEDED`, run the provisioned final target validation script from the **`oracle` EC2 shell**:
+
+```bash
+source "$HOME/env/adbs.env"
+```
+
+Check that the supplied validation script exists:
+
+```bash
+test -r /data/oracle/lab/config/validate-zdm-accounts.sql \
+  && echo "PASS: validation script exists" \
+  || echo "STOP: validation script is missing"
+```
+
+If it exists, run the script and enter the target ADMIN password:
+
+```bash
+"$ORACLE_HOME/bin/sqlplus" -L ADMIN@"$TARGET_ALIAS" \
+  @/data/oracle/lab/config/validate-zdm-accounts.sql
+```
+
+If the file is missing, stop; skipped validation is not a pass. Review the table, row count, allocated space, and any SQL errors. This script reports target data; it does not automatically prove source/target equality. Retain the matching DML results from Task 3 as separate evidence.
+
+Save the final report using the same migration job ID recorded in Task 1:
+
+```bash
+source /etc/profile.d/zdm26.sh
+export ZDMCLI="$ZDM_HOME/bin/zdmcli"
+```
+
+Write the final job report to your home directory:
+
+```bash
+"$ZDMCLI" query job -jobid 2 \
+  | tee "$HOME/zdm-job-2-final.txt"
+```
 
 Record Lab ID, evaluation/migration job IDs, start/end times, phase statuses, sanitized response file, CPAT/excluded-object reports, Data Pump logs, replication metrics, and source/target validation results. Obtain paths from your job rather than copying prototype paths.
 
@@ -191,4 +287,4 @@ Do not upload passwords, private SSH keys, wallet contents, or unsanitized envir
 
 * **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
 * **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
-* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 28, 2026
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026

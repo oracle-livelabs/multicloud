@@ -4,9 +4,9 @@
 
 Migrate `FINANCE.ACCOUNTS` from self-managed Oracle Database 19c on Amazon EC2 to Oracle Autonomous AI Database Serverless on Oracle AI Database@AWS. ZDM orchestrates an **online logical migration**: Data Pump loads the initial data through shared Amazon EFS, and GoldenGate captures and applies subsequent source changes. EFS carries the dump set, not the GoldenGate change stream.
 
-The source can accept writes during initial load and replication. Controlled cutover still requires stopping source application writes, letting replication catch up, and validating the target before redirecting the application. Online migration is not a guarantee of zero application downtime.
+The source can accept writes during initial load and replication. Controlled cutover still requires stopping source application writes, letting replication catch up, and validating the target before redirecting the application.
 
-![Online logical migration with Data Pump initial load, GoldenGate replication, and ZDM orchestration](images/zdm-online-architecture.png)
+![Online logical migration with Data Pump initial load, GoldenGate replication, and ZDM orchestration](./images/zdm-online-architecture.png)
 
 Estimated Workshop Time: 90 minutes, excluding instructor provisioning. Actual timings depend on the environment.
 
@@ -20,9 +20,9 @@ Estimated Workshop Time: 90 minutes, excluding instructor provisioning. Actual t
 
 ### Prerequisites and responsibilities
 
-The instructor provisions EC2, the target database, EFS, networking, database users, GoldenGate, target wallet, and source SSH access. Participants use their assigned resources only; AWS administrator permissions and infrastructure creation are not required. The lab's database administrative credentials are separate from AWS IAM permissions and must be supplied through the approved workshop credential process.
+Your assigned EC2, target database, EFS, GoldenGate, wallet, and SSH access are already configured. Use only your assigned resources. Obtain your Lab ID, EC2 instance ID, AWS sign-in details, and database passwords through the workshop credential process before starting.
 
-Use the generated `/data/oracle/lab/config/lab-env.sh` and `zdm-response-online.rsp`. Source SID/service is `SOURCE19C`; scope is `FINANCE.ACCOUNTS`. Do not copy old prototype IPs, PDB names, tables, or job IDs. Record actual counts, not a fixed expected count.
+Use the generated `/data/oracle/lab/config/lab-env.sh` and `zdm-response-online.rsp`. Source SID/service is `SOURCE19C`; scope is `FINANCE.ACCOUNTS`.
 
 Participant SQL connections use password-authenticated TLS on port 1521. ZDM uses the assigned target wallet and wallet service alias on TCPS port 1522. Do not replace one configuration with the other. Keep credentials and wallet contents out of this repository.
 
@@ -39,4 +39,4 @@ For product behavior beyond this lab, see the [ZDM 26.1 migration guide](https:/
 
 * **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
 * **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
-* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 28, 2026
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026
