@@ -1,152 +1,194 @@
-# Lab 4: Execute, Monitor, and Validate the Migration
+# Lab 4: Execute, Monitor, and Validate the Online Migration
 
 ## Introduction
 
-Run the evaluated response file during the application maintenance window. Monitor ZDM phases and EFS dump files. Validate the target independently. The supplied successful run completed in about nine minutes. Use your job IDs and log paths as participant evidence. Job 4 and its artifacts are reference evidence from the validated source run.
+Start the evaluated online migration, pause with replication running, demonstrate source DML on the target, and complete a controlled cutover. Use your own job IDs and log paths. No fixed duration or row count is promised.
 
-Estimated Time: 25 minutes
+Estimated Time: 40 minutes
 
 ### Objectives
 
-In this lab, you will:
+Run Data Pump and GoldenGate through ZDM, verify committed changes, and retain cutover evidence.
 
-- Start and monitor the ZDM offline logical migration.
-- Interpret a resumable target-validation failure without restarting the migration.
-- Validate row counts, object status, SecureFile LOB behavior, tablespace remapping, quota usage, and Data Pump logs.
+## Task 1: Start with a Replication Pause
 
-## Task 1: Start the Migration During the Maintenance Window
+Run at the EC2 shell as `oracle`, after successful evaluation and NFS validation:
 
-1. Confirm that application writes have stopped or that the workload is in read-only mode. Do not redirect traffic to the target yet.
+```bash
+source "$HOME/env/source19c.env"
+source /etc/profile.d/zdm26.sh
+source /data/oracle/lab/config/lab-env.sh
+export ZDMCLI="$ZDM_HOME/bin/zdmcli"
+export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
+"$ZDMCLI" migrate database \
+  -sourcesid "$ORACLE_SID" \
+  -sourcenode "$(hostname -f)" \
+  -srcauth zdmauth \
+  -srcarg1 user:ec2-user \
+  -srcarg2 "identity_file:$ZDM_SOURCE_SSH_KEY" \
+  -srcarg3 sudo_location:/usr/bin/sudo \
+  -rsp "$ZDM_RESPONSE_FILE" \
+  -pauseafter ZDM_MONITOR_GG_LAG
+```
 
-2. Run the same response file without `-eval`.
+Supply prompted credentials and record the new migration ID:
 
-    ```bash
-    $ZDM_HOME/bin/zdmcli migrate database -rsp "$RSP"
-    ```
+```bash
+read -rp "Migration job ID: " MIGRATION_JOB_ID
+"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+```
 
-3. If the first target-validation call stops with the transient `ORA-12530: TNS:listener: rate limit reached`, confirm that no export has started and wait for the connection window to clear. Resume the existing job.
+## Task 2: Monitor Initial Load and Replication
 
-    ```bash
-    $ZDM_HOME/bin/zdmcli resume job -jobid 4
-    ```
+Repeat the query periodically, not the migration submission. Expect these milestones in order:
 
-    The validated job 4 resumed successfully. Do not create a second migration job for a resumable phase after correcting the root cause.
+1. Source, target, GoldenGate hub, and Data Pump validation.
+2. GoldenGate source preparation and Extract creation.
+3. Data Pump export to EFS, shared-storage transfer phase, and target import.
+4. Replicat creation/start and lag monitoring.
+5. Job `PAUSED` after `ZDM_MONITOR_GG_LAG` completes.
 
-## Task 2: Monitor ZDM and Shared EFS
+The paused state is intentional. Extract and Replicat should be running at this checkpoint. Check their reported state and heartbeat lag. Zero throughput can mean an idle source; it does not by itself indicate failure.
 
-1. Query the active job.
+Use the result-log path printed by the job query:
 
-    ```bash
-    $ZDM_HOME/bin/zdmcli query job -jobid 4
-    ```
+```bash
+read -rp "Exact result log path from query output: " JOB_LOG
+tail -80 "$JOB_LOG"
+find "$EFS_MOUNT_POINT" -maxdepth 1 -type f -name "ZDM_${MIGRATION_JOB_ID}_*" -ls
+```
 
-2. Monitor files written directly to EFS.
+If import remains STARTED, inspect the current log and Data Pump evidence before concluding it is stuck. Persistent dump-file I/O waits together with a stalled target NFS probe warrant instructor investigation; they are not proof of a ZDM product bug. Do not detach EFS, delete dumps/trails, kill sessions, or recreate GoldenGate.
 
-    ```bash
-    find /data/oracle/efs -maxdepth 1 -type f -name 'ZDM_4_*' -ls
-    ```
+For a FAILED job, have the instructor correct the recorded cause before resuming that job. Do not restart the entire migration.
 
-3. Confirm the expected phase progression.
+## Task 3: Demonstrate INSERT, UPDATE, and DELETE Replication
 
-    - `ZDM_VALIDATE_TGT` - `COMPLETED`.
-    - `ZDM_VALIDATE_SRC` - `COMPLETED`.
-    - `ZDM_SETUP_SRC` - `COMPLETED`.
-    - `ZDM_PRE_MIGRATION_ADVISOR` - `COMPLETED`.
-    - `ZDM_VALIDATE_DATAPUMP_SETTINGS_SRC` - `COMPLETED`.
-    - `ZDM_VALIDATE_DATAPUMP_SETTINGS_TGT` - `COMPLETED`.
-    - `ZDM_PREPARE_DATAPUMP_SRC` - `COMPLETED`.
-    - `ZDM_DATAPUMP_ESTIMATE_SRC` - `COMPLETED`.
-    - `ZDM_PREPARE_DATAPUMP_TGT` - `COMPLETED`.
-    - `ZDM_DATAPUMP_EXPORT_SRC` - `COMPLETED`.
-    - `ZDM_TRANSFER_DUMPS_SRC` - `COMPLETED`.
-    - `ZDM_DATAPUMP_IMPORT_TGT` - `COMPLETED`.
-    - `ZDM_POST_DATAPUMP_SRC` - `COMPLETED`.
-    - `ZDM_POST_DATAPUMP_TGT` - `COMPLETED`.
-    - `ZDM_REFRESH_MVIEW_TGT` - `COMPLETED`.
-    - `ZDM_POST_ACTIONS` - `COMPLETED`.
-    - `ZDM_CLEANUP_SRC` - `COMPLETED`.
+Only do this while paused after lag monitoring, before cutover. Use an otherwise idle lab source. Never write directly to the target during this demonstration.
 
-## Task 3: Review the Migration and Data Pump Results
+Open a source SQL*Plus session as FINANCE:
 
-1. Query the completed job and compare the results with the validated reference.
+```bash
+sqlplus -L finance@"$SOURCE_ALIAS"
+```
 
-    The reference job 4 status is `SUCCEEDED`. ZDM reported 9 minutes 3 seconds elapsed time, and the result log reported 9 minutes 1 second. Use the job result and metrics files created by your run.
+Check `DESC accounts` first. The supplied schema has ACCOUNT_ID, ACCOUNT_NUMBER, ACCOUNT_TYPE, BALANCE, OPENED_DATE, and STATUS. Stop if yours differs. Use the same test ID in both sessions. The block refuses to overwrite an existing row.
 
-2. Review the reference Data Pump outcomes.
+```sql
+SET SERVEROUTPUT ON
+DEFINE demo_id = 900000001
+SELECT COUNT(*) AS baseline_count FROM accounts;
+DECLARE
+  n NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO n FROM accounts WHERE account_id=&demo_id;
+  IF n <> 0 THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Test ID already exists; choose another unused ID');
+  END IF;
+  INSERT INTO accounts
+    (account_id, account_number, account_type, balance, opened_date, status)
+  VALUES
+    (&demo_id, 'ACC-ZDM-DEMO', 'SAVINGS', 100, TRUNC(SYSDATE), 'ACTIVE');
+  COMMIT;
+END;
+/
+SELECT account_id, balance, status FROM accounts WHERE account_id=&demo_id;
+SELECT COUNT(*) AS after_insert FROM accounts;
+```
 
-    - Estimate: `ZDM_4_DP_ESTIMATE_62989`, 16.55 GB using the BLOCKS method.
-    - Export: `ZDM_4_DP_EXPORT_535678`, 400,000 rows, 79.62 MB compressed payload, 5 minutes 22 seconds.
-    - Import: `ZDM_4_DP_IMPORT_86562`, 400,000 rows, 79.62 MB payload, 1 minute 27 seconds.
-    - Export method: `direct_path`.
-    - Import method: `external_table`.
-    - Export and import status: Successfully completed.
+In a **second shell**, load the target environment and connect; enter the password at the prompt:
 
-3. Confirm the retained EFS artifacts from the reference run.
+```bash
+source "$HOME/env/adbs.env"
+sqlplus -L finance@"$TARGET_ALIAS"
+```
 
-    - `/data/oracle/efs/ZDM_4_DP_EXPORT_535678_dmp_1_01.dmp` - 12 KiB.
-    - `/data/oracle/efs/ZDM_4_DP_EXPORT_535678_dmp_1_02.dmp` - 83,529,728 bytes.
-    - `/data/oracle/efs/ZDM_4_DP_EXPORT_535678.log`.
-    - `/data/oracle/efs/ZDM_4_DP_IMPORT_86562.log`.
+At the target SQL prompt, define the same ID and repeat these queries until the row arrives:
 
-## Task 4: Run Independent Validation
+```sql
+DEFINE demo_id = 900000001
+SELECT account_id, balance, status FROM accounts WHERE account_id=&demo_id;
+SELECT COUNT(*) AS target_count FROM accounts;
+```
 
-1. Run the source validation as local SYSDBA after switching to `SRCPDB1`.
+Expected: balance 100 and baseline + 1 rows, assuming no other writes. GoldenGate is asynchronous; do not expect an instantaneous result.
 
-    ```bash
-    sqlplus -s / as sysdba @validate_source.sql
-    ```
+Back in the **source SQL session**, update only the demonstration row:
 
-2. Run the target validation as `ADMIN@zdmlabpriv_high`.
+```sql
+UPDATE accounts SET balance=125
+WHERE account_id=&demo_id AND account_number='ACC-ZDM-DEMO';
+COMMIT;
+```
 
-    ```bash
-    export TNS_ADMIN=/data/oracle/wallets/zdmlabpriv
-    sqlplus -s admin@zdmlabpriv_high @validate_target.sql
-    ```
+Expect one row updated. On target, repeat the row query until balance is 125. Then delete only that test row on the source:
 
-3. Confirm the row counts and object properties.
+```sql
+DELETE FROM accounts
+WHERE account_id=&demo_id AND account_number='ACC-ZDM-DEMO';
+COMMIT;
+SELECT COUNT(*) AS restored_count FROM accounts;
+```
 
-    - Source actual row count: 400,000.
-    - Target actual row count: 400,000.
-    - Target imported statistics `NUM_ROWS`: 400,000.
-    - Source and target table objects: `VALID`.
-    - Source LOB: `AUDIT_PAYLOAD` in `FINANCE_RISK_LOB`, SecureFile `YES`, `FINANCE_TS`.
-    - Target LOB: `AUDIT_PAYLOAD`, SecureFile `YES`, remapped to `DATA`.
-    - Source complete allocated footprint: 16.551 GiB.
-    - Target complete allocated footprint: 12.557 GiB.
-    - Target DATA quota: 25 GiB; used: 12.557 GiB.
+Expect one row deleted. On target, verify the row disappears and the count returns to baseline. Keep evidence of all three stages. Counts alone do not establish full data equality.
 
-    The smaller target allocation reflects segment compaction during export and import. The stale preflight `DBA_TABLES.NUM_ROWS=200000` value does not override the independent `COUNT(*)` and Data Pump evidence.
+## Task 4: Controlled Cutover
 
-4. Query ZDM and check the successful Data Pump logs for Oracle errors.
+Obtain instructor approval. Stop all source application writes and finish or roll back outstanding transactions. Do not stop the database/listener or GoldenGate manually. In this table-only lab, stop the DML demonstration and any workload generator.
 
-    ```bash
-    $ZDM_HOME/bin/zdmcli query job -jobid 4
-    grep -n 'ORA-' /data/oracle/efs/ZDM_4_DP_EXPORT_535678.log \
-      /data/oracle/efs/ZDM_4_DP_IMPORT_86562.log
-    ```
+From the `oracle` shell, drain replication with a second pause:
 
-    The reference run contains no `ORA-` entries in either successful Data Pump log.
+```bash
+"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
+  -pauseafter ZDM_PREPARE_SWITCHOVER_APP
+"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+```
 
-## Task 5: Preserve the Evidence and Lessons Learned
+Wait for PAUSED at the requested phase. Then advance to the switchover checkpoint:
 
-1. Record the ZDM and diagnostic locations.
+```bash
+"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
+  -pauseafter ZDM_SWITCHOVER_APP
+"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+```
 
-    - ZDM service log: `/data/oracle/zdm26/private/zdmbase/crsdata/ip-10-0-0-170/rhp/zdmserver.log.0`
-    - Evaluation result: `/data/oracle/zdm26/private/zdmbase/chkbase/scheduled/job-3-2026-09-04-09:01:50.log`
-    - Migration result: `/data/oracle/zdm26/private/zdmbase/chkbase/scheduled/job-4-2026-09-04-09:03:50.log`
-    - Migration metrics: `/data/oracle/zdm26/private/zdmbase/chkbase/scheduled/job-4-2026-09-04-09:03:50.json`
-    - CPAT report: `/data/oracle/zdm26/private/zdmbase/crsdata/ip-10-0-0-170/rhp/temp/zdm/zdm_SOURCE19C_4/out/premigration_advisor_report.txt`
-    - Export log: `/data/oracle/efs/ZDM_4_DP_EXPORT_535678.log`
-    - Import log: `/data/oracle/efs/ZDM_4_DP_IMPORT_86562.log`
+Wait for that pause and compare source/target results while source writes remain stopped:
 
-2. Keep the migration package secret-free. The source runbook intentionally omits passwords and wallet contents. Retain the response file, validation SQL, repeatable commands, and sanitized logs with the lab package, but do not add credentials.
+```sql
+SELECT COUNT(*) AS row_count, SUM(balance) AS total_balance,
+       MIN(account_id) AS min_id, MAX(account_id) AS max_id
+FROM accounts;
+```
 
-3. Capture the two migration lessons from the validated run.
+Also check the demonstration row is absent and have the instructor confirm object validity and any application sequence requirements. Aggregate agreement is a lab check, not a substitute for a full production reconciliation.
 
-    - Select the staging method only after validating network placement. The original public or disconnected ADB-S placement could not reach Amazon EFS, so Amazon S3 was the initial staging choice. The corrected private ODB network enabled shared NFS staging.
-    - Test the ZDM-managed target import before scaling the migration. The earlier S3 path reached the target but the ZDM-managed import stopped in `ZDM_DATAPUMP_IMPORT_TGT` with `PRGZ-1477`, `PRGD-1019`, `PRGD-1016`, `ORA-20000`, and `ORA-39001` during `DBMS_DATAPUMP.OPEN`. Shared EFS staging with the private ADB-S endpoint allowed the same ZDM workflow to complete end to end.
+Continue to the post-switchover checkpoint:
+
+```bash
+"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID" \
+  -pauseafter ZDM_POST_SWITCHOVER_TGT
+"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+```
+
+After this checkpoint succeeds, the instructor may redirect and enable the application on the target. ZDM does not invent or change your application's connection configuration. Keep source writes disabled; cleanup is not a rollback mechanism.
+
+Finally allow remaining cleanup:
+
+```bash
+"$ZDMCLI" resume job -jobid "$MIGRATION_JOB_ID"
+"$ZDMCLI" query job -jobid "$MIGRATION_JOB_ID"
+```
+
+Wait for SUCCEEDED. Do not assume completion from one successful phase. The pause sequence follows the [ZDM 26.1 application switchover procedure](https://docs.oracle.com/en/database/oracle/zero-downtime-migration/26.1/zdmug/migrating-with-zero-downtime-migration.html); consult the guide for excluded objects or application-specific requirements.
+
+## Task 5: Retain Evidence
+
+Record Lab ID, evaluation/migration job IDs, start/end times, phase statuses, sanitized response file, CPAT/excluded-object reports, Data Pump logs, replication metrics, and source/target validation results. Obtain paths from your job rather than copying prototype paths.
+
+Do not upload passwords, private SSH keys, wallet contents, or unsanitized environment files. Participants do not delete shared infrastructure or rerun fleet provisioning.
 
 ## Acknowledgements
 
-* **Author** - Workshop team
-* **Last Updated By/Date** - Workshop team / September 8, 2026
+* **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
+* **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 28, 2026

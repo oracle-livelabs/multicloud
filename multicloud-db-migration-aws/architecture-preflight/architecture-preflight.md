@@ -2,92 +2,85 @@
 
 ## Introduction
 
-Confirm the migration boundary. The source and ZDM service run on the same Oracle Database 19c EC2 host. Oracle ZDM 26.1 writes the Data Pump dump set to Amazon EFS. Private Autonomous Database Serverless reads the same file system through its FSS directory. The target must sit in an ODB network with private routing to the AWS VPC.
-
-The lab uses one table: `FINANCE.RISK_AUDIT_ARCHIVE`. Keep the requested scope below 20 GiB. The source allocation is 16.551 GiB, including a 16.501 GiB LOB segment. The later independent count is 400,000 rows. The initial `DBA_TABLES.NUM_ROWS` statistic showed 200,000 rows.
+The source database and ZDM run on the assigned EC2 host. GoldenGate runs in the lab's Podman container. Data Pump performs the initial load using EFS; GoldenGate keeps the target synchronized afterward.
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
-In this lab, you will:
+Identify your assigned resources, verify source access, and confirm readiness before migration.
 
-- Confirm the source, target, EFS, ZDM, and directory-object values.
-- Confirm the offline downtime model and bounded migration scope.
-- Verify DNS, routing, and TCP reachability before attaching shared storage.
+## Task 1: Load Your Assigned Environment
 
-## Task 1: Confirm the Migration Boundary
+Open your assigned EC2 Session Manager session. At the **Linux shell**, use the instructor-approved access to the `oracle` user:
 
-1. Confirm that the lab uses an offline logical migration.
+```bash
+sudo -iu oracle
+source "$HOME/env/source19c.env"
+source /etc/profile.d/zdm26.sh
+source /data/oracle/lab/config/lab-env.sh
+export ZDMCLI="$ZDM_HOME/bin/zdmcli"
+printf 'Lab=%s\nRegion=%s\nSource=%s\nTarget=%s\nEFS=%s\n' \
+  "$LAB_ID" "$AWS_REGION" "$SOURCE_PRIVATE_IP" "$TARGET_HOST" "$EFS_DNS"
+test -x "$ZDMCLI" && test -r "$ZDM_RESPONSE_FILE"
+/data/oracle/lab/bin/validate-zdm-response.sh
+```
 
-    Stop application writes or place the workload in read-only mode before the final export. Redirect traffic only after target validation succeeds. This workflow does not use GoldenGate, change data capture, or manually executed `expdp` and `impdp` commands.
+Stop if a value is blank, the Lab ID is wrong, or validation fails. A missing validator means provisioning is incomplete. Do not source CloudShell provisioning environments on EC2.
 
-2. Confirm the migration scope.
+## Task 2: Verify Source SSH
 
-    - Source database: Oracle Database 19c, SID `SOURCE19C`, PDB/service `srcpdb1`.
-    - Target database: Autonomous Database Serverless `zdm-lab-adbs-private` on Oracle Database@AWS.
-    - Target database and AWS ID: `zdm-lab-adbs-private`, `adb_q8qutj06v0`.
-    - Target database version: Oracle Database 19c.
-    - Target container name: `G7C2CC53B996BEB_ZDMLABPRIV`.
-    - Scope: `FINANCE.RISK_AUDIT_ARCHIVE` only.
-    - Maximum requested scope: 20 GiB.
-    - Tablespace remap: `FINANCE_TS` to `DATA`.
-    - Target owner: `FINANCE`, with a bounded 25 GiB DATA quota and only `CREATE SESSION` plus `CREATE TABLE`.
+Run as `oracle`. The key belongs to this instance; it is not downloaded from another participant:
 
-3. Note the source-size and row-count distinction for later validation.
+```bash
+export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
+test -s "$ZDM_SOURCE_SSH_KEY" && echo "PASS: key exists"
+ssh -i "$ZDM_SOURCE_SSH_KEY" -o BatchMode=yes \
+  -o StrictHostKeyChecking=yes "ec2-user@$(hostname -f)" \
+  'whoami; sudo -n -iu oracle whoami'
+```
 
-    The initial optimizer statistic showed 200,000 rows. The later actual count was 400,000 rows. The source allocation was 16.551 GiB, made up of a 0.050 GiB table segment and a 16.501 GiB LOB segment. Treat the independent `COUNT(*)` and Data Pump evidence as the row-count result.
+Expect `ec2-user`, then `oracle`. If the key or verified host-key entry is missing, ask the instructor to repair provisioning. Do not disable host-key checks or copy private keys.
 
-## Task 2: Review the Validated Environment
+## Task 3: Verify the Source Database
 
-1. Confirm the source and ZDM host values.
+At the shell:
 
-    - EC2 instance: `i-0de3349a478bae10`.
-    - Private IP: `10.0.0.170`.
-    - Instance type: `r6i.xlarge`.
-    - Operating system: Red Hat Enterprise Linux 8.10.
-    - Oracle Home: `/data/oracle/app/oracle/product/19.0.0/dbhome_1`.
-    - Oracle data mount: `/data/oracle`.
-    - ZDM Home: `/data/oracle/zdm26/private/zdmhome`.
-    - ZDM Base: `/data/oracle/zdm26/private/zdmbase`.
+```bash
+sqlplus / as sysdba
+```
 
-2. Confirm the target and shared-storage values.
+At `SQL>` (do not paste shell commands here):
 
-    - Target service alias: `zdmlabpriv_high`.
-    - Target private endpoint: `z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com`.
-    - Target private IP: `172.128.1.205`.
-    - Target service: `g7c2cc53b996beb_zdmlabpriv_high.adb.oraclecloud.com`.
-    - EFS file system: `fs-0d73948458dc51c34`.
-    - EFS mount target: `10.0.0.169`.
-    - EC2 mount: `/data/oracle/efs`.
-    - Source directory object: `DATA_PUMP_DIR_NFS`.
-    - Target directory object: `FSS_DIR`.
-    - Target file system name: `ZDM_EFS`, location `efs.zdm.internal:/`.
-    - ODB client network: `172.128.1.0/24`.
+```sql
+SELECT name, open_mode, log_mode, cdb FROM v$database;
+SHOW PARAMETER enable_goldengate_replication
+SELECT username, account_status FROM dba_users WHERE username='GGADMIN';
+SELECT COUNT(*) AS source_baseline FROM finance.accounts;
+EXIT
+```
 
-## Task 3: Run the Network Preflight Checks
+Expect the source open read/write, archive logging enabled for capture, replication enabled, and GGADMIN open. Record the count. This source is not the old `SRCPDB1` prototype; do not switch containers blindly.
 
-1. On the source and ZDM EC2 host, verify DNS resolution and TCP reachability.
+## Task 4: Check Network and Service Readiness
 
-    ```bash
-    getent hosts efs.zdm.internal
-    nc -vz 10.0.0.169 2049
-    getent hosts z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com
-    nc -vz z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com 1522
-    ```
+```bash
+getent hosts "$TARGET_HOST"
+getent hosts "$EFS_DNS"
+nc -vz -w 5 "$TARGET_HOST" 1521
+nc -vz -w 5 "$TARGET_HOST" 1522
+nc -vz -w 5 "$EFS_DNS" 2049
+"$ZDM_HOME/bin/zdmservice" status
+```
 
-2. Confirm the corresponding network controls.
+The instructor must confirm GoldenGate's case-sensitive `Local` deployment is running, ZDM can reach its endpoint, and the container can reach source and target listeners. These checks are also exercised during ZDM evaluation.
 
-    - The target uses a private endpoint in an ODB network connected to the EC2 VPC.
-    - The VPC route table contains the active route to the ODB client CIDR.
-    - The ODB network routes back to the EC2 subnet.
-    - The EFS security group allows inbound TCP 2049 from the EC2 source security group and the ODB client CIDR.
-    - The target resolver resolves `efs.zdm.internal` to the EFS mount-target address before attachment.
-    - The EC2 host reaches the source listener on TCP 1521 and the target private endpoint on TCPS 1522.
+For this workshop, provisioning aligns EC2, the EFS mount target, and ODB network with the selected supported AZ ID. AZ letter names are account-specific. Placement alone does not prove routing, security-group, or DNS correctness. EC2 connectivity does not prove ADB-to-EFS connectivity; Lab 2 tests the latter.
 
-3. If a check fails, stop before mounting or attaching EFS. The original environment first lacked a private ADB-S endpoint in a connected ODB network. That gap prevented shared NFS staging. The validated environment corrected the network placement before the migration run.
+Participants must not alter IAM, routes, security groups, database memory, or container configuration. Escalate failed checks before migration.
 
 ## Acknowledgements
 
-* **Author** - Workshop team
-* **Last Updated By/Date** - Workshop team / September 8, 2026
+* **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
+* **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 28, 2026

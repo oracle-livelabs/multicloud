@@ -1,34 +1,42 @@
-# MultiCloud AWS Database Migration with Oracle ZDM and Shared Amazon EFS
+# Online Database Migration on AWS with Oracle ZDM and GoldenGate
 
 ## Introduction
 
-Move a selected Oracle Database 19c workload from Amazon EC2 to private Autonomous Database Serverless on Oracle Database@AWS. Oracle Zero Downtime Migration 26.1 orchestrates the offline logical migration through Oracle Data Pump. Amazon EFS provides shared NFS staging. The dump set does not move through Amazon S3.
+Migrate `FINANCE.ACCOUNTS` from self-managed Oracle Database 19c on Amazon EC2 to Oracle Autonomous AI Database Serverless on Oracle AI Database@AWS. ZDM orchestrates an **online logical migration**: Data Pump loads the initial data through shared Amazon EFS, and GoldenGate captures and applies subsequent source changes. EFS carries the dump set, not the GoldenGate change stream.
 
-This workshop uses the validated scope `FINANCE.RISK_AUDIT_ARCHIVE`. The maximum requested scope is 20 GiB. The source allocation is 16.551 GiB, and the table contains 400,000 rows. The migration does not use GoldenGate, change data capture, or manually executed `expdp` and `impdp` commands. Stop application writes or place the workload in read-only mode before the final export. Redirect traffic only after target validation succeeds.
+The source can accept writes during initial load and replication. Controlled cutover still requires stopping source application writes, letting replication catch up, and validating the target before redirecting the application. Online migration is not a guarantee of zero application downtime.
 
-![Validated ZDM offline logical migration architecture from Amazon EC2 through shared Amazon EFS to private Autonomous Database Serverless](images/zdm-aws-efs-architecture.png)
+![Online logical migration with Data Pump initial load, GoldenGate replication, and ZDM orchestration](images/zdm-online-architecture.png)
 
-### Prerequisites
-
-- Access to the pre-provisioned source and ZDM EC2 host in `us-east-1`.
-- A private Autonomous Database Serverless target in the Oracle Database@AWS ODB network.
-- The VPC route to the ODB client CIDR and the return route to the EC2 subnet.
-- EFS security rules that allow TCP 2049 from the EC2 source security group and the ODB client CIDR.
-- DNS resolution for `efs.zdm.internal` from the EC2 host and the target database.
-- Source and target wallets stored outside the workshop package. Passwords and wallet contents are intentionally omitted.
-- The target `FINANCE` owner provisioned with a bounded 25 GiB DATA quota and only `CREATE SESSION` plus `CREATE TABLE`, or permission to complete that prerequisite when ZDM reports `PRGZ-1391`.
-- `sqlplus`, `zdmcli`, and the AWS CLI available in the lab environment.
+Estimated Workshop Time: 90 minutes, excluding instructor provisioning. Actual timings depend on the environment.
 
 ### Objectives
 
-- Confirm the private network, database, and shared NFS staging prerequisites.
-- Mount Amazon EFS on the source/ZDM EC2 host and attach the same file system to the private Autonomous Database Serverless target.
-- Prepare and evaluate a ZDM 26.1 `OFFLINE_LOGICAL` migration using NFS and table mode.
-- Execute the migration, monitor ZDM and Data Pump evidence, and validate the source and target independently.
+- Verify source, target, GoldenGate, and shared NFS staging.
+- Evaluate the generated `ONLINE_LOGICAL` response file.
+- Run ZDM with a pause after `ZDM_MONITOR_GG_LAG`.
+- Demonstrate committed changes replicating to the target.
+- Validate data and perform an instructor-approved cutover.
 
-Estimated Workshop Time: 90 minutes
+### Prerequisites and responsibilities
+
+The instructor provisions EC2, the target database, EFS, networking, database users, GoldenGate, target wallet, and source SSH access. Participants use their assigned resources only; AWS administrator permissions and infrastructure creation are not required. The lab's database administrative credentials are separate from AWS IAM permissions and must be supplied through the approved workshop credential process.
+
+Use the generated `/data/oracle/lab/config/lab-env.sh` and `zdm-response-online.rsp`. Source SID/service is `SOURCE19C`; scope is `FINANCE.ACCOUNTS`. Do not copy old prototype IPs, PDB names, tables, or job IDs. Record actual counts, not a fixed expected count.
+
+Participant SQL connections use password-authenticated TLS on port 1521. ZDM uses the assigned target wallet and wallet service alias on TCPS port 1522. Do not replace one configuration with the other. Keep credentials and wallet contents out of this repository.
+
+### Workshop flow
+
+1. Architecture and preflight — 15 minutes.
+2. Verify shared NFS staging — 15 minutes.
+3. Review configuration and evaluate — 20 minutes.
+4. Execute, monitor, demonstrate replication, validate, and cut over — 40 minutes.
+
+For product behavior beyond this lab, see the [ZDM 26.1 migration guide](https://docs.oracle.com/en/database/oracle/zero-downtime-migration/26.1/zdmug/migrating-with-zero-downtime-migration.html).
 
 ## Acknowledgements
 
-* **Author** - Workshop team
-* **Last Updated By/Date** - Workshop team / September 8, 2026
+* **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
+* **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 28, 2026

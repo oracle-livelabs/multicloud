@@ -1,5 +1,5 @@
 {
-    "workshoptitle": "MultiCloud AWS Database Migration with Oracle ZDM and Shared Amazon EFS",
+    "workshoptitle": "Online Database Migration on AWS with Oracle ZDM and GoldenGate",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
@@ -15,19 +15,19 @@
             "filename": "../../architecture-preflight/architecture-preflight.md"
         },
         {
-            "title": "Lab 2: Prepare Shared Amazon EFS NFS Staging",
+            "title": "Lab 2: Verify Shared Amazon EFS NFS Staging",
             "description": "",
             "type": "livelabs",
             "filename": "../../shared-nfs-staging/shared-nfs-staging.md"
         },
         {
-            "title": "Lab 3: Configure and Evaluate the ZDM Migration",
+            "title": "Lab 3: Review and Evaluate the Online ZDM Migration",
             "description": "",
             "type": "livelabs",
             "filename": "../../zdm-evaluation/zdm-evaluation.md"
         },
         {
-            "title": "Lab 4: Execute, Monitor, and Validate the Migration",
+            "title": "Lab 4: Execute, Monitor, and Validate the Online Migration",
             "description": "",
             "type": "livelabs",
             "filename": "../../migration-validation/migration-validation.md"
