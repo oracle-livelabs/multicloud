@@ -60,11 +60,15 @@ Estimated Time: 10 minutes
 
     ![Azure event account sign-in and multifactor authentication screen 11](images/azure-event-account-11.png)
 
-13. Select the **Don’t show this again** checkbox and select **Yes**.
+13. On the **Stay signed in?** screen, complete both actions in the checkpoint below.
+
+    <div role="note" aria-label="Required sign-in checkpoint" style="box-sizing: border-box; max-width: 54rem; border-left: 5px solid #ae562c; background: linear-gradient(90deg, #f5f2ef 0%, rgba(245, 242, 239, 0.35) 75%, rgba(245, 242, 239, 0) 100%); color: #312d2a; padding: 16px 20px; margin: 16px 0 24px;">
+    <p style="margin: 0 0 10px; font-size: 1.1em; font-weight: 700;"><span aria-hidden="true" style="color: #ae562c;">⚠</span> Stop here — keep your lab session signed in</p>
+    <p style="margin: 0 0 12px;">Check <strong>Don’t show this again</strong>, then click <strong>Yes</strong>. If you click <strong>No</strong>, you will need to authenticate again during the Deploy a RAG Application lab.</p>
+    <p style="margin: 0;"><strong>Continue only when:</strong> you have checked the box and selected <strong>Yes</strong>.</p>
+    </div>
 
     ![Azure event account sign-in and multifactor authentication screen 12](images/azure-event-account-12.png)
-
-    > **Note:** If you select **No**, you will be asked to sign in again at Step 4 of the Deploy a RAG Application lab.
 
 14. You are logged into the Azure lab environment.
 
