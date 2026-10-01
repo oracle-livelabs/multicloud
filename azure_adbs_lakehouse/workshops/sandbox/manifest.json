@@ -44,6 +44,6 @@
         }
     ],
     "include": {
-        "connect-windows": "../../shared/connect-windows.txt"
+        "connect-windows": "/multicloud/azure_adbs_lakehouse/shared/connect-windows.txt"
     }
 }
