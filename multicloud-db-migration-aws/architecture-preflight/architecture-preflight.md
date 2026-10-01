@@ -2,92 +2,241 @@
 
 ## Introduction
 
-Confirm the migration boundary. The source and ZDM service run on the same Oracle Database 19c EC2 host. Oracle ZDM 26.1 writes the Data Pump dump set to Amazon EFS. Private Autonomous Database Serverless reads the same file system through its FSS directory. The target must sit in an ODB network with private routing to the AWS VPC.
-
-The lab uses one table: `FINANCE.RISK_AUDIT_ARCHIVE`. Keep the requested scope below 20 GiB. The source allocation is 16.551 GiB, including a 16.501 GiB LOB segment. The later independent count is 400,000 rows. The initial `DBA_TABLES.NUM_ROWS` statistic showed 200,000 rows.
+The source database and ZDM run on the assigned EC2 host. GoldenGate runs in the lab's Podman container. Data Pump performs the initial load using EFS; GoldenGate keeps the target synchronized afterward.
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
-In this lab, you will:
+Identify your assigned resources, verify source access, and confirm readiness before migration.
 
-- Confirm the source, target, EFS, ZDM, and directory-object values.
-- Confirm the offline downtime model and bounded migration scope.
-- Verify DNS, routing, and TCP reachability before attaching shared storage.
+## Task 1: Load Your Assigned Environment
 
-## Task 1: Confirm the Migration Boundary
+Open your assigned EC2 Session Manager session from the EC2 console, or run this in **AWS CloudShell as `cloudshell-user`**. Enter your assigned instance ID, not another participant's instance:
 
-1. Confirm that the lab uses an offline logical migration.
+```bash
+read -rp "Assigned EC2 instance ID: " ASSIGNED_INSTANCE_ID
+aws ssm start-session --region us-west-2 --target "$ASSIGNED_INSTANCE_ID"
+```
 
-    Stop application writes or place the workload in read-only mode before the final export. Redirect traffic only after target validation succeeds. This workflow does not use GoldenGate, change data capture, or manually executed `expdp` and `impdp` commands.
+The following commands run on **the assigned EC2**, not CloudShell or the runner. At the **Linux shell as `ssm-user`**, switch to `oracle`:
 
-2. Confirm the migration scope.
+```bash
+sudo -iu oracle
+```
 
-    - Source database: Oracle Database 19c, SID `SOURCE19C`, PDB/service `srcpdb1`.
-    - Target database: Autonomous Database Serverless `zdm-lab-adbs-private` on Oracle Database@AWS.
-    - Target database and AWS ID: `zdm-lab-adbs-private`, `adb_q8qutj06v0`.
-    - Target database version: Oracle Database 19c.
-    - Target container name: `G7C2CC53B996BEB_ZDMLABPRIV`.
-    - Scope: `FINANCE.RISK_AUDIT_ARCHIVE` only.
-    - Maximum requested scope: 20 GiB.
-    - Tablespace remap: `FINANCE_TS` to `DATA`.
-    - Target owner: `FINANCE`, with a bounded 25 GiB DATA quota and only `CREATE SESSION` plus `CREATE TABLE`.
+Load the source and assigned lab environments in the **`oracle` shell**:
 
-3. Note the source-size and row-count distinction for later validation.
+```bash
+source "$HOME/env/source19c.env"
+source /etc/profile.d/zdm26.sh
+source /data/oracle/lab/config/lab-env.sh
+export ZDMCLI="$ZDM_HOME/bin/zdmcli"
+```
 
-    The initial optimizer statistic showed 200,000 rows. The later actual count was 400,000 rows. The source allocation was 16.551 GiB, made up of a 0.050 GiB table segment and a 16.501 GiB LOB segment. Treat the independent `COUNT(*)` and Data Pump evidence as the row-count result.
+Print your lab assignment. Check that the Lab ID and target are the ones assigned to you:
 
-## Task 2: Review the Validated Environment
+```bash
+printf 'Lab=%s\nRegion=%s\nSource=%s\nTarget=%s\nEFS=%s\n' \
+  "$LAB_ID" "$AWS_REGION" "$SOURCE_PRIVATE_IP" "$TARGET_HOST" "$EFS_DNS"
+```
 
-1. Confirm the source and ZDM host values.
+Check that the ZDM executable and response file are accessible:
 
-    - EC2 instance: `i-0de3349a478bae10`.
-    - Private IP: `10.0.0.170`.
-    - Instance type: `r6i.xlarge`.
-    - Operating system: Red Hat Enterprise Linux 8.10.
-    - Oracle Home: `/data/oracle/app/oracle/product/19.0.0/dbhome_1`.
-    - Oracle data mount: `/data/oracle`.
-    - ZDM Home: `/data/oracle/zdm26/private/zdmhome`.
-    - ZDM Base: `/data/oracle/zdm26/private/zdmbase`.
+```bash
+test -x "$ZDMCLI" && test -r "$ZDM_RESPONSE_FILE"
+```
 
-2. Confirm the target and shared-storage values.
+Validate the generated ZDM response file. Require the final `ZDM_RESPONSE_VALID` marker:
 
-    - Target service alias: `zdmlabpriv_high`.
-    - Target private endpoint: `z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com`.
-    - Target private IP: `172.128.1.205`.
-    - Target service: `g7c2cc53b996beb_zdmlabpriv_high.adb.oraclecloud.com`.
-    - EFS file system: `fs-0d73948458dc51c34`.
-    - EFS mount target: `10.0.0.169`.
-    - EC2 mount: `/data/oracle/efs`.
-    - Source directory object: `DATA_PUMP_DIR_NFS`.
-    - Target directory object: `FSS_DIR`.
-    - Target file system name: `ZDM_EFS`, location `efs.zdm.internal:/`.
-    - ODB client network: `172.128.1.0/24`.
+```bash
+/data/oracle/lab/bin/validate-zdm-response.sh
+```
 
-## Task 3: Run the Network Preflight Checks
+Stop if a value is blank, the Lab ID is wrong, or validation fails. A missing validator means provisioning is incomplete. Do not source CloudShell provisioning environments on EC2.
 
-1. On the source and ZDM EC2 host, verify DNS resolution and TCP reachability.
+Confirm the user and Oracle environment:
 
-    ```bash
-    getent hosts efs.zdm.internal
-    nc -vz 10.0.0.169 2049
-    getent hosts z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com
-    nc -vz z0edijb4.aws-us-east-1.adb.us-ashburn-1.oraclecloud.com 1522
-    ```
+```bash
+printf 'OS_USER=%s\nORACLE_SID=%s\nZDM_HOME=%s\nTARGET_ALIAS=%s\n' \
+  "$(whoami)" "$ORACLE_SID" "$ZDM_HOME" "$TARGET_ALIAS"
+```
 
-2. Confirm the corresponding network controls.
+Example from Lab 101: the OS user is `oracle`, the source SID is `SOURCE19C`, and the target alias belongs to the assigned lab. Hostnames, IDs, paths, and addresses in screenshots are examples, not values to copy into another lab.
 
-    - The target uses a private endpoint in an ODB network connected to the EC2 VPC.
-    - The VPC route table contains the active route to the ODB client CIDR.
-    - The ODB network routes back to the EC2 subnet.
-    - The EFS security group allows inbound TCP 2049 from the EC2 source security group and the ODB client CIDR.
-    - The target resolver resolves `efs.zdm.internal` to the EFS mount-target address before attachment.
-    - The EC2 host reaches the source listener on TCP 1521 and the target private endpoint on TCPS 1522.
+![Lab 101 Oracle user, source SID, ZDM home and target alias](./images/participant-environment.png)
 
-3. If a check fails, stop before mounting or attaching EFS. The original environment first lacked a private ADB-S endpoint in a connected ODB network. That gap prevented shared NFS staging. The validated environment corrected the network placement before the migration run.
+## Task 2: Verify Source SSH
+
+Run as `oracle`. The key belongs to this instance:
+
+```bash
+export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
+test -s "$ZDM_SOURCE_SSH_KEY" && echo "PASS: key exists"
+```
+
+Test same-host SSH and the switch to `oracle`:
+
+```bash
+ssh -i "$ZDM_SOURCE_SSH_KEY" -o BatchMode=yes \
+  -o StrictHostKeyChecking=yes "ec2-user@$(hostname -f)" \
+  'whoami; sudo -n -iu oracle whoami'
+```
+
+Expect `ec2-user`, then `oracle`. If the key or verified host-key entry is missing, ask the instructor to repair provisioning. Do not disable host-key checks or copy private keys.
+
+## Task 3: Verify the Source Database
+
+At the **`oracle` shell**, open the source database:
+
+```bash
+sqlplus / as sysdba
+```
+
+At `SQL>` (do not paste shell commands here):
+
+```sql
+SET LINESIZE 220
+SET PAGESIZE 100
+SELECT instance_name, host_name, status, database_status FROM v$instance;
+SELECT name, open_mode, log_mode, cdb, force_logging,
+       supplemental_log_data_min FROM v$database;
+```
+
+At **source `SQL>`**, check the replication and memory settings without changing them:
+
+```sql
+SHOW PARAMETER enable_goldengate_replication
+SHOW PARAMETER sga_target
+SHOW PARAMETER sga_max_size
+SHOW PARAMETER streams_pool_size
+```
+
+Check the source accounts and record the initial row count:
+
+```sql
+SELECT username, account_status FROM dba_users
+WHERE username IN ('SYSTEM','GGADMIN','FINANCE') ORDER BY username;
+SELECT COUNT(*) AS source_baseline FROM finance.accounts;
+```
+
+Return to the **`oracle` shell**:
+
+```sql
+EXIT
+```
+
+Expect OPEN/ACTIVE, READ WRITE, ARCHIVELOG, FORCE_LOGGING=YES, supplemental logging enabled, replication enabled, and the listed accounts open. Record the count. Memory queries are read-only diagnostics; do not change parameters or reset passwords.
+
+Source database state (Lab 101 example):
+
+![Source database open and active with archive logging enabled](./images/source-database-ready.png)
+
+GoldenGate replication setting:
+
+![Source enable_goldengate_replication is TRUE](./images/source-replication-enabled.png)
+
+Account status:
+
+![Source FINANCE, GGADMIN and SYSTEM accounts are OPEN](./images/source-accounts-open.png)
+
+## Task 4: Check Network and Service Readiness
+
+Run these read-only connectivity checks from the **`oracle` EC2 shell**:
+
+```bash
+getent hosts "$TARGET_HOST"
+getent hosts "$EFS_DNS"
+```
+
+Check the database and NFS ports:
+
+```bash
+nc -vz -w 5 "$TARGET_HOST" 1521
+nc -vz -w 5 "$TARGET_HOST" 1522
+nc -vz -w 5 "$EFS_DNS" 2049
+```
+
+Check the ZDM service:
+
+```bash
+"$ZDM_HOME/bin/zdmservice" status
+```
+
+ZDM evaluation in Lab 3 checks the GoldenGate deployment and database connectivity. Stop here if a connectivity or service check fails.
+
+### Check the Rootless Podman Container
+
+Return from the `oracle` login shell to **`ssm-user`** with `exit`. If already `ssm-user`, do not exit the Session Manager session. Confirm with `whoami`, then run:
+
+```bash
+exit
+```
+
+Confirm the current user before checking the container:
+
+```bash
+whoami
+```
+
+Run Podman as the container owner, `ec2-user`:
+
+```bash
+OGG_UID="$(id -u ec2-user)"
+OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
+sudo -u ec2-user env \
+  HOME=/home/ec2-user \
+  XDG_RUNTIME_DIR="$OGG_RUNTIME" \
+  podman ps
+```
+
+The container owner is `ec2-user`; expect `oggfree` to report `Up`.
+
+![GoldenGate oggfree container reports Up](./images/goldengate-container-running.png)
+
+### Validate the Wallet Inside GoldenGate
+
+Run in the same **`ssm-user` shell**:
+
+```bash
+OGG_UID="$(id -u ec2-user)"
+OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
+sudo -u ec2-user env \
+  HOME=/home/ec2-user \
+  XDG_RUNTIME_DIR="$OGG_RUNTIME" \
+  podman exec oggfree sh -lc '
+    set -e
+    ls -l /u02/Deployment/etc/adb
+    test -s /u02/Deployment/etc/adb/cwallet.sso
+    test -s /u02/Deployment/etc/adb/ewallet.p12
+    grep -F "/u02/Deployment/etc/adb" \
+      /u02/Deployment/etc/adb/sqlnet.ora
+    echo "PASS: GoldenGate wallet is ready"
+  '
+```
+
+![GoldenGate wallet files and wallet readiness PASS](./images/goldengate-wallet-ready.png)
+
+### Check the GoldenGate Endpoint
+
+From **`ssm-user`**, run the local check as `ec2-user`:
+
+```bash
+sudo -u ec2-user curl -k -sS -o /dev/null \
+  -w 'GoldenGate HTTP=%{http_code}\n' \
+  https://127.0.0.1:8443/services/v2/config/health
+```
+
+`-k` is limited to this localhost diagnostic against the workshop's self-signed certificate; do not use it to relax other connection checks.
+
+![Unauthenticated GoldenGate endpoint request returns HTTP 401](./images/goldengate-endpoint-response.png)
+
+HTTP `200` or `401` demonstrates that the endpoint answered; `401` does not prove authenticated GoldenGate readiness. Use ZDM evaluation as well. Do not rerun provisioning or change container settings.
+
+Remain in the **`ssm-user` shell** for Lab 2. EC2 connectivity does not prove ADB-to-EFS connectivity; Lab 2 tests that path. Stop on failed checks rather than changing the provisioned infrastructure.
 
 ## Acknowledgements
 
-* **Author** - Workshop team
-* **Last Updated By/Date** - Workshop team / September 8, 2026
+* **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
+* **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026

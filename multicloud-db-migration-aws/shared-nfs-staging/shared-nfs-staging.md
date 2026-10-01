@@ -1,136 +1,205 @@
-# Lab 2: Prepare Shared Amazon EFS NFS Staging
+# Lab 2: Verify Shared Amazon EFS NFS Staging
 
 ## Introduction
 
-Prepare the shared staging path used by ZDM. The source EC2 host mounts Amazon EFS through NFSv4. It exposes that mount as `DATA_PUMP_DIR_NFS`. The private Autonomous Database Serverless target attaches the same file system as `ZDM_EFS`. It exposes the file system through `FSS_DIR`. A bidirectional file test confirms the shared location before ZDM starts.
+Verify your assigned staging filesystem. The source directory is `DATA_PUMP_DIR_NFS`; the target directory is `ZDM_EFS_DIR`. This lab uses NFSv4. Complete these checks before starting migration.
 
-Estimated Time: 25 minutes
+Estimated Time: 15 minutes
 
 ### Objectives
 
-In this lab, you will:
+Confirm the EC2 mount, match target attachment metadata, and verify that a file written by ADB-S can be read on EC2.
 
-- Create or reuse the EFS file system and mount target.
-- Mount and test EFS on the source/ZDM EC2 host.
-- Attach and test the same file system on private Autonomous Database Serverless.
+## Task 1: Check the Source Mount
 
-## Task 1: Create or Reuse the EFS File System
+Before migration, run the provided mount helper from **EC2 Session Manager as `ssm-user`**. If continuing in the `oracle` login shell from Lab 1, use `exit` once to return to `ssm-user`; check `whoami` before proceeding.
 
-1. In AWS CloudShell or the supplied provisioning environment, set the validated region and network values.
+```bash
+sudo /data/oracle/lab/bin/mount-efs.sh
+```
 
-    ```bash
-    export AWS_REGION=us-east-1
-    export VPC_ID=vpc-0356ab7623c1fd719
-    export SUBNET_ID=subnet-035590ab09b91d1c3
-    ```
+Switch to **`oracle`**:
 
-2. If the instructor has not already created EFS, create the encrypted, elastic-throughput file system and its mount target.
+```bash
+sudo -iu oracle
+```
 
-    ```bash
-    EFS_ID=$(aws efs create-file-system \
-      --region "$AWS_REGION" --creation-token zdm-lab-shared-nfs-us-east-1 \
-      --encrypted --performance-mode generalPurpose --throughput-mode elastic \
-      --tags Key=Name,Value=zdm-lab-shared-nfs Key=Project,Value=ZDM-HOL \
-      --query FileSystemId --output text)
-    aws efs create-mount-target --region "$AWS_REGION" \
-      --file-system-id "$EFS_ID" --subnet-id "$SUBNET_ID" \
-      --security-groups "$EFS_SG_ID"
-    ```
+Load the source and assigned lab environments:
 
-    Amazon EFS expands as data is written, so this service does not require a fixed 500 GiB allocation. Use the complete idempotent `commands.sh` sequence from the lab package when it is available.
+```bash
+source "$HOME/env/source19c.env"
+source /data/oracle/lab/config/lab-env.sh
+```
 
-## Task 2: Mount and Test EFS on the Source EC2 Host
+The helper uses the assigned configuration. Do not run it to repair storage during an active migration; escalate instead. Continue at the EC2 shell as **`oracle`**:
 
-1. Set the validated EFS values and install the NFS client utilities.
+```bash
+echo "$EFS_DNS"
+echo "$EFS_IP"
+echo "$EFS_MOUNT_POINT"
+```
 
-    ```bash
-    export EFS_ID=fs-0d73948458dc51c34
-    export EFS_MOUNT=/data/oracle/efs
-    export EFS_HOST=${EFS_ID}.efs.us-east-1.amazonaws.com
-    sudo dnf install -y nfs-utils
-    sudo install -d -o oracle -g oracle -m 0777 "$EFS_MOUNT"
-    ```
+Check the filesystem mounted at that path:
 
-2. Mount the file system as NFSv4 and make the mount persistent.
+```bash
+findmnt -T "$EFS_MOUNT_POINT" -o TARGET,SOURCE,FSTYPE,OPTIONS
+df -hT "$EFS_MOUNT_POINT"
+```
 
-    ```bash
-    sudo mount -t nfs4 -o nfsvers=4.1,_netdev "${EFS_HOST}:/" "$EFS_MOUNT"
-    printf '%s\n' "${EFS_HOST}:/ $EFS_MOUNT nfs4 defaults,_netdev,nofail,nfsvers=4.1 0 0" \
-      | sudo tee -a /etc/fstab
-    printf 'source test %s\n' "$(date -u +%FT%TZ)" > "$EFS_MOUNT/source_efs_test.txt"
-    findmnt -T "$EFS_MOUNT"
-    ls -l "$EFS_MOUNT/source_efs_test.txt"
-    ```
+Check write access for `oracle`:
 
-3. Create and grant the source directory object.
+```bash
+test -w "$EFS_MOUNT_POINT" && echo "PASS: staging writable"
+```
 
-    Connect as local SYSDBA, switch to `SRCPDB1`, and run:
+Confirm NFS/NFS4, the assigned EFS source, and the expected mount path. A local root filesystem is not an EFS mount. Stop if any check fails.
 
-    ```sql
-    ALTER SESSION SET CONTAINER=SRCPDB1;
-    CREATE OR REPLACE DIRECTORY DATA_PUMP_DIR_NFS AS '/data/oracle/efs';
-    GRANT READ, WRITE ON DIRECTORY DATA_PUMP_DIR_NFS TO SYSTEM;
-    SELECT directory_name, directory_path
-    FROM dba_directories
-    WHERE directory_name = 'DATA_PUMP_DIR_NFS';
-    ```
+![Lab 101 assigned EFS hostname, mount and writable status](./images/efs-mount.png)
 
-    Confirm that `DATA_PUMP_DIR_NFS` resolves to `/data/oracle/efs`.
+Example: Lab 101 uses `/data/oracle/efs`. Use your generated environment values, not the screenshot's filesystem ID or IP. These checks do not require recreating the mount.
 
-## Task 3: Attach and Test EFS on Private Autonomous Database Serverless
+```bash
+source "$HOME/env/adbs.env"
+export EFS_NAME="EFS${RESOURCE_LAB_ID:-$LAB_ID}"
+```
 
-1. Set the target wallet path and connect as `ADMIN` through the validated service alias.
+Print the assigned EFS and target details:
 
-    ```bash
-    export TNS_ADMIN=/data/oracle/wallets/zdmlabpriv
-    sqlplus admin@zdmlabpriv_high
-    ```
+```bash
+printf 'Lab ID: %s\nTarget alias: %s\nEFS name: %s\nEFS ID: %s\nEFS DNS: %s\nEFS IP: %s\nMount: %s\n' \
+  "$LAB_ID" "$TARGET_ALIAS" "$EFS_NAME" "$EFS_ID" \
+  "$EFS_DNS" "$EFS_IP" "$EFS_MOUNT_POINT"
+```
 
-2. Grant the target host access needed for DNS resolution and connection.
+![Lab 101 EFS assignment and target alias](./images/efs-assignment.png)
 
-    ```sql
-    BEGIN
-      DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-        host => 'efs.zdm.internal',
-        ace  => XS$ACE_TYPE(
-          privilege_list => XS$NAME_LIST('connect','resolve'),
-          principal_name => 'ADMIN',
-          principal_type => XS_ACL.PTYPE_DB,
-          granted        => TRUE));
-    END;
-    /
-    COMMIT;
-    SELECT UTL_INADDR.GET_HOST_ADDRESS('efs.zdm.internal') AS efs_ip FROM dual;
-    ```
+Test write access using `oracle-write-test`. If `oracle-write-test` already exists, stop before running this test.
 
-    Confirm that the resolved address is the EFS mount-target address `10.0.0.169`.
+```bash
+touch "$EFS_MOUNT_POINT/oracle-write-test"
+ls -l "$EFS_MOUNT_POINT/oracle-write-test"
+```
 
-3. Create the target directory and attach the file system with NFSv4.
+![Oracle creates, lists and removes an EFS write-test file](./images/efs-source-write-test.png)
 
-    ```sql
-    CREATE DIRECTORY FSS_DIR AS 'fss';
-    BEGIN
-      DBMS_CLOUD_ADMIN.ATTACH_FILE_SYSTEM(
-        file_system_name     => 'ZDM_EFS',
-        file_system_location => 'efs.zdm.internal:/',
-        directory_name       => 'FSS_DIR',
-        description          => 'ZDM shared Amazon EFS staging over NFSv4',
-        params               => JSON_OBJECT('nfs_version' VALUE 4));
-    END;
-    /
-    ```
+Remove the write-test file you just created:
 
-4. Confirm the file-system metadata and list the shared files.
+```bash
+rm -f "$EFS_MOUNT_POINT/oracle-write-test"
+```
 
-    ```sql
-    SELECT file_system_name, file_system_location, directory_name
-    FROM dba_cloud_file_systems WHERE file_system_name = 'ZDM_EFS';
-    SELECT object_name, bytes FROM DBMS_CLOUD.LIST_FILES('FSS_DIR');
-    ```
+## Task 2: Check the Target Attachment
 
-    The target must list the EFS test file created on EC2. This is the staging checkpoint for the ZDM evaluation.
+At the shell, use the generated SQL alias; enter the password at the prompt:
+
+```bash
+source "$HOME/env/adbs.env"
+"$ORACLE_HOME/bin/tnsping" "$TARGET_ALIAS"
+```
+
+Connect to the target as ADMIN and enter the supplied password at the prompt:
+
+```bash
+sqlplus -L admin@"$TARGET_ALIAS"
+```
+
+At `SQL>`:
+
+```sql
+SET LINESIZE 220
+SET PAGESIZE 100
+COLUMN file_system_name FORMAT A15
+COLUMN file_system_location FORMAT A75
+COLUMN directory_name FORMAT A20
+SELECT SYS_CONTEXT('USERENV','DB_NAME') AS db_name,
+       SYS_CONTEXT('USERENV','SERVICE_NAME') AS service_name,
+       SYS_CONTEXT('USERENV','CURRENT_USER') AS current_user FROM dual;
+```
+
+Check the attached filesystem and database directory at **target `SQL>`**:
+
+```sql
+SELECT file_system_name, file_system_location, directory_name,
+       directory_path, nfs_version
+FROM dba_cloud_file_systems WHERE directory_name='ZDM_EFS_DIR';
+SELECT directory_name, directory_path FROM dba_directories
+WHERE directory_name='ZDM_EFS_DIR';
+```
+
+Match the location against your assigned EFS hostname and export path, and confirm NFS version 4. Metadata alone is not an I/O test.
+
+![Target attachment referencing the assigned EFS and ZDM_EFS_DIR with NFS version 4](./images/target-efs-attachment.png)
+
+The example's attachment name is `ZDM_EFS`; the AWS resource name is `EFS101`. Compare the filesystem location and directory, rather than requiring those two names to be identical.
+
+Return to the **`oracle` shell**:
+
+```sql
+EXIT
+```
+
+## Task 3: Validate a Target Write from EC2
+
+Before starting migration, connect to the target as ADMIN from the **`oracle` EC2 shell**:
+
+```bash
+source "$HOME/env/adbs.env"
+sqlplus -L admin@"$TARGET_ALIAS"
+```
+
+At **target `SQL>`**, write `participant_validation.txt`. This replaces that test file if it already exists; use it only for the workshop validation. Use the existing provisioned `ZDM_EFS_DIR`.
+
+```sql
+DECLARE
+  f UTL_FILE.FILE_TYPE;
+BEGIN
+  f := UTL_FILE.FOPEN('ZDM_EFS_DIR', 'participant_validation.txt', 'w');
+  UTL_FILE.PUT_LINE(f, 'EFS attachment validated from ADB-S');
+  UTL_FILE.FCLOSE(f);
+EXCEPTION WHEN OTHERS THEN
+  IF UTL_FILE.IS_OPEN(f) THEN UTL_FILE.FCLOSE(f); END IF;
+  RAISE;
+END;
+/
+```
+
+Require `PL/SQL procedure successfully completed`, then confirm the file exists:
+
+```sql
+SELECT object_name, bytes FROM DBMS_CLOUD.LIST_FILES('ZDM_EFS_DIR')
+WHERE object_name = 'participant_validation.txt';
+```
+
+Return to the EC2 shell:
+
+```sql
+EXIT
+```
+
+First, the target ADB-S write completes:
+
+![ADB-S UTL_FILE write to participant_validation.txt completes successfully](./images/efs-target-write-proof.png)
+
+In the **`oracle` EC2 shell**, go to the EFS mount:
+
+```bash
+cd /data/oracle/efs
+```
+
+Read the file written by ADB-S:
+
+```bash
+cat participant_validation.txt
+```
+
+Expect `EFS attachment validated from ADB-S`. Leave the file in place.
+
+![EC2 reads EFS attachment validated from ADB-S from the shared file](./images/efs-source-read-proof.png)
+
+Stop if the write or read fails or hangs; do not start migration or repeat blocked I/O calls.
 
 ## Acknowledgements
 
-* **Author** - Workshop team
-* **Last Updated By/Date** - Workshop team / September 8, 2026
+* **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
+* **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026

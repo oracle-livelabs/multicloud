@@ -18,7 +18,13 @@ Estimated Time: 5 minutes
 
 1. Login to **Microsoft Foundry** | **Azure Machine Learning** studio and select **Notebooks**. Navigate to your folder and open the **`01_load_product_sample_data.ipynb`** notebook.
 
-2. Update `ADB_NAME` by replacing `<xxx>` with the last three digits of your username. Save the notebook, select **Authenticate**, and then run the cells in order.
+2. Update `ADB_NAME` by replacing `<xxx>` with the last three digits of your username. Save the notebook, then complete the authentication checkpoint below.
+
+    <div role="note" aria-label="Required notebook authentication checkpoint" style="box-sizing: border-box; max-width: 54rem; border-left: 5px solid #ae562c; background: linear-gradient(90deg, #f5f2ef 0%, rgba(245, 242, 239, 0.35) 75%, rgba(245, 242, 239, 0) 100%); color: #312d2a; padding: 16px 20px; margin: 16px 0 24px;">
+    <p style="margin: 0 0 10px; font-size: 1.1em; font-weight: 700;"><span aria-hidden="true" style="color: #ae562c;">⚠</span> Stop here — wait for authentication to succeed</p>
+    <p style="margin: 0 0 12px;">Click <strong>Authenticate</strong> above the notebook and wait for the success confirmation. If authentication fails, wait briefly, then click <strong>Authenticate</strong> again. Do not skip this step or run notebook cells while authentication is incomplete.</p>
+    <p style="margin: 0;"><strong>Continue only when:</strong> authentication has succeeded. Then run the notebook cells in order.</p>
+    </div>
 
     ![Sample product data notebook screen 1 in Azure Machine Learning Studio](images/sample-data-01.png)
 

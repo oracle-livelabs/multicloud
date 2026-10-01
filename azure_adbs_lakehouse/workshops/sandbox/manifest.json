@@ -1,0 +1,49 @@
+{
+    "workshoptitle": "Build a Data Lake with Autonomous AI Lakehouse",
+    "help": "livelabs-help-db_us@oracle.com",
+    "tutorials": [
+        {
+            "title": "Introduction",
+            "description": "Learn about the workshop architecture and objectives",
+            "filename": "../../introduction/introduction.md"
+        },
+        {
+            "title": "Getting Started",
+            "description": "Access the Azure event environment",
+            "filename": "../../getting-started/getting-started.md"
+        },
+        {
+            "title": "Lab 1: Connect to Autonomous AI Database Lakehouse",
+            "description": "Download the wallet and configure SQL Developer",
+            "filename": "../../connect-to-lakehouse/connect-to-lakehouse.md"
+        },
+        {
+            "title": "Lab 2: Create the Azure Storage Credential",
+            "description": "Give Autonomous AI Database access to Azure Blob Storage",
+            "filename": "../../create-storage-credential/create-storage-credential.md"
+        },
+        {
+            "title": "Lab 3: Create External Tables and Views",
+            "description": "Query CSV and JSON files in Azure Blob Storage",
+            "filename": "../../create-external-tables/create-external-tables.md"
+        },
+        {
+            "title": "Lab 4: Configure Select AI",
+            "description": "Connect Select AI to Azure OpenAI",
+            "filename": "../../configure-select-ai/configure-select-ai.md"
+        },
+        {
+            "title": "Lab 5: Query the Lakehouse with Select AI",
+            "description": "Generate and run SQL from natural-language prompts",
+            "filename": "../../query-lakehouse/query-lakehouse.md"
+        },
+        {
+            "title": "Congratulations",
+            "description": "Review what you accomplished",
+            "filename": "../../conclusion/conclusion.md"
+        }
+    ],
+    "include": {
+        "connect-windows": "/multicloud/azure_adbs_lakehouse/shared/connect-windows.txt"
+    }
+}

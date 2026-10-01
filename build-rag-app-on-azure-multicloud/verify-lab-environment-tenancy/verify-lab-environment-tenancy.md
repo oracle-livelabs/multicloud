@@ -74,7 +74,13 @@ Verify each resource before you provision Oracle Autonomous AI Database.
 
     ![Azure portal workshop environment verification screen 13](images/verify-lab-environment-13.png)
 
-7. This opens a new tab and takes you to the **Chat playground** page within the **Microsoft Foundry** | **Azure OpenAI** portal.
+7. The **Microsoft Foundry** | **Azure OpenAI** portal opens in a new tab. Check the **New Foundry** switch before continuing.
+
+    <div role="note" aria-label="Required Foundry interface checkpoint" style="box-sizing: border-box; max-width: 54rem; border-left: 5px solid #ae562c; background: linear-gradient(90deg, #f5f2ef 0%, rgba(245, 242, 239, 0.35) 75%, rgba(245, 242, 239, 0) 100%); color: #312d2a; padding: 16px 20px; margin: 16px 0 24px;">
+    <p style="margin: 0 0 10px; font-size: 1.1em; font-weight: 700;"><span aria-hidden="true" style="color: #ae562c;">⚠</span> Stop here — turn New Foundry off</p>
+    <p style="margin: 0 0 12px;">Find the <strong>New Foundry</strong> switch at the top of the portal and turn it <strong>Off</strong>. It may be on by default. This lab uses the interface shown below; leaving the switch on changes the navigation.</p>
+    <p style="margin: 0;"><strong>Continue only when:</strong> <strong>New Foundry</strong> is <strong>Off</strong> and the <strong>Chat playground</strong> is visible.</p>
+    </div>
 
     ![Azure portal workshop environment verification screen 14](images/verify-lab-environment-14.png)
 

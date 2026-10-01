@@ -1,0 +1,22 @@
+1. In the [Azure portal](https://portal.azure.com), enter **Virtual machines** in the search bar, and select **Virtual machines** from the results.
+
+    ![Search for Virtual machines in Azure](../getting-started/images/search-virtual-machines.png " ")
+
+2. Select the Windows virtual machine for your workshop. For an event account, match the assigned user number in **View Login Info**. For a customer tenancy, select the VM you created during setup, using the `VM_NAME` value you recorded.
+
+    ![Select your workshop Windows virtual machine](../getting-started/images/select-virtual-machine.png " ")
+
+3. On the virtual machine page, expand **Connect**, select **Connect**, and locate **Connect using RDP file**.
+
+    ![Connect to the virtual machine with RDP](../getting-started/images/connect-rdp.png " ")
+
+4. Select **Download RDP File**. When the download completes, open the `.rdp` file with your Remote Desktop client.
+
+5. If a connection or certificate warning appears, verify that the destination matches your workshop VM before continuing.
+
+6. Enter `azureuser` as the user name and the Windows VM password. Event attendees obtain the password from **View Login Info**; customer-tenancy participants use the password chosen during setup.
+
+7. Keep the remote desktop session open. Run SQL Developer and the remaining labs inside this Windows VM.
+
+8. Confirm that `C:\software\sqldeveloper\sqldeveloper.exe` is available. It is preinstalled on event VMs. If you created your own VM, download the [SQL Developer installation script](../getting-started-tenancy/files/install-sql-developer.ps1) inside the VM, open it in PowerShell ISE, and run it there. The script installs SQL Developer at this path and starts it; do not run it in Azure Cloud Shell.
+
