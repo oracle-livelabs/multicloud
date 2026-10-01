@@ -56,7 +56,9 @@ In this lab, you will:
     - Contains a read-only `SELECT` statement
     - Joins columns that represent the requested business relationship
 
-3. If the generated SQL is appropriate, run the same prompt with the `runsql` action:
+3. If the generated SQL is appropriate, copy that statement into a new `LAKE_DEMO` worksheet and run it to execute the exact query you reviewed.
+
+4. To generate and run a query in one request, use the same prompt with the `runsql` action. Its SQL can differ from the earlier `showsql` result.
 
     ```sql
     SELECT DBMS_CLOUD_AI.GENERATE(
@@ -67,7 +69,7 @@ In this lab, you will:
     FROM DUAL;
     ```
 
-> **Note:** Generative AI output can vary. Always review generated SQL before using `runsql`.
+    > **Note:** Generative AI output can vary. Use `showsql` and run the reviewed statement directly when you need to control the exact SQL that executes.
 
 ## Task 3: Explore Additional Questions
 
@@ -82,7 +84,18 @@ In this lab, you will:
     FROM DUAL;
     ```
 
-2. After the profile is active, you can also use the `SELECT AI SHOWSQL` syntax. Try one or more of these questions:
+2. Ask a question that joins customer education with movie viewing:
+
+    ```sql
+    SELECT DBMS_CLOUD_AI.GENERATE(
+      prompt       => 'Which movie was watched most often by customers with a Doctorate education?',
+      profile_name => 'LAKEHOUSE_AZURE_OPENAI',
+      action       => 'showsql'
+    ) AS generated_sql
+    FROM DUAL;
+    ```
+
+3. After the profile is active, you can also use the `SELECT AI SHOWSQL` syntax. Try one or more of these questions:
 
     ```sql
     SELECT AI SHOWSQL 'Show total actual sales revenue, transaction count, and average actual price by customer country and genre name, ordered by revenue descending.';
@@ -106,7 +119,7 @@ In this lab, you will:
     SELECT AI SHOWSQL 'For customers with insufficient funds incidents or late mortgage or rent payments, show transaction count, revenue, average discount, and preferred genre compared with other customers.';
     ```
 
-3. For each prompt, review the generated SQL and identify the tables, views, joins, filters, and aggregations Select AI chose.
+4. For each prompt, review the generated SQL and identify the tables, views, joins, filters, and aggregations Select AI chose. Check that customer and sales joins use `CUST_ID`, movie joins use `MOVIE_ID`, and revenue uses the sales data requested by the prompt.
 
 ## Acknowledgements
 

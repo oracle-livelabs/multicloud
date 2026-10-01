@@ -4,7 +4,7 @@
 
 Oracle Autonomous AI Database Lakehouse on Oracle AI Database@Azure provides a governed lakehouse close to Azure applications. It combines Autonomous AI Database performance, security, and automated management with access to data in Azure Blob Storage.
 
-In this workshop, you connect to a pre-provisioned Autonomous AI Database, expose CSV and JSON files in Azure Blob Storage as external tables, create relational views over JSON data, and use Select AI with Azure OpenAI to generate SQL from natural-language questions.
+In the provided-tenancy track, you use the Azure event account and resources prepared for you. You connect to a pre-provisioned Autonomous AI Database, expose CSV and JSON files in Azure Blob Storage as external tables, create relational views over JSON data, and use Select AI with Azure OpenAI to generate SQL from natural-language questions.
 
 ![Autonomous AI Lakehouse architecture](images/lakehouse-architecture.png " ")
 

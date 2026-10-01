@@ -31,7 +31,11 @@ In this lab, you will:
 
 4. Copy the Azure user name from **View Login Info**, paste it into the sign-in page, and select **Next**.
 
+    ![Enter your assigned Azure event user name](images/azure-username.png " ")
+
 5. Copy the Azure password from **View Login Info**, paste it into the password field, and select **Sign in**.
+
+    ![Enter your Azure event password and sign in](images/azure-password.png " ")
 
 > **Note:** These event credentials are temporary. Use only the resources assigned to your account.
 
@@ -49,7 +53,7 @@ In this lab, you will:
 
     ![Set up the account in Microsoft Authenticator](images/set-up-authenticator.png " ")
 
-4. In Microsoft Authenticator, select the QR-code icon or **Add account**, choose **Work or school account**, and scan the QR code displayed in your browser.
+4. In Microsoft Authenticator, select the QR-code icon or **Add account**, choose **Work or school account**, and scan the QR code displayed in your own browser. Use your current enrollment code, not a code from a screenshot.
 
     ![QR-code icon in Microsoft Authenticator](images/authenticator-qr-icon.png " ")
 
@@ -71,27 +75,13 @@ In this lab, you will:
 
     ![Azure portal home page](images/azure-portal.png " ")
 
+9. Record the resource values supplied by the facilitator for the shared labs: database name, storage account name, storage container name, Azure OpenAI resource name, and deployment name. Keep the `ADMIN`, `LAKE_DEMO`, and Windows passwords and the two service keys available through the event's credential process. Ask the facilitator for any value missing from **View Login Info**.
+
+    Guide examples use `hollakehouse` / `lakehouse-data` for storage and `lab-lakehous-open-ai` / `lablakehouse-nlp` for Azure OpenAI. Use the resources assigned to your event if their names differ.
+
 ## Task 3: Connect to the Windows Virtual Machine
 
-1. In the Azure portal search bar, enter **Virtual machines**, and select **Virtual machines** from the results.
-
-    ![Search for Virtual machines in Azure](images/search-virtual-machines.png " ")
-
-2. Select the virtual machine whose name matches the user number shown in **View Login Info**.
-
-    ![Select the assigned virtual machine](images/select-virtual-machine.png " ")
-
-3. On the virtual machine page, expand **Connect**, select **Connect**, and locate **Connect using RDP file**.
-
-    ![Connect to the virtual machine with RDP](images/connect-rdp.png " ")
-
-4. Select **Download RDP File**. When the download completes, open the `.rdp` file.
-
-5. If a security warning appears, confirm that you want to connect.
-
-6. Enter `azureuser` as the user name. Copy the Windows virtual machine password from **View Login Info**, paste it into the password field, and select **OK**.
-
-7. Accept the certificate warning if prompted. Keep the remote desktop session open for the remaining labs.
+[](include:connect-windows)
 
 ## Acknowledgements
 

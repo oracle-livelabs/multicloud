@@ -4,13 +4,13 @@
     "tutorials": [
         {
             "title": "Introduction",
-            "description": "Learn about the workshop architecture and objectives",
-            "filename": "../../introduction/introduction.md"
+            "description": "Review the customer-tenancy workshop and prerequisites",
+            "filename": "../../introduction-tenancy/introduction-tenancy.md"
         },
         {
             "title": "Getting Started",
-            "description": "Access the Azure event environment",
-            "filename": "../../getting-started/getting-started.md"
+            "description": "Provision the customer environment and connect to the Windows VM",
+            "filename": "../../getting-started-tenancy/getting-started-tenancy.md"
         },
         {
             "title": "Lab 1: Connect to Autonomous AI Database Lakehouse",

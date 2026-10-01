@@ -23,14 +23,23 @@ The completed model combines three external data sources with pre-created dimens
 
 1. In SQL Developer, open a worksheet for the `LAKE_DEMO` connection.
 
-2. Run the following script to create `CUSTOMER_EXT` over the customer CSV file:
+2. Use **Run Script (F5)** to enter the storage account and container you verified in the previous lab. Use your assigned values or the values recorded during your own-account setup.
+
+    ```sql
+    SET DEFINE ON
+    SET VERIFY OFF
+    ACCEPT storage_account CHAR PROMPT 'Azure Storage account name: '
+    ACCEPT storage_container CHAR PROMPT 'Azure Storage container name: '
+    ```
+
+3. In the same worksheet, use **Run Script (F5)** to create `CUSTOMER_EXT` over the customer CSV file. Keep the storage substitutions available for all three external-table scripts in this lab.
 
     ```sql
     BEGIN
       DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
         table_name      => 'CUSTOMER_EXT',
         credential_name => 'AZURE_BLOB_CRED',
-        file_uri_list   => 'https://holstac.blob.core.windows.net/hol-lab/data/customer.csv',
+        file_uri_list   => 'https://&storage_account..blob.core.windows.net/&storage_container./data/customer.csv',
         column_list     => q'[
           "CUST_ID"                NUMBER,
           "LAST_NAME"              VARCHAR2(327),
@@ -80,7 +89,7 @@ The completed model combines three external data sources with pre-created dimens
     /
     ```
 
-3. Preview the data:
+4. Preview the data:
 
     ```sql
     SELECT *
@@ -90,14 +99,14 @@ The completed model combines three external data sources with pre-created dimens
 
 ## Task 2: Create the Sales External Table
 
-1. Run the following script. The wildcard reads all files in the `custsales` path:
+1. Use **Run Script (F5)** in the same worksheet. The wildcard reads all files under `data/custsales/` in your container:
 
     ```sql
     BEGIN
       DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
         table_name      => 'CUST_SALES_EXT',
         credential_name => 'AZURE_BLOB_CRED',
-        file_uri_list   => 'https://holstac.blob.core.windows.net/hol-lab/data/custsales/*',
+        file_uri_list   => 'https://&storage_account..blob.core.windows.net/&storage_container./data/custsales/*',
         column_list     => q'[
           "DAY_ID"           DATE,
           "GENRE_ID"         NUMBER,
@@ -133,14 +142,14 @@ The completed model combines three external data sources with pre-created dimens
 
 ## Task 3: Create the Movie External Table and Views
 
-1. Create an external table in which each row contains one JSON movie document:
+1. Use **Run Script (F5)** to create an external table in which each row contains one JSON movie document:
 
     ```sql
     BEGIN
       DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
         table_name      => 'MOVIES_JSON_EXT',
         credential_name => 'AZURE_BLOB_CRED',
-        file_uri_list   => 'https://holstac.blob.core.windows.net/hol-lab/data/movies.json',
+        file_uri_list   => 'https://&storage_account..blob.core.windows.net/&storage_container./data/movies.json',
         column_list     => 'MOVIE_JSON CLOB',
         field_list      => '"MOVIE_JSON" CHAR(10000)',
         format          => JSON_OBJECT('delimiter' VALUE 'X''00''')
