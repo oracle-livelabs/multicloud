@@ -3,13 +3,18 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
+            "title": "Overview",
+            "description": "Review the workshop objectives and prerequisites",
+            "filename": "../../overview/overview.md"
+        },
+        {
             "title": "Introduction",
-            "description": "Learn about the workshop architecture and objectives",
+            "description": "Explore the architecture and workshop components",
             "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Getting Started",
-            "description": "Access the Azure event environment",
+            "title": "Azure Event Account",
+            "description": "Access the Azure event account and assigned Windows VM",
             "filename": "../../getting-started/getting-started.md"
         },
         {

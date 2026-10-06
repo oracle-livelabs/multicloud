@@ -9,6 +9,12 @@
             "filename": "../../introduction/introduction.md"
         },
         {
+            "title": "AWS Event Account",
+            "description": "Access the temporary AWS workshop account",
+            "type": "livelabs",
+            "filename": "../../aws-event-account/aws-event-account.md"
+        },
+        {
             "title": "Lab 1: Confirm the Migration Architecture and Preflight Checks",
             "description": "",
             "type": "livelabs",
