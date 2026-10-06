@@ -12,228 +12,297 @@ Identify your assigned resources, verify source access, and confirm readiness be
 
 ## Task 1: Load Your Assigned Environment
 
-Open your assigned EC2 Session Manager session from the EC2 console, or run this in **AWS CloudShell as `cloudshell-user`**. Enter your assigned instance ID, not another participant's instance:
+1. Open your assigned EC2 Session Manager session from the EC2 console, or follow these steps in **AWS CloudShell as `cloudshell-user`**. Replace `YOUR_ASSIGNED_INSTANCE_ID` with the EC2 instance ID provided for your lab. Do not use another participant's instance ID.
 
-```bash
-read -rp "Assigned EC2 instance ID: " ASSIGNED_INSTANCE_ID
-aws ssm start-session --region us-west-2 --target "$ASSIGNED_INSTANCE_ID"
-```
+    ```bash
+    <copy>
+    export ASSIGNED_INSTANCE_ID="YOUR_ASSIGNED_INSTANCE_ID"
+    </copy>
+    ```
 
-The following commands run on **the assigned EC2**, not CloudShell or the runner. At the **Linux shell as `ssm-user`**, switch to `oracle`:
+2. Start the Session Manager connection in a separate command.
 
-```bash
-sudo -iu oracle
-```
+    ```bash
+    <copy>
+    aws ssm start-session --region us-west-2 --target "$ASSIGNED_INSTANCE_ID"
+    </copy>
+    ```
 
-Load the source and assigned lab environments in the **`oracle` shell**:
+    Expect `Starting session with SessionId:` followed by the EC2 shell prompt, usually `sh-4.4$`.
 
-```bash
-source "$HOME/env/source19c.env"
-source /etc/profile.d/zdm26.sh
-source /data/oracle/lab/config/lab-env.sh
-export ZDMCLI="$ZDM_HOME/bin/zdmcli"
-```
+3. Run the remaining commands on **the assigned EC2**, not CloudShell or the runner. At the Linux shell as `ssm-user`, switch to `oracle`.
 
-Print your lab assignment. Check that the Lab ID and target are the ones assigned to you:
+    ```bash
+    <copy>
+    sudo -iu oracle
+    </copy>
+    ```
 
-```bash
-printf 'Lab=%s\nRegion=%s\nSource=%s\nTarget=%s\nEFS=%s\n' \
-  "$LAB_ID" "$AWS_REGION" "$SOURCE_PRIVATE_IP" "$TARGET_HOST" "$EFS_DNS"
-```
+4. Load the source and assigned lab environments in the **`oracle` shell**.
 
-Check that the ZDM executable and response file are accessible:
+    ```bash
+    <copy>
+    source "$HOME/env/source19c.env"
+    source /etc/profile.d/zdm26.sh
+    source /data/oracle/lab/config/lab-env.sh
+    export ZDMCLI="$ZDM_HOME/bin/zdmcli"
+    </copy>
+    ```
 
-```bash
-test -x "$ZDMCLI" && test -r "$ZDM_RESPONSE_FILE"
-```
+5. Print your lab assignment. Check that the Lab ID and target are the ones assigned to you.
 
-Validate the generated ZDM response file. Require the final `ZDM_RESPONSE_VALID` marker:
+    ```bash
+    <copy>
+    printf 'Lab=%s\nRegion=%s\nSource=%s\nTarget=%s\nEFS=%s\n' \
+      "$LAB_ID" "$AWS_REGION" "$SOURCE_PRIVATE_IP" "$TARGET_HOST" "$EFS_DNS"
+    </copy>
+    ```
 
-```bash
-/data/oracle/lab/bin/validate-zdm-response.sh
-```
+6. Check that the ZDM executable and response file are accessible.
 
-Stop if a value is blank, the Lab ID is wrong, or validation fails. A missing validator means provisioning is incomplete. Do not source CloudShell provisioning environments on EC2.
+    ```bash
+    <copy>
+    test -x "$ZDMCLI" && test -r "$ZDM_RESPONSE_FILE"
+    </copy>
+    ```
 
-Confirm the user and Oracle environment:
+7. Validate the generated ZDM response file. Require the final `ZDM_RESPONSE_VALID` marker.
 
-```bash
-printf 'OS_USER=%s\nORACLE_SID=%s\nZDM_HOME=%s\nTARGET_ALIAS=%s\n' \
-  "$(whoami)" "$ORACLE_SID" "$ZDM_HOME" "$TARGET_ALIAS"
-```
+    ```bash
+    <copy>
+    /data/oracle/lab/bin/validate-zdm-response.sh
+    </copy>
+    ```
 
-Example from Lab 101: the OS user is `oracle`, the source SID is `SOURCE19C`, and the target alias belongs to the assigned lab. Hostnames, IDs, paths, and addresses in screenshots are examples, not values to copy into another lab.
+    Stop if a value is blank, the Lab ID is wrong, or validation fails. A missing validator means provisioning is incomplete. Do not source CloudShell provisioning environments on EC2.
 
-![Lab 101 Oracle user, source SID, ZDM home and target alias](./images/participant-environment.png)
+8. Confirm the user and Oracle environment.
+
+    ```bash
+    <copy>
+    printf 'OS_USER=%s\nORACLE_SID=%s\nZDM_HOME=%s\nTARGET_ALIAS=%s\n' \
+      "$(whoami)" "$ORACLE_SID" "$ZDM_HOME" "$TARGET_ALIAS"
+    </copy>
+    ```
+
+    Example from Lab 101: the OS user is `oracle`, the source SID is `SOURCE19C`, and the target alias belongs to the assigned lab. Hostnames, IDs, paths, and addresses in screenshots are examples, not values to copy into another lab.
+
+    ![Lab 101 Oracle user, source SID, ZDM home and target alias](./images/participant-environment.png)
 
 ## Task 2: Verify Source SSH
 
-Run as `oracle`. The key belongs to this instance:
+1. Run as `oracle` and confirm that the key belonging to this instance exists.
 
-```bash
-export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
-test -s "$ZDM_SOURCE_SSH_KEY" && echo "PASS: key exists"
-```
+    ```bash
+    <copy>
+    export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
+    test -s "$ZDM_SOURCE_SSH_KEY" && echo "PASS: key exists"
+    </copy>
+    ```
 
-Test same-host SSH and the switch to `oracle`:
+2. Test same-host SSH and the switch to `oracle`.
 
-```bash
-ssh -i "$ZDM_SOURCE_SSH_KEY" -o BatchMode=yes \
-  -o StrictHostKeyChecking=yes "ec2-user@$(hostname -f)" \
-  'whoami; sudo -n -iu oracle whoami'
-```
+    ```bash
+    <copy>
+    ssh -i "$ZDM_SOURCE_SSH_KEY" -o BatchMode=yes \
+      -o StrictHostKeyChecking=yes "ec2-user@$(hostname -f)" \
+      'whoami; sudo -n -iu oracle whoami'
+    </copy>
+    ```
 
-Expect `ec2-user`, then `oracle`. If the key or verified host-key entry is missing, ask the instructor to repair provisioning. Do not disable host-key checks or copy private keys.
+    Expect `ec2-user`, then `oracle`. If the key or verified host-key entry is missing, ask the instructor to repair provisioning. Do not disable host-key checks or copy private keys.
 
 ## Task 3: Verify the Source Database
 
-At the **`oracle` shell**, open the source database:
+1. At the **`oracle` shell**, open the source database.
 
-```bash
-sqlplus / as sysdba
-```
+    ```bash
+    <copy>
+    sqlplus / as sysdba
+    </copy>
+    ```
 
-At `SQL>` (do not paste shell commands here):
+2. At `SQL>` (do not paste shell commands here), check the database state.
 
-```sql
-SET LINESIZE 220
-SET PAGESIZE 100
-SELECT instance_name, host_name, status, database_status FROM v$instance;
-SELECT name, open_mode, log_mode, cdb, force_logging,
-       supplemental_log_data_min FROM v$database;
-```
+    ```sql
+    <copy>
+    SET LINESIZE 220
+    SET PAGESIZE 100
+    SELECT instance_name, host_name, status, database_status FROM v$instance;
+    SELECT name, open_mode, log_mode, cdb, force_logging,
+           supplemental_log_data_min FROM v$database;
+    </copy>
+    ```
 
-At **source `SQL>`**, check the replication and memory settings without changing them:
+3. At **source `SQL>`**, check the replication and memory settings without changing them.
 
-```sql
-SHOW PARAMETER enable_goldengate_replication
-SHOW PARAMETER sga_target
-SHOW PARAMETER sga_max_size
-SHOW PARAMETER streams_pool_size
-```
+    ```sql
+    <copy>
+    SHOW PARAMETER enable_goldengate_replication
+    SHOW PARAMETER sga_target
+    SHOW PARAMETER sga_max_size
+    SHOW PARAMETER streams_pool_size
+    </copy>
+    ```
 
-Check the source accounts and record the initial row count:
+4. Check the source accounts and record the initial row count.
 
-```sql
-SELECT username, account_status FROM dba_users
-WHERE username IN ('SYSTEM','GGADMIN','FINANCE') ORDER BY username;
-SELECT COUNT(*) AS source_baseline FROM finance.accounts;
-```
+    ```sql
+    <copy>
+    SELECT username, account_status FROM dba_users
+    WHERE username IN ('SYSTEM','GGADMIN','FINANCE') ORDER BY username;
+    SELECT COUNT(*) AS source_baseline FROM finance.accounts;
+    </copy>
+    ```
 
-Return to the **`oracle` shell**:
+5. Return to the **`oracle` shell**.
 
-```sql
-EXIT
-```
+    ```sql
+    <copy>
+    EXIT
+    </copy>
+    ```
 
-Expect OPEN/ACTIVE, READ WRITE, ARCHIVELOG, FORCE_LOGGING=YES, supplemental logging enabled, replication enabled, and the listed accounts open. Record the count. Memory queries are read-only diagnostics; do not change parameters or reset passwords.
+6. Verify the results. Expect OPEN/ACTIVE, READ WRITE, ARCHIVELOG, FORCE_LOGGING=YES, supplemental logging enabled, replication enabled, and the listed accounts open. Record the count. Memory queries are read-only diagnostics; do not change parameters or reset passwords.
 
-Source database state (Lab 101 example):
+    Source database state (Lab 101 example):
 
-![Source database open and active with archive logging enabled](./images/source-database-ready.png)
+    ![Source database open and active with archive logging enabled](./images/source-database-ready.png)
 
-GoldenGate replication setting:
+    GoldenGate replication setting:
 
-![Source enable_goldengate_replication is TRUE](./images/source-replication-enabled.png)
+    ![Source enable_goldengate_replication is TRUE](./images/source-replication-enabled.png)
 
-Account status:
+    Account status:
 
-![Source FINANCE, GGADMIN and SYSTEM accounts are OPEN](./images/source-accounts-open.png)
+    ![Source FINANCE, GGADMIN and SYSTEM accounts are OPEN](./images/source-accounts-open.png)
 
 ## Task 4: Check Network and Service Readiness
 
-Run these read-only connectivity checks from the **`oracle` EC2 shell**:
+1. Run these read-only DNS checks from the **`oracle` EC2 shell**.
 
-```bash
-getent hosts "$TARGET_HOST"
-getent hosts "$EFS_DNS"
-```
+    ```bash
+    <copy>
+    getent hosts "$TARGET_HOST"
+    getent hosts "$EFS_DNS"
+    </copy>
+    ```
 
-Check the database and NFS ports:
+2. Check the target database on port 1521. These checks use Bash instead of `nc`, which is not installed on the lab instances.
 
-```bash
-nc -vz -w 5 "$TARGET_HOST" 1521
-nc -vz -w 5 "$TARGET_HOST" 1522
-nc -vz -w 5 "$EFS_DNS" 2049
-```
+    ```bash
+    <copy>
+    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$TARGET_HOST" 1521 \
+      && echo "PASS: target port 1521 reachable" \
+      || echo "FAIL: target port 1521 — check DNS, routing, and security rules"
+    </copy>
+    ```
 
-Check the ZDM service:
+3. Check the target database on port 1522.
 
-```bash
-"$ZDM_HOME/bin/zdmservice" status
-```
+    ```bash
+    <copy>
+    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$TARGET_HOST" 1522 \
+      && echo "PASS: target port 1522 reachable" \
+      || echo "FAIL: target port 1522 — check DNS, routing, and security rules"
+    </copy>
+    ```
 
-ZDM evaluation in Lab 3 checks the GoldenGate deployment and database connectivity. Stop here if a connectivity or service check fails.
+4. Check EFS on port 2049.
 
-### Check the Rootless Podman Container
+    ```bash
+    <copy>
+    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$EFS_DNS" 2049 \
+      && echo "PASS: EFS port 2049 reachable" \
+      || echo "FAIL: EFS port 2049 — check DNS, routing, and security rules"
+    </copy>
+    ```
 
-Return from the `oracle` login shell to **`ssm-user`** with `exit`. If already `ssm-user`, do not exit the Session Manager session. Confirm with `whoami`, then run:
+    Expect `PASS` from each check before proceeding. These checks verify TCP connectivity only, not database authentication or EFS mount readiness.
 
-```bash
-exit
-```
+5. Check the ZDM service.
 
-Confirm the current user before checking the container:
+    ```bash
+    <copy>
+    "$ZDM_HOME/bin/zdmservice" status
+    </copy>
+    ```
 
-```bash
-whoami
-```
+    ZDM evaluation in Lab 3 checks the GoldenGate deployment and database connectivity. Stop here if a connectivity or service check fails.
 
-Run Podman as the container owner, `ec2-user`:
+6. Return from the `oracle` login shell to **`ssm-user`** with `exit`. If already `ssm-user`, do not exit the Session Manager session.
 
-```bash
-OGG_UID="$(id -u ec2-user)"
-OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
-sudo -u ec2-user env \
-  HOME=/home/ec2-user \
-  XDG_RUNTIME_DIR="$OGG_RUNTIME" \
-  podman ps
-```
+    ```bash
+    <copy>
+    exit
+    </copy>
+    ```
 
-The container owner is `ec2-user`; expect `oggfree` to report `Up`.
+7. Confirm the current user before checking the rootless Podman container.
 
-![GoldenGate oggfree container reports Up](./images/goldengate-container-running.png)
+    ```bash
+    <copy>
+    whoami
+    </copy>
+    ```
 
-### Validate the Wallet Inside GoldenGate
+8. Run Podman as the container owner, `ec2-user`.
 
-Run in the same **`ssm-user` shell**:
+    ```bash
+    <copy>
+    OGG_UID="$(id -u ec2-user)"
+    OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
+    sudo -u ec2-user env \
+      HOME=/home/ec2-user \
+      XDG_RUNTIME_DIR="$OGG_RUNTIME" \
+      podman ps
+    </copy>
+    ```
 
-```bash
-OGG_UID="$(id -u ec2-user)"
-OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
-sudo -u ec2-user env \
-  HOME=/home/ec2-user \
-  XDG_RUNTIME_DIR="$OGG_RUNTIME" \
-  podman exec oggfree sh -lc '
-    set -e
-    ls -l /u02/Deployment/etc/adb
-    test -s /u02/Deployment/etc/adb/cwallet.sso
-    test -s /u02/Deployment/etc/adb/ewallet.p12
-    grep -F "/u02/Deployment/etc/adb" \
-      /u02/Deployment/etc/adb/sqlnet.ora
-    echo "PASS: GoldenGate wallet is ready"
-  '
-```
+    The container owner is `ec2-user`; expect `oggfree` to report `Up`.
 
-![GoldenGate wallet files and wallet readiness PASS](./images/goldengate-wallet-ready.png)
+    ![GoldenGate oggfree container reports Up](./images/goldengate-container-running.png)
 
-### Check the GoldenGate Endpoint
+9. Validate the wallet inside GoldenGate from the same **`ssm-user` shell**.
 
-From **`ssm-user`**, run the local check as `ec2-user`:
+    ```bash
+    <copy>
+    OGG_UID="$(id -u ec2-user)"
+    OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
+    sudo -u ec2-user env \
+      HOME=/home/ec2-user \
+      XDG_RUNTIME_DIR="$OGG_RUNTIME" \
+      podman exec oggfree sh -lc '
+        set -e
+        ls -l /u02/Deployment/etc/adb
+        test -s /u02/Deployment/etc/adb/cwallet.sso
+        test -s /u02/Deployment/etc/adb/ewallet.p12
+        grep -F "/u02/Deployment/etc/adb" \
+          /u02/Deployment/etc/adb/sqlnet.ora
+        echo "PASS: GoldenGate wallet is ready"
+      '
+    </copy>
+    ```
 
-```bash
-sudo -u ec2-user curl -k -sS -o /dev/null \
-  -w 'GoldenGate HTTP=%{http_code}\n' \
-  https://127.0.0.1:8443/services/v2/config/health
-```
+    ![GoldenGate wallet files and wallet readiness PASS](./images/goldengate-wallet-ready.png)
 
-`-k` is limited to this localhost diagnostic against the workshop's self-signed certificate; do not use it to relax other connection checks.
+10. From **`ssm-user`**, check the GoldenGate endpoint as `ec2-user`.
 
-![Unauthenticated GoldenGate endpoint request returns HTTP 401](./images/goldengate-endpoint-response.png)
+    ```bash
+    <copy>
+    sudo -u ec2-user curl -k -sS -o /dev/null \
+      -w 'GoldenGate HTTP=%{http_code}\n' \
+      https://127.0.0.1:8443/services/v2/config/health
+    </copy>
+    ```
 
-HTTP `200` or `401` demonstrates that the endpoint answered; `401` does not prove authenticated GoldenGate readiness. Use ZDM evaluation as well. Do not rerun provisioning or change container settings.
+    `-k` is limited to this localhost diagnostic against the workshop's self-signed certificate; do not use it to relax other connection checks.
 
-Remain in the **`ssm-user` shell** for Lab 2. EC2 connectivity does not prove ADB-to-EFS connectivity; Lab 2 tests that path. Stop on failed checks rather than changing the provisioned infrastructure.
+    ![Unauthenticated GoldenGate endpoint request returns HTTP 401](./images/goldengate-endpoint-response.png)
+
+    HTTP `200` or `401` demonstrates that the endpoint answered; `401` does not prove authenticated GoldenGate readiness. Use ZDM evaluation as well. Do not rerun provisioning or change container settings.
+
+11. Remain in the **`ssm-user` shell** for Lab 2. EC2 connectivity does not prove ADB-to-EFS connectivity; Lab 2 tests that path. Stop on failed checks rather than changing the provisioned infrastructure.
 
 ## Acknowledgements
 
