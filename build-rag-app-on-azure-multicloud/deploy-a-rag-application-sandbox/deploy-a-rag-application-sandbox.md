@@ -42,7 +42,7 @@ In this step, you build and deploy the RAG application. To complete the exercise
 
 4. To open the app, open another browser tab and paste the following URL. Replace **xxx** with the last 3 digit of your **Lab user name**. To test database connectivity, select **Test Oracle Connection**.
 
-    [https://lab-aml-ws-compute**xxx**-8501.eastus.instances.azureml.ms/](https://lab-aml-ws-compute002-8501.eastus.instances.azureml.ms/)
+    [https://lab-aml-ws-compute**xxx**-8501.eastus.instances.azureml.ms/](https://lab-aml-ws-computexxx-8501.eastus.instances.azureml.ms/)
 
     ![Retail RAG application deployment and test screen 4](images/deploy-rag-04.png)
 
