@@ -26,7 +26,7 @@ In this lab, you will:
     - Password
     - Assigned AWS Region
 
-> **Note:** These credentials are temporary. Use only the account and resources assigned to you, and do not sign in as the AWS account root user.
+    > **Note:** These credentials are temporary. Use only the account and resources assigned to you, and do not sign in as the AWS account root user.
 
 ## Task 2: Sign In to the AWS Management Console
 

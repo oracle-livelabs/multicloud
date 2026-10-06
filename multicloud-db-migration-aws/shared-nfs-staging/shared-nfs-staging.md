@@ -12,191 +12,237 @@ Confirm the EC2 mount, match target attachment metadata, and verify that a file 
 
 ## Task 1: Check the Source Mount
 
-Before migration, run the provided mount helper from **EC2 Session Manager as `ssm-user`**. If continuing in the `oracle` login shell from Lab 1, use `exit` once to return to `ssm-user`; check `whoami` before proceeding.
+1. Before migration, run the provided mount helper from **EC2 Session Manager as `ssm-user`**. If continuing in the `oracle` login shell from Lab 1, use `exit` once to return to `ssm-user`; check `whoami` before proceeding.
 
-```bash
-sudo /data/oracle/lab/bin/mount-efs.sh
-```
+    ```bash
+    <copy>
+    sudo /data/oracle/lab/bin/mount-efs.sh
+    </copy>
+    ```
 
-Switch to **`oracle`**:
+2. Switch to **`oracle`**.
 
-```bash
-sudo -iu oracle
-```
+    ```bash
+    <copy>
+    sudo -iu oracle
+    </copy>
+    ```
 
-Load the source and assigned lab environments:
+3. Load the source and assigned lab environments.
 
-```bash
-source "$HOME/env/source19c.env"
-source /data/oracle/lab/config/lab-env.sh
-```
+    ```bash
+    <copy>
+    source "$HOME/env/source19c.env"
+    source /data/oracle/lab/config/lab-env.sh
+    </copy>
+    ```
 
-The helper uses the assigned configuration. Do not run it to repair storage during an active migration; escalate instead. Continue at the EC2 shell as **`oracle`**:
+    The helper uses the assigned configuration. Do not run it to repair storage during an active migration; escalate instead.
 
-```bash
-echo "$EFS_DNS"
-echo "$EFS_IP"
-echo "$EFS_MOUNT_POINT"
-```
+4. Continue at the EC2 shell as **`oracle`** and display the assigned EFS values.
 
-Check the filesystem mounted at that path:
+    ```bash
+    <copy>
+    echo "$EFS_DNS"
+    echo "$EFS_IP"
+    echo "$EFS_MOUNT_POINT"
+    </copy>
+    ```
 
-```bash
-findmnt -T "$EFS_MOUNT_POINT" -o TARGET,SOURCE,FSTYPE,OPTIONS
-df -hT "$EFS_MOUNT_POINT"
-```
+5. Check the filesystem mounted at that path.
 
-Check write access for `oracle`:
+    ```bash
+    <copy>
+    findmnt -T "$EFS_MOUNT_POINT" -o TARGET,SOURCE,FSTYPE,OPTIONS
+    df -hT "$EFS_MOUNT_POINT"
+    </copy>
+    ```
 
-```bash
-test -w "$EFS_MOUNT_POINT" && echo "PASS: staging writable"
-```
+6. Check write access for `oracle`.
 
-Confirm NFS/NFS4, the assigned EFS source, and the expected mount path. A local root filesystem is not an EFS mount. Stop if any check fails.
+    ```bash
+    <copy>
+    test -w "$EFS_MOUNT_POINT" && echo "PASS: staging writable"
+    </copy>
+    ```
 
-![Lab 101 assigned EFS hostname, mount and writable status](./images/efs-mount.png)
+    Confirm NFS/NFS4, the assigned EFS source, and the expected mount path. A local root filesystem is not an EFS mount. Stop if any check fails.
 
-Example: Lab 101 uses `/data/oracle/efs`. Use your generated environment values, not the screenshot's filesystem ID or IP. These checks do not require recreating the mount.
+    ![Lab 101 assigned EFS hostname, mount and writable status](./images/efs-mount.png)
 
-```bash
-source "$HOME/env/adbs.env"
-export EFS_NAME="EFS${RESOURCE_LAB_ID:-$LAB_ID}"
-```
+    Example: Lab 101 uses `/data/oracle/efs`. Use your generated environment values, not the screenshot's filesystem ID or IP. These checks do not require recreating the mount.
 
-Print the assigned EFS and target details:
+7. Load the target environment and construct the EFS resource name.
 
-```bash
-printf 'Lab ID: %s\nTarget alias: %s\nEFS name: %s\nEFS ID: %s\nEFS DNS: %s\nEFS IP: %s\nMount: %s\n' \
-  "$LAB_ID" "$TARGET_ALIAS" "$EFS_NAME" "$EFS_ID" \
-  "$EFS_DNS" "$EFS_IP" "$EFS_MOUNT_POINT"
-```
+    ```bash
+    <copy>
+    source "$HOME/env/adbs.env"
+    export EFS_NAME="EFS${RESOURCE_LAB_ID:-$LAB_ID}"
+    </copy>
+    ```
 
-![Lab 101 EFS assignment and target alias](./images/efs-assignment.png)
+8. Print the assigned EFS and target details.
 
-Test write access using `oracle-write-test`. If `oracle-write-test` already exists, stop before running this test.
+    ```bash
+    <copy>
+    printf 'Lab ID: %s\nTarget alias: %s\nEFS name: %s\nEFS ID: %s\nEFS DNS: %s\nEFS IP: %s\nMount: %s\n' \
+      "$LAB_ID" "$TARGET_ALIAS" "$EFS_NAME" "$EFS_ID" \
+      "$EFS_DNS" "$EFS_IP" "$EFS_MOUNT_POINT"
+    </copy>
+    ```
 
-```bash
-touch "$EFS_MOUNT_POINT/oracle-write-test"
-ls -l "$EFS_MOUNT_POINT/oracle-write-test"
-```
+    ![Lab 101 EFS assignment and target alias](./images/efs-assignment.png)
 
-![Oracle creates, lists and removes an EFS write-test file](./images/efs-source-write-test.png)
+9. Test write access using `oracle-write-test`. If `oracle-write-test` already exists, stop before running this test.
 
-Remove the write-test file you just created:
+    ```bash
+    <copy>
+    touch "$EFS_MOUNT_POINT/oracle-write-test"
+    ls -l "$EFS_MOUNT_POINT/oracle-write-test"
+    </copy>
+    ```
 
-```bash
-rm -f "$EFS_MOUNT_POINT/oracle-write-test"
-```
+    ![Oracle creates, lists and removes an EFS write-test file](./images/efs-source-write-test.png)
+
+10. Remove the write-test file you just created.
+
+    ```bash
+    <copy>
+    rm -f "$EFS_MOUNT_POINT/oracle-write-test"
+    </copy>
+    ```
 
 ## Task 2: Check the Target Attachment
 
-At the shell, use the generated SQL alias; enter the password at the prompt:
+1. At the shell, use the generated SQL alias to check connectivity.
 
-```bash
-source "$HOME/env/adbs.env"
-"$ORACLE_HOME/bin/tnsping" "$TARGET_ALIAS"
-```
+    ```bash
+    <copy>
+    source "$HOME/env/adbs.env"
+    "$ORACLE_HOME/bin/tnsping" "$TARGET_ALIAS"
+    </copy>
+    ```
 
-Connect to the target as ADMIN and enter the supplied password at the prompt:
+2. Connect to the target as ADMIN and enter the supplied password at the prompt.
 
-```bash
-sqlplus -L admin@"$TARGET_ALIAS"
-```
+    ```bash
+    <copy>
+    sqlplus -L admin@"$TARGET_ALIAS"
+    </copy>
+    ```
 
-At `SQL>`:
+3. At `SQL>`, display the target identity.
 
-```sql
-SET LINESIZE 220
-SET PAGESIZE 100
-COLUMN file_system_name FORMAT A15
-COLUMN file_system_location FORMAT A75
-COLUMN directory_name FORMAT A20
-SELECT SYS_CONTEXT('USERENV','DB_NAME') AS db_name,
-       SYS_CONTEXT('USERENV','SERVICE_NAME') AS service_name,
-       SYS_CONTEXT('USERENV','CURRENT_USER') AS current_user FROM dual;
-```
+    ```sql
+    <copy>
+    SET LINESIZE 220
+    SET PAGESIZE 100
+    COLUMN file_system_name FORMAT A15
+    COLUMN file_system_location FORMAT A75
+    COLUMN directory_name FORMAT A20
+    SELECT SYS_CONTEXT('USERENV','DB_NAME') AS db_name,
+           SYS_CONTEXT('USERENV','SERVICE_NAME') AS service_name,
+           SYS_CONTEXT('USERENV','CURRENT_USER') AS current_user FROM dual;
+    </copy>
+    ```
 
-Check the attached filesystem and database directory at **target `SQL>`**:
+4. Check the attached filesystem and database directory at **target `SQL>`**.
 
-```sql
-SELECT file_system_name, file_system_location, directory_name,
-       directory_path, nfs_version
-FROM dba_cloud_file_systems WHERE directory_name='ZDM_EFS_DIR';
-SELECT directory_name, directory_path FROM dba_directories
-WHERE directory_name='ZDM_EFS_DIR';
-```
+    ```sql
+    <copy>
+    SELECT file_system_name, file_system_location, directory_name,
+           directory_path, nfs_version
+    FROM dba_cloud_file_systems WHERE directory_name='ZDM_EFS_DIR';
+    SELECT directory_name, directory_path FROM dba_directories
+    WHERE directory_name='ZDM_EFS_DIR';
+    </copy>
+    ```
 
-Match the location against your assigned EFS hostname and export path, and confirm NFS version 4. Metadata alone is not an I/O test.
+    Match the location against your assigned EFS hostname and export path, and confirm NFS version 4. Metadata alone is not an I/O test.
 
-![Target attachment referencing the assigned EFS and ZDM_EFS_DIR with NFS version 4](./images/target-efs-attachment.png)
+    ![Target attachment referencing the assigned EFS and ZDM_EFS_DIR with NFS version 4](./images/target-efs-attachment.png)
 
-The example's attachment name is `ZDM_EFS`; the AWS resource name is `EFS101`. Compare the filesystem location and directory, rather than requiring those two names to be identical.
+    The example's attachment name is `ZDM_EFS`; the AWS resource name is `EFS101`. Compare the filesystem location and directory, rather than requiring those two names to be identical.
 
-Return to the **`oracle` shell**:
+5. Return to the **`oracle` shell**.
 
-```sql
-EXIT
-```
+    ```sql
+    <copy>
+    EXIT
+    </copy>
+    ```
 
 ## Task 3: Validate a Target Write from EC2
 
-Before starting migration, connect to the target as ADMIN from the **`oracle` EC2 shell**:
+1. Before starting migration, connect to the target as ADMIN from the **`oracle` EC2 shell**.
 
-```bash
-source "$HOME/env/adbs.env"
-sqlplus -L admin@"$TARGET_ALIAS"
-```
+    ```bash
+    <copy>
+    source "$HOME/env/adbs.env"
+    sqlplus -L admin@"$TARGET_ALIAS"
+    </copy>
+    ```
 
-At **target `SQL>`**, write `participant_validation.txt`. This replaces that test file if it already exists; use it only for the workshop validation. Use the existing provisioned `ZDM_EFS_DIR`.
+2. At **target `SQL>`**, write `participant_validation.txt`. This replaces that test file if it already exists; use it only for the workshop validation. Use the existing provisioned `ZDM_EFS_DIR`.
 
-```sql
-DECLARE
-  f UTL_FILE.FILE_TYPE;
-BEGIN
-  f := UTL_FILE.FOPEN('ZDM_EFS_DIR', 'participant_validation.txt', 'w');
-  UTL_FILE.PUT_LINE(f, 'EFS attachment validated from ADB-S');
-  UTL_FILE.FCLOSE(f);
-EXCEPTION WHEN OTHERS THEN
-  IF UTL_FILE.IS_OPEN(f) THEN UTL_FILE.FCLOSE(f); END IF;
-  RAISE;
-END;
-/
-```
+    ```sql
+    <copy>
+    DECLARE
+      f UTL_FILE.FILE_TYPE;
+    BEGIN
+      f := UTL_FILE.FOPEN('ZDM_EFS_DIR', 'participant_validation.txt', 'w');
+      UTL_FILE.PUT_LINE(f, 'EFS attachment validated from ADB-S');
+      UTL_FILE.FCLOSE(f);
+    EXCEPTION WHEN OTHERS THEN
+      IF UTL_FILE.IS_OPEN(f) THEN UTL_FILE.FCLOSE(f); END IF;
+      RAISE;
+    END;
+    /
+    </copy>
+    ```
 
-Require `PL/SQL procedure successfully completed`, then confirm the file exists:
+3. Require `PL/SQL procedure successfully completed`, then confirm the file exists.
 
-```sql
-SELECT object_name, bytes FROM DBMS_CLOUD.LIST_FILES('ZDM_EFS_DIR')
-WHERE object_name = 'participant_validation.txt';
-```
+    ```sql
+    <copy>
+    SELECT object_name, bytes FROM DBMS_CLOUD.LIST_FILES('ZDM_EFS_DIR')
+    WHERE object_name = 'participant_validation.txt';
+    </copy>
+    ```
 
-Return to the EC2 shell:
+4. Return to the EC2 shell.
 
-```sql
-EXIT
-```
+    ```sql
+    <copy>
+    EXIT
+    </copy>
+    ```
 
-First, the target ADB-S write completes:
+    The target ADB-S write completes:
 
-![ADB-S UTL_FILE write to participant_validation.txt completes successfully](./images/efs-target-write-proof.png)
+    ![ADB-S UTL_FILE write to participant_validation.txt completes successfully](./images/efs-target-write-proof.png)
 
-In the **`oracle` EC2 shell**, go to the EFS mount:
+5. In the **`oracle` EC2 shell**, go to the EFS mount.
 
-```bash
-cd /data/oracle/efs
-```
+    ```bash
+    <copy>
+    cd /data/oracle/efs
+    </copy>
+    ```
 
-Read the file written by ADB-S:
+6. Read the file written by ADB-S.
 
-```bash
-cat participant_validation.txt
-```
+    ```bash
+    <copy>
+    cat participant_validation.txt
+    </copy>
+    ```
 
-Expect `EFS attachment validated from ADB-S`. Leave the file in place.
+    Expect `EFS attachment validated from ADB-S`. Leave the file in place.
 
-![EC2 reads EFS attachment validated from ADB-S from the shared file](./images/efs-source-read-proof.png)
+    ![EC2 reads EFS attachment validated from ADB-S from the shared file](./images/efs-source-read-proof.png)
 
-Stop if the write or read fails or hangs; do not start migration or repeat blocked I/O calls.
+    Stop if the write or read fails or hangs; do not start migration or repeat blocked I/O calls.
 
 ## Acknowledgements
 

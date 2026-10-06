@@ -3,8 +3,14 @@
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
+            "title": "Overview",
+            "description": "Workshop overview",
+            "type": "livelabs",
+            "filename": "../../overview/overview.md"
+        },
+        {
             "title": "Introduction",
-            "description": "",
+            "description": "Architecture and workshop components",
             "type": "livelabs",
             "filename": "../../introduction/introduction.md"
         },
@@ -39,9 +45,10 @@
             "filename": "../../migration-validation/migration-validation.md"
         },
         {
-            "title": "Need Help?",
-            "description": "Template to link to Need Help lab at the end of workshop.",
-            "filename": "https://raw.githubusercontent.com/oracle-livelabs/common/main/labs/need-help/need-help-freetier.md"
+            "title": "Congratulations",
+            "description": "Review workshop outcomes",
+            "type": "livelabs",
+            "filename": "../../conclusion/conclusion.md"
         }
     ]
 }
