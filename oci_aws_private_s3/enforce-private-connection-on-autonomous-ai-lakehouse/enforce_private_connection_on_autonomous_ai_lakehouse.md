@@ -12,13 +12,17 @@ Estimated Time: 5 minutes
 2. Copy the following complete statement and paste it into the worksheet. It requires no edits or placeholder values. Include the trailing semicolon, then click **Run Statement**.
 
     ```sql
+    <copy>
     ALTER DATABASE PROPERTY SET ROUTE_OUTBOUND_CONNECTIONS = 'ENFORCE_PRIVATE_ENDPOINT';
+    </copy>
     ```
 
 3. After the statement succeeds, copy and run this verification query:
 
     ```sql
+    <copy>
     SELECT property_name, property_value FROM database_properties WHERE property_name = 'ROUTE_OUTBOUND_CONNECTIONS';
+    </copy>
     ```
 
 4. Confirm that the value is `ENFORCE_PRIVATE_ENDPOINT`.

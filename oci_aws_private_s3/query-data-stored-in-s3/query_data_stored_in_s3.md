@@ -16,6 +16,7 @@ For this task, replace only these two placeholders with the restricted database-
 - `<AWS_SECRET_ACCESS_KEY>`
 
 ```sql
+<copy>
 BEGIN
   DBMS_CLOUD.CREATE_CREDENTIAL(
     credential_name => 'AWS_S3_CRED',
@@ -24,6 +25,7 @@ BEGIN
   );
 END;
 /
+</copy>
 ```
 
 Do not use the AWS learner-console user credentials. Do not paste the key pair into Resource Manager, CloudFormation, or a source file.
@@ -33,6 +35,7 @@ Do not use the AWS learner-console user credentials. Do not paste the key pair i
 Replace `<S3_BUCKET>` with the S3 bucket name supplied for your lab, then copy the entire block into SQL Studio and select **Run Script**.
 
 ```sql
+<copy>
 BEGIN
   DBMS_CLOUD.CREATE_EXTERNAL_TABLE(
     table_name      => 'ORDERS_EXT',
@@ -43,6 +46,7 @@ BEGIN
   );
 END;
 /
+</copy>
 ```
 
 ## Task 3: Validate and query
@@ -50,19 +54,23 @@ END;
 1. Replace `<S3_BUCKET>` with the same bucket name used in Task 2. Copy the complete query into SQL Studio and select **Run Statement**. Confirm that the private path can list S3 objects:
 
     ```sql
+    <copy>
     SELECT *
     FROM DBMS_CLOUD.LIST_OBJECTS(
       credential_name => 'AWS_S3_CRED',
       location_uri    => 'https://s3.us-east-1.amazonaws.com/<S3_BUCKET>/retail/'
     );
+    </copy>
     ```
 
 2. Copy the complete query into SQL Studio and select **Run Statement**:
 
     ```sql
+    <copy>
     SELECT COUNT(*) AS order_count,
            ROUND(SUM(net_revenue), 2) AS total_revenue
     FROM orders_ext;
+    </copy>
     ```
 
     This query reads every CSV row exposed by the `ORDERS_EXT` external table. `COUNT(*)` returns the number of orders loaded from S3, and `SUM(net_revenue)` adds the `net_revenue` value from every order. `ROUND(..., 2)` formats the revenue total to two decimal places. A result confirms that Autonomous AI Lakehouse can read the S3 CSV data through the configured private path.
