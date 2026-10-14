@@ -14,6 +14,8 @@ Estimated Time: 20 minutes
 
 2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox.
 
+    ![Oracle Terms of Use checkbox and Create in compartment selector outlined in red; identifying information is blurred.](images/resource-manager-terms.png)
+
 3. Under **Create in compartment**, select your assigned lab compartment, then select **Next**.
 
 4. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.

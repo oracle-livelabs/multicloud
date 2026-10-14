@@ -14,6 +14,8 @@ Estimated Time: 15 minutes
 
 2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox.
 
+    ![Oracle Terms of Use checkbox and Create in compartment selector outlined in red; identifying information is blurred.](images/resource-manager-terms.png)
+
 3. Under **Create in compartment**, select your assigned lab compartment, then select **Next**.
 
 4. On the **Configure variables** page, update the following values. The `Lab compartment`, `Autonomous Database VCN`, `Autonomous Database subnet`, and `Autonomous Database NSG` fields are selectors: choose the resources by name from their drop-down lists rather than pasting OCIDs.
