@@ -2,18 +2,38 @@
 
 ## Introduction
 
-The lab administrator has pre-staged the OCI networking components for your assigned compartment. In this module, you verify that foundation and record the values needed to create the Interconnect and Autonomous AI Lakehouse.
+In this module, you deploy the OCI network foundation into your assigned lab compartment, then record the values needed to create the Interconnect and Autonomous AI Lakehouse. The network stack creates the VCN, private subnets, network security groups (NSGs), route tables, DRG, and DNS forwarding configuration.
 
-Estimated Time: 10 minutes
+Estimated Time: 20 minutes
 
-## Task 1: Review the pre-staged OCI network
+## Task 1: Create and deploy the OCI network stack
 
-1. The lab administrator has already deployed the VCN, private subnet, network security group (NSG), route table, DRG, and DNS configuration into your assigned lab compartment.
-2. Do not run a new plan or apply job for the network stack during this task. You only need to inspect the pre-staged resources and record their outputs.
-3. If a lab administrator asks you to confirm the stack inputs, open **Developer Services** → **Resource Manager** → **Stacks**, then open the assigned network stack in your learner compartment. The key inputs are:
-   * `compartment_ocid` — your learner **compartment** OCID, not the tenancy OCID.
-   * `aws_vpc_cidr` — the AWS VPC CIDR from the lab handout.
-   * `aws_resolver_inbound_ip` — an IP address from the AWS Route 53 inbound resolver.
+1. Select **Deploy to Oracle Cloud** to open Resource Manager with the OCI network stack configuration loaded.
+
+    [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=us-ashburn-1&zipUrl=https%3A%2F%2Fgithub.com%2Fdavidastart%2Fmulticloud%2Fraw%2Frefs%2Fheads%2Fmain%2Foci_aws_private_s3%2Fresource-manager-oci-network-rm.zip)
+
+2. If prompted, sign in to your assigned OCI tenancy. Confirm that the console region is **US East (Ashburn)**.
+
+3. On the **Create stack** page, confirm that the `resource-manager-oci-network-rm.zip` configuration is already selected.
+
+4. Enter a meaningful stack name, such as `resource-manager-oci-network-rm`, and select your assigned lab compartment. Select **Next**.
+
+5. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.
+
+   | Variable | What to enter |
+   | --- | --- |
+   | `region` | Your assigned OCI region. |
+   | `compartment_ocid` | The OCID of **your lab compartment**, not the tenancy OCID. |
+   | `name_prefix` | Your assigned lab name prefix, if one is provided. |
+   | `vcn_cidr`, `adb_subnet_cidr`, `dns_subnet_cidr` | The OCI CIDR ranges supplied in the portal. Keep the provided defaults only when the portal instructs you to do so. |
+   | `aws_vpc_cidr` | The CIDR of your assigned AWS lab VPC. |
+   | `aws_resolver_inbound_ip` | One private IP address of the Route 53 Resolver **inbound** endpoint. Find this value in the administrator-supplied values in the LiveLabs portal. This lets OCI forward S3 DNS queries to AWS through the private path. |
+   | `s3_dns_domain` | `s3.us-east-1.amazonaws.com`, unless the portal supplies a different value. |
+   | `admin_client_cidr` | The administrator workstation or VPN CIDR supplied in the portal, for example `203.0.113.25/32`. Do not use `0.0.0.0/0`. |
+
+6. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**.
+
+7. Open the apply job that Resource Manager starts automatically. Wait for the job status to show **Succeeded** before continuing. If the job fails, open the job, review its logs, correct the input identified in the error, and run **Apply** again.
 
 ## Task 2: Inspect the OCI network and record OCIDs
 
@@ -21,7 +41,7 @@ Estimated Time: 10 minutes
 
     ![Navigate to Virtual Cloud Networks](images/ocinavigatevcn.png "Navigate to Virtual Cloud Networks")
 
-2. Confirm that the compartment selector is set to your assigned lab compartment. Select the VCN created by the pre-staged network stack.
+2. Confirm that the compartment selector is set to your assigned lab compartment. Select the VCN created by the network stack.
 
     ![Select the lab VCN](images/selectvcn.png "Select the lab VCN")
 
@@ -29,7 +49,7 @@ Estimated Time: 10 minutes
 
     ![Inspect the VCN gateway and DRG attachment](images/vcngateway.png "Inspect the VCN gateway and DRG attachment")
 
-4. Select **Security** → **Network security groups**. Confirm that the pre-staged Autonomous AI Lakehouse NSG is present. Open the NSG, use **Actions** → **Copy OCID**, and save the value as `adb_nsg_ocid` for the Autonomous AI Lakehouse module.
+4. Select **Security** → **Network security groups**. Confirm that the Autonomous AI Lakehouse NSG is present. Open the NSG, use **Actions** → **Copy OCID**, and save the value as `adb_nsg_ocid` for the Autonomous AI Lakehouse module.
 
     ![Inspect the VCN network security group](images/vcnnsg.png "Inspect the VCN network security group")
 
@@ -39,4 +59,4 @@ Estimated Time: 10 minutes
 
 ## Summary
 
-Your OCI network foundation, DRG, private subnet, NSG, and DNS forwarding configuration are ready.
+Your OCI network foundation, DRG, private subnet, NSG, and DNS forwarding configuration are ready. You have also saved the DRG, NSG, and subnet OCIDs required by the Autonomous AI Lakehouse stack.
