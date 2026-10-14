@@ -12,15 +12,11 @@ Estimated Time: 15 minutes
 
     [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=us-ashburn-1&zipUrl=https%3A%2F%2Fgithub.com%2Fdavidastart%2Fmulticloud%2Fraw%2Frefs%2Fheads%2Fmain%2Foci_aws_private_s3%2Fresource-manager-oci-autonomous-db-rm.zip)
 
-2. If prompted, sign in to your assigned OCI tenancy. Confirm that the console region is **US East (Ashburn)**.
+2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox.
 
-3. On the **Create stack** page, confirm that the `resource-manager-oci-autonomous-db-rm.zip` configuration is already selected.
+3. Under **Create in compartment**, select your assigned lab compartment, then select **Next**.
 
-    ![Create the Autonomous AI Lakehouse Resource Manager stack](images/stacklist.png "Create the Autonomous AI Lakehouse Resource Manager stack")
-
-4. Enter a stack name, such as **`resource-manager-oci-autonomous-db-rm`**, select your assigned lab compartment, then select **Next**.
-
-5. On the **Configure variables** page, update the following values. The `Lab compartment`, `Autonomous Database VCN`, `Autonomous Database subnet`, and `Autonomous Database NSG` fields are selectors: choose the resources by name from their drop-down lists rather than pasting OCIDs.
+4. On the **Configure variables** page, update the following values. The `Lab compartment`, `Autonomous Database VCN`, `Autonomous Database subnet`, and `Autonomous Database NSG` fields are selectors: choose the resources by name from their drop-down lists rather than pasting OCIDs.
 
     ![Configure the Autonomous AI Lakehouse stack variables](images/editvariables.png "Configure the Autonomous AI Lakehouse stack variables")
 
@@ -38,15 +34,15 @@ Estimated Time: 15 minutes
     | `ecpu_count` and `storage_tbs` | Keep the lab-supplied defaults unless your instructor provides different values. |
     | `admin_password` | Create and confirm a new strong password for the `ADMIN` user. Save it securely; you use it to sign in to Database Actions. |
 
-6. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**. Do not change the Terraform configuration or provider settings.
+5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**. Do not change the Terraform configuration or provider settings.
 
-7. Open the apply job that Resource Manager starts automatically. The Autonomous AI Lakehouse creation can take several minutes.
+6. Open the apply job that Resource Manager starts automatically. The Autonomous AI Lakehouse creation can take several minutes.
 
-8. Monitor the apply job until it completes.
+7. Monitor the apply job until it completes.
 
     ![Autonomous AI Lakehouse stack apply in progress](images/stackinprogress.png "Autonomous AI Lakehouse stack apply in progress")
 
-9. Continue only when the apply job status is **Succeeded**. If it fails, open the job, review its logs, correct the input identified in the error, and run **Apply** again.
+8. Continue only when the apply job status is **Succeeded**. If it fails, open the job, review its logs, correct the input identified in the error, and run **Apply** again.
 
     ![Autonomous AI Lakehouse stack apply succeeded](images/stacksuccess.png "Autonomous AI Lakehouse stack apply succeeded")
 

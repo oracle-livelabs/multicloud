@@ -12,13 +12,11 @@ Estimated Time: 20 minutes
 
     [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=us-ashburn-1&zipUrl=https%3A%2F%2Fgithub.com%2Fdavidastart%2Fmulticloud%2Fraw%2Frefs%2Fheads%2Fmain%2Foci_aws_private_s3%2Fresource-manager-oci-network-rm.zip)
 
-2. If prompted, sign in to your assigned OCI tenancy. Confirm that the console region is **US East (Ashburn)**.
+2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox.
 
-3. On the **Create stack** page, confirm that the `resource-manager-oci-network-rm.zip` configuration is already selected.
+3. Under **Create in compartment**, select your assigned lab compartment, then select **Next**.
 
-4. Enter a meaningful stack name, such as `resource-manager-oci-network-rm`, and select your assigned lab compartment. Select **Next**.
-
-5. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.
+4. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.
 
    | Variable | What to enter |
    | --- | --- |
@@ -31,9 +29,9 @@ Estimated Time: 20 minutes
    | `s3_dns_domain` | `s3.us-east-1.amazonaws.com`, unless the portal supplies a different value. |
    | `admin_client_cidr` | The administrator workstation or VPN CIDR supplied in the portal, for example `203.0.113.25/32`. Do not use `0.0.0.0/0`. |
 
-6. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**.
+5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**.
 
-7. Open the apply job that Resource Manager starts automatically. Wait for the job status to show **Succeeded** before continuing. If the job fails, open the job, review its logs, correct the input identified in the error, and run **Apply** again.
+6. Open the apply job that Resource Manager starts automatically. Wait for the job status to show **Succeeded** before continuing. If the job fails, open the job, review its logs, correct the input identified in the error, and run **Apply** again.
 
 ## Task 2: Inspect the OCI network and record OCIDs
 
