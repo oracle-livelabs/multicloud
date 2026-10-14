@@ -1,6 +1,6 @@
 # Overview
 
-## Introduction
+## About this workshop
 
 In this workshop, you use Oracle--AWS Interconnect to give an Oracle Autonomous AI Lakehouse a private path to CSV data in Amazon S3. You then enforce private outbound routing from the lakehouse and query the S3 data through an external table.
 
@@ -8,7 +8,7 @@ The AWS and OCI event environments are prepared before the workshop. Learners ve
 
 Estimated Workshop Time: 90 minutes
 
-### Objectives
+## Learning objectives
 
 * Inspect the event AWS and OCI environments.
 * Establish an Oracle--AWS Interconnect connection.

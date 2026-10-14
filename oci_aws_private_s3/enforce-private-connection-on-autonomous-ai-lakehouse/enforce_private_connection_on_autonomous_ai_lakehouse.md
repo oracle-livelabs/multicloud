@@ -4,11 +4,6 @@
 
 In this module, you require the Autonomous AI Lakehouse to use its private endpoint for outbound connections.
 
-### Objectives
-
-* Enforce private outbound routing for the Autonomous AI Lakehouse.
-* Verify the database routing property.
-
 Estimated Time: 5 minutes
 
 ## Task 1: Enforce private outbound routing
@@ -17,17 +12,13 @@ Estimated Time: 5 minutes
 2. Copy the following complete statement and paste it into the worksheet. It requires no edits or placeholder values. Include the trailing semicolon, then click **Run Statement**.
 
     ```sql
-    <copy>
     ALTER DATABASE PROPERTY SET ROUTE_OUTBOUND_CONNECTIONS = 'ENFORCE_PRIVATE_ENDPOINT';
-    </copy>
     ```
 
 3. After the statement succeeds, copy and run this verification query:
 
     ```sql
-    <copy>
     SELECT property_name, property_value FROM database_properties WHERE property_name = 'ROUTE_OUTBOUND_CONNECTIONS';
-    </copy>
     ```
 
 4. Confirm that the value is `ENFORCE_PRIVATE_ENDPOINT`.
@@ -39,8 +30,3 @@ The next module contacts S3 using its normal regional hostname. OCI DNS forwards
 ## Summary
 
 Private outbound routing is enforced for the Autonomous AI Lakehouse.
-
-## Acknowledgements
-
-* **Author** - Arun Ramakrishnan
-* **Last Updated By/Date** - David Start, October 2026

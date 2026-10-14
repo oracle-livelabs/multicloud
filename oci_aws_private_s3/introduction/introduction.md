@@ -55,7 +55,7 @@ To complete this workshop, you need:
 
 The private query path is:
 
-![Oracle--AWS Interconnect private data path](images/awsinterconnectlabintro.png)
+![Oracle--AWS Interconnect private data path](images/awsinterconnectlabintro.png "Oracle--AWS Interconnect private data path")
 
 ```text
 Autonomous AI Lakehouse private endpoint -> VCN -> DRG -> Oracle--AWS Interconnect
