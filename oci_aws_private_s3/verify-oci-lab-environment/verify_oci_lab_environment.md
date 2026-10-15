@@ -8,15 +8,15 @@ Estimated Time: 20 minutes
 
 ## Task 1: Create and deploy the OCI network stack
 
-1. Select **Deploy to Oracle Cloud** to open Resource Manager with the OCI network stack configuration loaded.
+1. Select **Deploy to Oracle Cloud** to open Resource Manager.
 
     <a class="tryit-button" href="https://cloud.oracle.com/resourcemanager/stacks/create?region=us-ashburn-1&amp;zipUrl=https%3A%2F%2Fgithub.com%2Fdavidastart%2Fmulticloud%2Fraw%2Frefs%2Fheads%2Fmain%2Foci_aws_private_s3%2Fresource-manager-oci-network-rm.zip" target="_blank" rel="noopener noreferrer" style="display: inline-block; width: auto;">Deploy to Oracle Cloud</a>
 
-2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox.
+2. On **Stack information**, select the **I have reviewed and accept the Oracle Terms of Use** checkbox. Wait for the stack title and description to appear.
 
     ![Oracle Terms of Use checkbox and Create in compartment selector outlined in red; identifying information is blurred.](images/resource-manager-terms.png)
 
-3. Under **Create in compartment**, select your assigned lab compartment, then select **Next**.
+3. Under **Create in compartment**, confirm that your assigned lab compartment is selected, then select **Next**.
 
 4. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.
 

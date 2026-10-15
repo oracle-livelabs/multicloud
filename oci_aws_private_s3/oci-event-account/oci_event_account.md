@@ -17,8 +17,16 @@ Estimated Time: 5 minutes
 
     ![OCI Region selection](images/ociregionselection.png "OCI Region selection")
 
-4. Open the compartment selector and select your assigned learner compartment. Do not select the tenancy/root compartment.
+4. Open the **Navigation menu (☰)** and select **Networking → Virtual cloud networks**. Under **Applied filters**, open **Compartment** and select your assigned learner compartment. Find its name under **View Login Info** in LiveLabs. Do not select the tenancy/root compartment.
+
+    ![Select the assigned learner compartment on Virtual cloud networks; identifying information is blurred and the controls are outlined in red.](images/oci-compartment-selection.png)
+
+5. Verify that the network list shows **No items to display**. This confirms that no virtual cloud network exists in your selected compartment before you deploy the network stack.
+
+    ![The Virtual cloud networks list is empty in the selected learner compartment; identifying information is blurred and the filter and empty result are outlined in red.](images/verify-no-lab-network.png)
+
+    Keep this Console tab open while you continue the lab. If you close and reopen your incognito/private window, repeat steps 4 and 5.
 
 ## Summary
 
-You are working in the correct OCI Region and learner compartment.
+You are working in the correct OCI Region and learner compartment and have confirmed that the network has not been created yet.
