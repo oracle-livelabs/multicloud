@@ -2,35 +2,27 @@
 
 ## Introduction
 
-The source database and ZDM run on the assigned EC2 host. GoldenGate runs in the lab's Podman container. Data Pump performs the initial load using EFS; GoldenGate keeps the target synchronized afterward.
+The source Oracle database and Zero Downtime Migration (ZDM) run on your assigned EC2 instance. Oracle GoldenGate runs in a Podman container on that instance. Data Pump copies the initial data through shared Amazon EFS storage, and GoldenGate captures ongoing changes to keep the target Autonomous Database synchronized.
+
+Run the preflight script once and confirm the final success summary. The detailed output sections are optional reference material for understanding the checks or investigating a failure.
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
-Identify your assigned resources, verify source access, and confirm readiness before migration.
+Connect to your assigned EC2 instance, run the automated checks as `oracle`, and understand the results before starting migration.
 
-## Task 1: Load Your Assigned Environment
+## Task 1: Connect to SSM Session Manager
 
-1. Open your assigned EC2 Session Manager session from the EC2 console, or follow these steps in **AWS CloudShell as `cloudshell-user`**. Replace `YOUR_ASSIGNED_INSTANCE_ID` with the EC2 instance ID provided for your lab. Do not use another participant's instance ID.
+1. Confirm that the AWS Console Region is **US West (Oregon), us-west-2**.
 
-    ```bash
-    <copy>
-    export ASSIGNED_INSTANCE_ID="YOUR_ASSIGNED_INSTANCE_ID"
-    </copy>
-    ```
+2. Open **EC2 → Instances**. Copy the **EC2 Instance ID** from your reservation information into the search field. Select the checkbox beside the matching instance, then choose **Connect**. Use your assigned instance ID; Lab 101 below is an example.
 
-2. Start the Session Manager connection in a separate command.
+    ![Filter by the assigned EC2 instance ID, select its checkbox, and choose Connect](./images/ec2-select-assigned-instance.png)
 
-    ```bash
-    <copy>
-    aws ssm start-session --region us-west-2 --target "$ASSIGNED_INSTANCE_ID"
-    </copy>
-    ```
+    On the connection page, choose **SSM Session Manager** and then **Connect**. In the newer console layout, this option appears under **In web browser → Maximum security — IAM authentication — SSM Session Manager**. Do not select EC2 Instance Connect.
 
-    Expect `Starting session with SessionId:` followed by the EC2 shell prompt, usually `sh-4.4$`.
-
-3. Run the remaining commands on **the assigned EC2**, not CloudShell or the runner. At the Linux shell as `ssm-user`, switch to `oracle`.
+3. The session opens a Linux shell as `ssm-user`. Switch to the `oracle` operating-system user:
 
     ```bash
     <copy>
@@ -38,207 +30,7 @@ Identify your assigned resources, verify source access, and confirm readiness be
     </copy>
     ```
 
-4. Load the source and assigned lab environments in the **`oracle` shell**.
-
-    ```bash
-    <copy>
-    source "$HOME/env/source19c.env"
-    source /etc/profile.d/zdm26.sh
-    source /data/oracle/lab/config/lab-env.sh
-    export ZDMCLI="$ZDM_HOME/bin/zdmcli"
-    </copy>
-    ```
-
-5. Print your lab assignment. Check that the Lab ID and target are the ones assigned to you.
-
-    ```bash
-    <copy>
-    printf 'Lab=%s\nRegion=%s\nSource=%s\nTarget=%s\nEFS=%s\n' \
-      "$LAB_ID" "$AWS_REGION" "$SOURCE_PRIVATE_IP" "$TARGET_HOST" "$EFS_DNS"
-    </copy>
-    ```
-
-6. Check that the ZDM executable and response file are accessible.
-
-    ```bash
-    <copy>
-    test -x "$ZDMCLI" && test -r "$ZDM_RESPONSE_FILE"
-    </copy>
-    ```
-
-7. Validate the generated ZDM response file. Require the final `ZDM_RESPONSE_VALID` marker.
-
-    ```bash
-    <copy>
-    /data/oracle/lab/bin/validate-zdm-response.sh
-    </copy>
-    ```
-
-    Stop if a value is blank, the Lab ID is wrong, or validation fails. A missing validator means provisioning is incomplete. Do not source CloudShell provisioning environments on EC2.
-
-8. Confirm the user and Oracle environment.
-
-    ```bash
-    <copy>
-    printf 'OS_USER=%s\nORACLE_SID=%s\nZDM_HOME=%s\nTARGET_ALIAS=%s\n' \
-      "$(whoami)" "$ORACLE_SID" "$ZDM_HOME" "$TARGET_ALIAS"
-    </copy>
-    ```
-
-    Example from Lab 101: the OS user is `oracle`, the source SID is `SOURCE19C`, and the target alias belongs to the assigned lab. Hostnames, IDs, paths, and addresses in screenshots are examples, not values to copy into another lab.
-
-    ![Lab 101 Oracle user, source SID, ZDM home and target alias](./images/participant-environment.png)
-
-## Task 2: Verify Source SSH
-
-1. Run as `oracle` and confirm that the key belonging to this instance exists.
-
-    ```bash
-    <copy>
-    export ZDM_SOURCE_SSH_KEY="$HOME/.ssh/zdm_source_ed25519"
-    test -s "$ZDM_SOURCE_SSH_KEY" && echo "PASS: key exists"
-    </copy>
-    ```
-
-2. Test same-host SSH and the switch to `oracle`.
-
-    ```bash
-    <copy>
-    ssh -i "$ZDM_SOURCE_SSH_KEY" -o BatchMode=yes \
-      -o StrictHostKeyChecking=yes "ec2-user@$(hostname -f)" \
-      'whoami; sudo -n -iu oracle whoami'
-    </copy>
-    ```
-
-    Expect `ec2-user`, then `oracle`. If the key or verified host-key entry is missing, ask the instructor to repair provisioning. Do not disable host-key checks or copy private keys.
-
-## Task 3: Verify the Source Database
-
-1. At the **`oracle` shell**, open the source database.
-
-    ```bash
-    <copy>
-    sqlplus / as sysdba
-    </copy>
-    ```
-
-2. At `SQL>` (do not paste shell commands here), check the database state.
-
-    ```sql
-    <copy>
-    SET LINESIZE 220
-    SET PAGESIZE 100
-    SELECT instance_name, host_name, status, database_status FROM v$instance;
-    SELECT name, open_mode, log_mode, cdb, force_logging,
-           supplemental_log_data_min FROM v$database;
-    </copy>
-    ```
-
-3. At **source `SQL>`**, check the replication and memory settings without changing them.
-
-    ```sql
-    <copy>
-    SHOW PARAMETER enable_goldengate_replication
-    SHOW PARAMETER sga_target
-    SHOW PARAMETER sga_max_size
-    SHOW PARAMETER streams_pool_size
-    </copy>
-    ```
-
-4. Check the source accounts and record the initial row count.
-
-    ```sql
-    <copy>
-    SELECT username, account_status FROM dba_users
-    WHERE username IN ('SYSTEM','GGADMIN','FINANCE') ORDER BY username;
-    SELECT COUNT(*) AS source_baseline FROM finance.accounts;
-    </copy>
-    ```
-
-5. Return to the **`oracle` shell**.
-
-    ```sql
-    <copy>
-    EXIT
-    </copy>
-    ```
-
-6. Verify the results. Expect OPEN/ACTIVE, READ WRITE, ARCHIVELOG, FORCE_LOGGING=YES, supplemental logging enabled, replication enabled, and the listed accounts open. Record the count. Memory queries are read-only diagnostics; do not change parameters or reset passwords.
-
-    Source database state (Lab 101 example):
-
-    ![Source database open and active with archive logging enabled](./images/source-database-ready.png)
-
-    GoldenGate replication setting:
-
-    ![Source enable_goldengate_replication is TRUE](./images/source-replication-enabled.png)
-
-    Account status:
-
-    ![Source FINANCE, GGADMIN and SYSTEM accounts are OPEN](./images/source-accounts-open.png)
-
-## Task 4: Check Network and Service Readiness
-
-1. Run these read-only DNS checks from the **`oracle` EC2 shell**.
-
-    ```bash
-    <copy>
-    getent hosts "$TARGET_HOST"
-    getent hosts "$EFS_DNS"
-    </copy>
-    ```
-
-2. Check the target database on port 1521. These checks use Bash instead of `nc`, which is not installed on the lab instances.
-
-    ```bash
-    <copy>
-    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$TARGET_HOST" 1521 \
-      && echo "PASS: target port 1521 reachable" \
-      || echo "FAIL: target port 1521 — check DNS, routing, and security rules"
-    </copy>
-    ```
-
-3. Check the target database on port 1522.
-
-    ```bash
-    <copy>
-    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$TARGET_HOST" 1522 \
-      && echo "PASS: target port 1522 reachable" \
-      || echo "FAIL: target port 1522 — check DNS, routing, and security rules"
-    </copy>
-    ```
-
-4. Check EFS on port 2049.
-
-    ```bash
-    <copy>
-    timeout 5 bash -c 'exec 3<>/dev/tcp/"$1"/"$2"' _ "$EFS_DNS" 2049 \
-      && echo "PASS: EFS port 2049 reachable" \
-      || echo "FAIL: EFS port 2049 — check DNS, routing, and security rules"
-    </copy>
-    ```
-
-    Expect `PASS` from each check before proceeding. These checks verify TCP connectivity only, not database authentication or EFS mount readiness.
-
-5. Check the ZDM service.
-
-    ```bash
-    <copy>
-    "$ZDM_HOME/bin/zdmservice" status
-    </copy>
-    ```
-
-    ZDM evaluation in Lab 3 checks the GoldenGate deployment and database connectivity. Stop here if a connectivity or service check fails.
-
-6. Return from the `oracle` login shell to **`ssm-user`** with `exit`. If already `ssm-user`, do not exit the Session Manager session.
-
-    ```bash
-    <copy>
-    exit
-    </copy>
-    ```
-
-7. Confirm the current user before checking the rootless Podman container.
+4. Confirm your current user:
 
     ```bash
     <copy>
@@ -246,66 +38,123 @@ Identify your assigned resources, verify source access, and confirm readiness be
     </copy>
     ```
 
-8. Run Podman as the container owner, `ec2-user`.
+    The output should be `oracle`. Stay in this `oracle` shell for the remaining steps.
+
+## Task 2: Run the Preflight Script
+
+1. Run the script from the `oracle` user's home directory and save its output. The script loads your assigned environment variables and performs the checks automatically. Wait until the shell prompt returns before entering another command.
 
     ```bash
     <copy>
-    OGG_UID="$(id -u ec2-user)"
-    OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
-    sudo -u ec2-user env \
-      HOME=/home/ec2-user \
-      XDG_RUNTIME_DIR="$OGG_RUNTIME" \
-      podman ps
+    cd "$HOME"
+    umask 077
+    set -o pipefail
+    bash "$HOME/lab1-preflight.sh" 2>&1 | tee "$HOME/lab1-preflight.log"
     </copy>
     ```
 
-    The container owner is `ec2-user`; expect `oggfree` to report `Up`.
+2. Check the summary. Expect `Failed checks : 0` and `LAB1_PREFLIGHT: PASS`. Resolve any failed checks before proceeding.
 
-    ![GoldenGate oggfree container reports Up](./images/goldengate-container-running.png)
+    ![Final preflight summary with zero failed checks and LAB1_PREFLIGHT PASS](./images/preflight-section-8.png)
 
-9. Validate the wallet inside GoldenGate from the same **`ssm-user` shell**.
+    If both values match, continue to Lab 2. The detailed review below is optional.
+
+3. **Optional:** Open the saved output to review a check or investigate a failure:
 
     ```bash
     <copy>
-    OGG_UID="$(id -u ec2-user)"
-    OGG_RUNTIME="/tmp/xdg-runtime-${OGG_UID}"
-    sudo -u ec2-user env \
-      HOME=/home/ec2-user \
-      XDG_RUNTIME_DIR="$OGG_RUNTIME" \
-      podman exec oggfree sh -lc '
-        set -e
-        ls -l /u02/Deployment/etc/adb
-        test -s /u02/Deployment/etc/adb/cwallet.sso
-        test -s /u02/Deployment/etc/adb/ewallet.p12
-        grep -F "/u02/Deployment/etc/adb" \
-          /u02/Deployment/etc/adb/sqlnet.ora
-        echo "PASS: GoldenGate wallet is ready"
-      '
+    less -S "$HOME/lab1-preflight.log"
     </copy>
     ```
 
-    ![GoldenGate wallet files and wallet readiness PASS](./images/goldengate-wallet-ready.png)
+    Use the arrow keys or Page Up/Page Down to move through the output. Use the left and right arrows for wide lines. Press `q` to return to the shell.
 
-10. From **`ssm-user`**, check the GoldenGate endpoint as `ec2-user`.
+## (Optional Task) Review Detailed Validation Output
 
-    ```bash
-    <copy>
-    sudo -u ec2-user curl -k -sS -o /dev/null \
-      -w 'GoldenGate HTTP=%{http_code}\n' \
-      https://127.0.0.1:8443/services/v2/config/health
-    </copy>
-    ```
+The sections below show screenshots of sample output. Compare them with your own results. Resource names, addresses, paths, timestamps, container IDs, and row counts can differ. Check your assigned values rather than copying values from the screenshots.
 
-    `-k` is limited to this localhost diagnostic against the workshop's self-signed certificate; do not use it to relax other connection checks.
+### Section 1: Your Assigned Environment
 
-    ![Unauthenticated GoldenGate endpoint request returns HTTP 401](./images/goldengate-endpoint-response.png)
+This section identifies the source database EC2 host, source database, target Autonomous Database, and Amazon EFS filesystem. It also checks that the ZDM executable is accessible.
 
-    HTTP `200` or `401` demonstrates that the endpoint answered; `401` does not prove authenticated GoldenGate readiness. Use ZDM evaluation as well. Do not rerun provisioning or change container settings.
+Confirm that the assignment ID, target database name, target database TNS alias, and **ADB-S display name** match your assigned resources. The display name identifies the target database in the console; the TNS alias is used to connect to it. Check that the source database and Amazon EFS addresses are populated and that the ZDM executable check passes.
 
-11. Remain in the **`ssm-user` shell** for Lab 2. EC2 connectivity does not prove ADB-to-EFS connectivity; Lab 2 tests that path. Stop on failed checks rather than changing the provisioned infrastructure.
+These values connect the migration components to the correct source database, target database, and Amazon EFS storage. A mismatch can send a connection or data-transfer operation to the wrong resource.
+
+![Assigned source, target ADB-S display name, EFS details, and ZDM executable check](./images/preflight-section-1.png)
+
+### Section 2: Source SSH Access
+
+This section checks that the source SSH key exists and that ZDM can use it to connect as `ec2-user` and switch to `oracle` without an interactive password prompt.
+
+Expect both `ec2-user` and `oracle` in the output, followed by `PASS` for source SSH and the Oracle user switch. ZDM needs this access to perform source-side migration operations. Do not continue if the key or user-switch check fails.
+
+![Source SSH key and passwordless switch from ec2-user to oracle both pass](./images/preflight-section-2.png)
+
+### Section 3: Source SYSTEM Login Verification
+
+This section verifies a password-based `SYSTEM` connection to the source database service `SOURCE19C`.
+
+Expect `PASS: password-based SYSTEM login to SOURCE19C` and `PASS` for SYSTEM login verification. This confirms that the source administrative credentials and local listener connection work. ZDM needs a working source administrative account; operating-system access alone does not prove that database authentication succeeds.
+
+![Password-based SYSTEM connection to SOURCE19C passes](./images/preflight-section-3.png)
+
+### Section 4: Source Database Readiness and Baseline
+
+This section checks the source database state, logging configuration, GoldenGate setting, account status, and initial row count.
+
+First, confirm that the instance is `OPEN` and `ACTIVE`, the database is `READ WRITE`, and `LOG_MODE` is `ARCHIVELOG`. Expect `FORCE_LOGGING` to be `YES`, supplemental logging to be enabled (`YES` or `IMPLICIT`), and `enable_goldengate_replication` to be `TRUE`.
+
+The source database must stay available while the initial data is copied. Archive logging and the additional logging settings provide the change information GoldenGate needs to capture ongoing transactions.
+
+![Source database state, archive logging, supplemental logging, and GoldenGate replication setting](./images/preflight-section-4a.png)
+
+Next, confirm that the source database accounts `FINANCE`, `GGADMIN`, and `SYSTEM` are all `OPEN`. Record `SOURCE_BASELINE`, the current number of rows in `FINANCE.ACCOUNTS`, for later comparison with the target database. Expect `PASS` for source database SQL readiness checks.
+
+![Source memory diagnostics, open database accounts, baseline row count, and SQL readiness result](./images/preflight-section-4b.png)
+
+### Section 5: DNS and TCP Connectivity
+
+This section checks whether the target database and Amazon EFS hostnames resolve, then tests connections from EC2 to target database ports `1521` and `1522` and Amazon EFS port `2049`.
+
+Expect `PASS` for both hostname checks and all three port checks. Port `1521` is used for the configured SQL connection, `1522` for the wallet-based TCPS connection, and `2049` for Amazon EFS access over NFSv4.
+
+ZDM and GoldenGate need network access to the databases, and Data Pump needs Amazon EFS staging storage. These checks prove that EC2 can reach the endpoints; they do not prove database authentication, an Amazon EFS mount, or connectivity from the target database to Amazon EFS.
+
+![Target and EFS hostname resolution and all three TCP port checks pass](./images/preflight-section-5.png)
+
+### Section 6: ZDM Service
+
+This section reports the status of the ZDM service and its local configuration.
+
+Expect `Running: true` and `PASS: ZDM service is running`. Repository paths and service ports provide diagnostic context. ZDM must be running to accept and coordinate evaluation and migration jobs; this result does not mean a migration has started.
+
+![ZDM service reports Running true and a passing status check](./images/preflight-section-6.png)
+
+### Section 7: GoldenGate Container and Wallet
+
+This section checks the `oggfree` container as its owner, `ec2-user`, confirms that the wallet files are present, checks the configured wallet location, and contacts the local GoldenGate endpoint.
+
+Expect the container status to show `Up`, the wallet check to report `PASS`, and the overall container, wallet, and endpoint check to pass. The wallet files support the secure target database connection. A running GoldenGate service is needed to replicate changes after the initial data copy.
+
+An HTTP response of `401` means the endpoint answered but requires authentication.
+
+![Running GoldenGate container, wallet readiness, and local endpoint response](./images/preflight-section-7.png)
+
+### Section 8: Final Readiness Summary
+
+This section summarizes the checks. Expect `Passed checks : 12`, `Failed checks : 0`, and the final `LAB1_PREFLIGHT: PASS` marker.
+
+Review any `FAIL` messages before proceeding, even if other sections pass. A successful summary confirms these preflight checks completed; it does not mean the data has migrated or GoldenGate replication is already running.
+
+![Final summary with twelve passed checks, zero failed checks, and LAB1_PREFLIGHT PASS](./images/preflight-section-8.png)
+
+The script loads environment variables in its own process. They do not remain in your interactive shell afterward, so source the required environment files when a later command needs them.
+
+Remain in the `oracle` shell for Lab 2.
 
 ## Acknowledgements
 
 * **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
 * **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
-* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / October 8, 2026

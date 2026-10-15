@@ -1,251 +1,99 @@
-# Lab 2: Verify Shared Amazon EFS NFS Staging
+# Lab 2: Verify Amazon EFS Staging
 
 ## Introduction
 
-Verify your assigned staging filesystem. The source directory is `DATA_PUMP_DIR_NFS`; the target directory is `ZDM_EFS_DIR`. This lab uses NFSv4. Complete these checks before starting migration.
+Validate Amazon EFS storage from the source database EC2 instance and the target Autonomous AI Database. In the source database, inspect the default `DATA_PUMP_DIR` and the Amazon EFS staging directory `EFS_DP_DIR`. In the target database, validate the `ZDM_EFS_DIR` attachment. The EC2 mount and target database attachment must access the same Amazon EFS filesystem over NFSv4.
 
 Estimated Time: 15 minutes
 
 ### Objectives
 
-Confirm the EC2 mount, match target attachment metadata, and verify that a file written by ADB-S can be read on EC2.
+- Run the Amazon EFS validation script.
+- Review the EC2 mount, target database attachment, and shared-file results.
+- Automatically verify a target database file write, file listing, and read-back from EC2.
 
-## Task 1: Check the Source Mount
+## Task 1: Run the Amazon EFS Readiness Check
 
-1. Before migration, run the provided mount helper from **EC2 Session Manager as `ssm-user`**. If continuing in the `oracle` login shell from Lab 1, use `exit` once to return to `ssm-user`; check `whoami` before proceeding.
-
-    ```bash
-    <copy>
-    sudo /data/oracle/lab/bin/mount-efs.sh
-    </copy>
-    ```
-
-2. Switch to **`oracle`**.
+1. In the `oracle` shell from Lab 1, run the script and save its formatted output.
 
     ```bash
     <copy>
-    sudo -iu oracle
+    set -o pipefail
+    umask 077
+    bash "$HOME/lab2-efs-validation.sh" 2>&1 | tee "$HOME/lab2-efs-validation.log"
     </copy>
     ```
 
-3. Load the source and assigned lab environments.
+    The script loads your assigned environment, connects to the target database as `ADMIN`, and performs all storage checks automatically. No password input or separate SQL*Plus validation is required. It creates unique test files and removes only those files after checking them.
+
+    **Connection note:** Continue in the same SSM Session Manager session. If disconnected, reconnect to your assigned EC2 instance through **Connect → Session Manager → Connect** in **US West (Oregon)** (`us-west-2`). If the session opens as `ssm-user`, run `sudo -iu oracle` before running the script above.
+
+2. Confirm the final summary shows `9` passed checks, `0` failed checks, and `LAB2_EFS_VALIDATION: PASS`. You can then continue to **Lab 3**. Resolve any failed or timed-out checks before continuing.
+
+    ![Amazon EFS validation summary with zero failures and a PASS result](./images/efs-validation-v2-section-8.png)
+
+3. **Optional:** Review the saved output to investigate a check. Use the arrow keys to scroll and press `q` to return to the shell.
 
     ```bash
     <copy>
-    source "$HOME/env/source19c.env"
-    source /data/oracle/lab/config/lab-env.sh
+    less -S "$HOME/lab2-efs-validation.log"
     </copy>
     ```
 
-    The helper uses the assigned configuration. Do not run it to repair storage during an active migration; escalate instead.
+    Continue only when the final result is `LAB2_EFS_VALIDATION: PASS`. Resolve any failed or timed-out checks before starting migration.
 
-4. Continue at the EC2 shell as **`oracle`** and display the assigned EFS values.
+## (Optional Task) Review Detailed Validation Output
 
-    ```bash
-    <copy>
-    echo "$EFS_DNS"
-    echo "$EFS_IP"
-    echo "$EFS_MOUNT_POINT"
-    </copy>
-    ```
+If the Task 1 summary passed, you can continue directly to Lab 3. The examples below show one environment; your identifiers and unique test filename will differ.
 
-5. Check the filesystem mounted at that path.
+**How the checks are counted:** The script performs **nine PASS checks across six validation sections**. Source mount, target file write/listing, and EC2 read-back/cleanup each contain two checks. The other three validation sections contain one check each. Assigned storage information and the final summary are not additional checks. Screenshot section numbers identify script sections, not check numbers.
 
-    ```bash
-    <copy>
-    findmnt -T "$EFS_MOUNT_POINT" -o TARGET,SOURCE,FSTYPE,OPTIONS
-    df -hT "$EFS_MOUNT_POINT"
-    </copy>
-    ```
+**Assigned storage information:** Review your EFS ID, hostname, IP address, mount path, and target database alias before reviewing the checks.
 
-6. Check write access for `oracle`.
+![Assigned Amazon EFS storage](./images/efs-validation-v2-section-1.png)
 
-    ```bash
-    <copy>
-    test -w "$EFS_MOUNT_POINT" && echo "PASS: staging writable"
-    </copy>
-    ```
+1. **Check 1: Assigned Amazon EFS mount.** Confirm that the source database host has the assigned Amazon EFS filesystem mounted using NFSv4.
 
-    Confirm NFS/NFS4, the assigned EFS source, and the expected mount path. A local root filesystem is not an EFS mount. Stop if any check fails.
+    ![Check 1: Assigned Amazon EFS mount](./images/efs-validation-check-1.png)
 
-    ![Lab 101 assigned EFS hostname, mount and writable status](./images/efs-mount.png)
+2. **Check 2: Source database host write and read.** Confirm that `oracle` can write and read a test file on Amazon EFS. This checks access to the source database staging location.
 
-    Example: Lab 101 uses `/data/oracle/efs`. Use your generated environment values, not the screenshot's filesystem ID or IP. These checks do not require recreating the mount.
+    ![Check 2: Source database host write and read](./images/efs-validation-check-2.png)
 
-7. Load the target environment and construct the EFS resource name.
+3. **Check 3: Source database Data Pump directories.** Confirm that `DATA_PUMP_DIR` exists and `EFS_DP_DIR` points to `/data/oracle/efs/zdm-lab-gold/datapump`.
 
-    ```bash
-    <copy>
-    source "$HOME/env/adbs.env"
-    export EFS_NAME="EFS${RESOURCE_LAB_ID:-$LAB_ID}"
-    </copy>
-    ```
+    ![Check 3: Source database Data Pump directories](./images/efs-validation-v2-section-3.png)
 
-8. Print the assigned EFS and target details.
+4. **Check 4: Target database ADMIN login.** Confirm the password-based login to your configured target database alias succeeds. Review the database name and the `ADMIN` user.
 
-    ```bash
-    <copy>
-    printf 'Lab ID: %s\nTarget alias: %s\nEFS name: %s\nEFS ID: %s\nEFS DNS: %s\nEFS IP: %s\nMount: %s\n' \
-      "$LAB_ID" "$TARGET_ALIAS" "$EFS_NAME" "$EFS_ID" \
-      "$EFS_DNS" "$EFS_IP" "$EFS_MOUNT_POINT"
-    </copy>
-    ```
+    ![Check 4: Target database ADMIN login](./images/efs-validation-v2-section-4.png)
 
-    ![Lab 101 EFS assignment and target alias](./images/efs-assignment.png)
+5. **Check 5: Target database Amazon EFS attachment.** Confirm that `ZDM_EFS_DIR` references your assigned Amazon EFS filesystem using NFS version `4`.
 
-9. Test write access using `oracle-write-test`. If `oracle-write-test` already exists, stop before running this test.
+    ![Check 5: Target database Amazon EFS attachment](./images/efs-validation-v2-section-5.png)
 
-    ```bash
-    <copy>
-    touch "$EFS_MOUNT_POINT/oracle-write-test"
-    ls -l "$EFS_MOUNT_POINT/oracle-write-test"
-    </copy>
-    ```
+6. **Check 6: Target database file write.** Confirm that the target database writes its unique test file through `ZDM_EFS_DIR`.
 
-    ![Oracle creates, lists and removes an EFS write-test file](./images/efs-source-write-test.png)
+    ![Check 6: Target database file write](./images/efs-validation-check-6.png)
 
-10. Remove the write-test file you just created.
+7. **Check 7: Target database file listing.** Confirm that `DBMS_CLOUD.LIST_FILES` returns exactly one matching test file with a nonzero byte count.
 
-    ```bash
-    <copy>
-    rm -f "$EFS_MOUNT_POINT/oracle-write-test"
-    </copy>
-    ```
+    ![Check 7: Target database file listing](./images/efs-validation-check-7.png)
 
-## Task 2: Check the Target Attachment
+8. **Check 8: EC2 read-back of the target database file.** Confirm that EC2 reads `EFS attachment validated from ADB-S`. This verifies that the target database and source database host access the same shared file.
 
-1. At the shell, use the generated SQL alias to check connectivity.
+    ![Check 8: EC2 read-back of the target database file](./images/efs-validation-check-8.png)
 
-    ```bash
-    <copy>
-    source "$HOME/env/adbs.env"
-    "$ORACLE_HOME/bin/tnsping" "$TARGET_ALIAS"
-    </copy>
-    ```
+9. **Check 9: Test-file cleanup.** Confirm that the script removes only its own target test file and verifies that it is no longer visible.
 
-2. Connect to the target as ADMIN and enter the supplied password at the prompt.
+    ![Check 9: Test-file cleanup](./images/efs-validation-check-9.png)
 
-    ```bash
-    <copy>
-    sqlplus -L admin@"$TARGET_ALIAS"
-    </copy>
-    ```
+**Final summary:** Require `9` passed checks, `0` failures, and `LAB2_EFS_VALIDATION: PASS`. No additional manual validation is required before Lab 3.
 
-3. At `SQL>`, display the target identity.
-
-    ```sql
-    <copy>
-    SET LINESIZE 220
-    SET PAGESIZE 100
-    COLUMN file_system_name FORMAT A15
-    COLUMN file_system_location FORMAT A75
-    COLUMN directory_name FORMAT A20
-    SELECT SYS_CONTEXT('USERENV','DB_NAME') AS db_name,
-           SYS_CONTEXT('USERENV','SERVICE_NAME') AS service_name,
-           SYS_CONTEXT('USERENV','CURRENT_USER') AS current_user FROM dual;
-    </copy>
-    ```
-
-4. Check the attached filesystem and database directory at **target `SQL>`**.
-
-    ```sql
-    <copy>
-    SELECT file_system_name, file_system_location, directory_name,
-           directory_path, nfs_version
-    FROM dba_cloud_file_systems WHERE directory_name='ZDM_EFS_DIR';
-    SELECT directory_name, directory_path FROM dba_directories
-    WHERE directory_name='ZDM_EFS_DIR';
-    </copy>
-    ```
-
-    Match the location against your assigned EFS hostname and export path, and confirm NFS version 4. Metadata alone is not an I/O test.
-
-    ![Target attachment referencing the assigned EFS and ZDM_EFS_DIR with NFS version 4](./images/target-efs-attachment.png)
-
-    The example's attachment name is `ZDM_EFS`; the AWS resource name is `EFS101`. Compare the filesystem location and directory, rather than requiring those two names to be identical.
-
-5. Return to the **`oracle` shell**.
-
-    ```sql
-    <copy>
-    EXIT
-    </copy>
-    ```
-
-## Task 3: Validate a Target Write from EC2
-
-1. Before starting migration, connect to the target as ADMIN from the **`oracle` EC2 shell**.
-
-    ```bash
-    <copy>
-    source "$HOME/env/adbs.env"
-    sqlplus -L admin@"$TARGET_ALIAS"
-    </copy>
-    ```
-
-2. At **target `SQL>`**, write `participant_validation.txt`. This replaces that test file if it already exists; use it only for the workshop validation. Use the existing provisioned `ZDM_EFS_DIR`.
-
-    ```sql
-    <copy>
-    DECLARE
-      f UTL_FILE.FILE_TYPE;
-    BEGIN
-      f := UTL_FILE.FOPEN('ZDM_EFS_DIR', 'participant_validation.txt', 'w');
-      UTL_FILE.PUT_LINE(f, 'EFS attachment validated from ADB-S');
-      UTL_FILE.FCLOSE(f);
-    EXCEPTION WHEN OTHERS THEN
-      IF UTL_FILE.IS_OPEN(f) THEN UTL_FILE.FCLOSE(f); END IF;
-      RAISE;
-    END;
-    /
-    </copy>
-    ```
-
-3. Require `PL/SQL procedure successfully completed`, then confirm the file exists.
-
-    ```sql
-    <copy>
-    SELECT object_name, bytes FROM DBMS_CLOUD.LIST_FILES('ZDM_EFS_DIR')
-    WHERE object_name = 'participant_validation.txt';
-    </copy>
-    ```
-
-4. Return to the EC2 shell.
-
-    ```sql
-    <copy>
-    EXIT
-    </copy>
-    ```
-
-    The target ADB-S write completes:
-
-    ![ADB-S UTL_FILE write to participant_validation.txt completes successfully](./images/efs-target-write-proof.png)
-
-5. In the **`oracle` EC2 shell**, go to the EFS mount.
-
-    ```bash
-    <copy>
-    cd /data/oracle/efs
-    </copy>
-    ```
-
-6. Read the file written by ADB-S.
-
-    ```bash
-    <copy>
-    cat participant_validation.txt
-    </copy>
-    ```
-
-    Expect `EFS attachment validated from ADB-S`. Leave the file in place.
-
-    ![EC2 reads EFS attachment validated from ADB-S from the shared file](./images/efs-source-read-proof.png)
-
-    Stop if the write or read fails or hangs; do not start migration or repeat blocked I/O calls.
+![Validation summary showing nine passed checks](./images/efs-validation-v2-section-8.png)
 
 ## Acknowledgements
 
 * **Author** - Arnab Saha, Principal Solutions Architect, OCI Multicloud
 * **Author** - Vineet Agarwal, Senior Principal Solutions Architect, OCI Multicloud
-* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / September 30, 2026
+* **Last Updated By/Date** - Arnab Saha and Vineet Agarwal / October 11, 2026
