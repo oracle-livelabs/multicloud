@@ -1,51 +1,56 @@
 {
-    "workshoptitle": "Access Amazon S3 Privately from OCI",
+    "workshoptitle": "Query Amazon S3 Privately from OCI Autonomous AI Lakehouse",
     "help": "livelabs-help-db_us@oracle.com",
     "tutorials": [
         {
+            "title": "Overview",
+            "description": "Workshop architecture, prerequisites, and learning objectives",
+            "filename": "../../overview/overview.md"
+        },
+        {
             "title": "Introduction",
-            "description": "About this workshop",
+            "description": "Introduction to the private Autonomous AI Lakehouse-to-S3 path",
             "filename": "../../introduction/introduction.md"
         },
         {
-            "title": "Getting Started",
-            "description": "Prepare your AWS and OCI environments",
-            "filename": "../../getting-started/getting_started.md"
+            "title": "AWS Event Account",
+            "description": "Sign in to the assigned AWS event account",
+            "filename": "../../aws-event-account/aws_event_account.md"
         },
         {
-            "title": "Lab 1: Deploy the AWS Foundation",
-            "description": "Create the private S3 endpoint and restricted AWS access",
-            "filename": "../../deploy-aws-foundation/deploy-aws-foundation.md"
+            "title": "OCI Event Account",
+            "description": "Sign in to the assigned OCI event account and compartment",
+            "filename": "../../oci-event-account/oci_event_account.md"
         },
         {
-            "title": "Lab 2: Deploy the OCI Network Foundation",
-            "description": "Create the OCI private network and DRG",
-            "filename": "../../deploy-oci-network/deploy-oci-network.md"
+            "title": "Verify AWS Lab Environment",
+            "description": "Inspect the pre-staged AWS networking, S3, and DNS components",
+            "filename": "../../verify-aws-lab-environment/verify_aws_lab_environment.md"
         },
         {
-            "title": "Lab 3: Establish Oracle--AWS Interconnect",
-            "description": "Authorize the managed cross-cloud connection",
-            "filename": "../../establish-interconnect/establish-interconnect.md"
+            "title": "Verify OCI Lab Environment",
+            "description": "Apply and inspect the OCI network foundation",
+            "filename": "../../verify-oci-lab-environment/verify_oci_lab_environment.md"
         },
         {
-            "title": "Lab 4: Deploy the Private OCI Test Runner",
-            "description": "Launch the private instance and first-boot validation",
-            "filename": "../../deploy-private-runner/deploy-private-runner.md"
+            "title": "Create Oracle AWS Interconnect",
+            "description": "Create and accept the managed cross-cloud connection",
+            "filename": "../../create-oracle-aws-interconnect/create_oracle_aws_interconnect.md"
         },
         {
-            "title": "Lab 5: Validate the Private S3 Path",
-            "description": "Verify and repeat the endpoint-restricted S3 test",
-            "filename": "../../validate-private-s3/validate-private-s3.md"
+            "title": "Create Autonomous AI Lakehouse",
+            "description": "Deploy the private-endpoint Autonomous AI Lakehouse",
+            "filename": "../../create-autonomous-ai-lakehouse/create_autonomous_ai_lakehouse.md"
         },
         {
-            "title": "Lab 6: Troubleshoot the Workshop",
-            "description": "Diagnose deployment, connectivity, and runner issues",
-            "filename": "../../troubleshoot/troubleshoot.md"
+            "title": "Enforce Private Connection on Autonomous AI Lakehouse",
+            "description": "Require the database to use its private endpoint for outbound connections",
+            "filename": "../../enforce-private-connection-on-autonomous-ai-lakehouse/enforce_private_connection_on_autonomous_ai_lakehouse.md"
         },
         {
-            "title": "Lab 7: Clean Up the Workshop",
-            "description": "Remove the OCI and AWS resources safely",
-            "filename": "../../cleanup/cleanup.md"
+            "title": "Query Data Stored in S3",
+            "description": "Create an external table and query private S3 CSV data",
+            "filename": "../../query-data-stored-in-s3/query_data_stored_in_s3.md"
         }
     ]
 }
