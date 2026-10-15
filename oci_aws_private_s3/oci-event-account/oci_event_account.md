@@ -6,6 +6,11 @@ In this module, you sign in to OCI and select the compartment and Region assigne
 
 Estimated Time: 5 minutes
 
+### Objectives
+
+* Sign in to OCI and select US East (Ashburn), `us-ashburn-1`.
+* Select your assigned learner compartment and verify that it has no virtual cloud network.
+
 ## Task 1: Sign in to OCI
 
 1. Open the OCI console URL supplied by the instructor.
@@ -30,3 +35,8 @@ Estimated Time: 5 minutes
 ## Summary
 
 You are working in the correct OCI Region and learner compartment and have confirmed that the network has not been created yet.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

@@ -6,6 +6,12 @@ The instructor pre-stages the AWS foundation. In this module, you inspect the S3
 
 Estimated Time: 10 minutes
 
+### Objectives
+
+* Verify the lab S3 bucket and sample CSV objects.
+* Inspect the lab VPC and S3 Interface Endpoint.
+* Record a Route 53 Resolver inbound IP address for OCI DNS forwarding.
+
 ## Task 1: Verify the S3 data source
 
 1. Open **S3** from the AWS Services menu.
@@ -49,3 +55,8 @@ Estimated Time: 10 minutes
 ## Summary
 
 You verified the pre-staged AWS S3 data, private endpoint, DNS resolver, and Direct Connect gateway.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

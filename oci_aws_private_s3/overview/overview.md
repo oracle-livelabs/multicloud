@@ -8,7 +8,7 @@ The AWS and OCI event environments are prepared before the workshop. Learners ve
 
 Estimated Workshop Time: 90 minutes
 
-## Learning objectives
+### Objectives
 
 * Inspect the event AWS and OCI environments.
 * Establish an Oracle--AWS Interconnect connection.
@@ -49,4 +49,4 @@ The S3 bucket policy accepts the database-reader identity only when S3 receives 
 ## Acknowledgements
 
 * **Author** - Arun Ramakrishnan
-* **Last Updated By/Date** - David Start, October 2026
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

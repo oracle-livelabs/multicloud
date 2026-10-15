@@ -6,6 +6,12 @@ In this module, you create a database credential, create an external table over 
 
 Estimated Time: 15 minutes
 
+### Objectives
+
+* Create a database credential for the restricted S3 reader.
+* Create an external table over the S3 CSV files.
+* Query the data and validate the sample results.
+
 ## Task 1: Create the S3 credential
 
 In Database Actions SQL Studio, sign in as `ADMIN`. Copy **one complete SQL block at a time** into the worksheet, replace the indicated placeholders, and select **Run Script**. Do not paste the literal angle brackets (`<` and `>`) around a replacement value.
@@ -84,3 +90,8 @@ END;
 ## Summary
 
 You queried CSV data in Amazon S3 through the enforced private OCI--AWS path.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

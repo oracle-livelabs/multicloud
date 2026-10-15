@@ -6,6 +6,12 @@ In this module, you create an Autonomous AI Lakehouse with a private endpoint in
 
 Estimated Time: 15 minutes
 
+### Objectives
+
+* Deploy the Autonomous AI Lakehouse stack with Resource Manager.
+* Verify the private endpoint, subnet, and network security group.
+* Open Database Actions and sign in as `ADMIN`.
+
 ## Task 1: Create and apply the Autonomous AI Lakehouse stack
 
 1. Select **Deploy to Oracle Cloud** to open Resource Manager.
@@ -67,3 +73,8 @@ Estimated Time: 15 minutes
 ## Summary
 
 You created an Autonomous AI Lakehouse in the private OCI subnet.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

@@ -6,6 +6,12 @@ In this module, you deploy the OCI network foundation into your assigned lab com
 
 Estimated Time: 20 minutes
 
+### Objectives
+
+* Deploy the OCI network foundation with Resource Manager.
+* Inspect the lab VCN, DRG, private subnet, and network security group.
+* Record the OCIDs required by the Interconnect and Autonomous AI Lakehouse modules.
+
 ## Task 1: Create and deploy the OCI network stack
 
 1. Select **Deploy to Oracle Cloud** to open Resource Manager.
@@ -20,16 +26,16 @@ Estimated Time: 20 minutes
 
 4. On the **Configure variables** page, enter the values supplied for you in the LiveLabs portal by the lab administrator. Use your assigned values rather than values from another learner.
 
-   | Variable | What to enter |
-   | --- | --- |
-   | `region` | Your assigned OCI region. |
-   | `compartment_ocid` | The OCID of **your lab compartment**, not the tenancy OCID. |
-   | `name_prefix` | Your assigned lab name prefix, if one is provided. |
-   | `vcn_cidr`, `adb_subnet_cidr`, `dns_subnet_cidr` | The OCI CIDR ranges supplied in the portal. Keep the provided defaults only when the portal instructs you to do so. |
-   | `aws_vpc_cidr` | The CIDR of your assigned AWS lab VPC. |
-   | `aws_resolver_inbound_ip` | One private IP address of the Route 53 Resolver **inbound** endpoint. Find this value in the administrator-supplied values in the LiveLabs portal. This lets OCI forward S3 DNS queries to AWS through the private path. |
-   | `s3_dns_domain` | `s3.us-east-1.amazonaws.com`, unless the portal supplies a different value. |
-   | `admin_client_cidr` | The administrator workstation or VPN CIDR supplied in the portal, for example `203.0.113.25/32`. Do not use `0.0.0.0/0`. |
+    | Variable | What to enter |
+    | --- | --- |
+    | `region` | Your assigned OCI region. |
+    | `compartment_ocid` | The OCID of **your lab compartment**, not the tenancy OCID. |
+    | `name_prefix` | Your assigned lab name prefix, if one is provided. |
+    | `vcn_cidr`, `adb_subnet_cidr`, `dns_subnet_cidr` | The OCI CIDR ranges supplied in the portal. Keep the provided defaults only when the portal instructs you to do so. |
+    | `aws_vpc_cidr` | The CIDR of your assigned AWS lab VPC. |
+    | `aws_resolver_inbound_ip` | One private IP address of the Route 53 Resolver **inbound** endpoint. Find this value in the administrator-supplied values in the LiveLabs portal. This lets OCI forward S3 DNS queries to AWS through the private path. |
+    | `s3_dns_domain` | `s3.us-east-1.amazonaws.com`, unless the portal supplies a different value. |
+    | `admin_client_cidr` | The administrator workstation or VPN CIDR supplied in the portal, for example `203.0.113.25/32`. Do not use `0.0.0.0/0`. |
 
 5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**.
 
@@ -60,3 +66,8 @@ Estimated Time: 20 minutes
 ## Summary
 
 Your OCI network foundation, DRG, private subnet, NSG, and DNS forwarding configuration are ready. You have also saved the DRG, NSG, and subnet OCIDs required by the Autonomous AI Lakehouse stack.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026

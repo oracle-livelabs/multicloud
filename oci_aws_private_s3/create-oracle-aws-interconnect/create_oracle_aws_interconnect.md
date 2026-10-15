@@ -6,6 +6,12 @@ In this module, you establish the managed Oracle--AWS Interconnect between the D
 
 Estimated Time: 15 minutes
 
+### Objectives
+
+* Create the OCI side of Oracle--AWS Interconnect.
+* Accept the AWS side of the connection.
+* Verify the connection status in both consoles.
+
 ## Task 1: Create the OCI side
 
 1. In the OCI Console navigation menu, open **Networking** → **Customer connectivity** → **FastConnect**.
@@ -72,8 +78,13 @@ Estimated Time: 15 minutes
 
     ![AWS Interconnect available](images/available.png "AWS Interconnect available")
 
-Do not continue until both providers report a healthy connection.
+    Do not continue until both providers report a healthy connection.
 
 ## Summary
 
 The OCI DRG and AWS Direct Connect gateway are connected by Oracle--AWS Interconnect.
+
+## Acknowledgements
+
+* **Author** - Arun Ramakrishnan
+* **Last Updated By/Date** - Arun Ramakrishnan, October 2026
