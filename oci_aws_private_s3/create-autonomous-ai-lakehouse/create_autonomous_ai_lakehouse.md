@@ -24,23 +24,23 @@ Estimated Time: 15 minutes
 
 3. Under **Create in compartment**, confirm that your assigned lab compartment is selected, then select **Next**.
 
-4. On the **Configure variables** page, update the following values. The `Lab compartment`, `Autonomous Database VCN`, `Autonomous Database subnet`, and `Autonomous Database NSG` fields are selectors: choose the resources by name from their drop-down lists rather than pasting OCIDs.
+4. On the **Configure variables** page, update the following values. The **Lab compartment**, **Autonomous Database VCN**, **Autonomous Database subnet**, and **Autonomous Database NSG** fields are selectors: choose the resources by name from their drop-down lists. You do not need to provide any resource OCIDs.
 
-    ![Configure the Autonomous AI Lakehouse stack variables](images/editvariables.png "Configure the Autonomous AI Lakehouse stack variables")
+    ![Configure the Autonomous AI Lakehouse stack options](images/adbstackoptions.png "Configure the Autonomous AI Lakehouse stack options")
 
-    | Stack variable | What to select or enter |
+    | Console field | What to select or enter |
     | --- | --- |
-    | `region` | Your assigned OCI region. |
-    | `compartment_ocid` (**Lab compartment**) | Select your assigned lab compartment. Do not select the tenancy/root compartment. |
-    | `adb_vcn_ocid` (**Autonomous Database VCN**) | Select the VCN created by the OCI network stack in your lab compartment. This filters the next two selectors. |
-    | `adb_subnet_ocid` (**Autonomous Database subnet**) | Select the private subnet with **`DB`** in its name. Do not paste a subnet OCID. |
-    | `adb_nsg_ocid` (**Autonomous Database NSG**) | Select the network security group with **`DB`** in its name. Do not paste an NSG OCID. |
-    | `display_name` | A descriptive database name. Keep the supplied default or use the lab naming convention. |
-    | `db_name` | The database name, beginning with a letter and containing no more than 14 letters or numbers. Keep the supplied default unless instructed otherwise. |
-    | `private_endpoint_label` | A private endpoint label. Keep the supplied default unless instructed otherwise. |
-    | `public_access_cidr` | Your workstation public egress IP in `/32` form, or an approved corporate/VPN CIDR. Do not use `0.0.0.0/0`. |
-    | `ecpu_count` and `storage_tbs` | Keep the lab-supplied defaults unless your instructor provides different values. |
-    | `admin_password` | Create and confirm a new strong password for the `ADMIN` user. Save it securely; you use it to sign in to Database Actions. |
+    | **OCI region** | Your assigned OCI region. |
+    | **Lab compartment** | Select your assigned lab compartment. Do not select the tenancy/root compartment. |
+    | **Autonomous Database VCN** | Select the VCN created by the OCI network stack in your lab compartment. This filters the next two selectors. |
+    | **Autonomous Database subnet** | Select the private subnet with **`DB`** in its name. |
+    | **Autonomous Database NSG** | Select the network security group with **`DB`** in its name. |
+    | **Database display name** | A descriptive database name. Keep the supplied default or use the lab naming convention. |
+    | **Database name** | The database name, beginning with a letter and containing no more than 14 letters or numbers. Keep the supplied default unless instructed otherwise. |
+    | **Private endpoint label** | A private endpoint label. Keep the supplied default unless instructed otherwise. |
+    | **Allowed public client CIDR** | Your workstation public egress IP in `/32` form, or an approved corporate/VPN CIDR. Do not use `0.0.0.0/0`. |
+    | **ECPU count** and **Storage in TB** | Keep the lab-supplied defaults unless your instructor provides different values. |
+    | **ADMIN password** | Create and confirm a new strong password for the `ADMIN` user. Save it securely; you use it to sign in to Database Actions. |
 
 5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**. Do not change the Terraform configuration or provider settings.
 
@@ -66,7 +66,7 @@ Estimated Time: 15 minutes
 
     ![Find the public Database Actions URL in Tool configuration](images/toolconfig.png "Find the public Database Actions URL in Tool configuration")
 
-4. At the Database Actions sign-in page, enter `ADMIN` as the username and the `admin_password` you set in Task 1, then sign in.
+4. At the Database Actions sign-in page, enter `ADMIN` as the username and the ADMIN password you set in Task 1, then sign in.
 
     ![Sign in to Database Actions](images/dblogin.png "Sign in to Database Actions")
 

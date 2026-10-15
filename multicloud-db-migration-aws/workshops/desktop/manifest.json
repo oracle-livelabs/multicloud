@@ -21,7 +21,7 @@
             "filename": "../../architecture-preflight/architecture-preflight.md"
         },
         {
-            "title": "Lab 2: Verify Shared Amazon EFS NFS Staging",
+            "title": "Lab 2: Verify Amazon EFS Staging",
             "description": "",
             "type": "livelabs",
             "filename": "../../shared-nfs-staging/shared-nfs-staging.md"

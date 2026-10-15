@@ -28,7 +28,7 @@ Estimated Time: 15 minutes
 
     ![Configure the OCI side first](images/fastconnectocifirst.png "Configure the OCI side first")
 
-5. For the DRG, select the DRG created by the OCI network Resource Manager stack. Its OCID is the `drg_ocid` value recorded in the **Verify OCI Lab Environment** module.
+5. For the DRG, select the DRG created by the OCI network Resource Manager stack in your assigned lab compartment.
 
 6. Enter the 12-digit **AWS account ID** for the AWS event account used in this lab. Obtain it from the lab administrator, or sign in to the AWS Console and open the account menu in the upper-right corner to copy the account ID. Verify the number before proceeding; it determines which AWS account can accept this Interconnect request.
 
