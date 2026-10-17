@@ -28,14 +28,14 @@ Estimated Time: 20 minutes
 
     | Variable | What to enter |
     | --- | --- |
-    | `region` | Your assigned OCI region. |
-    | **Lab compartment** | Select your assigned lab compartment from the list, not the tenancy/root compartment. |
+    | `region` | For this lab, use `us-ashburn-1`. This value is preselected; leave it unchanged. |
+    | **Lab compartment** | This field should be preselected. Confirm that it is your assigned learner compartment, which follows the naming convention `<Username>-COMPARTMENT`; do not select the tenancy/root compartment. |
     | `name_prefix` | Your assigned lab name prefix, if one is provided. |
-    | `vcn_cidr`, `adb_subnet_cidr`, `dns_subnet_cidr` | The OCI CIDR ranges supplied in the portal. Keep the provided defaults only when the portal instructs you to do so. |
+    | `vcn_cidr`, `adb_subnet_cidr`, `dns_subnet_cidr` | Keep the default values. |
     | `aws_vpc_cidr` | The CIDR of your assigned AWS lab VPC. |
     | `aws_resolver_inbound_ip` | One private IP address of the Route 53 Resolver **inbound** endpoint. Find this value in the administrator-supplied values in the LiveLabs portal. This lets OCI forward S3 DNS queries to AWS through the private path. |
-    | `s3_dns_domain` | `s3.us-east-1.amazonaws.com`, unless the portal supplies a different value. |
-    | `admin_client_cidr` | The administrator workstation or VPN CIDR supplied in the portal, for example `203.0.113.25/32`. Do not use `0.0.0.0/0`. |
+    | `s3_dns_domain` | Keep the default value: `s3.us-east-1.amazonaws.com`. |
+    | `admin_client_cidr` | Enter your workstation's public IP address in `/32` CIDR format, for example `203.0.113.25/32`. On Windows, run `ipconfig` and identify the IPv4 address to use. On macOS, run `curl ifconfig.me`. Append `/32` to the address. If Windows shows only a private address such as `10.x.x.x`, `172.16-31.x.x`, or `192.168.x.x`, use your network's public egress IP instead. Do not use `0.0.0.0/0`. |
 
 5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**.
 
@@ -53,11 +53,11 @@ Estimated Time: 20 minutes
 
 3. On the VCN details page, select **Gateways**. Confirm the Dynamic Routing Gateway (DRG) created for the lab is attached and available.
 
-    ![Inspect the VCN gateway and DRG attachment](images/vcngateway.png "Inspect the VCN gateway and DRG attachment")
+    ![Inspect the VCN DRG attachment](images/vcndrg.png "Inspect the VCN DRG attachment")
 
 4. Select **Security** → **Network security groups**. Confirm that the Autonomous AI Lakehouse NSG with **`DB`** in its name is present.
 
-    ![Inspect the VCN network security group](images/vcnnsg.png "Inspect the VCN network security group")
+    ![Inspect the VCN network security group](images/vcnnsg2.png "Inspect the VCN network security group")
 
 5. Select **Subnets**. Confirm that the Autonomous Database subnet with **`DB`** in its name is private and has the expected CIDR. Open its route table and confirm that the AWS VPC CIDR route targets the DRG.
 
