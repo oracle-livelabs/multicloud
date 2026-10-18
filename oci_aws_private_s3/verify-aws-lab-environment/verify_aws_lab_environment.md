@@ -10,7 +10,7 @@ Estimated Time: 10 minutes
 
 * Verify the lab S3 bucket and sample CSV objects.
 * Inspect the lab VPC and S3 Interface Endpoint.
-* Record a Route 53 Resolver inbound IP address for OCI DNS forwarding.
+* Validate the Route 53 Resolver inbound IP addresses for OCI DNS forwarding.
 
 ## Task 1: Verify the S3 data source
 
@@ -46,11 +46,31 @@ Estimated Time: 10 minutes
 
     ![Locate the Route 53 Resolver endpoint](images/route53resolverendpoint.png "Locate the Route 53 Resolver endpoint")
 
-5. Confirm that the endpoint direction is **Inbound**. In its IP address list, copy either resolver IP address. You will use this IP address as `aws_resolver_inbound_ip` in the OCI network stack.
+5. Confirm that the endpoint direction is **Inbound** and that its private IP addresses are listed. One of these IP addresses is used as an input when you create the VCN and other OCI network resources later in the lab. The OCI network stack configures DNS forwarding to this Route 53 Resolver inbound IP so S3 DNS queries can resolve to the AWS Interface endpoint's private addresses and travel over the Oracle–AWS Interconnect rather than the public internet.
 
-    ![Copy a Route 53 Resolver inbound IP address](images/resolveripaddress.png "Copy a Route 53 Resolver inbound IP address")
+    You do not need to copy the IP address now. The value to use is provided in your LiveLabs session login information.
 
-6. From the same VPC, open **Endpoints** and confirm that the S3 endpoint type is **Interface**, Private DNS is enabled, and it belongs to the lab VPC.
+    ![Validate the Route 53 Resolver inbound IP addresses](images/resolveripaddress.png "Validate the Route 53 Resolver inbound IP addresses")
+
+6. In the VPC console navigation pane, under **Virtual private cloud**, select **Endpoints**.
+
+    ![Navigate to VPC endpoints](images/vpcendpointnav.png "Navigate to VPC endpoints")
+
+    Use the **VPC ID** filter to show only endpoints in your lab VPC, then select the endpoint whose service name is the regional Amazon S3 service—for example, `com.amazonaws.us-east-1.s3`.
+
+    ![Select the S3 VPC endpoint](images/vpcendpointlist.png "Select the S3 VPC endpoint")
+
+    Confirm all of the following on the endpoint details page:
+
+    ![Inspect the S3 VPC endpoint details](images/vpcendpointdetails.png "Inspect the S3 VPC endpoint details")
+
+    * **Type** is **Interface**.
+    * **Private DNS** is enabled.
+    * The endpoint belongs to the lab VPC and has network interfaces in the expected lab subnets.
+
+    The endpoint must be an **Interface** endpoint because it creates private network interfaces (ENIs) and private IP addresses for the S3 service inside the AWS VPC. With Private DNS enabled, the S3 DNS name resolves to those private addresses. OCI can then forward the S3 DNS query to the Route 53 Resolver and reach S3 through the Oracle–AWS Interconnect.
+
+    Do not confuse this with an S3 **Gateway** endpoint. Gateway endpoints provide private S3 access only from resources inside the AWS VPC; they do not create private endpoint IP addresses that OCI can reach across the Interconnect. An Interface endpoint is therefore required for this lab's private OCI-to-S3 data path.
 
 ## Summary
 

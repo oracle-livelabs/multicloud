@@ -38,9 +38,9 @@ Estimated Time: 15 minutes
     | **Database display name** | A descriptive database name. Keep the supplied default or use the lab naming convention. |
     | **Database name** | The database name, beginning with a letter and containing no more than 14 letters or numbers. Keep the supplied default unless instructed otherwise. |
     | **Private endpoint label** | A private endpoint label. Keep the supplied default unless instructed otherwise. |
-    | **Allowed public client CIDR** | Your workstation public egress IP in `/32` form, or an approved corporate/VPN CIDR. Do not use `0.0.0.0/0`. |
+    | **Allowed public client CIDR** | Your workstation public egress IP in `/32` form, or an approved corporate/VPN CIDR. On a Mac, open **Terminal** and run `curl ifconfig.me`; append `/32` to the returned IP. On Windows, open **Command Prompt**, run `ipconfig`, find the **IPv4 Address** for the active network adapter, and append `/32`. If Windows shows a private address such as `10.x.x.x` or `192.168.x.x`, obtain the public egress CIDR from your network administrator. Do not use `0.0.0.0/0`. |
     | **ECPU count** and **Storage in TB** | Keep the lab-supplied defaults unless your instructor provides different values. |
-    | **ADMIN password** | Create and confirm a new strong password for the `ADMIN` user. Save it securely; you use it to sign in to Database Actions. |
+    | **ADMIN password** | Create and confirm a new password for the `ADMIN` user, then save it securely for Database Actions. It must meet all of these conditions:<br>1. Be 12–30 characters long (30 characters maximum) and include at least one uppercase letter, lowercase letter, and numeric character.<br>2. Not contain the username (`ADMIN`).<br>3. Not contain a double quotation mark (`"`) or single quotation mark (`'`). |
 
 5. Select **Next**. On the **Review** page, review the configuration, leave **Run apply** selected, then select **Create**. Do not change the Terraform configuration or provider settings.
 
